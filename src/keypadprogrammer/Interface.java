@@ -82,10 +82,14 @@ public class Interface extends javax.swing.JFrame implements Observer {
         voyant.setBackground(new Color(204, 136, 53));
         voyant.setForeground(Color.GRAY);
         voyant.setOpaque(true);
-        nameUet.setBackground(new Color(247, 242, 208));
-        nameUet.setOpaque(true);
-        nameUet.setForeground(Color.red);
-        nameUet.setFont(new Font("Serif", Font.PLAIN, 20));
+        console.setBackground(new Color(247, 242, 208));
+        console.setOpaque(true);
+        console.setForeground(Color.red);
+        console.setFont(new Font("Serif", Font.PLAIN, 20));
+        nomProduit.setBackground(new Color(247, 242, 208));
+        nomProduit.setOpaque(true);
+        nomProduit.setForeground(Color.red);
+        nomProduit.setFont(new Font("Serif", Font.PLAIN, 20));
 
         //paramsWin.getContentPane().setBackground(new Color(83, 141, 163)); // module 1
         paramsWin.getContentPane().setBackground(new Color(0, 102, 102));   // module 3
@@ -100,7 +104,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         aide.getContentPane().setBackground(new Color(247, 242, 208));
 
         rechercherPortsComms();
-        
+
         initialisation = initializer.getInit();
         if (initialisation.getBinaryLocations().equals("na")) {
 
@@ -111,8 +115,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
             System.out.println("BinaryLocation = " + initialisation.getBinaryLocations());
             hexLocation = initialisation.getBinaryLocations();
         }
-
-      
 
         if (initialisation.getProgrammerDirectory().equals("na")) {
 
@@ -151,12 +153,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
             System.exit(0);
 
         }
-        
+
         progBarre.setStringPainted(true);
         progBarre.setForeground(Color.blue);
         progBarre.setOpaque(true);
         progBarre.setVisible(true);
-     
 
         testParamsProg();
 
@@ -188,17 +189,17 @@ public class Interface extends javax.swing.JFrame implements Observer {
         titreLabProg = new javax.swing.JLabel();
         EnvVarBox = new javax.swing.JCheckBox();
         titreLabHex = new javax.swing.JLabel();
-        messageNomNouvelleCarte = new javax.swing.JLabel();
+        labelAjoutCarte = new javax.swing.JLabel();
         messageCreation = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         listeProduits = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnAjouter = new javax.swing.JButton();
         bleLocLabel1 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
-        titreLabBLE1 = new javax.swing.JLabel();
+        nomNouvelleCarte = new javax.swing.JTextField();
+        labBinaireNouvelleCarte = new javax.swing.JLabel();
         titreLabBLE2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnSelectionBinaireAjouter = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         aide = new javax.swing.JFrame();
         btnFermerAide = new javax.swing.JButton();
@@ -215,19 +216,19 @@ public class Interface extends javax.swing.JFrame implements Observer {
         btnEffacer = new javax.swing.JButton();
         voyant = new javax.swing.JLabel();
         statutRs232 = new javax.swing.JLabel();
-        nameUet = new javax.swing.JLabel();
+        console = new javax.swing.JLabel();
         version = new javax.swing.JLabel();
         StatutRS232Lab = new javax.swing.JLabel();
         statutPRGLabel = new javax.swing.JLabel();
         statutPGRM = new javax.swing.JLabel();
         progBarre = new javax.swing.JProgressBar();
         btnACQ = new javax.swing.JButton();
-        console = new javax.swing.JLabel();
+        nomProduit = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuParametres = new javax.swing.JMenu();
         menuVoir = new javax.swing.JMenuItem();
         paramsProg = new javax.swing.JMenuItem();
-        paramBinaire = new javax.swing.JMenuItem();
+        menuCreer = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         btnFermer = new javax.swing.JMenuItem();
         menuConnexion = new javax.swing.JMenu();
@@ -323,8 +324,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
         titreLabHex.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         titreLabHex.setText("Carte à programmer");
 
-        messageNomNouvelleCarte.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        messageNomNouvelleCarte.setText("Indiquez le nom de la nouvelle carte");
+        labelAjoutCarte.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        labelAjoutCarte.setText("Indiquez le nom de la nouvelle carte");
 
         messageCreation.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         messageCreation.setForeground(new java.awt.Color(255, 0, 51));
@@ -342,11 +343,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
         listeProduits.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         listeProduits.setText("Sélection carte");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setText("Ajouter");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAjouter.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnAjouter.setText("Ajouter");
+        btnAjouter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAjouterActionPerformed(evt);
             }
         });
 
@@ -355,20 +356,20 @@ public class Interface extends javax.swing.JFrame implements Observer {
         bleLocLabel1.setText("Jlabel");
         bleLocLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jTextField1.setText("jTextField1");
+        nomNouvelleCarte.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        nomNouvelleCarte.setText("jTextField1");
 
-        titreLabBLE1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        titreLabBLE1.setText("Fichier binaire nouvelle carte");
+        labBinaireNouvelleCarte.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        labBinaireNouvelleCarte.setText("Fichier binaire nouvelle carte");
 
         titreLabBLE2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         titreLabBLE2.setText("Fichier binaire");
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setText("Sélectionner");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSelectionBinaireAjouter.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSelectionBinaireAjouter.setText("Sélectionner");
+        btnSelectionBinaireAjouter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSelectionBinaireAjouterActionPerformed(evt);
             }
         });
 
@@ -392,8 +393,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
                         .addComponent(titreLabHex, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(paramsWinLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(messageNomNouvelleCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(996, Short.MAX_VALUE))
+                        .addComponent(labelAjoutCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(975, Short.MAX_VALUE))
             .addGroup(paramsWinLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -418,11 +419,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
                                     .addComponent(EnvVarBox)
                                     .addComponent(titreLabProg, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(listeProduits, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jButton1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAjouter)
+                            .addComponent(nomNouvelleCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(titreLabBLE2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(titreLabBLE1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2))
+                            .addComponent(labBinaireNouvelleCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSelectionBinaireAjouter))
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(paramsWinLayout.createSequentialGroup()
                 .addGap(492, 492, 492)
@@ -455,17 +456,17 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 .addGap(27, 27, 27)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btnAjouter)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(messageCreation, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(messageNomNouvelleCarte)
+                .addComponent(labelAjoutCarte)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nomNouvelleCarte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(titreLabBLE1)
+                .addComponent(labBinaireNouvelleCarte)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(btnSelectionBinaireAjouter)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFermerParams)
@@ -585,10 +586,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
         statutRs232.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         statutRs232.setText("rs-232");
 
-        nameUet.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        nameUet.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nameUet.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        nameUet.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        console.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        console.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        console.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        console.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         version.setText("V1.0");
 
@@ -621,10 +622,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
             }
         });
 
-        console.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        console.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        console.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        console.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        nomProduit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        nomProduit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nomProduit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        nomProduit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         menuParametres.setText("Paramètres");
         menuParametres.addActionListener(new java.awt.event.ActionListener() {
@@ -649,13 +650,13 @@ public class Interface extends javax.swing.JFrame implements Observer {
         });
         menuParametres.add(paramsProg);
 
-        paramBinaire.setText("Créer");
-        paramBinaire.addActionListener(new java.awt.event.ActionListener() {
+        menuCreer.setText("Créer");
+        menuCreer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                paramBinaireActionPerformed(evt);
+                menuCreerActionPerformed(evt);
             }
         });
-        menuParametres.add(paramBinaire);
+        menuParametres.add(menuCreer);
         menuParametres.add(jSeparator1);
 
         btnFermer.setText("Fermer");
@@ -806,38 +807,35 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 .addGap(98, 98, 98)
                 .addComponent(btnACQ, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(151, 151, 151))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(version)
-                .addGap(26, 26, 26))
             .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(statutPGRM, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(titre, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(StatutRS232Lab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(statutRs232, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(statutPRGLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(nameUet, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(105, 105, 105)))
-                        .addGap(36, 36, 36))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(console, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(progBarre, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                .addGap(92, 92, 92)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(nomProduit, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(progBarre, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
+                        .addComponent(console, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(0, 112, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(327, 327, 327)
+                .addGap(330, 330, 330)
                 .addComponent(voyant, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(statutPGRM, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(titre, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(91, 91, 91)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(StatutRS232Lab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(statutRs232, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(statutPRGLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(36, 36, 36))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(version)
+                        .addGap(26, 26, 26))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -853,21 +851,22 @@ public class Interface extends javax.swing.JFrame implements Observer {
                     .addComponent(titre, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statutPGRM, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(nomProduit, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(voyant, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(progBarre, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(console, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(version)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                        .addComponent(nameUet, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(voyant, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84)
-                        .addComponent(progBarre, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(console, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
+                        .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnEffacer, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -898,10 +897,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 }
             }
 
-            nameUet.setText("Programmation en cours");
+            console.setText("Programmation en cours");
             programmationActive = true;
             progBarre.setVisible(true);
-       
+
             voyant.setBackground(Color.YELLOW);
 
             Thread t = new Thread() {
@@ -918,7 +917,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
                         if (comm == -2) {
 
-                            nameUet.setText("Erreur de programmation");
+                            console.setText("Erreur de programmation");
                             voyant.setBackground(Color.red);
                             connecteur.envoyerData(Constants.ERR_PROG);
                             programmationActive = true;
@@ -933,7 +932,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                             connecteur.envoyerData(Constants.END_PROG);
                             programmationActive = true;
                              */
-                            nameUet.setText("Programmation terminée!");
+                            console.setText("Programmation terminée!");
                             // voyant.setBackground(Color.GREEN);
                             connecteur.envoyerData(Constants.END_PROG);
                             Constants.tempo(1000);
@@ -943,7 +942,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
                             Constants.tempo(1000);
                             comm = connecteur.envoyerData(Constants.START);
                             activerBtnTestEnCours();
-                        
 
                         }
 
@@ -964,7 +962,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             }
 
-            nameUet.setText("Réponse OK");
+            console.setText("Réponse OK");
 
         }
 
@@ -984,7 +982,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 }
             }
 
-            nameUet.setText("Effacement en cours");
+            console.setText("Effacement en cours");
             voyant.setBackground(Color.YELLOW);
 
             Thread t = new Thread() {
@@ -1003,7 +1001,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 alerteRS232();
 
             }
-            nameUet.setText("Résultat non conforme. Test terminé!");
+            console.setText("Résultat non conforme. Test terminé!");
             voyant.setBackground(Color.RED);
 
         }
@@ -1045,7 +1043,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         programmerLocation = programmerLoc.getSelectedFile();
         if (programmerLoc.getSelectedFile() != null) {
 
-            nameUet.setText("Repertoire programmateur: " + programmerLocation.getPath());
+            console.setText("Repertoire programmateur: " + programmerLocation.getPath());
             progLocation = programmerLocation.getPath();
 
         }
@@ -1053,31 +1051,41 @@ public class Interface extends javax.swing.JFrame implements Observer {
         testParamsProg();
     }//GEN-LAST:event_paramsProgActionPerformed
 
-    private void paramBinaireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paramBinaireActionPerformed
+    private void menuCreerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCreerActionPerformed
 
-        binaryLoc.showOpenDialog(this);
-        binaryLocation = binaryLoc.getSelectedFile();
-        if (binaryLocation != null) {
+        paramsWin.setVisible(true);
+        EnvVarBox.setSelected(envVariable);
+        activerFonctionAjouter(true);
+        if (progLocation != null) {
+            progLocLabel.setText("Repertoire programmateur: " + progLocation);
+        } else {
 
-            String binPath = binaryLocation.getPath();
-            String[] extension = binPath.split("\\.");
-            if (!extension[1].equals("hex") && !extension[1].equals("bin")) {
-
-                montrerError("Le fichier binaire n'est pas valide", "Fichier binaire invalide");
-                return;
-            }
-            nameUet.setText("Binaire location: " + binaryLocation.getPath());
-            hexLocation = binaryLocation.getPath();
-
+            progLocLabel.setText("Repertoire programmateur non défini!");
         }
 
-        testParamsProg();
-    }//GEN-LAST:event_paramBinaireActionPerformed
+        if (hexLocation != null) {
+
+            binaryLocLabel.setText("Fichier binaire: " + hexLocation);
+        } else {
+
+            binaryLocLabel.setText("Fichier binaire non défini!");
+        }
+
+        if (bleLocation != null) {
+
+            messageCreation.setText("Fichier ble: " + bleLocation);
+        } else {
+
+            messageCreation.setText("Fichier ble non défini!");
+        }
+    }//GEN-LAST:event_menuCreerActionPerformed
 
     private void menuVoirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVoirActionPerformed
 
         paramsWin.setVisible(true);
+        activerFonctionAjouter(false);
         EnvVarBox.setSelected(envVariable);
+
         if (progLocation != null) {
             progLocLabel.setText("Repertoire programmateur: " + progLocation);
         } else {
@@ -1151,8 +1159,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
         int i = connecteur.makeConnection(Connecteur.portName, baudeRate, numDatabits, parity, stopBits);
         if (i == 99) {
 
-            nameUet.setForeground(Color.BLUE);
-            nameUet.setText("Connexion réussie");
+            console.setForeground(Color.BLUE);
+            console.setText("Connexion réussie");
             setStatusRS232(true);
             btnConnexion.setEnabled(false);
             btnDeconnexion.setEnabled(true);
@@ -1163,8 +1171,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         } else {
 
-            nameUet.setForeground(Color.red);
-            nameUet.setText("Tentative de connexion échouée");
+            console.setForeground(Color.red);
+            console.setText("Tentative de connexion échouée");
             setStatusRS232(false);
 
         }
@@ -1177,8 +1185,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         int i = connecteur.disconnect();
         if (i == 0) {
-            nameUet.setForeground(Color.BLUE);
-            nameUet.setText("Déconnexion réussie");
+            console.setForeground(Color.BLUE);
+            console.setText("Déconnexion réussie");
             setStatusRS232(false);
             btnConnexion.setEnabled(true);
             btnDeconnexion.setEnabled(false);
@@ -1210,14 +1218,13 @@ public class Interface extends javax.swing.JFrame implements Observer {
         }
 
         testActif = false;
-        nameUet.setText("RESULTAT ACQUITTE - PRET POUR NOUVEAU TEST!");
+        console.setText("RESULTAT ACQUITTE - PRET POUR NOUVEAU TEST!");
         //activerBtnProgrammation();
         testParamsProg();
         voyantTestEnCours(false);
         progBarre.setValue(0);
         progBarre.setString("En attente lancement de programmation");
         progBarre.setStringPainted(true);
-    
 
 
     }//GEN-LAST:event_btnACQActionPerformed
@@ -1226,13 +1233,14 @@ public class Interface extends javax.swing.JFrame implements Observer {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjouterActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        activerFonctionAjouter(true);
+    }//GEN-LAST:event_btnAjouterActionPerformed
+
+    private void btnSelectionBinaireAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectionBinaireAjouterActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnSelectionBinaireAjouterActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -1294,6 +1302,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JRadioButtonMenuItem bits9;
     private javax.swing.JLabel bleLocLabel1;
     private javax.swing.JButton btnACQ;
+    private javax.swing.JButton btnAjouter;
     private javax.swing.JMenuItem btnConnexion;
     private javax.swing.JMenuItem btnDeconnexion;
     private javax.swing.JButton btnEffacer;
@@ -1303,14 +1312,13 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JButton btnProg;
     private javax.swing.JButton btnSelectBinaryLoc;
     private javax.swing.JButton btnSelectLocationProg;
+    private javax.swing.JButton btnSelectionBinaireAjouter;
     private javax.swing.JLabel console;
     private javax.swing.ButtonGroup groupBaud;
     private javax.swing.ButtonGroup groupBits;
     private javax.swing.ButtonGroup groupParity;
     private javax.swing.ButtonGroup groupPorts;
     private javax.swing.ButtonGroup groupStop;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -1326,21 +1334,22 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel labBinaireNouvelleCarte;
+    private javax.swing.JLabel labelAjoutCarte;
     private javax.swing.JLabel listeProduits;
     private javax.swing.JMenu menuAide;
     private javax.swing.JMenu menuBaud;
     private javax.swing.JMenu menuBits;
     private javax.swing.JMenu menuConnexion;
+    private javax.swing.JMenuItem menuCreer;
     private javax.swing.JMenu menuParametres;
     private javax.swing.JMenu menuParity;
     private javax.swing.JMenu menuPort;
     private javax.swing.JMenu menuStop;
     private javax.swing.JMenuItem menuVoir;
     private javax.swing.JLabel messageCreation;
-    private javax.swing.JLabel messageNomNouvelleCarte;
-    private javax.swing.JLabel nameUet;
-    private javax.swing.JMenuItem paramBinaire;
+    private javax.swing.JTextField nomNouvelleCarte;
+    private javax.swing.JLabel nomProduit;
     private javax.swing.JMenuItem paramsProg;
     private javax.swing.JFrame paramsWin;
     private javax.swing.JRadioButtonMenuItem parityEven;
@@ -1355,7 +1364,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JRadioButtonMenuItem stop1;
     private javax.swing.JRadioButtonMenuItem stop2;
     private javax.swing.JLabel titre;
-    private javax.swing.JLabel titreLabBLE1;
     private javax.swing.JLabel titreLabBLE2;
     private javax.swing.JLabel titreLabHex;
     private javax.swing.JLabel titreLabProg;
@@ -1369,7 +1377,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         if (hexLocation == null) {
 
-            nameUet.setText("Le fichier binaire n'est pas défini!");
+            console.setText("Le fichier binaire n'est pas défini!");
             voyant.setBackground(Color.GRAY);
             statutPGRM.setBackground(Color.RED);
             statutPGRM.setForeground(Color.RED);
@@ -1378,7 +1386,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             if (bleLocation == null) {
 
-                nameUet.setText("Le fichier BLE n'est pas défini!");
+                console.setText("Le fichier BLE n'est pas défini!");
                 voyant.setBackground(Color.GRAY);
                 statutPGRM.setBackground(Color.RED);
                 statutPGRM.setForeground(Color.RED);
@@ -1387,13 +1395,13 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
                 if (!envVariable && progLocation == null) {
 
-                    nameUet.setText("Repertoire programmateur non défini!");
+                    console.setText("Repertoire programmateur non défini!");
                     statutPGRM.setBackground(Color.RED);
                     statutPGRM.setForeground(Color.RED);
 
                 } else {
 
-                    nameUet.setText("Paramètres de programmation définis. Vous pouvez commencer!");
+                    console.setText("Paramètres de programmation définis. Vous pouvez commencer!");
                     statutPGRM.setBackground(Color.GREEN);
                     statutPGRM.setForeground(Color.GREEN);
                     initializer.update("binaryLocation", hexLocation);
@@ -1471,14 +1479,14 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
                 //voyant.setBackground(Color.GREEN);
                 progBarre.setValue(100);
-                nameUet.setText("Programmation terminée!");
+                console.setText("Programmation terminée!");
             }
 
             if ((Integer) arg == Constants.ERASE_SUCCESS) {
 
                 voyant.setBackground(Color.GREEN);
                 progBarre.setValue(100);
-                nameUet.setText("Effacement terminée!");
+                console.setText("Effacement terminée!");
             }
 
             if ((Integer) arg == Constants.PROG_START) {
@@ -1487,7 +1495,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 progBarre.setStringPainted(true);
                 progBarre.setString("Programmation en cours...");
                 progBarre.setValue(0);
-                nameUet.setText("Programmation en cours");
+                console.setText("Programmation en cours");
             }
 
             if ((Integer) arg == Constants.PROG_SUCCESS_ETAPE1) {
@@ -1496,7 +1504,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 progBarre.setStringPainted(true);
                 progBarre.setString("Programmation en cours...");
                 progBarre.setValue(15);
-                nameUet.setText("Programmation: étape 1 terminée!");
+                console.setText("Programmation: étape 1 terminée!");
             }
 
             if ((Integer) arg == Constants.PROG_SUCCESS_ETAPE2) {
@@ -1505,7 +1513,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 progBarre.setStringPainted(true);
                 progBarre.setString("Programmation en cours...");
                 progBarre.setValue(70);
-                nameUet.setText("Programmation: étape 2 terminée!");
+                console.setText("Programmation: étape 2 terminée!");
             }
 
             if ((Integer) arg == Constants.PROG_SUCCESS_ETAPE3) {
@@ -1514,7 +1522,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 progBarre.setStringPainted(true);
                 progBarre.setString("Programmation en cours...");
                 progBarre.setValue(90);
-                nameUet.setText("Programmation: étape 3 terminée!");
+                console.setText("Programmation: étape 3 terminée!");
             }
 
             if ((Integer) arg == Constants.PROG_SUCCESS_ETAPE4) {
@@ -1523,7 +1531,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 progBarre.setString("Programmation terminée!");
                 progBarre.setStringPainted(true);
                 progBarre.setValue(100);
-                nameUet.setText("Programmation: étape 4 terminée! - Le test est en cours");
+                console.setText("Programmation: étape 4 terminée! - Le test est en cours");
 
             }
 
@@ -1532,7 +1540,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 voyant.setBackground(Color.RED);
                 progBarre.setString("Echec programmation!");
                 progBarre.setStringPainted(true);
-                nameUet.setText("Programmation: échec étape 1!");
+                console.setText("Programmation: échec étape 1!");
                 montrerError("Vérifier positionnement carte!", "Erreur de programmation");
                 activerBtnAttenteACQ();
             }
@@ -1542,7 +1550,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 voyant.setBackground(Color.RED);
                 progBarre.setString("Echec programmation!");
                 progBarre.setStringPainted(true);
-                nameUet.setText("Programmation: échec étape 2!");
+                console.setText("Programmation: échec étape 2!");
                 activerBtnAttenteACQ();
             }
 
@@ -1551,7 +1559,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 voyant.setBackground(Color.RED);
                 progBarre.setString("Echec programmation!");
                 progBarre.setStringPainted(true);
-                nameUet.setText("Programmation: échec étape 3!");
+                console.setText("Programmation: échec étape 3!");
                 activerBtnAttenteACQ();
             }
 
@@ -1560,7 +1568,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 voyant.setBackground(Color.RED);
                 progBarre.setString("Echec programmation!");
                 progBarre.setStringPainted(true);
-                nameUet.setText("Programmation: échec étape 4!");
+                console.setText("Programmation: échec étape 4!");
                 activerBtnAttenteACQ();
             }
 
@@ -1612,7 +1620,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 messageConsole("TEST MANUEL EN COURS");
                 auto = false;
                 voyant.setBackground(Color.BLUE);
-           
+
                 btnProg.setEnabled(false);
                 btnProg.setBackground(Color.GRAY);
                 btnEffacer.setEnabled(false);
@@ -1684,10 +1692,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 }
                 System.out.println("Etape: " + etape);
                 if (etape != 18) {
-                    nameUet.setText("Etape: " + etape);
+                    console.setText("Etape: " + etape);
                 }
-
-          
 
                 if (etape == 12) {
 
@@ -1695,7 +1701,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
                     if (etape == 12) {
 
-                        nameUet.setText("EN ATTENTE VALIDATION LEDS");
+                        console.setText("EN ATTENTE VALIDATION LEDS");
                     }
 
                     /*
@@ -1710,12 +1716,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
                 if (etape == 18) {
 
-              
                     bleCode = tab[3];
-                    nameUet.setText("BLE:" + bleCode.substring(1, 18));
+                    console.setText("BLE:" + bleCode.substring(1, 18));
                     if (result) {
 
-                        nameUet.setText("BLE:" + bleCode.substring(1, 18) + " - PRESSEZ ACQ!");
+                        console.setText("BLE:" + bleCode.substring(1, 18) + " - PRESSEZ ACQ!");
                     } else {
 
                     }
@@ -1756,7 +1761,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         if (active) {
 
-
             btnProg.setText("OK");
             btnProg.setBackground(new Color(163, 194, 240));
             btnProg.setEnabled(true);
@@ -1767,7 +1771,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         } else {
 
-      
             btnProg.setText("OK");
             btnProg.setBackground(new Color(163, 194, 240));
             btnProg.setEnabled(false);
@@ -1784,15 +1787,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         if (active) {
 
-        
             btnProg.setEnabled(false);
             btnProg.setBackground(Color.GRAY);
             btnEffacer.setEnabled(false);
             btnEffacer.setBackground(Color.GRAY);
 
         } else {
-
-         
 
         }
 
@@ -1822,7 +1822,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void messageConsole(String message) {
 
-        nameUet.setText(message);
+        console.setText(message);
 
     }
 
@@ -1830,7 +1830,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         if (active) {
 
-     
             btnProg.setText("PROGRAMMER");
             btnProg.setEnabled(true);
             btnProg.setBackground(new Color(163, 194, 240));
@@ -1843,7 +1842,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         } else {
 
-       
             btnProg.setText("PROGRAMMER");
             btnProg.setEnabled(false);
             btnProg.setBackground(Color.GRAY);
@@ -1861,13 +1859,13 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         if (active) {
 
-            nameUet.setText("Effacement demandé");
+            console.setText("Effacement demandé");
             voyant.setBackground(Color.YELLOW);
             System.out.println("Affichage yellow");
 
         } else {
 
-            nameUet.setText("Effacement terminé");
+            console.setText("Effacement terminé");
             voyant.setBackground(Color.GREEN);
             System.out.println("Affichage green");
 
@@ -1879,13 +1877,13 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         if (active) {
 
-            nameUet.setText("Programation en cours");
+            console.setText("Programation en cours");
             voyant.setBackground(Color.YELLOW);
             voyant.setOpaque(true);
 
         } else {
 
-            nameUet.setText("Programation terminé");
+            console.setText("Programation terminé");
             voyant.setBackground(Color.GREEN);
             voyant.setOpaque(true);
 
@@ -1898,13 +1896,13 @@ public class Interface extends javax.swing.JFrame implements Observer {
         int i = connecteur.disconnect();
         if (i == 0) {
 
-            nameUet.setForeground(Color.BLUE);
-            nameUet.setText("La connexion a été perdue! Vous devez la rétablir.");
+            console.setForeground(Color.BLUE);
+            console.setText("La connexion a été perdue! Vous devez la rétablir.");
             setStatusRS232(false);
             btnConnexion.setEnabled(true);
             btnDeconnexion.setEnabled(false);
             connexionRS232Active = false;
-       
+
             setEnabledMenusConfiguration();
             testActif = false;
             auto = false;
@@ -1995,8 +1993,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
     // Fonctions d'activation des boutons
     void activerBtnLancer(boolean active) {
 
-     
-
     }
 
     void activerBtnOK(boolean active) {
@@ -2005,7 +2001,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     void activerBtnNOK(boolean active) {
 
-  
     }
 
     void activerBtnTester(boolean active) {
@@ -2083,13 +2078,13 @@ public class Interface extends javax.swing.JFrame implements Observer {
         System.out.println("reset system");
 
         testActif = false;
-        nameUet.setText("Système réinitialisé");
+        console.setText("Système réinitialisé");
         testParamsProg();
         voyantTestEnCours(false);
         progBarre.setValue(0);
         progBarre.setString("En attente lancement de programmation");
         progBarre.setStringPainted(true);
-    
+
         try {
             Thread.sleep(4000);
         } catch (InterruptedException ex) {
@@ -2107,5 +2102,16 @@ public class Interface extends javax.swing.JFrame implements Observer {
         voyantTestEnCours(true);
         // activerBtnReponseOp(testActif);
         activerBtnTestEnCours();
+    }
+
+    private void activerFonctionAjouter(boolean active) {
+
+        btnAjouter.setVisible(!active);
+        messageCreation.setVisible(active);
+        labelAjoutCarte.setVisible(active);
+        nomNouvelleCarte.setVisible(active);
+        labBinaireNouvelleCarte.setVisible(active);
+        btnSelectionBinaireAjouter.setVisible(active);
+
     }
 }
