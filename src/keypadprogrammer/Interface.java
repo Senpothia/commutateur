@@ -91,36 +91,28 @@ public class Interface extends javax.swing.JFrame implements Observer {
         paramsWin.getContentPane().setBackground(new Color(0, 102, 102));   // module 3
         progLocLabel.setBackground(new Color(247, 242, 208));
         binaryLocLabel.setBackground(new Color(247, 242, 208));
-        bleLocLabel.setBackground(new Color(247, 242, 208));
+        messageCreation.setBackground(new Color(247, 242, 208));
         progLocLabel.setOpaque(true);
         binaryLocLabel.setOpaque(true);
-        bleLocLabel.setOpaque(true);
+        messageCreation.setOpaque(true);
         inhibBtn();
 
         aide.getContentPane().setBackground(new Color(247, 242, 208));
 
         rechercherPortsComms();
-
+        
         initialisation = initializer.getInit();
-        if (initialisation.getBinaryLocation().equals("na")) {
+        if (initialisation.getBinaryLocations().equals("na")) {
 
-            System.out.println("BinaryLocation = " + initialisation.getBinaryLocation());
-
-        } else {
-
-            System.out.println("BinaryLocation = " + initialisation.getBinaryLocation());
-            hexLocation = initialisation.getBinaryLocation();
-        }
-
-        if (initialisation.getBleLocation().equals("na")) {
-
-            System.out.println("BleLocation = " + initialisation.getBleLocation());
+            System.out.println("BinaryLocation = " + initialisation.getBinaryLocations());
 
         } else {
 
-            System.out.println("BleLocation = " + initialisation.getBleLocation());
-            bleLocation = initialisation.getBleLocation();
+            System.out.println("BinaryLocation = " + initialisation.getBinaryLocations());
+            hexLocation = initialisation.getBinaryLocations();
         }
+
+      
 
         if (initialisation.getProgrammerDirectory().equals("na")) {
 
@@ -159,7 +151,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             System.exit(0);
 
         }
-
+        
         progBarre.setStringPainted(true);
         progBarre.setForeground(Color.blue);
         progBarre.setOpaque(true);
@@ -180,7 +172,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private void initComponents() {
 
         programmerLoc = new javax.swing.JFileChooser();
-        bleLoc = new javax.swing.JFileChooser();
         btnSelectLocationProg = new javax.swing.JButton();
         btnSelectBinaryLoc = new javax.swing.JButton();
         binaryLoc = new javax.swing.JFileChooser();
@@ -197,8 +188,18 @@ public class Interface extends javax.swing.JFrame implements Observer {
         titreLabProg = new javax.swing.JLabel();
         EnvVarBox = new javax.swing.JCheckBox();
         titreLabHex = new javax.swing.JLabel();
-        titreLabBLE = new javax.swing.JLabel();
-        bleLocLabel = new javax.swing.JLabel();
+        messageNomNouvelleCarte = new javax.swing.JLabel();
+        messageCreation = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        listeProduits = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        bleLocLabel1 = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        jTextField1 = new javax.swing.JTextField();
+        titreLabBLE1 = new javax.swing.JLabel();
+        titreLabBLE2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         aide = new javax.swing.JFrame();
         btnFermerAide = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -275,7 +276,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
         });
 
         paramsWin.setTitle("Programmateur keypad - Paramètres système");
-        paramsWin.setMinimumSize(new java.awt.Dimension(1321, 481));
+        paramsWin.setMinimumSize(new java.awt.Dimension(1300, 1000));
+        paramsWin.setPreferredSize(new java.awt.Dimension(1300, 1300));
 
         titreParamsWin.setBackground(new java.awt.Color(153, 153, 255));
         titreParamsWin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -303,7 +305,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         });
 
         titreLabProg.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        titreLabProg.setText("Répertoire programmateur STM");
+        titreLabProg.setText("Répertoire programmateur");
 
         EnvVarBox.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         EnvVarBox.setText("Variable d'environnement");
@@ -319,15 +321,65 @@ public class Interface extends javax.swing.JFrame implements Observer {
         });
 
         titreLabHex.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        titreLabHex.setText("Fichier binaire");
+        titreLabHex.setText("Carte à programmer");
 
-        titreLabBLE.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        titreLabBLE.setText("Fichier BLE");
+        messageNomNouvelleCarte.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        messageNomNouvelleCarte.setText("Indiquez le nom de la nouvelle carte");
 
-        bleLocLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        bleLocLabel.setForeground(new java.awt.Color(255, 0, 51));
-        bleLocLabel.setText("Jlabel");
-        bleLocLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        messageCreation.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        messageCreation.setForeground(new java.awt.Color(255, 0, 51));
+        messageCreation.setText("Jlabel");
+        messageCreation.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        listeProduits.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        listeProduits.setText("Sélection carte");
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setText("Ajouter");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        bleLocLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        bleLocLabel1.setForeground(new java.awt.Color(255, 0, 51));
+        bleLocLabel1.setText("Jlabel");
+        bleLocLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextField1.setText("jTextField1");
+
+        titreLabBLE1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        titreLabBLE1.setText("Fichier binaire nouvelle carte");
+
+        titreLabBLE2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        titreLabBLE2.setText("Fichier binaire");
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton2.setText("Sélectionner");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 0, 0));
+        jButton3.setText("Enregistrer");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout paramsWinLayout = new javax.swing.GroupLayout(paramsWin.getContentPane());
         paramsWin.getContentPane().setLayout(paramsWinLayout);
@@ -336,58 +388,89 @@ public class Interface extends javax.swing.JFrame implements Observer {
             .addGroup(paramsWinLayout.createSequentialGroup()
                 .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(paramsWinLayout.createSequentialGroup()
-                        .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(paramsWinLayout.createSequentialGroup()
-                                .addGap(392, 392, 392)
-                                .addComponent(titreParamsWin, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(paramsWinLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(titreLabHex, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(paramsWinLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(titreLabBLE, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 551, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paramsWinLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnFermerParams)))
-                .addGap(56, 56, 56))
+                        .addContainerGap()
+                        .addComponent(titreLabHex, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(paramsWinLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(messageNomNouvelleCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(996, Short.MAX_VALUE))
             .addGroup(paramsWinLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(paramsWinLayout.createSequentialGroup()
-                        .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(EnvVarBox)
-                            .addComponent(titreLabProg, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paramsWinLayout.createSequentialGroup()
                         .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(messageCreation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bleLocLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(binaryLocLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bleLocLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(progLocLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(paramsWinLayout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnFermerParams)
+                        .addGap(55, 55, 55))
+                    .addGroup(paramsWinLayout.createSequentialGroup()
+                        .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(EnvVarBox)
+                                    .addComponent(titreLabProg, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(listeProduits, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButton1)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(titreLabBLE2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(titreLabBLE1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(paramsWinLayout.createSequentialGroup()
+                .addGap(492, 492, 492)
+                .addComponent(titreParamsWin, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paramsWinLayout.setVerticalGroup(
             paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paramsWinLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(25, 25, 25)
                 .addComponent(titreParamsWin)
-                .addGap(16, 16, 16)
+                .addGap(18, 18, 18)
                 .addComponent(titreLabProg)
                 .addGap(18, 18, 18)
                 .addComponent(EnvVarBox)
                 .addGap(18, 18, 18)
                 .addComponent(progLocLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(listeProduits)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(titreLabHex)
                 .addGap(18, 18, 18)
                 .addComponent(binaryLocLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(titreLabBLE)
+                .addComponent(titreLabBLE2)
+                .addGap(24, 24, 24)
+                .addComponent(bleLocLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(messageCreation, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(bleLocLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                .addComponent(btnFermerParams)
-                .addGap(21, 21, 21))
+                .addComponent(messageNomNouvelleCarte)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(titreLabBLE1)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnFermerParams)
+                    .addComponent(jButton3))
+                .addGap(36, 36, 36))
         );
 
         aide.setTitle("Programmateur keypad - Aide");
@@ -1012,10 +1095,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         if (bleLocation != null) {
 
-            bleLocLabel.setText("Fichier ble: " + bleLocation);
+            messageCreation.setText("Fichier ble: " + bleLocation);
         } else {
 
-            bleLocLabel.setText("Fichier ble non défini!");
+            messageCreation.setText("Fichier ble non défini!");
         }
 
 
@@ -1139,6 +1222,22 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     }//GEN-LAST:event_btnACQActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1193,8 +1292,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JRadioButtonMenuItem bits7;
     private javax.swing.JRadioButtonMenuItem bits8;
     private javax.swing.JRadioButtonMenuItem bits9;
-    private javax.swing.JFileChooser bleLoc;
-    private javax.swing.JLabel bleLocLabel;
+    private javax.swing.JLabel bleLocLabel1;
     private javax.swing.JButton btnACQ;
     private javax.swing.JMenuItem btnConnexion;
     private javax.swing.JMenuItem btnDeconnexion;
@@ -1211,6 +1309,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.ButtonGroup groupParity;
     private javax.swing.ButtonGroup groupPorts;
     private javax.swing.ButtonGroup groupStop;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1222,7 +1324,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel listeProduits;
     private javax.swing.JMenu menuAide;
     private javax.swing.JMenu menuBaud;
     private javax.swing.JMenu menuBits;
@@ -1232,6 +1337,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JMenu menuPort;
     private javax.swing.JMenu menuStop;
     private javax.swing.JMenuItem menuVoir;
+    private javax.swing.JLabel messageCreation;
+    private javax.swing.JLabel messageNomNouvelleCarte;
     private javax.swing.JLabel nameUet;
     private javax.swing.JMenuItem paramBinaire;
     private javax.swing.JMenuItem paramsProg;
@@ -1248,7 +1355,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JRadioButtonMenuItem stop1;
     private javax.swing.JRadioButtonMenuItem stop2;
     private javax.swing.JLabel titre;
-    private javax.swing.JLabel titreLabBLE;
+    private javax.swing.JLabel titreLabBLE1;
+    private javax.swing.JLabel titreLabBLE2;
     private javax.swing.JLabel titreLabHex;
     private javax.swing.JLabel titreLabProg;
     private javax.swing.JLabel titreParamsWin;

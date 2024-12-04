@@ -21,17 +21,15 @@ public class Initializer {
     public Initialisation getInit() throws FileNotFoundException, IOException {
 
         Properties progProperpies = new Properties();
-
-        //FileReader reader = new FileReader("src\\keypadprogrammer\\params.properties");
         FileReader reader = new FileReader(".\\params.properties");
         progProperpies.load(reader);
 
         String programmerDirectory = progProperpies.getProperty("programmerDirectory");
-        String binaryLocation = progProperpies.getProperty("binaryLocation");
+        String binaryLocations = progProperpies.getProperty("binaryLocations");
         String varEnv = progProperpies.getProperty("varEnv");
-        String bleLocation = progProperpies.getProperty("bleLocation");
+        String productNames = progProperpies.getProperty("productNames");
         
-        Initialisation init = new Initialisation(programmerDirectory, varEnv, binaryLocation, bleLocation);
+        Initialisation init = new Initialisation(programmerDirectory, varEnv, binaryLocations, productNames);
 
         return init;
     }
@@ -41,9 +39,6 @@ public class Initializer {
         try {
 
             Properties progProperpies = new Properties();
-            //first load old one:
-
-            //FileInputStream configStream = new FileInputStream("src\\keypadprogrammer\\params.properties");
             FileInputStream configStream = new FileInputStream(".\\params.properties");
             progProperpies.load(configStream);
             configStream.close();
@@ -51,8 +46,6 @@ public class Initializer {
             //modifies existing or adds new property
             progProperpies.setProperty(key, value);
 
-            //save modified property file
-            //FileOutputStream output = new FileOutputStream("src\\keypadprogrammer\\params.properties");
             FileOutputStream output = new FileOutputStream(".\\params.properties");
             progProperpies.store(output, "GALEO TESTER - Properties");
             output.close();
