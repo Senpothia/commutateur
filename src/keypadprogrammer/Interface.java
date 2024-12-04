@@ -35,8 +35,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private String hexLocation = null;
     private String bleLocation = null;
     private boolean envVariable = false;
+    private String produitAprogrammer = null;
+    private String listeProduitsConnus = null;
     private boolean confirmationParams = false;
     private String bleCode;
+    private String[] produits = null;
+    private int selectedProduct = 0;
 
     Connecteur connecteur = getConnecteur();            // gére la connexion RS232
 
@@ -76,8 +80,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         statutPGRM.setForeground(Color.RED);
         statutPGRM.setOpaque(true);
 
-        //this.getContentPane().setBackground(new Color(83, 141, 163));   // module 1
-        this.getContentPane().setBackground(new Color(0, 102, 102));  // module 3
+        this.getContentPane().setBackground(new Color(0, 102, 102));
 
         voyant.setBackground(new Color(204, 136, 53));
         voyant.setForeground(Color.GRAY);
@@ -91,9 +94,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         nomProduit.setForeground(Color.red);
         nomProduit.setFont(new Font("Serif", Font.PLAIN, 20));
 
-        //paramsWin.getContentPane().setBackground(new Color(83, 141, 163)); // module 1
-        paramsWin.getContentPane().setBackground(new Color(0, 102, 102));   // module 3
-        progLocLabel.setBackground(new Color(247, 242, 208));
+        paramsWin.getContentPane().setBackground(new Color(0, 102, 102));
         binaryLocLabel.setBackground(new Color(247, 242, 208));
         messageCreation.setBackground(new Color(247, 242, 208));
         progLocLabel.setOpaque(true);
@@ -124,6 +125,27 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             System.out.println("programmerDirectory = " + initialisation.getProgrammerDirectory());
             progLocation = initialisation.getProgrammerDirectory();
+
+        }
+
+        if (initialisation.getProductNames().equals("na")) {
+
+            System.out.println("liste noms de produits = " + initialisation.getProductNames());
+            nomProduit.setText("Aucun produit crée");
+
+        } else {
+
+            System.out.println("liste noms de produits  = " + initialisation.getProductNames());
+            listeProduitsConnus = initialisation.getProductNames();
+            produits = extraireProduits(listeProduitsConnus);
+            comboListeProduits.addItem("---");
+            for (int i = 0; i < produits.length; i++) {
+
+                comboListeProduits.addItem(produits[i]);
+
+            }
+            comboListeProduits.setSelectedIndex(0);
+            nomProduit.setText("Veuillez sélectionner un produit!");
 
         }
 
@@ -191,7 +213,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         titreLabHex = new javax.swing.JLabel();
         labelAjoutCarte = new javax.swing.JLabel();
         messageCreation = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboListeProduits = new javax.swing.JComboBox<>();
         listeProduits = new javax.swing.JLabel();
         btnAjouter = new javax.swing.JButton();
         bleLocLabel1 = new javax.swing.JLabel();
@@ -332,11 +354,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
         messageCreation.setText("Jlabel");
         messageCreation.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        comboListeProduits.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        comboListeProduits.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                comboListeProduitsActionPerformed(evt);
             }
         });
 
@@ -414,7 +435,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                     .addGroup(paramsWinLayout.createSequentialGroup()
                         .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(comboListeProduits, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(EnvVarBox)
                                     .addComponent(titreLabProg, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -444,7 +465,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 .addGap(18, 18, 18)
                 .addComponent(listeProduits)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboListeProduits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(titreLabHex)
                 .addGap(18, 18, 18)
@@ -1030,6 +1051,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
         }
         paramsWin.setVisible(false);
         testParamsProg();
+        selectedProduct = comboListeProduits.getSelectedIndex();
+        nomProduit.setText(produits[selectedProduct - 1]);
     }//GEN-LAST:event_btnFermerParamsActionPerformed
 
     private void btnFermerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFermerActionPerformed
@@ -1229,9 +1252,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     }//GEN-LAST:event_btnACQActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void comboListeProduitsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboListeProduitsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_comboListeProduitsActionPerformed
 
     private void btnAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjouterActionPerformed
 
@@ -1313,6 +1336,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JButton btnSelectBinaryLoc;
     private javax.swing.JButton btnSelectLocationProg;
     private javax.swing.JButton btnSelectionBinaireAjouter;
+    private javax.swing.JComboBox<String> comboListeProduits;
     private javax.swing.JLabel console;
     private javax.swing.ButtonGroup groupBaud;
     private javax.swing.ButtonGroup groupBits;
@@ -1320,7 +1344,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.ButtonGroup groupPorts;
     private javax.swing.ButtonGroup groupStop;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -2114,4 +2137,16 @@ public class Interface extends javax.swing.JFrame implements Observer {
         btnSelectionBinaireAjouter.setVisible(active);
 
     }
+
+    private String[] extraireProduits(String listeProduits) {
+
+        String[] liste = listeProduits.split(";");
+        for (int i = 0; i < liste.length; i++) {
+
+            System.out.println(liste[i]);
+        }
+        return liste;
+
+    }
+
 }
