@@ -44,6 +44,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private boolean confirmationParams = false;
     private String bleCode;
     private String[] produits = null;
+    private ArrayList<String> listesProduits = new ArrayList<String>();
     private String[] localisationsBinaires = null;
     private ArrayList<String> listeLocalisationsBinaires = new ArrayList<String>();
     private int selectedProduct = 0;
@@ -137,11 +138,13 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             System.out.println("liste noms de produits  = " + initialisation.getProductNames());
             listeProduitsConnus = initialisation.getProductNames();
-            produits = extraireProduits(listeProduitsConnus);
-            comboListeProduits.addItem("---");
-            for (int i = 0; i < produits.length; i++) {
+            //produits = extraireProduits(listeProduitsConnus);
+            listesProduits = extraireProduits2(listeProduitsConnus);
+            //comboListeProduits.addItem("---");
+            for (int i = 0; i < listesProduits.size(); i++) {
 
-                comboListeProduits.addItem(produits[i]);
+                //comboListeProduits.addItem(produits[i]);
+                comboListeProduits.addItem(listesProduits.get(i));
 
             }
             comboListeProduits.setSelectedIndex(0);
@@ -494,7 +497,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 .addComponent(messageBinaireSelectionne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(btnEnregistrer)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 341, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 339, Short.MAX_VALUE)
                 .addComponent(btnFermerParams)
                 .addGap(116, 116, 116))
         );
@@ -1057,8 +1060,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
         selectedProduct = comboListeProduits.getSelectedIndex();
 
         if (selectedProduct != 0) {
-            nomProduit.setText(produits[selectedProduct - 1]);
-            binaireLocation = listeLocalisationsBinaires.get(selectedProduct - 1);
+            //nomProduit.setText(produits[selectedProduct - 1]);
+            nomProduit.setText(listesProduits.get(selectedProduct));
+            binaireLocation = listeLocalisationsBinaires.get(selectedProduct-1);
             System.out.println("localistaion binaire: " + binaireLocation);
             activerBtnProgrammer(true);
             console.setText("Vous pouvez commencer à programmer");
@@ -2213,6 +2217,20 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     }
 
+    private ArrayList<String> extraireProduits2(String listeProduits) {
+
+        String[] liste = listeProduits.split(";");
+        ArrayList<String> arrList = new ArrayList<String>();
+        arrList.add("---");
+        for (int i = 0; i < liste.length; i++) {
+
+            System.out.println(liste[i]);
+            arrList.add(liste[i]);
+        }
+        return arrList;
+
+    }
+
     private String[] extraireLocalisationBinaires(String hexLocations) {
 
         String[] liste = hexLocations.split(";");
@@ -2243,7 +2261,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         //localisationsBinaires[localisationsBinaires.length - 1] = localisationNouveauBinaire;
         listeLocalisationsBinaires.add(localisationNouveauBinaire);
-      
+        listesProduits.add(nomNouveauBinaire);
         nomNouvelleCarte.setText("");
         messageBinaireSelectionne.setText("");
         initialisation.setBinaryLocations(initialisation.getBinaryLocations() + ";" + localisationNouveauBinaire);
