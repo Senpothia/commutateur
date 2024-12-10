@@ -45,6 +45,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private String bleCode;
     private String[] produits = null;
     private String[] localisationsBinaires = null;
+    private ArrayList<String> listeLocalisationsBinaires = new ArrayList<String>();
     private int selectedProduct = 0;
 
     Connecteur connecteur = getConnecteur();            // gére la connexion RS232
@@ -56,7 +57,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private int newReadTimeout = 1000;
     private int newWriteTimeout = 0;
 
-    private boolean connexionRS232Active = false;       // état de la connexion RS-232
+    private boolean connexionRS232Active = false;               // état de la connexion RS-232
 
     private boolean testActif = false;
     private boolean programmationActive = false;
@@ -64,7 +65,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private boolean AttenteReponseOperateur = false;
 
     public static Initializer initializer = new Initializer();  // Charge les propriétés du fichier properties contenant les paramètres de programmation
-    public static Initialisation initialisation;          // Centralise les données rapportées par l'initializer
+    public static Initialisation initialisation;                // Centralise les données rapportées par l'initializer
 
     private List<String> listePortString = new ArrayList<>();
     private List<JRadioButtonMenuItem> listePorts = new ArrayList<JRadioButtonMenuItem>();
@@ -123,8 +124,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             System.out.println("BinaryLocation = " + initialisation.getBinaryLocations());
             hexLocations = initialisation.getBinaryLocations();
-            localisationsBinaires = extraireLocalisationBinaires(hexLocations);
-
+            //localisationsBinaires = extraireLocalisationBinaires(hexLocations);
+            listeLocalisationsBinaires = extraireLocalisationBinaires2(hexLocations);
         }
 
         if (initialisation.getProductNames().equals("na")) {
@@ -1057,7 +1058,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         if (selectedProduct != 0) {
             nomProduit.setText(produits[selectedProduct - 1]);
-            binaireLocation = localisationsBinaires[selectedProduct - 1];
+            binaireLocation = listeLocalisationsBinaires.get(selectedProduct - 1);
             System.out.println("localistaion binaire: " + binaireLocation);
             activerBtnProgrammer(true);
             console.setText("Vous pouvez commencer à programmer");
@@ -1317,9 +1318,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_messageBinaireSelectionneActionPerformed
 
     private void comboListeProduitsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboListeProduitsItemStateChanged
-
+        System.out.println("item selected: " + comboListeProduits.getSelectedIndex());
+        //System.out.println("localisationsBinaires longueur: " + localisationsBinaires.length);
         if (comboListeProduits.getSelectedIndex() != 0) {
-            hexLocalisation.setText(localisationsBinaires[comboListeProduits.getSelectedIndex() - 1]);
+            //hexLocalisation.setText(localisationsBinaires[comboListeProduits.getSelectedIndex() - 1]);
+            hexLocalisation.setText(listeLocalisationsBinaires.get(comboListeProduits.getSelectedIndex() - 1));
         } else {
 
             hexLocalisation.setText("Aucun produit sélectionné!");
@@ -2221,15 +2224,32 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     }
 
-    private void enregistrerNouvelleCarte(String localisationNouveauBinaire1, String nomNouveauBinaire1) {
+    private ArrayList<String> extraireLocalisationBinaires2(String hexLocations) {
 
+        String[] liste = hexLocations.split(";");
+        ArrayList<String> arrList = new ArrayList<String>();
+        for (int i = 0; i < liste.length; i++) {
+
+            System.out.println(liste[i]);
+            arrList.add(liste[i]);
+        }
+        return arrList;
+
+    }
+
+    private void enregistrerNouvelleCarte(String localisationNouveauBinaire, String nomNouveauBinaire) {
+
+        comboListeProduits.addItem(nomNouveauBinaire);
+
+        //localisationsBinaires[localisationsBinaires.length - 1] = localisationNouveauBinaire;
+        listeLocalisationsBinaires.add(localisationNouveauBinaire);
+      
         nomNouvelleCarte.setText("");
         messageBinaireSelectionne.setText("");
         initialisation.setBinaryLocations(initialisation.getBinaryLocations() + ";" + localisationNouveauBinaire);
         initialisation.setProductNames(initialisation.getProductNames() + ";" + nomNouveauBinaire);
         initializer.update("binaryLocations", initialisation.getBinaryLocations());
         initializer.update("productNames", initialisation.getProductNames());
-
         localisationNouveauBinaire = null;
         nomNouveauBinaire = null;
 
