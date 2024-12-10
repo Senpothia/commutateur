@@ -2223,12 +2223,16 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void enregistrerNouvelleCarte(String localisationNouveauBinaire1, String nomNouveauBinaire1) {
 
-        localisationNouveauBinaire = null;
-        nomNouveauBinaire = null;
         nomNouvelleCarte.setText("");
         messageBinaireSelectionne.setText("");
-     
-        
+        initialisation.setBinaryLocations(initialisation.getBinaryLocations() + ";" + localisationNouveauBinaire);
+        initialisation.setProductNames(initialisation.getProductNames() + ";" + nomNouveauBinaire);
+        initializer.update("binaryLocations", initialisation.getBinaryLocations());
+        initializer.update("productNames", initialisation.getProductNames());
+
+        localisationNouveauBinaire = null;
+        nomNouveauBinaire = null;
+
     }
 
 }
