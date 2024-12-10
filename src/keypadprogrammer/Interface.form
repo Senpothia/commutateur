@@ -7,7 +7,7 @@
         <Property name="fileFilter" type="javax.swing.filechooser.FileFilter" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="null"/>
         </Property>
-        <Property name="fileSelectionMode" type="int" value="1"/>
+        <Property name="fileSelectionMode" type="int" value="2"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnSelectLocationProg">

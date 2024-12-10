@@ -34,6 +34,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private File nouveauBinaire = null;
     private String filePaths = null;
     private String localisationNouveauBinaire = null;
+    private String nomNouveauBinaire = null;
     private String hexLocations = null;
     private String bleLocation = null;
     private String binaireLocation = null;
@@ -276,7 +277,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         voirAide = new javax.swing.JMenuItem();
 
         programmerLoc.setFileFilter(null);
-        programmerLoc.setFileSelectionMode(javax.swing.JFileChooser.DIRECTORIES_ONLY);
+        programmerLoc.setFileSelectionMode(javax.swing.JFileChooser.FILES_AND_DIRECTORIES);
 
         btnSelectLocationProg.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSelectLocationProg.setText("Programmer location");
@@ -1265,9 +1266,14 @@ public class Interface extends javax.swing.JFrame implements Observer {
         nouveauBinaire = programmerLoc.getSelectedFile();
         if (programmerLoc.getSelectedFile() != null) {
 
-            console.setText("Repertoire programmateur: " + nouveauBinaire.getPath());
+            console.setText("Repertoire binaire: " + nouveauBinaire.getPath());
             localisationNouveauBinaire = nouveauBinaire.getPath();
+            System.out.println("Binaire sélectionné: " + localisationNouveauBinaire);
+            messageBinaireSelectionne.setText("Binaire sélectionné: " + localisationNouveauBinaire);
 
+        } else {
+
+            System.out.println("Aucun binaire sélectionné!");
         }
 
         testParamsProg();
@@ -1276,12 +1282,29 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void btnEnregistrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnregistrerActionPerformed
 
-     
         if (nomNouvelleCarte.getText().equals("")) {
 
             messageCreation.setText("Le nom de la nouvelle carte doit être défini!");
             montrerError("Le nom de la nouvelle carte doit être défini", "Formulaire imcomplet");
+
+            return;
+        } else {
+
+            nomNouveauBinaire = nomNouvelleCarte.getText();
         }
+
+        if (localisationNouveauBinaire == null) {
+
+            messageCreation.setText("Indiquer l'accès au bianire");
+            montrerError("L'accès au binaire doit être défini", "Formulaire imcomplet");
+            return;
+        }
+
+        enregistrerNouvelleCarte(localisationNouveauBinaire, nomNouveauBinaire);
+        montrerError("La nouvelle carte à été enregistrée", "Enregistrement effectué");
+
+        paramsWin.setVisible(false);
+
 
     }//GEN-LAST:event_btnEnregistrerActionPerformed
 
@@ -2196,6 +2219,16 @@ public class Interface extends javax.swing.JFrame implements Observer {
         }
         return liste;
 
+    }
+
+    private void enregistrerNouvelleCarte(String localisationNouveauBinaire1, String nomNouveauBinaire1) {
+
+        localisationNouveauBinaire = null;
+        nomNouveauBinaire = null;
+        nomNouvelleCarte.setText("");
+        messageBinaireSelectionne.setText("");
+     
+        
     }
 
 }
