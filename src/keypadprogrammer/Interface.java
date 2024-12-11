@@ -95,11 +95,18 @@ public class Interface extends javax.swing.JFrame implements Observer {
         console.setBackground(new Color(247, 242, 208));
         console.setOpaque(true);
         console.setForeground(Color.red);
-        console.setFont(new Font("Serif", Font.PLAIN, 20));
+        console.setFont(new Font("Serif", Font.BOLD, 20));
+
         nomProduit.setBackground(new Color(247, 242, 208));
         nomProduit.setOpaque(true);
         nomProduit.setForeground(Color.red);
-        nomProduit.setFont(new Font("Serif", Font.PLAIN, 20));
+        nomProduit.setFont(new Font("Serif", Font.BOLD, 20));
+
+        //emplacementBinaire.setVisible(true);
+        emplacementBinaire.setBackground(new Color(247, 242, 208));
+        emplacementBinaire.setOpaque(true);
+        emplacementBinaire.setForeground(Color.red);
+        emplacementBinaire.setFont(new Font("Serif", Font.BOLD, 20));
 
         paramsWin.getContentPane().setBackground(new Color(0, 102, 102));
 
@@ -126,7 +133,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             System.out.println("BinaryLocation = " + initialisation.getBinaryLocations());
             hexLocations = initialisation.getBinaryLocations();
             //localisationsBinaires = extraireLocalisationBinaires(hexLocations);
-            listeLocalisationsBinaires = extraireLocalisationBinaires2(hexLocations);
+            listeLocalisationsBinaires = extraireLocalisationBinaires(hexLocations);
         }
 
         if (initialisation.getProductNames().equals("na")) {
@@ -139,7 +146,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             System.out.println("liste noms de produits  = " + initialisation.getProductNames());
             listeProduitsConnus = initialisation.getProductNames();
             //produits = extraireProduits(listeProduitsConnus);
-            listesProduits = extraireProduits2(listeProduitsConnus);
+            listesProduits = extraireProduits(listeProduitsConnus);
             //comboListeProduits.addItem("---");
             for (int i = 0; i < listesProduits.size(); i++) {
 
@@ -247,6 +254,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         progBarre = new javax.swing.JProgressBar();
         btnACQ = new javax.swing.JButton();
         nomProduit = new javax.swing.JLabel();
+        emplacementBinaire = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuParametres = new javax.swing.JMenu();
         menuVoir = new javax.swing.JMenuItem();
@@ -655,6 +663,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
         nomProduit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         nomProduit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        emplacementBinaire.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        emplacementBinaire.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        emplacementBinaire.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        emplacementBinaire.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
         menuParametres.setText("Paramètres");
         menuParametres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -828,34 +841,22 @@ public class Interface extends javax.swing.JFrame implements Observer {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(185, 185, 185)
                 .addComponent(btnEffacer, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
+                .addGap(49, 49, 49)
                 .addComponent(btnProg, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98)
+                .addGap(18, 18, 18)
                 .addComponent(btnACQ, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(151, 151, 151))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(nomProduit, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(progBarre, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
-                        .addComponent(console, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(0, 112, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(330, 330, 330)
-                .addComponent(voyant, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(181, 181, 181)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(statutPGRM, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(titre, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(91, 91, 91)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(StatutRS232Lab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(statutRs232, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -864,6 +865,20 @@ public class Interface extends javax.swing.JFrame implements Observer {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(version)
                         .addGap(26, 26, 26))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(327, 327, 327)
+                        .addComponent(voyant, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(emplacementBinaire, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(progBarre, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
+                                .addComponent(console, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(nomProduit, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -879,30 +894,24 @@ public class Interface extends javax.swing.JFrame implements Observer {
                     .addComponent(titre, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statutPGRM, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(nomProduit, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(emplacementBinaire, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(voyant, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
+                .addGap(62, 62, 62)
                 .addComponent(progBarre, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(32, 32, 32)
                 .addComponent(console, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(version)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnEffacer, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnProg, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnACQ, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(74, 74, 74))))))
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEffacer, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnProg, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnACQ, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addComponent(version)
+                .addContainerGap())
         );
 
         pack();
@@ -1060,16 +1069,20 @@ public class Interface extends javax.swing.JFrame implements Observer {
         selectedProduct = comboListeProduits.getSelectedIndex();
 
         if (selectedProduct != 0) {
-            //nomProduit.setText(produits[selectedProduct - 1]);
+
             nomProduit.setText(listesProduits.get(selectedProduct));
-            binaireLocation = listeLocalisationsBinaires.get(selectedProduct-1);
+            //emplacementBinaire.setVisible(true);
+
+            binaireLocation = listeLocalisationsBinaires.get(selectedProduct - 1);
             System.out.println("localistaion binaire: " + binaireLocation);
+            emplacementBinaire.setText(binaireLocation);
             activerBtnProgrammer(true);
             console.setText("Vous pouvez commencer à programmer");
 
         } else {
 
             nomProduit.setText("Aucun produit sélectionné!");
+            //emplacementBinaire.setVisible(false);
             activerBtnProgrammer(false);
             console.setText("Sélectionnez un produit avant de programmer");
 
@@ -1402,6 +1415,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JButton btnSelectionBinaireAjouter;
     private javax.swing.JComboBox<String> comboListeProduits;
     private javax.swing.JLabel console;
+    private javax.swing.JLabel emplacementBinaire;
     private javax.swing.ButtonGroup groupBaud;
     private javax.swing.ButtonGroup groupBits;
     private javax.swing.ButtonGroup groupParity;
@@ -2206,18 +2220,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         }
     }
 
-    private String[] extraireProduits(String listeProduits) {
-
-        String[] liste = listeProduits.split(";");
-        for (int i = 0; i < liste.length; i++) {
-
-            System.out.println(liste[i]);
-        }
-        return liste;
-
-    }
-
-    private ArrayList<String> extraireProduits2(String listeProduits) {
+    private ArrayList<String> extraireProduits(String listeProduits) {
 
         String[] liste = listeProduits.split(";");
         ArrayList<String> arrList = new ArrayList<String>();
@@ -2231,18 +2234,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     }
 
-    private String[] extraireLocalisationBinaires(String hexLocations) {
-
-        String[] liste = hexLocations.split(";");
-        for (int i = 0; i < liste.length; i++) {
-
-            System.out.println(liste[i]);
-        }
-        return liste;
-
-    }
-
-    private ArrayList<String> extraireLocalisationBinaires2(String hexLocations) {
+    private ArrayList<String> extraireLocalisationBinaires(String hexLocations) {
 
         String[] liste = hexLocations.split(";");
         ArrayList<String> arrList = new ArrayList<String>();
