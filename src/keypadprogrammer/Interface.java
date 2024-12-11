@@ -1078,13 +1078,17 @@ public class Interface extends javax.swing.JFrame implements Observer {
             emplacementBinaire.setText(binaireLocation);
             activerBtnProgrammer(true);
             console.setText("Vous pouvez commencer à programmer");
+            statutPGRM.setBackground(Color.GREEN);
+            statutPGRM.setForeground(Color.GREEN);
 
         } else {
 
             nomProduit.setText("Aucun produit sélectionné!");
-            //emplacementBinaire.setVisible(false);
+            emplacementBinaire.setText("");
             activerBtnProgrammer(false);
             console.setText("Sélectionnez un produit avant de programmer");
+            statutPGRM.setBackground(Color.RED);
+            statutPGRM.setForeground(Color.RED);
 
         }
     }//GEN-LAST:event_btnFermerParamsActionPerformed
