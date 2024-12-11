@@ -1076,7 +1076,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             binaireLocation = listeLocalisationsBinaires.get(selectedProduct - 1);
             System.out.println("localistaion binaire: " + binaireLocation);
             emplacementBinaire.setText(binaireLocation);
-            activerBtnProgrammer(true);
+            //activerBtnProgrammer(true);
             console.setText("Vous pouvez commencer à programmer");
             statutPGRM.setBackground(Color.GREEN);
             statutPGRM.setForeground(Color.GREEN);
@@ -1085,7 +1085,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             nomProduit.setText("Aucun produit sélectionné!");
             emplacementBinaire.setText("");
-            activerBtnProgrammer(false);
+            //activerBtnProgrammer(false);
             console.setText("Sélectionnez un produit avant de programmer");
             statutPGRM.setBackground(Color.RED);
             statutPGRM.setForeground(Color.RED);
@@ -1211,8 +1211,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
             btnDeconnexion.setEnabled(true);
             connexionRS232Active = true;
             //activerBtnAttenteLancement();
-            activerBtnTester(true);
-            activerBtnProgrammer(auto);
+            //activerBtnTester(true);
+            activerBtnProgrammer(true);
 
         } else {
 
@@ -1236,7 +1236,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
             btnConnexion.setEnabled(true);
             btnDeconnexion.setEnabled(false);
             connexionRS232Active = false;
-            inhibBtn();
+            //inhibBtn();
+            activerBtnProgrammer(false);
 
         }
     }//GEN-LAST:event_btnDeconnexionActionPerformed
