@@ -2405,6 +2405,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         initialisation.setNombreVoies(initialisation.getNombreVoies() + ";" + nombreDeVoiesNouvelleCarte);
         initializer.update("binaryLocations", initialisation.getBinaryLocations());
         initializer.update("productNames", initialisation.getProductNames());
+         initializer.update("voies", initialisation.getNombreVoies());
         localisationNouveauBinaire = null;
         nomNouveauBinaire = null;
 
