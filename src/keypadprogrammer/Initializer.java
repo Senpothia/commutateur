@@ -28,8 +28,9 @@ public class Initializer {
         String binaryLocations = progProperpies.getProperty("binaryLocations");
         String varEnv = progProperpies.getProperty("varEnv");
         String productNames = progProperpies.getProperty("productNames");
-        
-        Initialisation init = new Initialisation(programmerDirectory, varEnv, binaryLocations, productNames);
+        String voies = progProperpies.getProperty("voies");
+
+        Initialisation init = new Initialisation(programmerDirectory, varEnv, binaryLocations, productNames, voies);
 
         return init;
     }
