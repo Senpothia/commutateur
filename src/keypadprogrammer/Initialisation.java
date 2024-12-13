@@ -65,5 +65,4 @@ public class Initialisation {
         this.nombreVoies = nombreVoies;
     }
 
-  
 }

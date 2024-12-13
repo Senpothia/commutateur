@@ -38,6 +38,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private String hexLocations = null;
     private String bleLocation = null;
     private String binaireLocation = null;
+
+    private String nombreDeVoiesEnregistres = null;
+    private String nombreDeVoiesCarteEnTest = null;
+    private String nombreDeVoiesNouvelleCarte = null;
+
     private boolean envVariable = false;
     private String produitAprogrammer = null;
     private String listeProduitsConnus = null;
@@ -45,6 +50,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private String bleCode;
     private String[] produits = null;
     private ArrayList<String> listesProduits = new ArrayList<String>();
+    private ArrayList<String> listesVoies = new ArrayList<String>();
     private String[] localisationsBinaires = null;
     private ArrayList<String> listeLocalisationsBinaires = new ArrayList<String>();
     private int selectedProduct = 0;
@@ -163,7 +169,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             System.out.println("BinaryLocation = " + initialisation.getBinaryLocations());
             hexLocations = initialisation.getBinaryLocations();
-            //localisationsBinaires = extraireLocalisationBinaires(hexLocations);
             listeLocalisationsBinaires = extraireLocalisationBinaires(hexLocations);
         }
 
@@ -188,6 +193,19 @@ public class Interface extends javax.swing.JFrame implements Observer {
             comboListeProduits.setSelectedIndex(0);
             nomProduit.setText("Veuillez sélectionner un produit!");
 
+        }
+
+        if (initialisation.getNombreVoies().equals("na")) {
+
+            System.out.println("liste nombre de voies = " + initialisation.getNombreVoies());
+            nombreVoies.setText("Aucune voie définie");
+
+        } else {
+
+            System.out.println("liste du nombre de voies  = " + initialisation.getNombreVoies());
+            nombreDeVoiesEnregistres = initialisation.getNombreVoies();
+            listesVoies = extraireVoies(nombreDeVoiesEnregistres);  
+            
         }
 
         if (initialisation.getVarEnv().equals("na")) {
@@ -493,17 +511,19 @@ public class Interface extends javax.swing.JFrame implements Observer {
                                 .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(nombreVoies, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(progLocLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1247, Short.MAX_VALUE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(comboListeProduits, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(EnvVarBox)
-                                                .addComponent(titreLabProg, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(progLocLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, paramsWinLayout.createSequentialGroup()
+                                            .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(comboListeProduits, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(EnvVarBox)
+                                                    .addComponent(titreLabProg, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 856, Short.MAX_VALUE)
+                                            .addComponent(btnFermerParams))
                                         .addComponent(btnAjouter, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(LabfichierBinaire, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(labelBinaireSelectionne, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(hexLocalisation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(labelAjoutCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(paramsWinLayout.createSequentialGroup()
                                         .addGap(482, 482, 482)
                                         .addComponent(titreParamsWin, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -513,12 +533,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
                                     .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(nombreVoiesNouvelleCarte, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(messageBinaireSelectionne, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1247, Short.MAX_VALUE)
-                                        .addComponent(nomNouvelleCarte, javax.swing.GroupLayout.Alignment.LEADING))))
+                                        .addComponent(nomNouvelleCarte, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(labelAjoutCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(paramsWinLayout.createSequentialGroup()
                                 .addGap(456, 456, 456)
-                                .addComponent(btnEnregistrer, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(179, 179, 179)
-                                .addComponent(btnFermerParams))))
+                                .addComponent(btnEnregistrer, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(paramsWinLayout.createSequentialGroup()
                         .addGap(449, 449, 449)
                         .addComponent(btnSelectionBinaireAjouter, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -530,8 +549,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 .addGap(25, 25, 25)
                 .addComponent(titreParamsWin)
                 .addGap(18, 18, 18)
-                .addComponent(titreLabProg)
-                .addGap(18, 18, 18)
+                .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(titreLabProg)
+                    .addComponent(btnFermerParams))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(EnvVarBox)
                 .addGap(18, 18, 18)
                 .addComponent(progLocLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -561,14 +582,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 .addComponent(nombreVoiesNouvelleCarte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(btnSelectionBinaireAjouter)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(labelBinaireSelectionne)
                 .addGap(18, 18, 18)
                 .addComponent(messageBinaireSelectionne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
-                .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEnregistrer)
-                    .addComponent(btnFermerParams))
+                .addComponent(btnEnregistrer)
                 .addGap(76, 76, 76))
         );
 
@@ -1335,13 +1354,17 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void comboListeProduitsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboListeProduitsItemStateChanged
         System.out.println("item selected: " + comboListeProduits.getSelectedIndex());
-        //System.out.println("localisationsBinaires longueur: " + localisationsBinaires.length);
+     
         if (comboListeProduits.getSelectedIndex() != 0) {
-            //hexLocalisation.setText(localisationsBinaires[comboListeProduits.getSelectedIndex() - 1]);
+           
             hexLocalisation.setText(listeLocalisationsBinaires.get(comboListeProduits.getSelectedIndex() - 1));
+            nombreVoies.setText(listesVoies.get(comboListeProduits.getSelectedIndex() - 1));
+            nombreDeVoiesCarteEnTest = listesVoies.get(comboListeProduits.getSelectedIndex() - 1);
+            
         } else {
 
             hexLocalisation.setText("Aucun produit sélectionné!");
+            nombreVoies.setText("");
         }
     }//GEN-LAST:event_comboListeProduitsItemStateChanged
 
@@ -1385,8 +1408,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         if (selectedProduct != 0) {
 
-            nomProduit.setText(listesProduits.get(selectedProduct));
-            //emplacementBinaire.setVisible(true);
+            nomProduit.setText(listesProduits.get(selectedProduct) + " - nombre de voie: " + nombreDeVoiesCarteEnTest);
+       
 
             binaireLocation = listeLocalisationsBinaires.get(selectedProduct - 1);
             System.out.println("localistaion binaire: " + binaireLocation);
@@ -2309,6 +2332,20 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private ArrayList<String> extraireLocalisationBinaires(String hexLocations) {
 
         String[] liste = hexLocations.split(";");
+        ArrayList<String> arrList = new ArrayList<String>();
+        for (int i = 0; i < liste.length; i++) {
+
+            System.out.println(liste[i]);
+            arrList.add(liste[i]);
+        }
+        return arrList;
+
+    }
+    
+    
+    private ArrayList<String> extraireVoies(String listeVoies) {
+
+        String[] liste = listeVoies.split(";");
         ArrayList<String> arrList = new ArrayList<String>();
         for (int i = 0; i < liste.length; i++) {
 
