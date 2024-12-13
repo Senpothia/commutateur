@@ -40,6 +40,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private String binaireLocation = null;
     private String commutateurString = null;
     private int limCommutateur = 0;
+    private int intNombreDeVoiesNouvelleCarte = 0;
 
     private String nombreDeVoiesEnregistres = null;
     private String nombreDeVoiesCarteEnTest = null;
@@ -163,8 +164,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
         rechercherPortsComms();
 
         initialisation = initializer.getInit();
-        
-         if (initialisation.getCommutateur().equals("na")) {
+
+        if (initialisation.getCommutateur().equals("na")) {
 
             System.out.println("Commutateur = " + initialisation.getCommutateur());
 
@@ -174,8 +175,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             commutateurString = initialisation.getCommutateur();
             limCommutateur = Integer.parseInt(commutateurString);
         }
-         
-         
+
         if (initialisation.getBinaryLocations().equals("na")) {
 
             System.out.println("BinaryLocation = " + initialisation.getBinaryLocations());
@@ -219,8 +219,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             System.out.println("liste du nombre de voies  = " + initialisation.getNombreVoies());
             nombreDeVoiesEnregistres = initialisation.getNombreVoies();
-            listesVoies = extraireVoies(nombreDeVoiesEnregistres);  
-            
+            listesVoies = extraireVoies(nombreDeVoiesEnregistres);
+
         }
 
         if (initialisation.getVarEnv().equals("na")) {
@@ -376,6 +376,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         });
 
         paramsWin.setTitle("Programmateur keypad - Paramètres système");
+        paramsWin.setPreferredSize(new java.awt.Dimension(1300, 900));
 
         titreParamsWin.setBackground(new java.awt.Color(153, 153, 255));
         titreParamsWin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -547,7 +548,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
                                     .addComponent(nombreVoiesNouvelleCarte, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(messageBinaireSelectionne, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1247, Short.MAX_VALUE))
                                 .addComponent(labelAjoutCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(nomNouvelleCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 1247, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(paramsWinLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(comboListeProduits, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -555,7 +555,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
                         .addGap(450, 450, 450)
                         .addComponent(btnSelectionBinaireAjouter, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(paramsWinLayout.createSequentialGroup()
-                        .addGap(452, 452, 452)
+                        .addContainerGap()
+                        .addComponent(nomNouvelleCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 1247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(paramsWinLayout.createSequentialGroup()
+                        .addGap(450, 450, 450)
                         .addComponent(btnEnregistrer, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
@@ -591,20 +594,20 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 .addGap(35, 35, 35)
                 .addComponent(labelAjoutCarte)
                 .addGap(18, 18, 18)
-                .addComponent(nomNouvelleCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(nomNouvelleCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LabelNbreDeVoiesNouvelleCarte)
                 .addGap(18, 18, 18)
-                .addComponent(nombreVoiesNouvelleCarte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addComponent(nombreVoiesNouvelleCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnSelectionBinaireAjouter)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelBinaireSelectionne)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(messageBinaireSelectionne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(messageBinaireSelectionne, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnEnregistrer)
-                .addGap(164, 164, 164))
+                .addGap(151, 151, 151))
         );
 
         aide.setTitle("Programmateur keypad - Aide");
@@ -1329,7 +1332,26 @@ public class Interface extends javax.swing.JFrame implements Observer {
             return;
         }
 
-        enregistrerNouvelleCarte(localisationNouveauBinaire, nomNouveauBinaire);
+        if (nombreVoiesNouvelleCarte.getText().equals("")) {
+
+            montrerError("Le nombre de voies doit être défini!", "Formulaire imcomplet");
+            return;
+        } else {
+
+            try {
+
+                intNombreDeVoiesNouvelleCarte = Integer.parseInt(nombreVoiesNouvelleCarte.getText());
+
+            } catch (Exception e) {
+
+                montrerError("Le nombre de voies doit être compris entre 1 et " + limCommutateur, "Formulaire imcomplet");
+                return;
+
+            }
+
+        }
+
+        enregistrerNouvelleCarte(localisationNouveauBinaire, nomNouveauBinaire, nombreVoiesNouvelleCarte.getText());
         montrerError("La nouvelle carte à été enregistrée", "Enregistrement effectué");
 
         paramsWin.setVisible(false);
@@ -1370,13 +1392,13 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void comboListeProduitsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboListeProduitsItemStateChanged
         System.out.println("item selected: " + comboListeProduits.getSelectedIndex());
-     
+
         if (comboListeProduits.getSelectedIndex() != 0) {
-           
+
             hexLocalisation.setText(listeLocalisationsBinaires.get(comboListeProduits.getSelectedIndex() - 1));
             nombreVoies.setText(listesVoies.get(comboListeProduits.getSelectedIndex() - 1));
             nombreDeVoiesCarteEnTest = listesVoies.get(comboListeProduits.getSelectedIndex() - 1);
-            
+
         } else {
 
             hexLocalisation.setText("Aucun produit sélectionné!");
@@ -1425,7 +1447,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
         if (selectedProduct != 0) {
 
             nomProduit.setText(listesProduits.get(selectedProduct) + " - nombre de voie: " + nombreDeVoiesCarteEnTest);
-       
 
             binaireLocation = listeLocalisationsBinaires.get(selectedProduct - 1);
             System.out.println("localistaion binaire: " + binaireLocation);
@@ -2357,8 +2378,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         return arrList;
 
     }
-    
-    
+
     private ArrayList<String> extraireVoies(String listeVoies) {
 
         String[] liste = listeVoies.split(";");
@@ -2372,17 +2392,17 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     }
 
-    private void enregistrerNouvelleCarte(String localisationNouveauBinaire, String nomNouveauBinaire) {
+    private void enregistrerNouvelleCarte(String localisationNouveauBinaire, String nomNouveauBinaire, String nombreDeVoiesNouvelleCarte) {
 
         comboListeProduits.addItem(nomNouveauBinaire);
-
-        //localisationsBinaires[localisationsBinaires.length - 1] = localisationNouveauBinaire;
         listeLocalisationsBinaires.add(localisationNouveauBinaire);
         listesProduits.add(nomNouveauBinaire);
+        listesVoies.add(nombreDeVoiesNouvelleCarte);
         nomNouvelleCarte.setText("");
         messageBinaireSelectionne.setText("");
         initialisation.setBinaryLocations(initialisation.getBinaryLocations() + ";" + localisationNouveauBinaire);
         initialisation.setProductNames(initialisation.getProductNames() + ";" + nomNouveauBinaire);
+        initialisation.setNombreVoies(initialisation.getNombreVoies() + ";" + nombreDeVoiesNouvelleCarte);
         initializer.update("binaryLocations", initialisation.getBinaryLocations());
         initializer.update("productNames", initialisation.getProductNames());
         localisationNouveauBinaire = null;
