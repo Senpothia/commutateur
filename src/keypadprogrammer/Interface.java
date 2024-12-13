@@ -96,7 +96,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         statutPGRM.setForeground(Color.RED);
         statutPGRM.setOpaque(true);
 
-        this.getContentPane().setBackground(new Color(0, 102, 102));
+        this.getContentPane().setBackground(new Color(66, 149, 245));
 
         voyant.setBackground(new Color(204, 136, 53));
         voyant.setForeground(Color.GRAY);
@@ -147,7 +147,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         nombreVoiesNouvelleCarte.setForeground(Color.red);
         nombreVoiesNouvelleCarte.setFont(new Font("Serif", Font.BOLD, 20));
 
-        paramsWin.getContentPane().setBackground(new Color(0, 102, 102));
+        paramsWin.getContentPane().setBackground(new Color(245, 156, 66));
         paramsWin.setSize(1300, 600);
 
         messageCreation.setBackground(new Color(247, 242, 208));
