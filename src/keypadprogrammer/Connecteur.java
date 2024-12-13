@@ -249,10 +249,9 @@ public class Connecteur extends Observable {
 
             Runtime runtime = Runtime.getRuntime();
 
-            //  STARTFUS
+            
             String commande1 = "STM32_Programmer_CLI.exe -c port=SWD sn=003900213532511231333430 s-startFUS -log .\\logs\\trace1.log";  // module 2
-            //String commande1 = "STM32_Programmer_CLI.exe -c port=SWD sn=0035003C3532511131333430 s-startFUS -log .\\logs\\trace1.log"; // module 1
-            Process startFUS = runtime.exec(commande1);
+            Process programming = runtime.exec(commande1);
             tempo(7000);  // 5000-> valeur validée
             System.out.println("Fin startFUS");
 
@@ -271,68 +270,6 @@ public class Connecteur extends Observable {
 
             }
 
-            // UPDATE
-            //programmationCompleted(Constants.PROG_SUCCESS_ETAPE1);
-            //String commande2 = "STM32_Programmer_CLI.exe -c port=SWD -startFUS mode=UR -ob nSWboot0=0 nboot1=1 nboot0=1 -fwupgrade " + bleLocation + " 0x080CE000 firstinstall=0 -log .\\logs\\trace2.log";  // version avant 07/05/2024
-            String commande2 = "STM32_Programmer_CLI.exe -c port=SWD sn=003900213532511231333430 -startFUS mode=UR -ob nSWboot0=0 nboot1=1 nboot0=1 -fwupgrade " + bleLocation + " 0x080CE000 firstinstall=1 -log .\\logs\\trace2.log";    // module 2 // version après 07/05/2024
-            //String commande2 = "STM32_Programmer_CLI.exe -c port=SWD sn=0035003C3532511131333430 -startFUS mode=UR -ob nSWboot0=0 nboot1=1 nboot0=1 -fwupgrade " + bleLocation + " 0x080CE000 firstinstall=1 -log .\\logs\\trace2.log";  // module 1 // version après 07/05/2024
-            Process upgradeBLE = runtime.exec(commande2);
-            tempo(35000);  // 40000-> valeur validée
-            System.out.println("Fin updateBLE");
-
-            int control2 = progController.find(".\\logs\\trace2.log", null, Constants.REQUIS_LOG2);
-            System.out.println("codeControl 2: " + control2);
-
-            if (control2 == 1) {
-
-                programmationCompleted(Constants.PROG_SUCCESS_ETAPE2);
-
-            } else {
-
-                return -2;
-
-            }
-
-            // STARTSTACK
-            String commande3 = "STM32_Programmer_CLI.exe -c port=SWD sn=003900213532511231333430 -startwirelessstack -log .\\logs\\trace3.log";  // module 2
-            //String commande3 = "STM32_Programmer_CLI.exe -c port=SWD sn=0035003C3532511131333430 -startwirelessstack -log .\\logs\\trace3.log"; // module 1
-            Process startStack = runtime.exec(commande3);
-            tempo(3000); // 5000-> valeur validée
-            System.out.println("Fin startStack");
-
-            int control3 = progController.find(".\\logs\\trace3.log", Constants.ERREURS_LOG3, Constants.REQUIS_LOG3);
-            System.out.println("codeControl 3: " + control3);
-            if (control3 == 1) {
-
-                programmationCompleted(Constants.PROG_SUCCESS_ETAPE3);
-
-            } else {
-
-                return -2;
-
-            }
-
-            //
-            // FIRMWARE
-            String commande4 = "STM32_Programmer_CLI.exe -c port=SWD sn=003900213532511231333430 -w " + hexLocation + " 0x080CE000 -Rst -log .\\logs\\trace4.log"; // module 2
-            //String commande4 = "STM32_Programmer_CLI.exe -c port=SWD sn=0035003C3532511131333430 -w " + hexLocation + " 0x080CE000 -Rst -log .\\logs\\trace4.log"; // module 1
-            Process programFirmware = runtime.exec(commande4);
-            System.out.println("Fin programmation firmware");
-            envoyerData(Constants.RESET_MODULE_BLE);
-            tempo(5000);
-
-            int control4 = progController.find(".\\logs\\trace4.log", null, Constants.REQUIS_LOG4);
-            System.out.println("codeControl 4: " + control4);
-
-            if (control4 == 1) {
-
-                programmationCompleted(Constants.PROG_SUCCESS_ETAPE4);
-
-            } else {
-
-                return -2;
-
-            }
 
         } else {
 
@@ -384,5 +321,31 @@ public class Connecteur extends Observable {
         }
 
     }
+    
+     public int testProgram(String hexLocation, String bleLocation, boolean envVariable, String programmerLocation) throws IOException {
+
+  
+
+        if (envVariable) {
+
+            Runtime runtime = Runtime.getRuntime();
+
+            String commande1 = "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY201C:\\Users\\Michel\\Desktop\\logs.txt"; 
+            Process programming = runtime.exec(commande1);
+            tempo(5000);  // 5000-> valeur validée
+            System.out.println("Fin programmation");
+ 
+        } else {
+
+        }
+
+        tempo(5000); // 5000 -> valeur validée
+      
+        return 1;
+
+    }
+
 
 }
+
+

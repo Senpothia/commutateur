@@ -102,13 +102,33 @@ public class Interface extends javax.swing.JFrame implements Observer {
         nomProduit.setForeground(Color.red);
         nomProduit.setFont(new Font("Serif", Font.BOLD, 20));
 
-        //emplacementBinaire.setVisible(true);
         emplacementBinaire.setBackground(new Color(247, 242, 208));
         emplacementBinaire.setOpaque(true);
         emplacementBinaire.setForeground(Color.red);
         emplacementBinaire.setFont(new Font("Serif", Font.BOLD, 20));
 
+        nombreVoies.setBackground(new Color(247, 242, 208));
+        nombreVoies.setOpaque(true);
+        nombreVoies.setForeground(Color.red);
+        nombreVoies.setFont(new Font("Serif", Font.BOLD, 20));
+
+        hexLocalisation.setBackground(new Color(247, 242, 208));
+        hexLocalisation.setOpaque(true);
+        hexLocalisation.setForeground(Color.red);
+        hexLocalisation.setFont(new Font("Serif", Font.BOLD, 20));
+
+        nomNouvelleCarte.setBackground(new Color(247, 242, 208));
+        nomNouvelleCarte.setOpaque(true);
+        nomNouvelleCarte.setForeground(Color.red);
+        nomNouvelleCarte.setFont(new Font("Serif", Font.BOLD, 20));
+
+        messageBinaireSelectionne.setBackground(new Color(247, 242, 208));
+        messageBinaireSelectionne.setOpaque(true);
+        messageBinaireSelectionne.setForeground(Color.red);
+        messageBinaireSelectionne.setFont(new Font("Serif", Font.BOLD, 20));
+
         paramsWin.getContentPane().setBackground(new Color(0, 102, 102));
+        paramsWin.setSize(1300, 600);
 
         messageCreation.setBackground(new Color(247, 242, 208));
 
@@ -226,11 +246,13 @@ public class Interface extends javax.swing.JFrame implements Observer {
         btnAjouter = new javax.swing.JButton();
         hexLocalisation = new javax.swing.JLabel();
         nomNouvelleCarte = new javax.swing.JTextField();
-        titreLabBLE2 = new javax.swing.JLabel();
+        LabfichierBinaire = new javax.swing.JLabel();
         btnSelectionBinaireAjouter = new javax.swing.JButton();
         btnEnregistrer = new javax.swing.JButton();
         messageBinaireSelectionne = new javax.swing.JTextField();
         labelBinaireSelectionne = new javax.swing.JLabel();
+        LabNombreVoies = new javax.swing.JLabel();
+        nombreVoies = new javax.swing.JLabel();
         aide = new javax.swing.JFrame();
         btnFermerAide = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -308,8 +330,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
         });
 
         paramsWin.setTitle("Programmateur keypad - Paramètres système");
-        paramsWin.setMinimumSize(new java.awt.Dimension(1300, 900));
-        paramsWin.setPreferredSize(new java.awt.Dimension(1300, 1300));
 
         titreParamsWin.setBackground(new java.awt.Color(153, 153, 255));
         titreParamsWin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -350,8 +370,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
         labelAjoutCarte.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         labelAjoutCarte.setText("Indiquez le nom de la nouvelle carte");
 
-        messageCreation.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        messageCreation.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         messageCreation.setForeground(new java.awt.Color(255, 0, 51));
+        messageCreation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         messageCreation.setText("Jlabel");
         messageCreation.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -391,8 +412,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
             }
         });
 
-        titreLabBLE2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        titreLabBLE2.setText("Fichier binaire");
+        LabfichierBinaire.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        LabfichierBinaire.setText("Fichier binaire");
 
         btnSelectionBinaireAjouter.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnSelectionBinaireAjouter.setForeground(new java.awt.Color(255, 0, 0));
@@ -425,10 +446,39 @@ public class Interface extends javax.swing.JFrame implements Observer {
         labelBinaireSelectionne.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         labelBinaireSelectionne.setText("Binaire sélectionné");
 
+        LabNombreVoies.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        LabNombreVoies.setText("Nombre de voies");
+
+        nombreVoies.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        nombreVoies.setForeground(new java.awt.Color(255, 0, 51));
+        nombreVoies.setText("Jlabel");
+        nombreVoies.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         javax.swing.GroupLayout paramsWinLayout = new javax.swing.GroupLayout(paramsWin.getContentPane());
         paramsWin.getContentPane().setLayout(paramsWinLayout);
         paramsWinLayout.setHorizontalGroup(
             paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paramsWinLayout.createSequentialGroup()
+                .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(paramsWinLayout.createSequentialGroup()
+                        .addGap(492, 492, 492)
+                        .addComponent(titreParamsWin, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(paramsWinLayout.createSequentialGroup()
+                        .addGap(443, 443, 443)
+                        .addComponent(btnEnregistrer, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(paramsWinLayout.createSequentialGroup()
+                        .addGap(441, 441, 441)
+                        .addComponent(btnSelectionBinaireAjouter, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(paramsWinLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labelAjoutCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(paramsWinLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(listeProduits, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(paramsWinLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(LabNombreVoies, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(paramsWinLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -436,39 +486,26 @@ public class Interface extends javax.swing.JFrame implements Observer {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnFermerParams)
                         .addGap(49, 49, 49))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paramsWinLayout.createSequentialGroup()
-                        .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(paramsWinLayout.createSequentialGroup()
+                        .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(messageBinaireSelectionne, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nomNouvelleCarte, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(messageCreation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(hexLocalisation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(progLocLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, paramsWinLayout.createSequentialGroup()
+                            .addComponent(messageCreation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1247, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(paramsWinLayout.createSequentialGroup()
+                        .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(nombreVoies, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(progLocLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1247, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(comboListeProduits, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(comboListeProduits, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(EnvVarBox)
-                                            .addComponent(titreLabProg, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(listeProduits, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(btnAjouter)
-                                    .addComponent(titreLabBLE2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelAjoutCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelBinaireSelectionne, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
-            .addGroup(paramsWinLayout.createSequentialGroup()
-                .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(paramsWinLayout.createSequentialGroup()
-                        .addGap(492, 492, 492)
-                        .addComponent(titreParamsWin, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paramsWinLayout.createSequentialGroup()
-                        .addGap(433, 433, 433)
-                        .addComponent(btnSelectionBinaireAjouter, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paramsWinLayout.createSequentialGroup()
-                        .addGap(438, 438, 438)
-                        .addComponent(btnEnregistrer, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 486, Short.MAX_VALUE))
+                                    .addComponent(EnvVarBox)
+                                    .addComponent(titreLabProg, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnAjouter, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabfichierBinaire, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelBinaireSelectionne, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(hexLocalisation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(43, Short.MAX_VALUE))))
         );
         paramsWinLayout.setVerticalGroup(
             paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -486,26 +523,30 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 .addGap(18, 18, 18)
                 .addComponent(comboListeProduits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(titreLabBLE2)
+                .addComponent(LabfichierBinaire)
                 .addGap(18, 18, 18)
                 .addComponent(hexLocalisation, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
-                .addComponent(btnAjouter)
-                .addGap(18, 18, 18)
-                .addComponent(messageCreation, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(labelAjoutCarte)
-                .addGap(18, 18, 18)
-                .addComponent(nomNouvelleCarte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(btnSelectionBinaireAjouter)
-                .addGap(25, 25, 25)
-                .addComponent(labelBinaireSelectionne)
-                .addGap(18, 18, 18)
-                .addComponent(messageBinaireSelectionne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(LabNombreVoies)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(nombreVoies, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
+                .addComponent(btnAjouter)
+                .addGap(39, 39, 39)
+                .addComponent(messageCreation, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(labelAjoutCarte)
+                .addGap(29, 29, 29)
+                .addComponent(nomNouvelleCarte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(btnSelectionBinaireAjouter)
+                .addGap(13, 13, 13)
+                .addComponent(labelBinaireSelectionne)
+                .addGap(32, 32, 32)
+                .addComponent(messageBinaireSelectionne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
                 .addComponent(btnEnregistrer)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 339, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
                 .addComponent(btnFermerParams)
                 .addGap(116, 116, 116))
         );
@@ -943,7 +984,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 public void run() {
 
                     try {
-                        int comm = connecteur.program(hexLocations, bleLocation, envVariable, filePaths);
+                        int comm = connecteur.testProgram(hexLocations, bleLocation, envVariable, filePaths);
                         System.out.println("Retour programmation. Code reçu: " + comm);
                         if (comm == -1) {
 
@@ -962,15 +1003,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
                         if (comm == 1) {
 
-                            /*
                             console.setText("Programmation terminée!");
-                            voyant.setBackground(Color.GREEN);
-                            connecteur.envoyerData(Constants.END_PROG);
-                            programmationActive = true;
-                             */
-                            console.setText("Programmation terminée!");
-                            // voyant.setBackground(Color.GREEN);
-                            connecteur.envoyerData(Constants.END_PROG);
                             Constants.tempo(1000);
                             programmationActive = true;
 
@@ -1064,6 +1097,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             envVariable = false;
         }
+        paramsWin.setSize(1300, 600);
         paramsWin.setVisible(false);
         testParamsProg();
         selectedProduct = comboListeProduits.getSelectedIndex();
@@ -1076,7 +1110,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             binaireLocation = listeLocalisationsBinaires.get(selectedProduct - 1);
             System.out.println("localistaion binaire: " + binaireLocation);
             emplacementBinaire.setText(binaireLocation);
-            //activerBtnProgrammer(true);
+            activerBtnProgrammer(true);
             console.setText("Vous pouvez commencer à programmer");
             statutPGRM.setBackground(Color.GREEN);
             statutPGRM.setForeground(Color.GREEN);
@@ -1085,7 +1119,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             nomProduit.setText("Aucun produit sélectionné!");
             emplacementBinaire.setText("");
-            //activerBtnProgrammer(false);
+            activerBtnProgrammer(true);
             console.setText("Sélectionnez un produit avant de programmer");
             statutPGRM.setBackground(Color.RED);
             statutPGRM.setForeground(Color.RED);
@@ -1394,6 +1428,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox EnvVarBox;
+    private javax.swing.JLabel LabNombreVoies;
+    private javax.swing.JLabel LabfichierBinaire;
     private javax.swing.JLabel StatutRS232Lab;
     private javax.swing.JFrame aide;
     private javax.swing.JRadioButtonMenuItem baud115200;
@@ -1456,6 +1492,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JLabel messageCreation;
     private javax.swing.JTextField nomNouvelleCarte;
     private javax.swing.JLabel nomProduit;
+    private javax.swing.JLabel nombreVoies;
     private javax.swing.JMenuItem paramsProg;
     private javax.swing.JFrame paramsWin;
     private javax.swing.JRadioButtonMenuItem parityEven;
@@ -1470,7 +1507,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JRadioButtonMenuItem stop1;
     private javax.swing.JRadioButtonMenuItem stop2;
     private javax.swing.JLabel titre;
-    private javax.swing.JLabel titreLabBLE2;
     private javax.swing.JLabel titreLabProg;
     private javax.swing.JLabel titreParamsWin;
     private javax.swing.JLabel version;
@@ -2210,6 +2246,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }
 
     private void activerFonctionAjouter(boolean active) {
+
+        if (active) {
+            paramsWin.setSize(1300, 2000);
+        }
 
         btnAjouter.setVisible(!active);
         messageCreation.setVisible(active);

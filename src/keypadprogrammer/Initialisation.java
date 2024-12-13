@@ -15,7 +15,7 @@ public class Initialisation {
     private String varEnv;
     private String binaryLocations;
     private String productNames;
-
+ 
     public Initialisation(String programmerDirectory, String varEnv, String binaryLocations, String productNames) {
         this.programmerDirectory = programmerDirectory;
         this.varEnv = varEnv;
@@ -55,5 +55,4 @@ public class Initialisation {
         this.productNames = productNames;
     }
 
-  
 }
