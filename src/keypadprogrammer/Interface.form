@@ -164,7 +164,7 @@
                   <Component id="nouveauMicroController" min="-2" pref="32" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnSelectionBinaireAjouter" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="labelBinaireSelectionne" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="messageBinaireSelectionne" min="-2" pref="36" max="-2" attributes="0"/>

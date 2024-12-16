@@ -34,9 +34,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private File nouveauBinaire = null;
     private String filePaths = null;
     private String localisationNouveauBinaire = null;
-    private String devices = null;    // devices lus dans params.properties
     private String nomNouveauBinaire = null;
+    private String devices = null;    // devices lus dans params.properties
     private String nouveauDevice = null;
+    private String deviceEnTest = null;
     private String hexLocations = null;
     private String bleLocation = null;
     private String binaireLocation = null;
@@ -640,7 +641,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 .addComponent(nouveauMicroController, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSelectionBinaireAjouter)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelBinaireSelectionne)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(messageBinaireSelectionne, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1390,7 +1391,18 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         }
 
-        enregistrerNouvelleCarte(localisationNouveauBinaire, nomNouveauBinaire, nombreVoiesNouvelleCarte.getText());
+        if (nouveauMicroController.getText().equals("")) {
+
+            messageCreation.setText("Le nom du mirocontrôleur doit être défini!");
+            montrerError("Le nom du mirocontrôleur doit être défini!", "Formulaire imcomplet");
+
+            return;
+        } else {
+
+            nouveauDevice = nouveauMicroController.getText();
+        }
+
+        enregistrerNouvelleCarte(localisationNouveauBinaire, nomNouveauBinaire, nombreVoiesNouvelleCarte.getText(), nouveauDevice);
         montrerError("La nouvelle carte à été enregistrée", "Enregistrement effectué");
 
         paramsWin.setVisible(false);
@@ -1437,6 +1449,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             hexLocalisation.setText(listeLocalisationsBinaires.get(comboListeProduits.getSelectedIndex() - 1));
             nombreVoies.setText(listesVoies.get(comboListeProduits.getSelectedIndex() - 1));
             nombreDeVoiesCarteEnTest = listesVoies.get(comboListeProduits.getSelectedIndex() - 1);
+            deviceEnTest = listeDevicesEnregistres.get(comboListeProduits.getSelectedIndex() - 1);
 
         } else {
 
@@ -1485,7 +1498,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         if (selectedProduct != 0) {
 
-            nomProduit.setText(listesProduits.get(selectedProduct) + " - nombre de voie: " + nombreDeVoiesCarteEnTest);
+            nomProduit.setText(listesProduits.get(selectedProduct) + " - Microcontôleur: " + deviceEnTest +" - nombre de voie: " + nombreDeVoiesCarteEnTest);
 
             binaireLocation = listeLocalisationsBinaires.get(selectedProduct - 1);
             System.out.println("localistaion binaire: " + binaireLocation);
@@ -2439,20 +2452,23 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     }
 
-    private void enregistrerNouvelleCarte(String localisationNouveauBinaire, String nomNouveauBinaire, String nombreDeVoiesNouvelleCarte) {
+    private void enregistrerNouvelleCarte(String localisationNouveauBinaire, String nomNouveauBinaire, String nombreDeVoiesNouvelleCarte, String nouveauDevice) {
 
         comboListeProduits.addItem(nomNouveauBinaire);
         listeLocalisationsBinaires.add(localisationNouveauBinaire);
         listesProduits.add(nomNouveauBinaire);
         listesVoies.add(nombreDeVoiesNouvelleCarte);
+        listeDevicesEnregistres.add(nouveauDevice);
         nomNouvelleCarte.setText("");
         messageBinaireSelectionne.setText("");
         initialisation.setBinaryLocations(initialisation.getBinaryLocations() + ";" + localisationNouveauBinaire);
         initialisation.setProductNames(initialisation.getProductNames() + ";" + nomNouveauBinaire);
         initialisation.setNombreVoies(initialisation.getNombreVoies() + ";" + nombreDeVoiesNouvelleCarte);
+        initialisation.setDevice(initialisation.getDevice() + ";" + nouveauDevice);
         initializer.update("binaryLocations", initialisation.getBinaryLocations());
         initializer.update("productNames", initialisation.getProductNames());
         initializer.update("voies", initialisation.getNombreVoies());
+        initializer.update("device", initialisation.getDevice());
         localisationNouveauBinaire = null;
         nomNouveauBinaire = null;
 
