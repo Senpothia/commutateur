@@ -31,8 +31,9 @@ public class Initializer {
         String voies = progProperpies.getProperty("voies");
         String commutateur = progProperpies.getProperty("commutateur");
         String device = progProperpies.getProperty("device");
+        String programmer = progProperpies.getProperty("programmer");
 
-        Initialisation init = new Initialisation(programmerDirectory, varEnv, binaryLocations, productNames, voies, commutateur, device);
+        Initialisation init = new Initialisation(programmerDirectory, varEnv, binaryLocations, productNames, voies, commutateur, device, programmer);
 
         return init;
     }
