@@ -42,6 +42,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private String bleLocation = null;
     private String binaireLocation = null;
     private String commutateurString = null;
+    private String programmer = null;
     private int limCommutateur = 0;
     private int intNombreDeVoiesNouvelleCarte = 0;
 
@@ -242,6 +243,18 @@ public class Interface extends javax.swing.JFrame implements Observer {
             System.out.println("liste des devices lus  = " + initialisation.getDevice());
             devices = initialisation.getDevice();
             listeDevicesEnregistres = extraireDevices(devices);
+
+        }
+
+        if (initialisation.getProgrammer().equals("na")) {
+
+            System.out.println("liste des devices lues = " + initialisation.getProgrammer());
+            nombreVoies.setText("Aucun programmateur enregistré");
+
+        } else {
+
+            System.out.println("Programmateur enregistré  = " + initialisation.getProgrammer());
+            programmer = initialisation.getProgrammer();
 
         }
 
@@ -1498,7 +1511,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         if (selectedProduct != 0) {
 
-            nomProduit.setText(listesProduits.get(selectedProduct) + " - Microcontôleur: " + deviceEnTest +" - nombre de voie: " + nombreDeVoiesCarteEnTest);
+            nomProduit.setText(listesProduits.get(selectedProduct) + " - Microcontôleur: " + deviceEnTest + " - nombre de voie: " + nombreDeVoiesCarteEnTest);
 
             binaireLocation = listeLocalisationsBinaires.get(selectedProduct - 1);
             System.out.println("localistaion binaire: " + binaireLocation);
