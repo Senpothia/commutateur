@@ -343,14 +343,13 @@ public class Connecteur extends Observable {
             boolean deleteIfExists2 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.lock"));
             //tempo(500);
             // Fonctionnelle
-            
-            
+
             ProcessBuilder processBuilder = new ProcessBuilder();
             //processBuilder.command("C:\\Users\\Michel\\Desktop\\test.bat");
-            processBuilder.command("cmd.exe", "/c", "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >C:\\Users\\Michel\\Desktop\\logs.txt");
+            //processBuilder.command("cmd.exe", "/c", "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >C:\\Users\\Michel\\Desktop\\logs.txt");
+            processBuilder.command("cmd.exe", "/c", "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >.\\logs\\logs.txt");
             Process process = processBuilder.start();
-            
-            
+
         } else {
 
         }
