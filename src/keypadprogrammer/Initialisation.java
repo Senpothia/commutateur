@@ -17,14 +17,16 @@ public class Initialisation {
     private String productNames;
     private String nombreVoies;
     private String commutateur;
+    private String device;
 
-    public Initialisation(String programmerDirectory, String varEnv, String binaryLocations, String productNames, String nombreVoies, String commutateur) {
+    public Initialisation(String programmerDirectory, String varEnv, String binaryLocations, String productNames, String nombreVoies, String commutateur, String device) {
         this.programmerDirectory = programmerDirectory;
         this.varEnv = varEnv;
         this.binaryLocations = binaryLocations;
         this.productNames = productNames;
         this.nombreVoies = nombreVoies;
         this.commutateur = commutateur;
+        this.device = device;
     }
 
     public String getProgrammerDirectory() {
@@ -75,5 +77,14 @@ public class Initialisation {
         this.commutateur = commutateur;
     }
 
-   
+    public String getDevice() {
+        return device;
+    }
+
+    public void setDevice(String device) {
+        this.device = device;
+    }
+
+  
+
 }
