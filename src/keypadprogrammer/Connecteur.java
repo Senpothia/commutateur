@@ -13,6 +13,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -327,29 +329,28 @@ public class Connecteur extends Observable {
 
             /*
             // Fonctionnel sans le fichier de log
-            
             Runtime runtime = Runtime.getRuntime();
-
             String commande1 = "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >C:\\Users\\Michel\\Desktop\\logs.txt"; 
             Process programming = runtime.exec(commande1);
             tempo(5000);  // 5000-> valeur validée
             System.out.println("Fin programmation");
-
-             
-             /*
+            /*
             // test fonctionnel
-            
             Runtime runtime = Runtime.getRuntime();
             Process process = runtime.exec("notepad.exe C:\\Users\\Michel\\Desktop\\bonjour.txt");
              */
-             
+            boolean deleteIfExists1 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.ini"));
+            boolean deleteIfExists2 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.lock"));
+            //tempo(500);
             // Fonctionnelle
+            
+            
             ProcessBuilder processBuilder = new ProcessBuilder();
             //processBuilder.command("C:\\Users\\Michel\\Desktop\\test.bat");
             processBuilder.command("cmd.exe", "/c", "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >C:\\Users\\Michel\\Desktop\\logs.txt");
             Process process = processBuilder.start();
             
-
+            
         } else {
 
         }
