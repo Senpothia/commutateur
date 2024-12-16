@@ -34,7 +34,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private File nouveauBinaire = null;
     private String filePaths = null;
     private String localisationNouveauBinaire = null;
+    private String devices = null;    // devices lus dans params.properties
     private String nomNouveauBinaire = null;
+    private String nouveauDevice = null;
     private String hexLocations = null;
     private String bleLocation = null;
     private String binaireLocation = null;
@@ -56,6 +58,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private ArrayList<String> listesVoies = new ArrayList<String>();
     private String[] localisationsBinaires = null;
     private ArrayList<String> listeLocalisationsBinaires = new ArrayList<String>();
+    private ArrayList<String> listeDevicesEnregistres = new ArrayList<String>();
     private int selectedProduct = 0;
 
     Connecteur connecteur = getConnecteur();            // gére la connexion RS232
@@ -147,6 +150,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
         nombreVoiesNouvelleCarte.setForeground(Color.red);
         nombreVoiesNouvelleCarte.setFont(new Font("Serif", Font.BOLD, 20));
 
+        nouveauMicroController.setBackground(new Color(252, 242, 3));
+        nouveauMicroController.setOpaque(true);
+        nouveauMicroController.setForeground(Color.red);
+        nouveauMicroController.setFont(new Font("Serif", Font.BOLD, 20));
+
         paramsWin.getContentPane().setBackground(new Color(245, 156, 66));
         paramsWin.setSize(1300, 600);
 
@@ -220,6 +228,19 @@ public class Interface extends javax.swing.JFrame implements Observer {
             System.out.println("liste du nombre de voies  = " + initialisation.getNombreVoies());
             nombreDeVoiesEnregistres = initialisation.getNombreVoies();
             listesVoies = extraireVoies(nombreDeVoiesEnregistres);
+
+        }
+
+        if (initialisation.getDevice().equals("na")) {
+
+            System.out.println("liste des devices lues = " + initialisation.getDevice());
+            nombreVoies.setText("Aucun device enregistré");
+
+        } else {
+
+            System.out.println("liste des devices lus  = " + initialisation.getDevice());
+            devices = initialisation.getDevice();
+            listeDevicesEnregistres = extraireDevices(devices);
 
         }
 
@@ -299,6 +320,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
         LabelNbreDeVoiesNouvelleCarte = new javax.swing.JLabel();
         nombreVoiesNouvelleCarte = new javax.swing.JTextField();
         messageCreation = new javax.swing.JLabel();
+        LabelmicroController = new javax.swing.JLabel();
+        nouveauMicroController = new javax.swing.JTextField();
         aide = new javax.swing.JFrame();
         btnFermerAide = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -511,18 +534,26 @@ public class Interface extends javax.swing.JFrame implements Observer {
         messageCreation.setText("Veuillez compléter le formulaire ci-dessous");
         messageCreation.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        LabelmicroController.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        LabelmicroController.setText("Microcontrôleur");
+
+        nouveauMicroController.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        nouveauMicroController.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nouveauMicroControllerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout paramsWinLayout = new javax.swing.GroupLayout(paramsWin.getContentPane());
         paramsWin.getContentPane().setLayout(paramsWinLayout);
         paramsWinLayout.setHorizontalGroup(
             paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paramsWinLayout.createSequentialGroup()
                 .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, paramsWinLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(messageCreation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(paramsWinLayout.createSequentialGroup()
-                            .addContainerGap()
+                    .addGroup(paramsWinLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(messageCreation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(nombreVoies, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -546,19 +577,23 @@ public class Interface extends javax.swing.JFrame implements Observer {
                                 .addComponent(LabelNbreDeVoiesNouvelleCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(nombreVoiesNouvelleCarte, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(messageBinaireSelectionne, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1247, Short.MAX_VALUE))
+                                    .addComponent(messageBinaireSelectionne, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1247, Short.MAX_VALUE)
+                                    .addComponent(nouveauMicroController))
                                 .addComponent(labelAjoutCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(paramsWinLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(comboListeProduits, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(paramsWinLayout.createSequentialGroup()
-                        .addGap(450, 450, 450)
-                        .addComponent(btnSelectionBinaireAjouter, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paramsWinLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(nomNouvelleCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 1247, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(paramsWinLayout.createSequentialGroup()
-                        .addGap(450, 450, 450)
+                        .addContainerGap()
+                        .addComponent(LabelmicroController, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(paramsWinLayout.createSequentialGroup()
+                        .addGap(466, 466, 466)
+                        .addComponent(btnSelectionBinaireAjouter, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(paramsWinLayout.createSequentialGroup()
+                        .addGap(470, 470, 470)
                         .addComponent(btnEnregistrer, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
@@ -591,23 +626,27 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 .addComponent(btnAjouter)
                 .addGap(27, 27, 27)
                 .addComponent(messageCreation)
-                .addGap(35, 35, 35)
+                .addGap(18, 18, 18)
                 .addComponent(labelAjoutCarte)
-                .addGap(18, 18, 18)
-                .addComponent(nomNouvelleCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(nomNouvelleCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LabelNbreDeVoiesNouvelleCarte)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nombreVoiesNouvelleCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(LabelmicroController)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nouveauMicroController, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSelectionBinaireAjouter)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(labelBinaireSelectionne)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(messageBinaireSelectionne, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(38, 38, 38)
                 .addComponent(btnEnregistrer)
-                .addGap(151, 151, 151))
+                .addGap(103, 103, 103))
         );
 
         aide.setTitle("Programmateur keypad - Aide");
@@ -1468,6 +1507,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
         }
     }//GEN-LAST:event_btnFermerParamsActionPerformed
 
+    private void nouveauMicroControllerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nouveauMicroControllerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nouveauMicroControllerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1512,6 +1555,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JCheckBox EnvVarBox;
     private javax.swing.JLabel LabNombreVoies;
     private javax.swing.JLabel LabelNbreDeVoiesNouvelleCarte;
+    private javax.swing.JLabel LabelmicroController;
     private javax.swing.JLabel LabfichierBinaire;
     private javax.swing.JLabel StatutRS232Lab;
     private javax.swing.JFrame aide;
@@ -1577,6 +1621,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JLabel nomProduit;
     private javax.swing.JLabel nombreVoies;
     private javax.swing.JTextField nombreVoiesNouvelleCarte;
+    private javax.swing.JTextField nouveauMicroController;
     private javax.swing.JMenuItem paramsProg;
     private javax.swing.JFrame paramsWin;
     private javax.swing.JRadioButtonMenuItem parityEven;
@@ -2347,6 +2392,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
         btnEnregistrer.setVisible(active);
         messageBinaireSelectionne.setVisible(active);
         labelBinaireSelectionne.setVisible(active);
+        LabelmicroController.setVisible(active);
+        nouveauMicroController.setVisible(active);
         if (active) {
             messageCreation.setText("Compléter le formulaire ci-dessous");
         }
@@ -2405,10 +2452,22 @@ public class Interface extends javax.swing.JFrame implements Observer {
         initialisation.setNombreVoies(initialisation.getNombreVoies() + ";" + nombreDeVoiesNouvelleCarte);
         initializer.update("binaryLocations", initialisation.getBinaryLocations());
         initializer.update("productNames", initialisation.getProductNames());
-         initializer.update("voies", initialisation.getNombreVoies());
+        initializer.update("voies", initialisation.getNombreVoies());
         localisationNouveauBinaire = null;
         nomNouveauBinaire = null;
 
+    }
+
+    private ArrayList<String> extraireDevices(String devices) {
+
+        String[] liste = devices.split(";");
+        ArrayList<String> arrList = new ArrayList<String>();
+        for (int i = 0; i < liste.length; i++) {
+
+            System.out.println(liste[i]);
+            arrList.add(liste[i]);
+        }
+        return arrList;
     }
 
 }
