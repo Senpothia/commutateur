@@ -8,6 +8,7 @@ package keypadprogrammer;
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortDataListener;
 import com.fazecast.jSerialComm.SerialPortEvent;
+import java.io.File;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -249,7 +250,6 @@ public class Connecteur extends Observable {
 
             Runtime runtime = Runtime.getRuntime();
 
-            
             String commande1 = "STM32_Programmer_CLI.exe -c port=SWD sn=003900213532511231333430 s-startFUS -log .\\logs\\trace1.log";  // module 2
             Process programming = runtime.exec(commande1);
             tempo(7000);  // 5000-> valeur validée
@@ -269,7 +269,6 @@ public class Connecteur extends Observable {
                 return -2;
 
             }
-
 
         } else {
 
@@ -321,31 +320,44 @@ public class Connecteur extends Observable {
         }
 
     }
-    
-     public int testProgram(String hexLocation, String bleLocation, boolean envVariable, String programmerLocation) throws IOException {
 
-  
+    public int testProgram(String hexLocation, String bleLocation, boolean envVariable, String programmerLocation) throws IOException {
 
         if (envVariable) {
 
+            /*
+            // Fonctionnel sans le fichier de log
+            
             Runtime runtime = Runtime.getRuntime();
 
-            String commande1 = "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY201C:\\Users\\Michel\\Desktop\\logs.txt"; 
+            String commande1 = "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >C:\\Users\\Michel\\Desktop\\logs.txt"; 
             Process programming = runtime.exec(commande1);
             tempo(5000);  // 5000-> valeur validée
             System.out.println("Fin programmation");
- 
+
+             
+             /*
+            // test fonctionnel
+            
+            Runtime runtime = Runtime.getRuntime();
+            Process process = runtime.exec("notepad.exe C:\\Users\\Michel\\Desktop\\bonjour.txt");
+             */
+             
+            // Fonctionnelle
+            ProcessBuilder processBuilder = new ProcessBuilder();
+            //processBuilder.command("C:\\Users\\Michel\\Desktop\\test.bat");
+            processBuilder.command("cmd.exe", "/c", "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >C:\\Users\\Michel\\Desktop\\logs.txt");
+            Process process = processBuilder.start();
+            
+
         } else {
 
         }
 
         tempo(5000); // 5000 -> valeur validée
-      
+
         return 1;
 
     }
 
-
 }
-
-
