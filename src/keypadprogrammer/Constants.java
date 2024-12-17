@@ -55,20 +55,20 @@ public class Constants {
     // Signalisation résultats des étapes de test
     //********************************************************************************************************
     // ERREURS TRACE1
-    static String E1_LOG1 = "Error: No STM32 target found! ";
-    static String E2_LOG1 = "Error: FUS_STATE_ERR_UNKNOWN: Unknown error";
-    static String E3_LOG1 = "Error: Fus is not yet running, try again";
+    static String E1_LOG1 = "Programmer not found.";
+    static String E2_LOG1 = "IO Error ICD 4 is supplying power to the target (5,00 volts). terminated abruptly.";
 
-    static String[] ERREURS_LOG1 = {E1_LOG1};
+    static String[] ERREURS_LOG1 = {E1_LOG1, E2_LOG1};
 
     // REQUIS TRACE1
+    static String R1_LOG1 = "Program Succeeded.";
+   
+    static String[] REQUIS_LOG1 = {R1_LOG1};
     //********************************************************************************************************
     // ERREURS TRACE2
     // REQUIS TRACE2
-    static String R1_LOG2 = "Success with Time elapsed during Reconnect:";
-    static String R2_LOG2 = "Firmware Upgrade Success";
 
-    static String[] REQUIS_LOG2 = {R1_LOG2, R2_LOG2};
+    //static String[] REQUIS_LOG2 = {R1_LOG2, R2_LOG2};
 
     //********************************************************************************************************
     // ERREURS TRACE3

@@ -342,7 +342,6 @@ public class Connecteur extends Observable {
             //boolean deleteIfExists1 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.ini"));
             //boolean deleteIfExists2 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.lock"));
             //tempo(500);
-            
             cleanDirectory();
             // Fonctionnelle
 
@@ -351,6 +350,24 @@ public class Connecteur extends Observable {
             //processBuilder.command("cmd.exe", "/c", "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >C:\\Users\\Michel\\Desktop\\logs.txt");
             processBuilder.command("cmd.exe", "/c", "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >.\\logs\\logs.txt");
             Process process = processBuilder.start();
+
+            tempo(5000);  // 5000-> valeur validée
+            System.out.println("Fin programmation");
+
+            int control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
+            System.out.println("code controle: " + control);
+
+            if (control == 1 || control == 0) {
+
+                programmationCompleted(Constants.PROG_SUCCESS_ETAPE1);
+
+            } else {
+
+                programmationCompleted(Constants.PROG_UNSUCCESS_ETAPE1);
+                System.out.println("retour code erreur programmation");
+                return -2;
+
+            }
 
         } else {
 
