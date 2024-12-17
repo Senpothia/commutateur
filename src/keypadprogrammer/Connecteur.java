@@ -323,7 +323,7 @@ public class Connecteur extends Observable {
 
     }
 
-    public int testProgram(String hexLocation, String bleLocation, boolean envVariable, String programmerLocation) throws IOException {
+    public int testProgram(String hexLocation, String bleLocation, boolean envVariable, String programmerPath) throws IOException {
 
         if (envVariable) {
 
@@ -342,17 +342,20 @@ public class Connecteur extends Observable {
             //boolean deleteIfExists1 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.ini"));
             //boolean deleteIfExists2 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.lock"));
             //tempo(500);
+            System.out.println("Début programmation");
             cleanDirectory();
             // Fonctionnelle
 
             ProcessBuilder processBuilder = new ProcessBuilder();
             //processBuilder.command("C:\\Users\\Michel\\Desktop\\test.bat");
             //processBuilder.command("cmd.exe", "/c", "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >C:\\Users\\Michel\\Desktop\\logs.txt");
-            processBuilder.command("cmd.exe", "/c", "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >.\\logs\\logs.txt");
+            // processBuilder.command("cmd.exe", "/c", "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >.\\logs\\logs.txt");
+            processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >.\\logs\\logs.txt");
             Process process = processBuilder.start();
 
-            tempo(5000);  // 5000-> valeur validée
+            tempo(30000);  // 5000-> valeur validée
             System.out.println("Fin programmation");
+            System.out.println("Début vérification");
 
             int control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
             System.out.println("code controle: " + control);
@@ -360,22 +363,22 @@ public class Connecteur extends Observable {
             if (control == 1 || control == 0) {
 
                 programmationCompleted(Constants.PROG_SUCCESS_ETAPE1);
-
+                System.out.println("programmation terminée avec succès");
+                return 1;
             } else {
 
                 programmationCompleted(Constants.PROG_UNSUCCESS_ETAPE1);
                 System.out.println("retour code erreur programmation");
+                tempo(500); // 5000 -> valeur validée
+                System.out.println("Fin vérification");
                 return -2;
 
             }
 
         } else {
 
+            return 1;
         }
-
-        tempo(5000); // 5000 -> valeur validée
-
-        return 1;
 
     }
 

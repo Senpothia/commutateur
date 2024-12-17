@@ -66,10 +66,10 @@ public class ProgController {
                 if (erreurs != null && line != null) {
 
                     for (int i = 0; i < erreurs.length; i++) {
-                       // System.out.println("controle des erreurs  -  " + erreurs[i]);
+
                         if (line.contains(erreurs[i])) {
 
-                            codeControl = -1;
+                            codeControl = -1 * (i + 1);
                         }
                     }
 
@@ -78,7 +78,7 @@ public class ProgController {
                 if (requis != null && line != null) {
 
                     for (int i = 0; i < requis.length; i++) {
-                        //System.out.println("controle des requis  -  " + requis[i]);
+
                         if (line.contains(requis[i])) {
 
                             codeControl = 1;

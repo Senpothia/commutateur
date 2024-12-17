@@ -33,6 +33,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private File BLELocation = null;
     private File nouveauBinaire = null;
     private String filePaths = null;
+    private String programmerPath = null;   // emplacement du programmateur(repertoire plateforme Microchip)
     private String localisationNouveauBinaire = null;
     private String nomNouveauBinaire = null;
     private String devices = null;    // devices lus dans params.properties
@@ -101,7 +102,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         statutPGRM.setForeground(Color.RED);
         statutPGRM.setOpaque(true);
 
-        this.getContentPane().setBackground(new Color(66, 149, 245));
+        this.getContentPane().setBackground(new Color(50, 131, 168));
 
         voyant.setBackground(new Color(204, 136, 53));
         voyant.setForeground(Color.GRAY);
@@ -157,7 +158,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         nouveauMicroController.setForeground(Color.red);
         nouveauMicroController.setFont(new Font("Serif", Font.BOLD, 20));
 
-        paramsWin.getContentPane().setBackground(new Color(245, 156, 66));
+        paramsWin.getContentPane().setBackground(new Color(131, 50, 168));
         paramsWin.setSize(1300, 600);
 
         messageCreation.setBackground(new Color(247, 242, 208));
@@ -175,6 +176,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         initialisation = initializer.getInit();
 
+        //Recherche nombre de voie du commutateur
         if (initialisation.getCommutateur().equals("na")) {
 
             System.out.println("Commutateur = " + initialisation.getCommutateur());
@@ -186,6 +188,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             limCommutateur = Integer.parseInt(commutateurString);
         }
 
+        // Recherche du fichier binaire
         if (initialisation.getBinaryLocations().equals("na")) {
 
             System.out.println("BinaryLocation = " + initialisation.getBinaryLocations());
@@ -197,6 +200,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             listeLocalisationsBinaires = extraireLocalisationBinaires(hexLocations);
         }
 
+        // Recherche nom du produit
         if (initialisation.getProductNames().equals("na")) {
 
             System.out.println("liste noms de produits = " + initialisation.getProductNames());
@@ -220,6 +224,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         }
 
+        // Recherche nombre de voies à programmer (nombre de carte par panneau)
         if (initialisation.getNombreVoies().equals("na")) {
 
             System.out.println("liste nombre de voies = " + initialisation.getNombreVoies());
@@ -233,6 +238,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         }
 
+        // Recherche nom du microcontrôleur à programmer
         if (initialisation.getDevice().equals("na")) {
 
             System.out.println("liste des devices lues = " + initialisation.getDevice());
@@ -246,6 +252,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         }
 
+        // Recherche type de programmateur (code programmateur) 
         if (initialisation.getProgrammer().equals("na")) {
 
             System.out.println("liste des devices lues = " + initialisation.getProgrammer());
@@ -258,6 +265,20 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         }
 
+        // Recherche repertoire d'installation de la plateforme Microchip
+        if (initialisation.getProgrammerDirectory().equals("na")) {
+
+            System.out.println("Directory programmer = " + initialisation.getProgrammerDirectory());
+            nombreVoies.setText("Aucune localisation programmateur enregistré");
+
+        } else {
+
+            System.out.println("Directory programmer = " + initialisation.getProgrammerDirectory());
+            programmerPath = initialisation.getProgrammerDirectory();
+
+        }
+
+        // Recherche variable d'environnement pour la commande Java
         if (initialisation.getVarEnv().equals("na")) {
 
             System.out.println("varEnv = " + initialisation.getVarEnv());
@@ -277,6 +298,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         }
 
+        // Création repertoire de logs
         int dirCreation = progController.createLogFolder(Constants.LOG_DIRECTORY);
         if (dirCreation != 1) {
 
@@ -1095,7 +1117,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 public void run() {
 
                     try {
-                        int comm = connecteur.testProgram(hexLocations, bleLocation, envVariable, filePaths);
+                        int comm = connecteur.testProgram(hexLocations, bleLocation, envVariable, programmerPath);
                         System.out.println("Retour programmation. Code reçu: " + comm);
                         if (comm == -1) {
 
@@ -1210,7 +1232,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
         if (programmerLoc.getSelectedFile() != null) {
 
             console.setText("Repertoire programmateur: " + programmerLocation.getPath());
-            filePaths = programmerLocation.getPath();
+            System.out.println("Repertoire programmateur: " + programmerLocation.getPath());
+            programmerPath = programmerLocation.getPath();
+            initializer.update("programmerDirectory", programmerPath);
 
         }
 
@@ -1495,23 +1519,22 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void btnFermerParamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFermerParamsActionPerformed
 
-        testParamsProg();
         if (EnvVarBox.isSelected()) {
 
             envVariable = true;
+
         } else {
 
             envVariable = false;
         }
         paramsWin.setSize(1300, 600);
         paramsWin.setVisible(false);
-        testParamsProg();
+
         selectedProduct = comboListeProduits.getSelectedIndex();
 
         if (selectedProduct != 0) {
 
             nomProduit.setText(listesProduits.get(selectedProduct) + " - Microcontôleur: " + deviceEnTest + " - Nombre de voie: " + nombreDeVoiesCarteEnTest + " - Programmateur: " + programmer);
-
             binaireLocation = listeLocalisationsBinaires.get(selectedProduct - 1);
             System.out.println("localistaion binaire: " + binaireLocation);
             emplacementBinaire.setText(binaireLocation);
@@ -1524,12 +1547,14 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             nomProduit.setText("Aucun produit sélectionné!");
             emplacementBinaire.setText("");
-            activerBtnProgrammer(true);
+            activerBtnProgrammer(false);
             console.setText("Sélectionnez un produit avant de programmer");
             statutPGRM.setBackground(Color.RED);
             statutPGRM.setForeground(Color.RED);
 
         }
+
+        testParamsProg();
     }//GEN-LAST:event_btnFermerParamsActionPerformed
 
     private void nouveauMicroControllerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nouveauMicroControllerActionPerformed
@@ -1679,7 +1704,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         } else {
 
-            if (bleLocation == null) {
+            if (produitAprogrammer == null) {
 
                 console.setText("Sélectionner un produit avant de commencer!");
                 voyant.setBackground(Color.GRAY);
@@ -1688,7 +1713,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             } else {
 
-                if (!envVariable && filePaths == null) {
+                if (!envVariable || programmerPath == null) {
 
                     console.setText("Repertoire programmateur non défini!");
                     statutPGRM.setBackground(Color.RED);
@@ -1701,7 +1726,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                     statutPGRM.setForeground(Color.GREEN);
                     initializer.update("binaryLocation", hexLocations);
                     initializer.update("bleLocation", bleLocation);
-                    initializer.update("programmerDirectory", filePaths);
+                    initializer.update("programmerDirectory", programmerPath);
 
                     if (envVariable) {
 
