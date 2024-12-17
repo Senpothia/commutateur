@@ -855,23 +855,14 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
-              <Component id="btnEffacer" min="-2" pref="116" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-              <Component id="btnProg" min="-2" pref="173" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnACQ" min="-2" pref="114" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="181" max="-2" attributes="0"/>
+              <EmptySpace pref="280" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="statutPGRM" alignment="1" min="-2" pref="55" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="titre" min="-2" pref="531" max="-2" attributes="0"/>
-                              <EmptySpace pref="131" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="233" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="StatutRS232Lab" alignment="1" min="-2" pref="55" max="-2" attributes="0"/>
                                   <Component id="statutRs232" alignment="1" min="-2" pref="55" max="-2" attributes="0"/>
@@ -888,24 +879,31 @@
               </Group>
           </Group>
           <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="nomProduit" alignment="0" max="32767" attributes="0"/>
+                  <Component id="emplacementBinaire" alignment="0" max="32767" attributes="0"/>
+                  <Component id="progBarre" alignment="0" pref="893" max="32767" attributes="0"/>
+                  <Component id="console" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="0" pref="142" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="327" max="-2" attributes="0"/>
-                      <Component id="voyant" min="-2" pref="160" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
+                      <Component id="btnEffacer" min="-2" pref="116" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                      <Component id="btnProg" min="-2" pref="173" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+                      <Component id="btnACQ" min="-2" pref="114" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="emplacementBinaire" min="-2" pref="659" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="progBarre" pref="651" max="32767" attributes="0"/>
-                              <Component id="console" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="nomProduit" alignment="0" min="-2" pref="659" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="-2" pref="467" max="-2" attributes="0"/>
+                      <Component id="voyant" min="-2" pref="160" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -929,9 +927,9 @@
               <Component id="nomProduit" min="-2" pref="47" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="emplacementBinaire" min="-2" pref="47" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="voyant" min="-2" pref="122" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
               <Component id="progBarre" min="-2" pref="37" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Component id="console" min="-2" pref="47" max="-2" attributes="0"/>

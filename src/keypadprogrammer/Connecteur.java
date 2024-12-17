@@ -339,9 +339,11 @@ public class Connecteur extends Observable {
             Runtime runtime = Runtime.getRuntime();
             Process process = runtime.exec("notepad.exe C:\\Users\\Michel\\Desktop\\bonjour.txt");
              */
-            boolean deleteIfExists1 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.ini"));
-            boolean deleteIfExists2 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.lock"));
+            //boolean deleteIfExists1 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.ini"));
+            //boolean deleteIfExists2 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.lock"));
             //tempo(500);
+            
+            cleanDirectory();
             // Fonctionnelle
 
             ProcessBuilder processBuilder = new ProcessBuilder();
@@ -357,6 +359,13 @@ public class Connecteur extends Observable {
         tempo(5000); // 5000 -> valeur validée
 
         return 1;
+
+    }
+
+    public void cleanDirectory() throws IOException {
+
+        boolean deleteIfExists1 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.ini"));
+        boolean deleteIfExists2 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.lock"));
 
     }
 
