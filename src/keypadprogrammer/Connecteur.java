@@ -236,52 +236,7 @@ public class Connecteur extends Observable {
 
     }
 
-    public int program(String hexLocation, String bleLocation, boolean envVariable, String programmerLocation) throws IOException {
-
-        System.out.println("tranmission ordre relais 8");
-        int com = envoyerData(Constants.PROG);
-        programmationCompleted(Constants.PROG_START);
-        if (com == -1) {
-
-            return -1;
-        }
-        tempo(1000);
-        System.out.println("Fin tempo 1s");
-
-        if (envVariable) {
-
-            Runtime runtime = Runtime.getRuntime();
-
-            String commande1 = "STM32_Programmer_CLI.exe -c port=SWD sn=003900213532511231333430 s-startFUS -log .\\logs\\trace1.log";  // module 2
-            Process programming = runtime.exec(commande1);
-            tempo(7000);  // 5000-> valeur validée
-            System.out.println("Fin startFUS");
-
-            int control1 = progController.find(".\\logs\\trace1.log", Constants.ERREURS_LOG1, null);
-            System.out.println("code controle 1: " + control1);
-
-            if (control1 == 1 || control1 == 0) {
-
-                programmationCompleted(Constants.PROG_SUCCESS_ETAPE1);
-
-            } else {
-
-                programmationCompleted(Constants.PROG_UNSUCCESS_ETAPE1);
-                System.out.println("retour code erreur etape 1");
-                return -2;
-
-            }
-
-        } else {
-
-        }
-
-        tempo(1000); // 5000 -> valeur validée
-        programmationCompleted(Constants.PROG_SUCCESS);
-        envoyerData(Constants.END_PROG);
-        return 1;
-
-    }
+  
 
     public void erase(boolean envVariable, String programmerLocation) {
 
@@ -323,7 +278,7 @@ public class Connecteur extends Observable {
 
     }
 
-    public int testProgram(String hexLocation, String bleLocation, boolean envVariable, String programmerPath) throws IOException {
+    public int program(String hexLocation, boolean envVariable, String programmerPath) throws IOException {
 
         if (envVariable) {
 

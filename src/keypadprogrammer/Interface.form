@@ -101,10 +101,6 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="nomNouvelleCarte" min="-2" pref="1247" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="LabelmicroController" min="-2" pref="315" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -117,6 +113,10 @@
                       </Group>
                   </Group>
                   <EmptySpace pref="43" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="53" max="32767" attributes="0"/>
+                  <Component id="nomNouvelleCarte" min="-2" pref="1247" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
