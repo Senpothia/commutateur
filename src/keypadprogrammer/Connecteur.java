@@ -236,8 +236,6 @@ public class Connecteur extends Observable {
 
     }
 
-  
-
     public void erase(boolean envVariable, String programmerLocation) {
 
         envoyerData(Constants.ERASE);
@@ -278,7 +276,7 @@ public class Connecteur extends Observable {
 
     }
 
-    public int program(String hexLocation, boolean envVariable, String programmerPath) throws IOException {
+    public int program(String hexLocation, boolean envVariable, String programmerPath, String programmer, String device, String binaryLocation) throws IOException {
 
         if (envVariable) {
 
@@ -305,7 +303,9 @@ public class Connecteur extends Observable {
             //processBuilder.command("C:\\Users\\Michel\\Desktop\\test.bat");
             //processBuilder.command("cmd.exe", "/c", "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >C:\\Users\\Michel\\Desktop\\logs.txt");
             // processBuilder.command("cmd.exe", "/c", "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >.\\logs\\logs.txt");
-            processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >.\\logs\\logs.txt");
+            //processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >.\\logs\\logs.txt");
+            //processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >.\\logs\\logs.txt");
+            processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
             Process process = processBuilder.start();
 
             tempo(30000);  // 5000-> valeur validée

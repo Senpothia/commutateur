@@ -31,7 +31,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private File programmerLocation = null;      // emplacement du repertoire programmateur
     private File nouveauBinaire = null;          // emplacement du repertoire du nouveau binaire à ajouter
     private String filePath = null;              // emplacement du binaire pour programmation
-    private String programmerPath = null;        // emplacement du programmateur(repertoire plateforme Microchip)
+    private String programmerPathParamsProperties = null;        // emplacement du programmateur(repertoire plateforme Microchip)
     private String localisationNouveauBinaire = null;
     private String nomNouveauBinaire = null;
     private String devicesParamsProperties = null;               // devices lus dans params.properties
@@ -39,8 +39,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private String deviceEnTest = null;          // microcontroleur à programmer sur le produits sélectionné
     private String hexLocationsParamsProperties = null;          // liste lues dans params.properties
     private String binaireLocation = null;
-    private String nombreVoiesCommutateurString = null;  // nombre de voies du commutateur lues dans params.properties
-    private String programmer = null;
+    private String nombreVoiesCommutateurParamsProperties = null;  // nombre de voies du commutateur lues dans params.properties
+    private String programmerParamsProperties = null;
 
     private int limCommutateur = 0;                 // nombre de voies du commutateur converties en int depuis la variable nombreVoiesCommutateurString
     private int intNombreDeVoiesNouvelleCarte = 0;
@@ -57,7 +57,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private ArrayList<String> listesProduits = new ArrayList<String>();
     private ArrayList<String> listesVoies = new ArrayList<String>();
 
-    private ArrayList<String> binaireAprogrammer = new ArrayList<String>();
+    private ArrayList<String> ListeBinairesEnregistres = new ArrayList<String>();
     private ArrayList<String> listeDevicesEnregistres = new ArrayList<String>();
     private int selectedProduct = 0;
 
@@ -170,7 +170,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
         aide.getContentPane().setBackground(new Color(247, 242, 208));
 
         rechercherPortsComms();
-
+        initialisationParams();
+        
+        /*
         initialisation = initializer.getInit();
 
         //Recherche nombre de voie du commutateur
@@ -181,8 +183,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
         } else {
 
             System.out.println("Commutateur = " + initialisation.getCommutateur());
-            nombreVoiesCommutateurString = initialisation.getCommutateur();
-            limCommutateur = Integer.parseInt(nombreVoiesCommutateurString);
+            nombreVoiesCommutateurParamsProperties = initialisation.getCommutateur();
+            limCommutateur = Integer.parseInt(nombreVoiesCommutateurParamsProperties);
         }
 
         // Recherche du fichier binaire
@@ -194,7 +196,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             System.out.println("BinaryLocation = " + initialisation.getBinaryLocations());
             hexLocationsParamsProperties = initialisation.getBinaryLocations();
-            binaireAprogrammer = extraireLocalisationBinaires(hexLocationsParamsProperties);
+            ListeBinairesEnregistres = extraireLocalisationBinaires(hexLocationsParamsProperties);
         }
 
         // Recherche nom du produit
@@ -258,7 +260,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         } else {
 
             System.out.println("Programmateur enregistré  = " + initialisation.getProgrammer());
-            programmer = initialisation.getProgrammer();
+            programmerParamsProperties = initialisation.getProgrammer();
 
         }
 
@@ -271,7 +273,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         } else {
 
             System.out.println("Directory programmer = " + initialisation.getProgrammerDirectory());
-            programmerPath = initialisation.getProgrammerDirectory();
+            programmerPathParamsProperties = initialisation.getProgrammerDirectory();
 
         }
 
@@ -294,7 +296,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             }
 
         }
-
+        */
         // Création repertoire de logs
         int dirCreation = progController.createLogFolder(Constants.LOG_DIRECTORY);
         if (dirCreation != 1) {
@@ -582,7 +584,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         paramsWinLayout.setHorizontalGroup(
             paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paramsWinLayout.createSequentialGroup()
-                .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(paramsWinLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -624,11 +626,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
                         .addComponent(btnSelectionBinaireAjouter, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(paramsWinLayout.createSequentialGroup()
                         .addGap(470, 470, 470)
-                        .addComponent(btnEnregistrer, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnEnregistrer, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(paramsWinLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(nomNouvelleCarte)))
                 .addContainerGap(43, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paramsWinLayout.createSequentialGroup()
-                .addGap(0, 53, Short.MAX_VALUE)
-                .addComponent(nomNouvelleCarte, javax.swing.GroupLayout.PREFERRED_SIZE, 1247, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         paramsWinLayout.setVerticalGroup(
             paramsWinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1114,7 +1116,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 public void run() {
 
                     try {
-                        int comm = connecteur.program(hexLocationsParamsProperties, envVariable, programmerPath);
+                        int comm = connecteur.program(hexLocationsParamsProperties, envVariable, programmerPathParamsProperties, programmerParamsProperties, deviceEnTest, binaireLocation);
                         System.out.println("Retour programmation. Code reçu: " + comm);
                         if (comm == -1) {
 
@@ -1230,8 +1232,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             console.setText("Repertoire programmateur: " + programmerLocation.getPath());
             System.out.println("Repertoire programmateur: " + programmerLocation.getPath());
-            programmerPath = programmerLocation.getPath();
-            initializer.update("programmerDirectory", programmerPath);
+            programmerPathParamsProperties = programmerLocation.getPath();
+            initializer.update("programmerDirectory", programmerPathParamsProperties);
 
         }
 
@@ -1265,9 +1267,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         }
 
-        if (programmerPath != null || !programmerPath.equals("na")) {
+        if (programmerPathParamsProperties != null || !programmerPathParamsProperties.equals("na")) {
 
-            progLocLabel.setText("Repertoire programmateur: " + programmerPath);
+            progLocLabel.setText("Repertoire programmateur: " + programmerPathParamsProperties);
 
         } else {
 
@@ -1406,7 +1408,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             try {
 
-                intNombreDeVoiesNouvelleCarte = Integer.parseInt(nombreVoiesNouvelleCarte.getText());
+                nombreDeVoiesNouvelleCarte = nombreVoiesNouvelleCarte.getText();
+                intNombreDeVoiesNouvelleCarte = Integer.parseInt(nombreDeVoiesCarteEnTest);
 
             } catch (Exception e) {
 
@@ -1428,7 +1431,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             nouveauDevice = nouveauMicroController.getText();
         }
 
-        enregistrerNouvelleCarte(localisationNouveauBinaire, nomNouveauBinaire, nombreVoiesNouvelleCarte.getText(), nouveauDevice);
+        enregistrerNouvelleCarte(localisationNouveauBinaire, nomNouveauBinaire, nombreDeVoiesNouvelleCarte, nouveauDevice);
         montrerError("La nouvelle carte à été enregistrée", "Enregistrement effectué");
 
         paramsWin.setVisible(false);
@@ -1451,7 +1454,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             System.out.println("Aucun binaire sélectionné!");
         }
 
-        testParamsProg();
+        //testParamsProg();
     }//GEN-LAST:event_btnSelectionBinaireAjouterActionPerformed
 
     private void nomNouvelleCarteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomNouvelleCarteActionPerformed
@@ -1472,7 +1475,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         if (comboListeProduits.getSelectedIndex() != 0) {
 
-            hexLocalisation.setText(binaireAprogrammer.get(comboListeProduits.getSelectedIndex() - 1));
+            hexLocalisation.setText(ListeBinairesEnregistres.get(comboListeProduits.getSelectedIndex() - 1));
             nombreVoies.setText(listesVoies.get(comboListeProduits.getSelectedIndex() - 1));
             nombreDeVoiesCarteEnTest = listesVoies.get(comboListeProduits.getSelectedIndex() - 1);
             deviceEnTest = listeDevicesEnregistres.get(comboListeProduits.getSelectedIndex() - 1);
@@ -1484,7 +1487,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             nombreDeVoiesCarteEnTest = null;
             deviceEnTest = null;
             produitAprogrammer = null;
-            // testParamsProg();
+            testParamsProg();
         }
     }//GEN-LAST:event_comboListeProduitsItemStateChanged
 
@@ -1506,8 +1509,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_EnvVarBoxStateChanged
 
     private void btnFermerParamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFermerParamsActionPerformed
-        
-        
+
         paramsWin.setSize(1300, 600);
         paramsWin.setVisible(false);
 
@@ -1525,8 +1527,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
         if (selectedProduct != 0) {
 
             produitAprogrammer = listesProduits.get(selectedProduct);
-            nomProduit.setText(produitAprogrammer + " - Microcontôleur: " + deviceEnTest + " - Nombre de voie: " + nombreDeVoiesCarteEnTest + " - Programmateur: " + programmer);
-            binaireLocation = binaireAprogrammer.get(selectedProduct - 1);
+            nomProduit.setText(produitAprogrammer + " - Microcontôleur: " + deviceEnTest + " - Nombre de voie: " + nombreDeVoiesCarteEnTest + " - Programmateur: " + programmerParamsProperties);
+            binaireLocation = ListeBinairesEnregistres.get(selectedProduct - 1);
             System.out.println("localistaion binaire: " + binaireLocation);
             emplacementBinaire.setText(binaireLocation);
 
@@ -1701,7 +1703,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         }
 
-        if (programmerPath == null || programmerPath.equals("na")) {
+        if (programmerPathParamsProperties == null || programmerPathParamsProperties.equals("na")) {
 
             console.setText("Le programmateur n'est pas localisé");
             voyant.setBackground(Color.GRAY);
@@ -1712,10 +1714,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         console.setText("Paramètres de programmation définis. Vous pouvez commencer!");
         activerLedPRGM(true);
-       
-        initializer.update("binaryLocations", hexLocationsParamsProperties);
-        initializer.update("programmerDirectory", programmerPath);
 
+        //initializer.update("binaryLocations", hexLocationsParamsProperties);
+        //initializer.update("programmerDirectory", programmerPathParamsProperties);
+        //initialisationParams();
         if (envVariable) {
 
             initializer.update("varEnv", "true");
@@ -1733,8 +1735,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
         } else {
 
             statutRs232.setBackground(Color.RED);
-            activerBtnProgrammer(true);// forcer pour besoin de test
-           // inhibBtn();   // forcer pour besoin de test
+            activerBtnProgrammer(true); // forcer pour besoin de test
+            // inhibBtn();               // forcer pour besoin de test
 
         }
 
@@ -2450,23 +2452,32 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private void enregistrerNouvelleCarte(String localisationNouveauBinaire, String nomNouveauBinaire, String nombreDeVoiesNouvelleCarte, String nouveauDevice) {
 
         comboListeProduits.addItem(nomNouveauBinaire);
-        binaireAprogrammer.add(localisationNouveauBinaire);
+        ListeBinairesEnregistres.add(localisationNouveauBinaire);
         listesProduits.add(nomNouveauBinaire);
         listesVoies.add(nombreDeVoiesNouvelleCarte);
         listeDevicesEnregistres.add(nouveauDevice);
+
         nomNouvelleCarte.setText("");
         messageBinaireSelectionne.setText("");
+        nouveauMicroController.setText("");
+        nombreVoiesNouvelleCarte.setText("");
+
         initialisation.setBinaryLocations(initialisation.getBinaryLocations() + ";" + localisationNouveauBinaire);
         initialisation.setProductNames(initialisation.getProductNames() + ";" + nomNouveauBinaire);
         initialisation.setNombreVoies(initialisation.getNombreVoies() + ";" + nombreDeVoiesNouvelleCarte);
         initialisation.setDevice(initialisation.getDevice() + ";" + nouveauDevice);
+
         initializer.update("binaryLocations", initialisation.getBinaryLocations());
         initializer.update("productNames", initialisation.getProductNames());
         initializer.update("voies", initialisation.getNombreVoies());
         initializer.update("device", initialisation.getDevice());
+
+        /*
         localisationNouveauBinaire = null;
         nomNouveauBinaire = null;
-
+        nombreDeVoiesNouvelleCarte = null;
+        nouveauDevice = null;
+         */
     }
 
     private ArrayList<String> extraireDevices(String devices) {
@@ -2505,5 +2516,133 @@ public class Interface extends javax.swing.JFrame implements Observer {
             statutPGRM.setBackground(Color.GREEN);
             statutPGRM.setForeground(Color.GREEN);
         }
+    }
+
+    void initialisationParams() throws IOException {
+
+        initialisation = initializer.getInit();
+
+        //Recherche nombre de voie du commutateur
+        if (initialisation.getCommutateur().equals("na")) {
+
+            System.out.println("Commutateur = " + initialisation.getCommutateur());
+
+        } else {
+
+            System.out.println("Commutateur = " + initialisation.getCommutateur());
+            nombreVoiesCommutateurParamsProperties = initialisation.getCommutateur();
+            limCommutateur = Integer.parseInt(nombreVoiesCommutateurParamsProperties);
+        }
+
+        // Recherche du fichier binaire
+        if (initialisation.getBinaryLocations().equals("na")) {
+
+            System.out.println("BinaryLocation = " + initialisation.getBinaryLocations());
+
+        } else {
+
+            System.out.println("BinaryLocation = " + initialisation.getBinaryLocations());
+            hexLocationsParamsProperties = initialisation.getBinaryLocations();
+            ListeBinairesEnregistres = extraireLocalisationBinaires(hexLocationsParamsProperties);
+        }
+
+        // Recherche nom du produit
+        if (initialisation.getProductNames().equals("na")) {
+
+            System.out.println("liste noms de produits = " + initialisation.getProductNames());
+            nomProduit.setText("Aucun produit crée");
+
+        } else {
+
+            System.out.println("liste noms de produits  = " + initialisation.getProductNames());
+            listeProduitsConnusParamsProperties = initialisation.getProductNames();
+            //produits = extraireProduits(listeProduitsConnus);
+            listesProduits = extraireProduits(listeProduitsConnusParamsProperties);
+            //comboListeProduits.addItem("---");
+            for (int i = 0; i < listesProduits.size(); i++) {
+
+                //comboListeProduits.addItem(produits[i]);
+                comboListeProduits.addItem(listesProduits.get(i));
+
+            }
+            comboListeProduits.setSelectedIndex(0);
+            nomProduit.setText("Veuillez sélectionner un produit!");
+
+        }
+
+        // Recherche nombre de voies à programmer (nombre de carte par panneau)
+        if (initialisation.getNombreVoies().equals("na")) {
+
+            System.out.println("liste nombre de voies = " + initialisation.getNombreVoies());
+            nombreVoies.setText("Aucune voie définie");
+
+        } else {
+
+            System.out.println("liste du nombre de voies  = " + initialisation.getNombreVoies());
+            nombreDeVoiesEnregistresParamsProperties = initialisation.getNombreVoies();
+            listesVoies = extraireVoies(nombreDeVoiesEnregistresParamsProperties);
+
+        }
+
+        // Recherche nom du microcontrôleur à programmer
+        if (initialisation.getDevice().equals("na")) {
+
+            System.out.println("liste des devices lues = " + initialisation.getDevice());
+            nombreVoies.setText("Aucun device enregistré");
+
+        } else {
+
+            System.out.println("liste des devices lus  = " + initialisation.getDevice());
+            devicesParamsProperties = initialisation.getDevice();
+            listeDevicesEnregistres = extraireDevices(devicesParamsProperties);
+
+        }
+
+        // Recherche type de programmateur (code programmateur) 
+        if (initialisation.getProgrammer().equals("na")) {
+
+            System.out.println("liste des devices lues = " + initialisation.getProgrammer());
+            nombreVoies.setText("Aucun programmateur enregistré");
+
+        } else {
+
+            System.out.println("Programmateur enregistré  = " + initialisation.getProgrammer());
+            programmerParamsProperties = initialisation.getProgrammer();
+
+        }
+
+        // Recherche repertoire d'installation de la plateforme Microchip
+        if (initialisation.getProgrammerDirectory().equals("na")) {
+
+            System.out.println("Directory programmer = " + initialisation.getProgrammerDirectory());
+            nombreVoies.setText("Aucune localisation programmateur enregistré");
+
+        } else {
+
+            System.out.println("Directory programmer = " + initialisation.getProgrammerDirectory());
+            programmerPathParamsProperties = initialisation.getProgrammerDirectory();
+
+        }
+
+        // Recherche variable d'environnement pour la commande Java
+        if (initialisation.getVarEnv().equals("na")) {
+
+            System.out.println("varEnv = " + initialisation.getVarEnv());
+
+        } else {
+
+            System.out.println("varEnv = " + initialisation.getVarEnv());
+            if (initialisation.getVarEnv().equals("true")) {
+
+                envVariable = true;
+            }
+
+            if (initialisation.getVarEnv().equals("false")) {
+
+                envVariable = false;
+            }
+
+        }
+
     }
 }
