@@ -10,6 +10,8 @@ import java.awt.Font;
 import java.awt.color.ColorSpace;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -1170,6 +1172,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_btnProgActionPerformed
 
     private void btnEffacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEffacerActionPerformed
+        
+        connecteur.getFileSize(".\\logs\\logs.txt");
+        /*
         if (!testActif) {
             System.out.println("fonction Effacement");
             if (!confirmationParams) {
@@ -1206,7 +1211,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             voyant.setBackground(Color.RED);
 
         }
-
+        */
     }//GEN-LAST:event_btnEffacerActionPerformed
 
     private void btnSelectLocationProgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectLocationProgActionPerformed
@@ -2262,7 +2267,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         activerBtnLancer(false);
         activerBtnACQ(false);
-        activerBtnEffacer(false);
+        activerBtnEffacer(true);
         activerBtnOK(false);
         activerBtnNOK(false);
         activerBtnTester(false);
@@ -2645,4 +2650,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
         }
 
     }
+    
+   
 }

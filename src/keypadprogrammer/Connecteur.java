@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -297,6 +298,9 @@ public class Connecteur extends Observable {
             //tempo(500);
             System.out.println("Début programmation");
             cleanDirectory();
+            //cleanDirectory("C:\\Users\\Michel\\Desktop\\logs\\logs.txt");
+            cleanDirectory(".\\logs\\logs.txt");
+            tempo(10000);
             // Fonctionnelle
 
             ProcessBuilder processBuilder = new ProcessBuilder();
@@ -306,9 +310,10 @@ public class Connecteur extends Observable {
             //processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >.\\logs\\logs.txt");
             //processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >.\\logs\\logs.txt");
             processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
+           // processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >C:\\Users\\Michel\\Desktop\\logs\\logs.txt");
             Process process = processBuilder.start();
 
-            tempo(30000);  // 5000-> valeur validée
+            tempo(200);  // 5000-> valeur validée
             System.out.println("Fin programmation");
             System.out.println("Début vérification");
 
@@ -342,6 +347,47 @@ public class Connecteur extends Observable {
         boolean deleteIfExists1 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.ini"));
         boolean deleteIfExists2 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.lock"));
 
+    }
+
+    public void cleanDirectory(String logFile) {
+
+        System.out.println("Suppression fichier de log");
+        Path path = Paths.get(logFile);
+        try {
+            boolean deleteIfExists1 = Files.deleteIfExists(path);
+        } catch (IOException ex) {
+
+            System.out.println("Problème suppression fichier de log");
+        }
+
+    }
+
+    void getFileSize(String logFile) {
+        
+        double size0 = 0;
+        double size1 = 0;
+        Boolean end = false;
+        int counter = 0;
+        int lim = 1000;
+
+        while (!end) {
+
+            File file = new File(logFile);
+            size1 = (double) file.length();
+            System.out.println(size1 / 1024 + "  kb");
+            size0 = size1;
+            if (size0 == size1 && size1 != 0) {
+
+                counter++;
+                if (counter > lim) {
+                    end = true;
+
+                }
+            }
+        }
+        
+        System.out.println("Mesure terminée!");
+     
     }
 
 }
