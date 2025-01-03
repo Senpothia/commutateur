@@ -54,6 +54,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private String nombreDeVoiesEnregistresParamsProperties = null;  // lues dans params.properties
     private String nombreDeVoiesCarteEnTest = null;
     private String nombreDeVoiesNouvelleCarte = null;
+
     private String matricesProperties = null;        // Liste de toutes les matrices connues et enregistrées dans params.properties
     private String matriceAprogrammer = null;        // la matrice du panneau à programmer
     private String matriceNouveauPanneau = null;     // la matrice du panneau en cours d'enregistrement
@@ -2379,10 +2380,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
             try {
 
                 nombreDeVoiesNouvelleCarte = nombreVoiesNouvelleCarte.getText();
-                intNombreDeVoiesNouvelleCarte = Integer.parseInt(nombreDeVoiesCarteEnTest);
+                intNombreDeVoiesNouvelleCarte = Integer.parseInt(nombreDeVoiesNouvelleCarte);
 
             } catch (Exception e) {
-
+                
+                System.out.println("Exception nombre de voie: " + nombreDeVoiesNouvelleCarte);
                 montrerError("Le nombre de voies doit être compris entre 1 et " + limCommutateur, "Formulaire imcomplet");
                 return;
 
@@ -2401,10 +2403,25 @@ public class Interface extends javax.swing.JFrame implements Observer {
             nouveauDevice = nouveauMicroController.getText();
         }
 
-        enregistrerNouvelleCarte(localisationNouveauBinaire, nomNouveauBinaire, nombreDeVoiesNouvelleCarte, nouveauDevice);
-        montrerError("La nouvelle carte à été enregistrée", "Enregistrement effectué");
+        if (nouvelleMatrice.getText().equals("")) {
 
-        paramsWin.setVisible(false);
+            messageCreation.setText("La matrice doit être définie!");
+            montrerError("La nouvelle matrice doit être définie", "Formulaire imcomplet");
+            return;
+        } else {
+
+            verifierNouvelleMatrice(nouvelleMatrice.getText(), intNombreDeVoiesNouvelleCarte);
+
+        }
+
+        matriceNouveauPanneau = nouvelleMatrice.getText();
+        enregistrerNouvelleCarte(localisationNouveauBinaire, nomNouveauBinaire, nombreDeVoiesNouvelleCarte, nouveauDevice, matriceNouveauPanneau);
+
+        montrerError(
+                "La nouvelle carte à été enregistrée", "Enregistrement effectué");
+
+        paramsWin.setVisible(
+                false);
 
     }//GEN-LAST:event_btnEnregistrerActionPerformed
 
@@ -2449,6 +2466,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
             nombreVoies.setText(listesVoies.get(comboListeProduits.getSelectedIndex() - 1));
             nombreDeVoiesCarteEnTest = listesVoies.get(comboListeProduits.getSelectedIndex() - 1);
             deviceEnTest = listeDevicesEnregistres.get(comboListeProduits.getSelectedIndex() - 1);
+            matriceAprogrammer = listesMatrices.get(comboListeProduits.getSelectedIndex() - 1);
+            extraireLignesColonnes(matriceAprogrammer);
 
         } else {
 
@@ -2457,6 +2476,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
             nombreDeVoiesCarteEnTest = null;
             deviceEnTest = null;
             produitAprogrammer = null;
+            matriceAprogrammer = null;
+
             testParamsProg();
         }
     }//GEN-LAST:event_comboListeProduitsItemStateChanged
@@ -2497,7 +2518,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         if (selectedProduct != 0) {
 
             produitAprogrammer = listesProduits.get(selectedProduct);
-            nomProduit.setText(produitAprogrammer + " - Microcontôleur: " + deviceEnTest + " - Nombre de voie: " + nombreDeVoiesCarteEnTest + " - Programmateur: " + programmerParamsProperties);
+            nomProduit.setText(produitAprogrammer + " - Microcontôleur: " + deviceEnTest + " - Voies: " + nombreDeVoiesCarteEnTest + " - Programmateur: " + programmerParamsProperties + " - Matrice: " + matriceAprogrammer);
             binaireLocation = ListeBinairesEnregistres.get(selectedProduct - 1);
             System.out.println("localistaion binaire: " + binaireLocation);
             emplacementBinaire.setText(binaireLocation);
@@ -2541,13 +2562,17 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Interface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Interface.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Interface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Interface.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Interface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Interface.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Interface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Interface.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -2557,7 +2582,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 try {
                     new Interface().setVisible(true);
                 } catch (IOException ex) {
-                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Interface.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -2835,9 +2861,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
         console.setText("Paramètres de programmation définis. Vous pouvez commencer!");
         activerLedPRGM(true);
 
-        //initializer.update("binaryLocations", hexLocationsParamsProperties);
-        //initializer.update("programmerDirectory", programmerPathParamsProperties);
-        //initialisationParams();
         if (envVariable) {
 
             initializer.update("varEnv", "true");
@@ -2856,7 +2879,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             statutRs232.setBackground(Color.RED);
             activerBtnProgrammer(true); // forcer pour besoin de test
-            // inhibBtn();               // forcer pour besoin de test
 
         }
 
@@ -3131,7 +3153,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
             System.exit(0);
 
         } catch (IOException ex) {
-            Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Interface.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -3274,13 +3297,15 @@ public class Interface extends javax.swing.JFrame implements Observer {
             try {
                 Thread.sleep(500);
             } catch (InterruptedException ex) {
-                Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Interface.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
 
             try {
                 Thread.sleep(500);
             } catch (InterruptedException ex) {
-                Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Interface.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -3300,7 +3325,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
         try {
             Thread.sleep(4000);
         } catch (InterruptedException ex) {
-            Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Interface.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         int comm = connecteur.envoyerData(Constants.START);
         if (comm == -1) {
@@ -3396,35 +3422,68 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     }
 
-    private void enregistrerNouvelleCarte(String localisationNouveauBinaire, String nomNouveauBinaire, String nombreDeVoiesNouvelleCarte, String nouveauDevice) {
+    private void extraireLignesColonnes(String matriceAprogrammer) {
+
+        System.out.println("Matrice à programmer: " + matriceAprogrammer);
+        String[] tab = matriceAprogrammer.split("x");
+        lignes = Integer.parseInt(tab[0]);
+        colonnes = Integer.parseInt(tab[1]);
+        System.out.println("Lignes: " + lignes);
+        System.out.println("colonnes: " + colonnes);
+    }
+
+    private Boolean verifierNouvelleMatrice(String nouvelleMatrice, int voies) {
+
+        System.out.println("Matrice à programmer: " + nouvelleMatrice);
+        try {
+            String[] tab = nouvelleMatrice.split("x");
+            lignes = Integer.parseInt(tab[0]);
+            colonnes = Integer.parseInt(tab[1]);
+            System.out.println("Lignes: " + lignes);
+            System.out.println("colonnes: " + colonnes);
+        } catch (Exception e) {
+
+            montrerError("Format matrice non conforme!", "Erreur saisie");
+            return false;
+        }
+        if (lignes * colonnes != voies) {
+
+            montrerError("Matrice non conforme au nombre de voies!", "Erreur saisie");
+            return false;
+
+        } else {
+            return true;
+        }
+
+    }
+
+    private void enregistrerNouvelleCarte(String localisationNouveauBinaire, String nomNouveauBinaire, String nombreDeVoiesNouvelleCarte, String nouveauDevice, String matriceNouveauPanneau) {
 
         comboListeProduits.addItem(nomNouveauBinaire);
         ListeBinairesEnregistres.add(localisationNouveauBinaire);
         listesProduits.add(nomNouveauBinaire);
         listesVoies.add(nombreDeVoiesNouvelleCarte);
         listeDevicesEnregistres.add(nouveauDevice);
+        listesMatrices.add(matriceNouveauPanneau);
 
         nomNouvelleCarte.setText("");
         messageBinaireSelectionne.setText("");
         nouveauMicroController.setText("");
         nombreVoiesNouvelleCarte.setText("");
+        nouvelleMatrice.setText("");
 
         initialisation.setBinaryLocations(initialisation.getBinaryLocations() + ";" + localisationNouveauBinaire);
         initialisation.setProductNames(initialisation.getProductNames() + ";" + nomNouveauBinaire);
         initialisation.setNombreVoies(initialisation.getNombreVoies() + ";" + nombreDeVoiesNouvelleCarte);
         initialisation.setDevice(initialisation.getDevice() + ";" + nouveauDevice);
+        initialisation.setMatrice(initialisation.getMatrice() + ";" + matriceNouveauPanneau);
 
         initializer.update("binaryLocations", initialisation.getBinaryLocations());
         initializer.update("productNames", initialisation.getProductNames());
         initializer.update("voies", initialisation.getNombreVoies());
         initializer.update("device", initialisation.getDevice());
+        initializer.update("matrice", initialisation.getMatrice());
 
-        /*
-        localisationNouveauBinaire = null;
-        nomNouveauBinaire = null;
-        nombreDeVoiesNouvelleCarte = null;
-        nouveauDevice = null;
-         */
     }
 
     private ArrayList<String> extraireDevices(String devices) {

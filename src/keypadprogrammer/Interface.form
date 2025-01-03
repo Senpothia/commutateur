@@ -60,54 +60,43 @@
                               <Component id="nouvelleMatrice" max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="messageCreation" alignment="0" max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="nombreVoies" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="progLocLabel" alignment="0" max="32767" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="EnvVarBox" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="titreLabProg" min="-2" pref="266" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace pref="856" max="32767" attributes="0"/>
-                                                      <Component id="btnFermerParams" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="btnAjouter" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="LabfichierBinaire" alignment="0" min="-2" pref="266" max="-2" attributes="0"/>
-                                                  <Component id="hexLocalisation" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="messageCreation" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="nombreVoies" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="progLocLabel" alignment="0" max="32767" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="482" max="-2" attributes="0"/>
-                                                  <Component id="titreParamsWin" min="-2" pref="322" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="EnvVarBox" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="titreLabProg" min="-2" pref="266" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace pref="856" max="32767" attributes="0"/>
+                                                  <Component id="btnFermerParams" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <Component id="listeProduits" alignment="0" min="-2" pref="266" max="-2" attributes="0"/>
-                                              <Component id="LabNombreVoies" alignment="0" min="-2" pref="266" max="-2" attributes="0"/>
-                                              <Component id="LabelNbreDeVoiesNouvelleCarte" alignment="0" min="-2" pref="315" max="-2" attributes="0"/>
-                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="nombreVoiesNouvelleCarte" alignment="0" pref="1247" max="32767" attributes="0"/>
-                                                  <Component id="nouveauMicroController" alignment="1" max="32767" attributes="0"/>
-                                              </Group>
-                                              <Component id="labelAjoutCarte" alignment="0" min="-2" pref="315" max="-2" attributes="0"/>
+                                              <Component id="btnAjouter" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="LabfichierBinaire" alignment="0" min="-2" pref="266" max="-2" attributes="0"/>
+                                              <Component id="hexLocalisation" alignment="0" max="32767" attributes="0"/>
                                           </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="482" max="-2" attributes="0"/>
+                                              <Component id="titreParamsWin" min="-2" pref="322" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="listeProduits" alignment="0" min="-2" pref="266" max="-2" attributes="0"/>
+                                          <Component id="LabNombreVoies" alignment="0" min="-2" pref="266" max="-2" attributes="0"/>
+                                          <Component id="LabelNbreDeVoiesNouvelleCarte" alignment="0" min="-2" pref="315" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="nombreVoiesNouvelleCarte" alignment="0" pref="1247" max="32767" attributes="0"/>
+                                              <Component id="nouveauMicroController" alignment="1" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Component id="labelAjoutCarte" alignment="0" min="-2" pref="315" max="-2" attributes="0"/>
                                       </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="comboListeProduits" min="-2" pref="274" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="LabelmicroController" min="-2" pref="315" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="nomNouvelleCarte" max="32767" attributes="0"/>
+                                      <Component id="comboListeProduits" alignment="0" min="-2" pref="274" max="-2" attributes="0"/>
+                                      <Component id="LabelmicroController" alignment="0" min="-2" pref="315" max="-2" attributes="0"/>
+                                      <Component id="nomNouvelleCarte" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
