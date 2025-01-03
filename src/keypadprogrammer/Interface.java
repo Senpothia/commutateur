@@ -104,10 +104,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         this.getContentPane().setBackground(new Color(50, 131, 168));
 
-        voyant.setBackground(new Color(204, 136, 53));
-        voyant.setForeground(Color.GRAY);
-        voyant.setOpaque(true);
-
         console.setBackground(new Color(247, 242, 208));
         console.setOpaque(true);
         console.setForeground(Color.red);
@@ -189,6 +185,162 @@ public class Interface extends javax.swing.JFrame implements Observer {
         progBarre.setOpaque(true);
         progBarre.setVisible(true);
 
+        pcbL01C01.setVisible(false);
+        pcbL01C02.setVisible(false);
+        pcbL01C03.setVisible(false);
+        pcbL01C04.setVisible(false);
+        pcbL01C05.setVisible(false);
+        pcbL01C06.setVisible(false);
+        pcbL01C07.setVisible(false);
+        pcbL01C08.setVisible(false);
+        pcbL01C09.setVisible(false);
+        pcbL01C10.setVisible(false);
+        pcbL01C11.setVisible(false);
+        pcbL01C12.setVisible(false);
+
+        pcbL02C01.setVisible(false);
+        pcbL02C02.setVisible(false);
+        pcbL02C03.setVisible(false);
+        pcbL02C04.setVisible(false);
+        pcbL02C05.setVisible(false);
+        pcbL02C06.setVisible(false);
+        pcbL02C07.setVisible(false);
+        pcbL02C08.setVisible(false);
+        pcbL02C09.setVisible(false);
+        pcbL02C10.setVisible(false);
+        pcbL02C11.setVisible(false);
+        pcbL02C12.setVisible(false);
+
+        pcbL03C01.setVisible(false);
+        pcbL03C02.setVisible(false);
+        pcbL03C03.setVisible(false);
+        pcbL03C04.setVisible(false);
+        pcbL03C05.setVisible(false);
+        pcbL03C06.setVisible(false);
+        pcbL03C07.setVisible(false);
+        pcbL03C08.setVisible(false);
+        pcbL03C09.setVisible(false);
+        pcbL03C10.setVisible(false);
+        pcbL03C11.setVisible(false);
+        pcbL03C12.setVisible(false);
+
+        pcbL04C01.setVisible(false);
+        pcbL04C02.setVisible(false);
+        pcbL04C03.setVisible(false);
+        pcbL04C04.setVisible(false);
+        pcbL04C05.setVisible(false);
+        pcbL04C06.setVisible(false);
+        pcbL04C07.setVisible(false);
+        pcbL04C08.setVisible(false);
+        pcbL04C09.setVisible(false);
+        pcbL04C10.setVisible(false);
+        pcbL04C11.setVisible(false);
+        pcbL04C12.setVisible(false);
+
+        pcbL05C01.setVisible(false);
+        pcbL05C02.setVisible(false);
+        pcbL05C03.setVisible(false);
+        pcbL05C04.setVisible(false);
+        pcbL05C05.setVisible(false);
+        pcbL05C06.setVisible(false);
+        pcbL05C07.setVisible(false);
+        pcbL05C08.setVisible(false);
+        pcbL05C09.setVisible(false);
+        pcbL05C10.setVisible(false);
+        pcbL05C11.setVisible(false);
+        pcbL05C12.setVisible(false);
+
+        pcbL06C01.setVisible(false);
+        pcbL06C02.setVisible(false);
+        pcbL06C03.setVisible(false);
+        pcbL06C04.setVisible(false);
+        pcbL06C05.setVisible(false);
+        pcbL06C06.setVisible(false);
+        pcbL06C07.setVisible(false);
+        pcbL06C08.setVisible(false);
+        pcbL06C09.setVisible(false);
+        pcbL06C10.setVisible(false);
+        pcbL06C11.setVisible(false);
+        pcbL06C12.setVisible(false);
+
+        pcbL07C01.setVisible(false);
+        pcbL07C02.setVisible(false);
+        pcbL07C03.setVisible(false);
+        pcbL07C04.setVisible(false);
+        pcbL07C05.setVisible(false);
+        pcbL07C06.setVisible(false);
+        pcbL07C07.setVisible(false);
+        pcbL07C08.setVisible(false);
+        pcbL07C09.setVisible(false);
+        pcbL07C10.setVisible(false);
+        pcbL07C11.setVisible(false);
+        pcbL07C12.setVisible(false);
+
+        pcbL08C01.setVisible(false);
+        pcbL08C02.setVisible(false);
+        pcbL08C03.setVisible(false);
+        pcbL08C04.setVisible(false);
+        pcbL08C05.setVisible(false);
+        pcbL08C06.setVisible(false);
+        pcbL08C07.setVisible(false);
+        pcbL08C08.setVisible(false);
+        pcbL08C09.setVisible(false);
+        pcbL08C10.setVisible(false);
+        pcbL08C11.setVisible(false);
+        pcbL08C12.setVisible(false);
+
+        pcbL09C01.setVisible(false);
+        pcbL09C02.setVisible(false);
+        pcbL09C03.setVisible(false);
+        pcbL09C04.setVisible(false);
+        pcbL09C05.setVisible(false);
+        pcbL09C06.setVisible(false);
+        pcbL09C07.setVisible(false);
+        pcbL09C08.setVisible(false);
+        pcbL09C09.setVisible(false);
+        pcbL09C10.setVisible(false);
+        pcbL09C11.setVisible(false);
+        pcbL09C12.setVisible(false);
+
+        pcbL10C01.setVisible(false);
+        pcbL10C02.setVisible(false);
+        pcbL10C03.setVisible(false);
+        pcbL10C04.setVisible(false);
+        pcbL10C05.setVisible(false);
+        pcbL10C06.setVisible(false);
+        pcbL10C07.setVisible(false);
+        pcbL10C08.setVisible(false);
+        pcbL10C09.setVisible(false);
+        pcbL10C10.setVisible(false);
+        pcbL10C11.setVisible(false);
+        pcbL10C12.setVisible(false);
+
+        pcbL11C01.setVisible(false);
+        pcbL11C02.setVisible(false);
+        pcbL11C03.setVisible(false);
+        pcbL11C04.setVisible(false);
+        pcbL11C05.setVisible(false);
+        pcbL11C06.setVisible(false);
+        pcbL11C07.setVisible(false);
+        pcbL11C08.setVisible(false);
+        pcbL11C09.setVisible(false);
+        pcbL11C10.setVisible(false);
+        pcbL11C11.setVisible(false);
+        pcbL11C12.setVisible(false);
+
+        pcbL12C01.setVisible(false);
+        pcbL12C02.setVisible(false);
+        pcbL12C03.setVisible(false);
+        pcbL12C04.setVisible(false);
+        pcbL12C05.setVisible(false);
+        pcbL12C06.setVisible(false);
+        pcbL12C07.setVisible(false);
+        pcbL12C08.setVisible(false);
+        pcbL12C09.setVisible(false);
+        pcbL12C10.setVisible(false);
+        pcbL12C11.setVisible(false);
+        pcbL12C12.setVisible(false);
+
         testParamsProg();
 
     }
@@ -248,7 +400,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
         titre = new javax.swing.JLabel();
         btnProg = new javax.swing.JButton();
         btnEffacer = new javax.swing.JButton();
-        voyant = new javax.swing.JLabel();
         statutRs232 = new javax.swing.JLabel();
         console = new javax.swing.JLabel();
         version = new javax.swing.JLabel();
@@ -259,6 +410,150 @@ public class Interface extends javax.swing.JFrame implements Observer {
         btnACQ = new javax.swing.JButton();
         nomProduit = new javax.swing.JLabel();
         emplacementBinaire = new javax.swing.JLabel();
+        pcbL01C01 = new javax.swing.JLabel();
+        pcbL01C02 = new javax.swing.JLabel();
+        pcbL01C03 = new javax.swing.JLabel();
+        pcbL01C04 = new javax.swing.JLabel();
+        pcbL01C05 = new javax.swing.JLabel();
+        pcbL01C06 = new javax.swing.JLabel();
+        pcbL01C07 = new javax.swing.JLabel();
+        pcbL01C08 = new javax.swing.JLabel();
+        pcbL01C09 = new javax.swing.JLabel();
+        pcbL01C10 = new javax.swing.JLabel();
+        pcbL01C11 = new javax.swing.JLabel();
+        pcbL01C12 = new javax.swing.JLabel();
+        pcbL02C10 = new javax.swing.JLabel();
+        pcbL02C11 = new javax.swing.JLabel();
+        pcbL02C12 = new javax.swing.JLabel();
+        pcbL02C01 = new javax.swing.JLabel();
+        pcbL02C02 = new javax.swing.JLabel();
+        pcbL02C03 = new javax.swing.JLabel();
+        pcbL02C04 = new javax.swing.JLabel();
+        pcbL02C05 = new javax.swing.JLabel();
+        pcbL02C06 = new javax.swing.JLabel();
+        pcbL02C07 = new javax.swing.JLabel();
+        pcbL02C08 = new javax.swing.JLabel();
+        pcbL02C09 = new javax.swing.JLabel();
+        pcbL03C10 = new javax.swing.JLabel();
+        pcbL03C11 = new javax.swing.JLabel();
+        pcbL03C12 = new javax.swing.JLabel();
+        pcbL03C01 = new javax.swing.JLabel();
+        pcbL03C02 = new javax.swing.JLabel();
+        pcbL03C03 = new javax.swing.JLabel();
+        pcbL03C04 = new javax.swing.JLabel();
+        pcbL03C05 = new javax.swing.JLabel();
+        pcbL03C06 = new javax.swing.JLabel();
+        pcbL03C07 = new javax.swing.JLabel();
+        pcbL03C08 = new javax.swing.JLabel();
+        pcbL03C09 = new javax.swing.JLabel();
+        pcbL04C10 = new javax.swing.JLabel();
+        pcbL04C11 = new javax.swing.JLabel();
+        pcbL04C12 = new javax.swing.JLabel();
+        pcbL04C01 = new javax.swing.JLabel();
+        pcbL04C02 = new javax.swing.JLabel();
+        pcbL04C03 = new javax.swing.JLabel();
+        pcbL04C04 = new javax.swing.JLabel();
+        pcbL04C05 = new javax.swing.JLabel();
+        pcbL04C06 = new javax.swing.JLabel();
+        pcbL04C07 = new javax.swing.JLabel();
+        pcbL04C08 = new javax.swing.JLabel();
+        pcbL04C09 = new javax.swing.JLabel();
+        pcbL05C10 = new javax.swing.JLabel();
+        pcbL05C11 = new javax.swing.JLabel();
+        pcbL05C12 = new javax.swing.JLabel();
+        pcbL06C10 = new javax.swing.JLabel();
+        pcbL06C11 = new javax.swing.JLabel();
+        pcbL06C12 = new javax.swing.JLabel();
+        pcbL06C01 = new javax.swing.JLabel();
+        pcbL06C02 = new javax.swing.JLabel();
+        pcbL06C03 = new javax.swing.JLabel();
+        pcbL06C04 = new javax.swing.JLabel();
+        pcbL05C01 = new javax.swing.JLabel();
+        pcbL05C02 = new javax.swing.JLabel();
+        pcbL05C03 = new javax.swing.JLabel();
+        pcbL05C04 = new javax.swing.JLabel();
+        pcbL05C05 = new javax.swing.JLabel();
+        pcbL05C06 = new javax.swing.JLabel();
+        pcbL05C07 = new javax.swing.JLabel();
+        pcbL06C05 = new javax.swing.JLabel();
+        pcbL06C06 = new javax.swing.JLabel();
+        pcbL06C07 = new javax.swing.JLabel();
+        pcbL06C08 = new javax.swing.JLabel();
+        pcbL06C09 = new javax.swing.JLabel();
+        pcbL07C10 = new javax.swing.JLabel();
+        pcbL07C11 = new javax.swing.JLabel();
+        pcbL07C12 = new javax.swing.JLabel();
+        pcbL07C01 = new javax.swing.JLabel();
+        pcbL07C02 = new javax.swing.JLabel();
+        pcbL07C03 = new javax.swing.JLabel();
+        pcbL07C04 = new javax.swing.JLabel();
+        pcbL07C05 = new javax.swing.JLabel();
+        pcbL07C06 = new javax.swing.JLabel();
+        pcbL07C07 = new javax.swing.JLabel();
+        pcbL07C08 = new javax.swing.JLabel();
+        pcbL07C09 = new javax.swing.JLabel();
+        pcbL08C10 = new javax.swing.JLabel();
+        pcbL08C11 = new javax.swing.JLabel();
+        pcbL08C12 = new javax.swing.JLabel();
+        pcbL08C01 = new javax.swing.JLabel();
+        pcbL08C02 = new javax.swing.JLabel();
+        pcbL08C03 = new javax.swing.JLabel();
+        pcbL08C04 = new javax.swing.JLabel();
+        pcbL05C08 = new javax.swing.JLabel();
+        pcbL08C05 = new javax.swing.JLabel();
+        pcbL08C06 = new javax.swing.JLabel();
+        pcbL08C07 = new javax.swing.JLabel();
+        pcbL08C08 = new javax.swing.JLabel();
+        pcbL08C09 = new javax.swing.JLabel();
+        pcbL05C09 = new javax.swing.JLabel();
+        pcbL09C10 = new javax.swing.JLabel();
+        pcbL09C11 = new javax.swing.JLabel();
+        pcbL09C12 = new javax.swing.JLabel();
+        pcbL10C10 = new javax.swing.JLabel();
+        pcbL10C11 = new javax.swing.JLabel();
+        pcbL10C12 = new javax.swing.JLabel();
+        pcbL10C01 = new javax.swing.JLabel();
+        pcbL10C02 = new javax.swing.JLabel();
+        pcbL10C03 = new javax.swing.JLabel();
+        pcbL10C04 = new javax.swing.JLabel();
+        pcbL09C01 = new javax.swing.JLabel();
+        pcbL09C02 = new javax.swing.JLabel();
+        pcbL09C03 = new javax.swing.JLabel();
+        pcbL09C04 = new javax.swing.JLabel();
+        pcbL09C05 = new javax.swing.JLabel();
+        pcbL09C06 = new javax.swing.JLabel();
+        pcbL09C07 = new javax.swing.JLabel();
+        pcbL10C05 = new javax.swing.JLabel();
+        pcbL10C06 = new javax.swing.JLabel();
+        pcbL10C07 = new javax.swing.JLabel();
+        pcbL10C08 = new javax.swing.JLabel();
+        pcbL10C09 = new javax.swing.JLabel();
+        pcbL11C10 = new javax.swing.JLabel();
+        pcbL11C11 = new javax.swing.JLabel();
+        pcbL11C12 = new javax.swing.JLabel();
+        pcbL11C01 = new javax.swing.JLabel();
+        pcbL11C02 = new javax.swing.JLabel();
+        pcbL11C03 = new javax.swing.JLabel();
+        pcbL11C04 = new javax.swing.JLabel();
+        pcbL11C05 = new javax.swing.JLabel();
+        pcbL11C06 = new javax.swing.JLabel();
+        pcbL11C07 = new javax.swing.JLabel();
+        pcbL11C08 = new javax.swing.JLabel();
+        pcbL11C09 = new javax.swing.JLabel();
+        pcbL12C10 = new javax.swing.JLabel();
+        pcbL12C11 = new javax.swing.JLabel();
+        pcbL12C12 = new javax.swing.JLabel();
+        pcbL12C01 = new javax.swing.JLabel();
+        pcbL12C02 = new javax.swing.JLabel();
+        pcbL12C03 = new javax.swing.JLabel();
+        pcbL12C04 = new javax.swing.JLabel();
+        pcbL09C08 = new javax.swing.JLabel();
+        pcbL12C05 = new javax.swing.JLabel();
+        pcbL12C06 = new javax.swing.JLabel();
+        pcbL12C07 = new javax.swing.JLabel();
+        pcbL12C08 = new javax.swing.JLabel();
+        pcbL12C09 = new javax.swing.JLabel();
+        pcbL09C09 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuParametres = new javax.swing.JMenu();
         menuVoir = new javax.swing.JMenuItem();
@@ -312,7 +607,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
         });
 
         paramsWin.setTitle("Programmateur keypad - Paramètres système");
-        paramsWin.setPreferredSize(new java.awt.Dimension(1300, 900));
 
         titreParamsWin.setBackground(new java.awt.Color(153, 153, 255));
         titreParamsWin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -640,6 +934,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Programmateur keypad");
+        setPreferredSize(new java.awt.Dimension(1135, 1800));
 
         titre.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         titre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -668,8 +963,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 btnEffacerActionPerformed(evt);
             }
         });
-
-        voyant.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         statutRs232.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         statutRs232.setText("rs-232");
@@ -719,6 +1012,294 @@ public class Interface extends javax.swing.JFrame implements Observer {
         emplacementBinaire.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         emplacementBinaire.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         emplacementBinaire.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        pcbL01C01.setText("jLabel6");
+
+        pcbL01C02.setText("jLabel6");
+
+        pcbL01C03.setText("jLabel6");
+
+        pcbL01C04.setText("jLabel6");
+
+        pcbL01C05.setText("jLabel6");
+
+        pcbL01C06.setText("jLabel6");
+
+        pcbL01C07.setText("jLabel6");
+
+        pcbL01C08.setText("jLabel6");
+
+        pcbL01C09.setText("jLabel6");
+
+        pcbL01C10.setText("jLabel6");
+
+        pcbL01C11.setText("jLabel6");
+
+        pcbL01C12.setText("jLabel6");
+
+        pcbL02C10.setText("jLabel6");
+
+        pcbL02C11.setText("jLabel6");
+
+        pcbL02C12.setText("jLabel6");
+
+        pcbL02C01.setText("jLabel6");
+
+        pcbL02C02.setText("jLabel6");
+
+        pcbL02C03.setText("jLabel6");
+
+        pcbL02C04.setText("jLabel6");
+
+        pcbL02C05.setText("jLabel6");
+
+        pcbL02C06.setText("jLabel6");
+
+        pcbL02C07.setText("jLabel6");
+
+        pcbL02C08.setText("jLabel6");
+
+        pcbL02C09.setText("jLabel6");
+
+        pcbL03C10.setText("jLabel6");
+
+        pcbL03C11.setText("jLabel6");
+
+        pcbL03C12.setText("jLabel6");
+
+        pcbL03C01.setText("jLabel6");
+
+        pcbL03C02.setText("jLabel6");
+
+        pcbL03C03.setText("jLabel6");
+
+        pcbL03C04.setText("jLabel6");
+
+        pcbL03C05.setText("jLabel6");
+
+        pcbL03C06.setText("jLabel6");
+
+        pcbL03C07.setText("jLabel6");
+
+        pcbL03C08.setText("jLabel6");
+
+        pcbL03C09.setText("jLabel6");
+
+        pcbL04C10.setText("jLabel6");
+
+        pcbL04C11.setText("jLabel6");
+
+        pcbL04C12.setText("jLabel6");
+
+        pcbL04C01.setText("jLabel6");
+
+        pcbL04C02.setText("jLabel6");
+
+        pcbL04C03.setText("jLabel6");
+
+        pcbL04C04.setText("jLabel6");
+
+        pcbL04C05.setText("jLabel6");
+
+        pcbL04C06.setText("jLabel6");
+
+        pcbL04C07.setText("jLabel6");
+
+        pcbL04C08.setText("jLabel6");
+
+        pcbL04C09.setText("jLabel6");
+
+        pcbL05C10.setText("jLabel6");
+
+        pcbL05C11.setText("jLabel6");
+
+        pcbL05C12.setText("jLabel6");
+
+        pcbL06C10.setText("jLabel6");
+
+        pcbL06C11.setText("jLabel6");
+
+        pcbL06C12.setText("jLabel6");
+
+        pcbL06C01.setText("jLabel6");
+
+        pcbL06C02.setText("jLabel6");
+
+        pcbL06C03.setText("jLabel6");
+
+        pcbL06C04.setText("jLabel6");
+
+        pcbL05C01.setText("jLabel6");
+
+        pcbL05C02.setText("jLabel6");
+
+        pcbL05C03.setText("jLabel6");
+
+        pcbL05C04.setText("jLabel6");
+
+        pcbL05C05.setText("jLabel6");
+
+        pcbL05C06.setText("jLabel6");
+
+        pcbL05C07.setText("jLabel6");
+
+        pcbL06C05.setText("jLabel6");
+
+        pcbL06C06.setText("jLabel6");
+
+        pcbL06C07.setText("jLabel6");
+
+        pcbL06C08.setText("jLabel6");
+
+        pcbL06C09.setText("jLabel6");
+
+        pcbL07C10.setText("jLabel6");
+
+        pcbL07C11.setText("jLabel6");
+
+        pcbL07C12.setText("jLabel6");
+
+        pcbL07C01.setText("jLabel6");
+
+        pcbL07C02.setText("jLabel6");
+
+        pcbL07C03.setText("jLabel6");
+
+        pcbL07C04.setText("jLabel6");
+
+        pcbL07C05.setText("jLabel6");
+
+        pcbL07C06.setText("jLabel6");
+
+        pcbL07C07.setText("jLabel6");
+
+        pcbL07C08.setText("jLabel6");
+
+        pcbL07C09.setText("jLabel6");
+
+        pcbL08C10.setText("jLabel6");
+
+        pcbL08C11.setText("jLabel6");
+
+        pcbL08C12.setText("jLabel6");
+
+        pcbL08C01.setText("jLabel6");
+
+        pcbL08C02.setText("jLabel6");
+
+        pcbL08C03.setText("jLabel6");
+
+        pcbL08C04.setText("jLabel6");
+
+        pcbL05C08.setText("jLabel6");
+
+        pcbL08C05.setText("jLabel6");
+
+        pcbL08C06.setText("jLabel6");
+
+        pcbL08C07.setText("jLabel6");
+
+        pcbL08C08.setText("jLabel6");
+
+        pcbL08C09.setText("jLabel6");
+
+        pcbL05C09.setText("jLabel6");
+
+        pcbL09C10.setText("jLabel6");
+
+        pcbL09C11.setText("jLabel6");
+
+        pcbL09C12.setText("jLabel6");
+
+        pcbL10C10.setText("jLabel6");
+
+        pcbL10C11.setText("jLabel6");
+
+        pcbL10C12.setText("jLabel6");
+
+        pcbL10C01.setText("jLabel6");
+
+        pcbL10C02.setText("jLabel6");
+
+        pcbL10C03.setText("jLabel6");
+
+        pcbL10C04.setText("jLabel6");
+
+        pcbL09C01.setText("jLabel6");
+
+        pcbL09C02.setText("jLabel6");
+
+        pcbL09C03.setText("jLabel6");
+
+        pcbL09C04.setText("jLabel6");
+
+        pcbL09C05.setText("jLabel6");
+
+        pcbL09C06.setText("jLabel6");
+
+        pcbL09C07.setText("jLabel6");
+
+        pcbL10C05.setText("jLabel6");
+
+        pcbL10C06.setText("jLabel6");
+
+        pcbL10C07.setText("jLabel6");
+
+        pcbL10C08.setText("jLabel6");
+
+        pcbL10C09.setText("jLabel6");
+
+        pcbL11C10.setText("jLabel6");
+
+        pcbL11C11.setText("jLabel6");
+
+        pcbL11C12.setText("jLabel6");
+
+        pcbL11C01.setText("jLabel6");
+
+        pcbL11C02.setText("jLabel6");
+
+        pcbL11C03.setText("jLabel6");
+
+        pcbL11C04.setText("jLabel6");
+
+        pcbL11C05.setText("jLabel6");
+
+        pcbL11C06.setText("jLabel6");
+
+        pcbL11C07.setText("jLabel6");
+
+        pcbL11C08.setText("jLabel6");
+
+        pcbL11C09.setText("jLabel6");
+
+        pcbL12C10.setText("jLabel6");
+
+        pcbL12C11.setText("jLabel6");
+
+        pcbL12C12.setText("jLabel6");
+
+        pcbL12C01.setText("jLabel6");
+
+        pcbL12C02.setText("jLabel6");
+
+        pcbL12C03.setText("jLabel6");
+
+        pcbL12C04.setText("jLabel6");
+
+        pcbL09C08.setText("jLabel6");
+
+        pcbL12C05.setText("jLabel6");
+
+        pcbL12C06.setText("jLabel6");
+
+        pcbL12C07.setText("jLabel6");
+
+        pcbL12C08.setText("jLabel6");
+
+        pcbL12C09.setText("jLabel6");
+
+        pcbL09C09.setText("jLabel6");
 
         menuParametres.setText("Paramètres");
         menuParametres.addActionListener(new java.awt.event.ActionListener() {
@@ -892,77 +1473,545 @@ public class Interface extends javax.swing.JFrame implements Observer {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nomProduit, javax.swing.GroupLayout.DEFAULT_SIZE, 893, Short.MAX_VALUE)
+                    .addComponent(emplacementBinaire, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 148, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(280, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(263, 263, 263)
+                        .addComponent(btnEffacer, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(89, 89, 89)
+                        .addComponent(btnProg, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(88, 88, 88)
+                        .addComponent(btnACQ, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(version)
+                        .addGap(16, 16, 16))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(statutPGRM, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(titre, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(233, 233, 233)
+                                .addGap(232, 232, 232)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(StatutRS232Lab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(statutRs232, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(statutPRGLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(36, 36, 36))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(version)
-                        .addGap(26, 26, 26))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(nomProduit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(emplacementBinaire, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(progBarre, javax.swing.GroupLayout.DEFAULT_SIZE, 893, Short.MAX_VALUE)
-                    .addComponent(console, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 142, Short.MAX_VALUE))
+                                    .addComponent(statutPRGLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(36, 36, 36))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(237, 237, 237)
-                        .addComponent(btnEffacer, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(108, 108, 108)
-                        .addComponent(btnProg, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(104, 104, 104)
-                        .addComponent(btnACQ, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(progBarre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(console, javax.swing.GroupLayout.PREFERRED_SIZE, 893, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(467, 467, 467)
-                        .addComponent(voyant, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(232, 232, 232)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(pcbL12C01)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL12C02)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(pcbL12C03)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL12C04)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL12C05)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL12C06)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(pcbL12C07)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL12C08)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL12C09)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL12C10)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(pcbL12C11)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL12C12))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(pcbL09C01)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL09C02)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(pcbL09C03)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL09C04)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL09C05)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL09C06)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(pcbL09C07)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL09C08)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL09C09)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL09C10)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(pcbL09C11)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL09C12))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(pcbL11C01)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL11C02)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pcbL11C03)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL11C04)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL11C05)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL11C06)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pcbL11C07)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL11C08)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL11C09)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL11C10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pcbL11C11)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL11C12))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(pcbL10C01)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL10C02)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL10C03)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(pcbL10C04)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL10C05)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL10C06)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pcbL10C07)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL10C08)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL10C09)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL10C10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pcbL10C11)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL10C12))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(pcbL01C01)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL01C02)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(pcbL01C03)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL01C04)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL01C05)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL01C06)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(pcbL01C07)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL01C08)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL01C09)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL01C10)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(pcbL01C11)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(pcbL01C12))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(pcbL03C01)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL03C02)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pcbL03C03)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL03C04)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL03C05)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL03C06)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pcbL03C07)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL03C08)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL03C09)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL03C10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pcbL03C11)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL03C12))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(pcbL02C01)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL02C02)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pcbL02C03)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL02C04)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL02C05)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL02C06)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pcbL02C07)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL02C08)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL02C09)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL02C10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pcbL02C11)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL02C12)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(pcbL08C01)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(pcbL08C02)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(pcbL08C03)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(pcbL08C04)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(pcbL08C05)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(pcbL08C06)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(pcbL08C07)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(pcbL08C08)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(pcbL08C09)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(pcbL08C10)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(pcbL08C11)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(pcbL08C12))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(pcbL05C01)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(pcbL05C02)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(pcbL05C03)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(pcbL05C04)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(pcbL05C05)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(pcbL05C06)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(pcbL05C07)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(pcbL05C08)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(pcbL05C09)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(pcbL05C10)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(pcbL05C11)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(pcbL05C12))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(pcbL07C01)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(pcbL07C02)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(pcbL07C03)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(pcbL07C04)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(pcbL07C05)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(pcbL07C06)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(pcbL07C07)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(pcbL07C08)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(pcbL07C09)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(pcbL07C10)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(pcbL07C11)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(pcbL07C12))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(pcbL06C01)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(pcbL06C02)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(pcbL06C03)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(pcbL06C04)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(pcbL06C05)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(pcbL06C06)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(pcbL06C07)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(pcbL06C08)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(pcbL06C09)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(pcbL06C10)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(pcbL06C11)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(pcbL06C12))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(pcbL04C01)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL04C02)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pcbL04C03)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL04C04)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL04C05)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL04C06)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pcbL04C07)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL04C08)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL04C09)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL04C10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pcbL04C11)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(pcbL04C12)))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
                         .addComponent(StatutRS232Lab)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(statutRs232, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(statutPRGLabel))
-                    .addComponent(titre, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(statutRs232, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(titre, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(statutPGRM, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(nomProduit, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(statutPRGLabel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(statutPGRM, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(nomProduit, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(emplacementBinaire, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(voyant, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pcbL01C01, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL01C02, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL01C03, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL01C04, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL01C05, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL01C06, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL01C07, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL01C08, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL01C09, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL01C10, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL01C11, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL01C12, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pcbL02C01, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL02C02, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL02C03, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL02C04, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL02C05, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL02C06, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL02C07, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL02C08, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL02C09, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL02C10, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL02C11, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL02C12, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pcbL03C01, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL03C02, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL03C03, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL03C04, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL03C05, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL03C06, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL03C07, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL03C08, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL03C09, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL03C10, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL03C11, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL03C12, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pcbL04C01, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL04C02, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL04C03, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL04C04, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL04C05, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL04C06, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL04C07, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL04C08, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL04C09, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL04C10, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL04C11, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL04C12, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pcbL05C01, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL05C02, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL05C03, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL05C04, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL05C05, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL05C06, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL05C07, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL05C08, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL05C09, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL05C10, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL05C11, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL05C12, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pcbL06C01, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL06C02, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL06C03, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL06C04, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL06C05, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL06C06, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL06C07, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL06C08, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL06C09, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL06C10, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL06C11, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL06C12, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pcbL07C01, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL07C02, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL07C03, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL07C04, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL07C05, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL07C06, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL07C07, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL07C08, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL07C09, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL07C10, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL07C11, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL07C12, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pcbL08C01, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL08C02, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL08C03, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL08C04, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL08C05, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL08C06, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL08C07, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL08C08, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL08C09, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL08C10, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL08C11, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL08C12, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pcbL09C01, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL09C02, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL09C03, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL09C04, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL09C05, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL09C06, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL09C07, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL09C08, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL09C09, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL09C10, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL09C11, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL09C12, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pcbL10C01, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL10C02, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL10C03, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL10C04, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL10C05, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL10C06, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL10C07, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL10C08, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL10C09, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL10C10, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL10C11, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL10C12, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pcbL11C01, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL11C02, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL11C03, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL11C04, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL11C05, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL11C06, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL11C07, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL11C08, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL11C09, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL11C10, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL11C11, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL11C12, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pcbL12C01, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL12C02, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL12C03, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL12C04, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL12C05, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL12C06, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL12C07, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL12C08, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL12C09, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL12C10, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL12C11, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcbL12C12, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(progBarre, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addComponent(console, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEffacer, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnProg, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnACQ, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addComponent(version)
-                .addContainerGap())
+                    .addComponent(btnACQ, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(version, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -986,7 +2035,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
         console.setText("Programmation en cours");
         programmationActive = true;
         progBarre.setVisible(true);
-        voyant.setBackground(Color.YELLOW);
 
         Thread t = new Thread() {
             public void run() {
@@ -1002,7 +2050,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                             console.setText("Programmation terminée");
 
                             break;
-                        
+
                         /*
                         case -1:
 
@@ -1013,7 +2061,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
                             console.setText("Cible non trouvée!");
                             break;
-                        */
+                         */
                     }
 
                 } catch (IOException ex) {
@@ -1224,7 +2272,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         testActif = false;
         console.setText("RESULTAT ACQUITTE - PRET POUR NOUVEAU TEST!");
         testParamsProg();
-        voyantTestEnCours(false);
+
         progBarre.setValue(0);
         progBarre.setString("En attente lancement de programmation");
         progBarre.setStringPainted(true);
@@ -1526,6 +2574,150 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JRadioButtonMenuItem parityEven;
     private javax.swing.JRadioButtonMenuItem parityNone;
     private javax.swing.JRadioButtonMenuItem parityOdd;
+    private javax.swing.JLabel pcbL01C01;
+    private javax.swing.JLabel pcbL01C02;
+    private javax.swing.JLabel pcbL01C03;
+    private javax.swing.JLabel pcbL01C04;
+    private javax.swing.JLabel pcbL01C05;
+    private javax.swing.JLabel pcbL01C06;
+    private javax.swing.JLabel pcbL01C07;
+    private javax.swing.JLabel pcbL01C08;
+    private javax.swing.JLabel pcbL01C09;
+    private javax.swing.JLabel pcbL01C10;
+    private javax.swing.JLabel pcbL01C11;
+    private javax.swing.JLabel pcbL01C12;
+    private javax.swing.JLabel pcbL02C01;
+    private javax.swing.JLabel pcbL02C02;
+    private javax.swing.JLabel pcbL02C03;
+    private javax.swing.JLabel pcbL02C04;
+    private javax.swing.JLabel pcbL02C05;
+    private javax.swing.JLabel pcbL02C06;
+    private javax.swing.JLabel pcbL02C07;
+    private javax.swing.JLabel pcbL02C08;
+    private javax.swing.JLabel pcbL02C09;
+    private javax.swing.JLabel pcbL02C10;
+    private javax.swing.JLabel pcbL02C11;
+    private javax.swing.JLabel pcbL02C12;
+    private javax.swing.JLabel pcbL03C01;
+    private javax.swing.JLabel pcbL03C02;
+    private javax.swing.JLabel pcbL03C03;
+    private javax.swing.JLabel pcbL03C04;
+    private javax.swing.JLabel pcbL03C05;
+    private javax.swing.JLabel pcbL03C06;
+    private javax.swing.JLabel pcbL03C07;
+    private javax.swing.JLabel pcbL03C08;
+    private javax.swing.JLabel pcbL03C09;
+    private javax.swing.JLabel pcbL03C10;
+    private javax.swing.JLabel pcbL03C11;
+    private javax.swing.JLabel pcbL03C12;
+    private javax.swing.JLabel pcbL04C01;
+    private javax.swing.JLabel pcbL04C02;
+    private javax.swing.JLabel pcbL04C03;
+    private javax.swing.JLabel pcbL04C04;
+    private javax.swing.JLabel pcbL04C05;
+    private javax.swing.JLabel pcbL04C06;
+    private javax.swing.JLabel pcbL04C07;
+    private javax.swing.JLabel pcbL04C08;
+    private javax.swing.JLabel pcbL04C09;
+    private javax.swing.JLabel pcbL04C10;
+    private javax.swing.JLabel pcbL04C11;
+    private javax.swing.JLabel pcbL04C12;
+    private javax.swing.JLabel pcbL05C01;
+    private javax.swing.JLabel pcbL05C02;
+    private javax.swing.JLabel pcbL05C03;
+    private javax.swing.JLabel pcbL05C04;
+    private javax.swing.JLabel pcbL05C05;
+    private javax.swing.JLabel pcbL05C06;
+    private javax.swing.JLabel pcbL05C07;
+    private javax.swing.JLabel pcbL05C08;
+    private javax.swing.JLabel pcbL05C09;
+    private javax.swing.JLabel pcbL05C10;
+    private javax.swing.JLabel pcbL05C11;
+    private javax.swing.JLabel pcbL05C12;
+    private javax.swing.JLabel pcbL06C01;
+    private javax.swing.JLabel pcbL06C02;
+    private javax.swing.JLabel pcbL06C03;
+    private javax.swing.JLabel pcbL06C04;
+    private javax.swing.JLabel pcbL06C05;
+    private javax.swing.JLabel pcbL06C06;
+    private javax.swing.JLabel pcbL06C07;
+    private javax.swing.JLabel pcbL06C08;
+    private javax.swing.JLabel pcbL06C09;
+    private javax.swing.JLabel pcbL06C10;
+    private javax.swing.JLabel pcbL06C11;
+    private javax.swing.JLabel pcbL06C12;
+    private javax.swing.JLabel pcbL07C01;
+    private javax.swing.JLabel pcbL07C02;
+    private javax.swing.JLabel pcbL07C03;
+    private javax.swing.JLabel pcbL07C04;
+    private javax.swing.JLabel pcbL07C05;
+    private javax.swing.JLabel pcbL07C06;
+    private javax.swing.JLabel pcbL07C07;
+    private javax.swing.JLabel pcbL07C08;
+    private javax.swing.JLabel pcbL07C09;
+    private javax.swing.JLabel pcbL07C10;
+    private javax.swing.JLabel pcbL07C11;
+    private javax.swing.JLabel pcbL07C12;
+    private javax.swing.JLabel pcbL08C01;
+    private javax.swing.JLabel pcbL08C02;
+    private javax.swing.JLabel pcbL08C03;
+    private javax.swing.JLabel pcbL08C04;
+    private javax.swing.JLabel pcbL08C05;
+    private javax.swing.JLabel pcbL08C06;
+    private javax.swing.JLabel pcbL08C07;
+    private javax.swing.JLabel pcbL08C08;
+    private javax.swing.JLabel pcbL08C09;
+    private javax.swing.JLabel pcbL08C10;
+    private javax.swing.JLabel pcbL08C11;
+    private javax.swing.JLabel pcbL08C12;
+    private javax.swing.JLabel pcbL09C01;
+    private javax.swing.JLabel pcbL09C02;
+    private javax.swing.JLabel pcbL09C03;
+    private javax.swing.JLabel pcbL09C04;
+    private javax.swing.JLabel pcbL09C05;
+    private javax.swing.JLabel pcbL09C06;
+    private javax.swing.JLabel pcbL09C07;
+    private javax.swing.JLabel pcbL09C08;
+    private javax.swing.JLabel pcbL09C09;
+    private javax.swing.JLabel pcbL09C10;
+    private javax.swing.JLabel pcbL09C11;
+    private javax.swing.JLabel pcbL09C12;
+    private javax.swing.JLabel pcbL10C01;
+    private javax.swing.JLabel pcbL10C02;
+    private javax.swing.JLabel pcbL10C03;
+    private javax.swing.JLabel pcbL10C04;
+    private javax.swing.JLabel pcbL10C05;
+    private javax.swing.JLabel pcbL10C06;
+    private javax.swing.JLabel pcbL10C07;
+    private javax.swing.JLabel pcbL10C08;
+    private javax.swing.JLabel pcbL10C09;
+    private javax.swing.JLabel pcbL10C10;
+    private javax.swing.JLabel pcbL10C11;
+    private javax.swing.JLabel pcbL10C12;
+    private javax.swing.JLabel pcbL11C01;
+    private javax.swing.JLabel pcbL11C02;
+    private javax.swing.JLabel pcbL11C03;
+    private javax.swing.JLabel pcbL11C04;
+    private javax.swing.JLabel pcbL11C05;
+    private javax.swing.JLabel pcbL11C06;
+    private javax.swing.JLabel pcbL11C07;
+    private javax.swing.JLabel pcbL11C08;
+    private javax.swing.JLabel pcbL11C09;
+    private javax.swing.JLabel pcbL11C10;
+    private javax.swing.JLabel pcbL11C11;
+    private javax.swing.JLabel pcbL11C12;
+    private javax.swing.JLabel pcbL12C01;
+    private javax.swing.JLabel pcbL12C02;
+    private javax.swing.JLabel pcbL12C03;
+    private javax.swing.JLabel pcbL12C04;
+    private javax.swing.JLabel pcbL12C05;
+    private javax.swing.JLabel pcbL12C06;
+    private javax.swing.JLabel pcbL12C07;
+    private javax.swing.JLabel pcbL12C08;
+    private javax.swing.JLabel pcbL12C09;
+    private javax.swing.JLabel pcbL12C10;
+    private javax.swing.JLabel pcbL12C11;
+    private javax.swing.JLabel pcbL12C12;
     private javax.swing.JProgressBar progBarre;
     private javax.swing.JLabel progLocLabel;
     private javax.swing.JFileChooser programmerLoc;
@@ -1539,7 +2731,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JLabel titreParamsWin;
     private javax.swing.JLabel version;
     private javax.swing.JMenuItem voirAide;
-    private javax.swing.JLabel voyant;
     // End of variables declaration//GEN-END:variables
 
     private void testParamsProg() {
@@ -1549,7 +2740,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         if (produitAprogrammer == null) {
 
             console.setText("Sélectionner un produit avant de commencer!");
-            voyant.setBackground(Color.GRAY);
+
             activerLedPRGM(false);
             return;
 
@@ -1558,7 +2749,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         if (!envVariable) {
 
             console.setText("Vérifier que JAVA est ajouté aux variables d'environnement");
-            voyant.setBackground(Color.GRAY);
+
             activerLedPRGM(false);
             return;
 
@@ -1567,7 +2758,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         if (programmerPathParamsProperties == null || programmerPathParamsProperties.equals("na")) {
 
             console.setText("Le programmateur n'est pas localisé");
-            voyant.setBackground(Color.GRAY);
+
             activerLedPRGM(false);
             return;
 
@@ -1636,12 +2827,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        
+
         /*
         String inputLine = (String) arg;
         System.out.println(inputLine);
         processRapport(inputLine);
-        */
+         */
         if (arg instanceof Integer) {
 
             progBarre.setValue((100 / intNombreDeVoiesCarteEnTest) * (Integer) arg);
@@ -1778,28 +2969,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     }
 
-    private void voyantTestEnCours(boolean active) {
-
-        if (active) {
-            voyant.setBackground(Color.ORANGE);
-        } else {
-            voyant.setBackground(Color.GRAY);
-        }
-
-    }
-
-    private void voyantTestOK(boolean active) {
-
-        if (active) {
-
-            voyant.setBackground(Color.GREEN);
-        } else {
-
-            voyant.setBackground(Color.RED);
-        }
-
-    }
-
     private void messageConsole(String message) {
 
         console.setText(message);
@@ -1840,13 +3009,13 @@ public class Interface extends javax.swing.JFrame implements Observer {
         if (active) {
 
             console.setText("Effacement demandé");
-            voyant.setBackground(Color.YELLOW);
+
             System.out.println("Affichage yellow");
 
         } else {
 
             console.setText("Effacement terminé");
-            voyant.setBackground(Color.GREEN);
+
             System.out.println("Affichage green");
 
         }
@@ -1858,14 +3027,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
         if (active) {
 
             console.setText("Programation en cours");
-            voyant.setBackground(Color.YELLOW);
-            voyant.setOpaque(true);
 
         } else {
 
             console.setText("Programation terminé");
-            voyant.setBackground(Color.GREEN);
-            voyant.setOpaque(true);
 
         }
 
@@ -1888,7 +3053,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
             auto = false;
             // activerBtnProgrammation(false);
             inhibBtn();
-            voyantTestEnCours(false);
 
         }
 
@@ -2038,13 +3202,13 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private void clignottementVoyant() {
 
         while (AttenteReponseOperateur) {
-            voyant.setBackground(Color.MAGENTA);
+
             try {
                 Thread.sleep(500);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
             }
-            voyant.setBackground(Color.YELLOW);
+
             try {
                 Thread.sleep(500);
             } catch (InterruptedException ex) {
@@ -2060,7 +3224,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         testActif = false;
         console.setText("Système réinitialisé");
         testParamsProg();
-        voyantTestEnCours(false);
+
         progBarre.setValue(0);
         progBarre.setString("En attente lancement de programmation");
         progBarre.setStringPainted(true);
@@ -2079,7 +3243,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         }
         testActif = true;
         auto = true;
-        voyantTestEnCours(true);
+
         // activerBtnReponseOp(testActif);
         activerBtnTestEnCours();
     }
