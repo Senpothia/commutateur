@@ -277,9 +277,9 @@ public class Connecteur extends Observable {
 
     }
 
-    public int program(String hexLocation, boolean envVariable, String programmerPath, String programmer, String device, String binaryLocation) throws IOException {
+    public int program(String hexLocation, boolean envVariable, String programmerPath, String programmer, String device, String binaryLocation, int nombreDeVoiesCarteEnTest) throws IOException {
 
-        if (envVariable) {
+        for (int i = 1; i < nombreDeVoiesCarteEnTest + 1; i++) {
 
             /*
             // Fonctionnel sans le fichier de log
@@ -300,17 +300,19 @@ public class Connecteur extends Observable {
             cleanDirectory();
             //cleanDirectory("C:\\Users\\Michel\\Desktop\\logs\\logs.txt");
             cleanDirectory(".\\logs\\logs.txt");
-            tempo(10000);
-            // Fonctionnelle
+            tempo(250);
 
+            // Fonctionnelle
             ProcessBuilder processBuilder = new ProcessBuilder();
             //processBuilder.command("C:\\Users\\Michel\\Desktop\\test.bat");
             //processBuilder.command("cmd.exe", "/c", "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >C:\\Users\\Michel\\Desktop\\logs.txt");
             // processBuilder.command("cmd.exe", "/c", "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >.\\logs\\logs.txt");
             //processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >.\\logs\\logs.txt");
             //processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >.\\logs\\logs.txt");
+
             processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
-           // processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >C:\\Users\\Michel\\Desktop\\logs\\logs.txt");
+            // processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >C:\\Users\\Michel\\Desktop\\logs\\logs.txt");
+
             Process process = processBuilder.start();
 
             tempo(200);  // 5000-> valeur validée
@@ -319,8 +321,12 @@ public class Connecteur extends Observable {
 
             int control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
             System.out.println("code controle: " + control);
+            programmationCompleted(i);
+        }
+        return 1;
 
-            if (control == 1 || control == 0) {
+        /*
+            if (control == 1) {
 
                 programmationCompleted(Constants.PROG_SUCCESS_ETAPE1);
                 System.out.println("programmation terminée avec succès");
@@ -329,17 +335,11 @@ public class Connecteur extends Observable {
 
                 programmationCompleted(Constants.PROG_UNSUCCESS_ETAPE1);
                 System.out.println("retour code erreur programmation");
-                tempo(500); // 5000 -> valeur validée
-                System.out.println("Fin vérification");
                 return -2;
 
             }
 
-        } else {
-
-            return 1;
-        }
-
+         */
     }
 
     public void cleanDirectory() throws IOException {
@@ -363,7 +363,7 @@ public class Connecteur extends Observable {
     }
 
     void getFileSize(String logFile) {
-        
+
         double size0 = 0;
         double size1 = 0;
         Boolean end = false;
@@ -385,9 +385,9 @@ public class Connecteur extends Observable {
                 }
             }
         }
-        
+
         System.out.println("Mesure terminée!");
-     
+
     }
 
 }

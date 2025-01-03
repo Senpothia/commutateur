@@ -44,6 +44,7 @@ public class ProgController {
 
     public int find(String logfile, String[] erreurs, String[] requis) throws IOException {
 
+        int j = 0;
         int codeControl = 0;
         /*
         for (int i = 0; i < erreurs.length; i++) {
@@ -53,8 +54,6 @@ public class ProgController {
          */
 
         //isFileAvailable(logfile);
-        isFileAvailable3(logfile);
-
         /*
         while (!isFileAvailable2(logfile)) {
 
@@ -75,56 +74,67 @@ public class ProgController {
             System.out.println("Le fichier est en cours d'utilisation.");
 
         }
+        
          */
-        try {
+        while (j < 2) {
+            isFileAvailable3(logfile);
 
-            System.out.println("le fichier est disponible");
-            // Création d'un fileReader pour lire le fichier
-            FileReader fileReader = new FileReader(logfile);
+            try {
 
-            // Création d'un bufferedReader qui utilise le fileReader
-            BufferedReader reader = new BufferedReader(fileReader);
+                System.out.println("le fichier est disponible");
+                // Création d'un fileReader pour lire le fichier
+                FileReader fileReader = new FileReader(logfile);
 
-            // une fonction à essayer pouvant générer une erreur
-            String line = reader.readLine();
+                // Création d'un bufferedReader qui utilise le fileReader
+                BufferedReader reader = new BufferedReader(fileReader);
+                String line = reader.readLine();
 
-            while (line != null) {
+                while (line != null) {
 
-                // lecture de la prochaine ligne
-                line = reader.readLine();
-                //System.out.println(line);
+                    // lecture de la prochaine ligne
+                    line = reader.readLine();
+                    //System.out.println(line);
 
-                if (erreurs != null && line != null) {
+                    if (erreurs != null && line != null) {
 
-                    for (int i = 0; i < erreurs.length; i++) {
+                        for (int i = 0; i < erreurs.length; i++) {
 
-                        if (line.contains(erreurs[i])) {
+                            if (line.contains(erreurs[i])) {
 
-                            codeControl = -1 * (i + 1);
+                                codeControl = -1 * (i + 1);
+                            }
                         }
+
+                    }
+
+                    if (requis != null && line != null) {
+
+                        for (int i = 0; i < requis.length; i++) {
+
+                            if (line.contains(requis[i])) {
+
+                                codeControl = 1;
+                            }
+                        }
+
                     }
 
                 }
-
-                if (requis != null && line != null) {
-
-                    for (int i = 0; i < requis.length; i++) {
-
-                        if (line.contains(requis[i])) {
-
-                            codeControl = 1;
-                        }
-                    }
-
-                }
-
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Fichier en cours d'écriture");
             }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Fichier en cours d'écriture");
-        }
 
+            if (codeControl == 0) {
+
+                j++;
+            } else {
+
+                return codeControl;
+            }
+
+        }
         return codeControl;
     }
 

@@ -46,6 +46,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private int limCommutateur = 0;                 // nombre de voies du commutateur converties en int depuis la variable nombreVoiesCommutateurString
     private int intNombreDeVoiesNouvelleCarte = 0;
+    private int intNombreDeVoiesCarteEnTest = 0;
 
     private String nombreDeVoiesEnregistresParamsProperties = null;  // lues dans params.properties
     private String nombreDeVoiesCarteEnTest = null;
@@ -173,132 +174,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         rechercherPortsComms();
         initialisationParams();
-        
-        /*
-        initialisation = initializer.getInit();
 
-        //Recherche nombre de voie du commutateur
-        if (initialisation.getCommutateur().equals("na")) {
-
-            System.out.println("Commutateur = " + initialisation.getCommutateur());
-
-        } else {
-
-            System.out.println("Commutateur = " + initialisation.getCommutateur());
-            nombreVoiesCommutateurParamsProperties = initialisation.getCommutateur();
-            limCommutateur = Integer.parseInt(nombreVoiesCommutateurParamsProperties);
-        }
-
-        // Recherche du fichier binaire
-        if (initialisation.getBinaryLocations().equals("na")) {
-
-            System.out.println("BinaryLocation = " + initialisation.getBinaryLocations());
-
-        } else {
-
-            System.out.println("BinaryLocation = " + initialisation.getBinaryLocations());
-            hexLocationsParamsProperties = initialisation.getBinaryLocations();
-            ListeBinairesEnregistres = extraireLocalisationBinaires(hexLocationsParamsProperties);
-        }
-
-        // Recherche nom du produit
-        if (initialisation.getProductNames().equals("na")) {
-
-            System.out.println("liste noms de produits = " + initialisation.getProductNames());
-            nomProduit.setText("Aucun produit crée");
-
-        } else {
-
-            System.out.println("liste noms de produits  = " + initialisation.getProductNames());
-            listeProduitsConnusParamsProperties = initialisation.getProductNames();
-            //produits = extraireProduits(listeProduitsConnus);
-            listesProduits = extraireProduits(listeProduitsConnusParamsProperties);
-            //comboListeProduits.addItem("---");
-            for (int i = 0; i < listesProduits.size(); i++) {
-
-                //comboListeProduits.addItem(produits[i]);
-                comboListeProduits.addItem(listesProduits.get(i));
-
-            }
-            comboListeProduits.setSelectedIndex(0);
-            nomProduit.setText("Veuillez sélectionner un produit!");
-
-        }
-
-        // Recherche nombre de voies à programmer (nombre de carte par panneau)
-        if (initialisation.getNombreVoies().equals("na")) {
-
-            System.out.println("liste nombre de voies = " + initialisation.getNombreVoies());
-            nombreVoies.setText("Aucune voie définie");
-
-        } else {
-
-            System.out.println("liste du nombre de voies  = " + initialisation.getNombreVoies());
-            nombreDeVoiesEnregistresParamsProperties = initialisation.getNombreVoies();
-            listesVoies = extraireVoies(nombreDeVoiesEnregistresParamsProperties);
-
-        }
-
-        // Recherche nom du microcontrôleur à programmer
-        if (initialisation.getDevice().equals("na")) {
-
-            System.out.println("liste des devices lues = " + initialisation.getDevice());
-            nombreVoies.setText("Aucun device enregistré");
-
-        } else {
-
-            System.out.println("liste des devices lus  = " + initialisation.getDevice());
-            devicesParamsProperties = initialisation.getDevice();
-            listeDevicesEnregistres = extraireDevices(devicesParamsProperties);
-
-        }
-
-        // Recherche type de programmateur (code programmateur) 
-        if (initialisation.getProgrammer().equals("na")) {
-
-            System.out.println("liste des devices lues = " + initialisation.getProgrammer());
-            nombreVoies.setText("Aucun programmateur enregistré");
-
-        } else {
-
-            System.out.println("Programmateur enregistré  = " + initialisation.getProgrammer());
-            programmerParamsProperties = initialisation.getProgrammer();
-
-        }
-
-        // Recherche repertoire d'installation de la plateforme Microchip
-        if (initialisation.getProgrammerDirectory().equals("na")) {
-
-            System.out.println("Directory programmer = " + initialisation.getProgrammerDirectory());
-            nombreVoies.setText("Aucune localisation programmateur enregistré");
-
-        } else {
-
-            System.out.println("Directory programmer = " + initialisation.getProgrammerDirectory());
-            programmerPathParamsProperties = initialisation.getProgrammerDirectory();
-
-        }
-
-        // Recherche variable d'environnement pour la commande Java
-        if (initialisation.getVarEnv().equals("na")) {
-
-            System.out.println("varEnv = " + initialisation.getVarEnv());
-
-        } else {
-
-            System.out.println("varEnv = " + initialisation.getVarEnv());
-            if (initialisation.getVarEnv().equals("true")) {
-
-                envVariable = true;
-            }
-
-            if (initialisation.getVarEnv().equals("false")) {
-
-                envVariable = false;
-            }
-
-        }
-        */
         // Création repertoire de logs
         int dirCreation = progController.createLogFolder(Constants.LOG_DIRECTORY);
         if (dirCreation != 1) {
@@ -1093,87 +969,66 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgActionPerformed
-        if (!testActif) {
 
-            if (!confirmationParams) {
+        if (!confirmationParams) {
 
-                boolean confirmation = confirmeParams();
-                if (!confirmation) {
+            boolean confirmation = confirmeParams();
+            if (!confirmation) {
 
-                    return;
+                return;
 
-                } else {
+            } else {
 
-                    confirmationParams = true;
-                }
+                confirmationParams = true;
             }
-
-            console.setText("Programmation en cours");
-            programmationActive = true;
-            progBarre.setVisible(true);
-
-            voyant.setBackground(Color.YELLOW);
-
-            Thread t = new Thread() {
-                public void run() {
-
-                    try {
-                        int comm = connecteur.program(hexLocationsParamsProperties, envVariable, programmerPathParamsProperties, programmerParamsProperties, deviceEnTest, binaireLocation);
-                        System.out.println("Retour programmation. Code reçu: " + comm);
-                        if (comm == -1) {
-
-                            alerteRS232();
-
-                        }
-
-                        if (comm == -2) {
-
-                            console.setText("Erreur de programmation");
-                            voyant.setBackground(Color.red);
-                            connecteur.envoyerData(Constants.ERR_PROG);
-                            programmationActive = true;
-
-                        }
-
-                        if (comm == 1) {
-
-                            console.setText("Programmation terminée!");
-                            Constants.tempo(1000);
-                            programmationActive = true;
-
-                            comm = connecteur.envoyerData(Constants.AQC);
-                            Constants.tempo(1000);
-                            comm = connecteur.envoyerData(Constants.START);
-                            activerBtnTestEnCours();
-
-                        }
-
-                    } catch (IOException ex) {
-                        Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            };
-            t.start();
-
-        } else {
-
-            int comm = connecteur.envoyerData(Constants.OK);
-
-            if (comm == -1) {
-
-                alerteRS232();
-
-            }
-
-            console.setText("Réponse OK");
-
         }
+
+        console.setText("Programmation en cours");
+        programmationActive = true;
+        progBarre.setVisible(true);
+        voyant.setBackground(Color.YELLOW);
+
+        Thread t = new Thread() {
+            public void run() {
+
+                try {
+                    int comm = connecteur.program(hexLocationsParamsProperties, envVariable, programmerPathParamsProperties, programmerParamsProperties, deviceEnTest, binaireLocation, intNombreDeVoiesCarteEnTest);
+                    System.out.println("Retour programmation. Code reçu: " + comm);
+
+                    switch (comm) {
+
+                        case 1:
+
+                            console.setText("Programmation terminée");
+
+                            break;
+                        
+                        /*
+                        case -1:
+
+                            console.setText("La connexion au programmateur a échoué!");
+                            break;
+
+                        case -2:
+
+                            console.setText("Cible non trouvée!");
+                            break;
+                        */
+                    }
+
+                } catch (IOException ex) {
+                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+        t.start();
+
 
     }//GEN-LAST:event_btnProgActionPerformed
 
     private void btnEffacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEffacerActionPerformed
-        
-        connecteur.getFileSize(".\\logs\\logs.txt");
+
+        connecteur.getFileSize(".\\logs\\logs.txt");  // Pour test
         /*
         if (!testActif) {
             System.out.println("fonction Effacement");
@@ -1211,7 +1066,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             voyant.setBackground(Color.RED);
 
         }
-        */
+         */
     }//GEN-LAST:event_btnEffacerActionPerformed
 
     private void btnSelectLocationProgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectLocationProgActionPerformed
@@ -1536,7 +1391,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
             binaireLocation = ListeBinairesEnregistres.get(selectedProduct - 1);
             System.out.println("localistaion binaire: " + binaireLocation);
             emplacementBinaire.setText(binaireLocation);
-
+            intNombreDeVoiesCarteEnTest = Integer.parseInt(nombreDeVoiesCarteEnTest);
+            System.out.println("nombre de voies carte en test (int): " + intNombreDeVoiesCarteEnTest);
         } else {
 
             nomProduit.setText("Aucun produit sélectionné!");
@@ -1780,7 +1636,19 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+        
+        /*
+        String inputLine = (String) arg;
+        System.out.println(inputLine);
+        processRapport(inputLine);
+        */
+        if (arg instanceof Integer) {
 
+            progBarre.setValue((100 / intNombreDeVoiesCarteEnTest) * (Integer) arg);
+            console.setText("Numéro de carte: " + (Integer) arg);
+
+        }
+        /*
         if (arg instanceof Integer) {
 
             if ((Integer) arg == Constants.PROG_SUCCESS) {
@@ -1815,34 +1683,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 console.setText("Programmation: étape 1 terminée!");
             }
 
-            if ((Integer) arg == Constants.PROG_SUCCESS_ETAPE2) {
-
-                voyant.setBackground(Color.YELLOW);
-                progBarre.setStringPainted(true);
-                progBarre.setString("Programmation en cours...");
-                progBarre.setValue(70);
-                console.setText("Programmation: étape 2 terminée!");
-            }
-
-            if ((Integer) arg == Constants.PROG_SUCCESS_ETAPE3) {
-
-                voyant.setBackground(Color.YELLOW);
-                progBarre.setStringPainted(true);
-                progBarre.setString("Programmation en cours...");
-                progBarre.setValue(90);
-                console.setText("Programmation: étape 3 terminée!");
-            }
-
-            if ((Integer) arg == Constants.PROG_SUCCESS_ETAPE4) {
-
-                //voyant.setBackground(Color.GREEN);
-                progBarre.setString("Programmation terminée!");
-                progBarre.setStringPainted(true);
-                progBarre.setValue(100);
-                console.setText("Programmation: étape 4 terminée! - Le test est en cours");
-
-            }
-
             if ((Integer) arg == Constants.PROG_UNSUCCESS_ETAPE1) {
 
                 voyant.setBackground(Color.RED);
@@ -1853,44 +1693,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 activerBtnAttenteACQ();
             }
 
-            if ((Integer) arg == Constants.PROG_UNSUCCESS_ETAPE2) {
-
-                voyant.setBackground(Color.RED);
-                progBarre.setString("Echec programmation!");
-                progBarre.setStringPainted(true);
-                console.setText("Programmation: échec étape 2!");
-                activerBtnAttenteACQ();
-            }
-
-            if ((Integer) arg == Constants.PROG_UNSUCCESS_ETAPE3) {
-
-                voyant.setBackground(Color.RED);
-                progBarre.setString("Echec programmation!");
-                progBarre.setStringPainted(true);
-                console.setText("Programmation: échec étape 3!");
-                activerBtnAttenteACQ();
-            }
-
-            if ((Integer) arg == Constants.PROG_UNSUCCESS_ETAPE4) {
-
-                voyant.setBackground(Color.RED);
-                progBarre.setString("Echec programmation!");
-                progBarre.setStringPainted(true);
-                console.setText("Programmation: échec étape 4!");
-                activerBtnAttenteACQ();
-            }
-
         } else {
 
-            String inputLine = (String) arg;
-            System.out.println(inputLine);
-            if (auto) {
-
-                // console.setText(inputLine);
-            }
-
-            processRapport(inputLine);
         }
+         */
 
     }
 
@@ -1913,130 +1719,19 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void processRapport(String inputLine) {
 
-        if (auto) {
+        if (inputLine.trim().startsWith("-> INIT")) {
 
-            if (inputLine.trim().startsWith("-> TEST MANUEL")) {
+            System.out.println("reset system");
+            messageConsole(inputLine.trim());
+            resetSystem();
 
-                messageConsole("TEST MANUEL EN COURS");
-                auto = false;
-                voyant.setBackground(Color.BLUE);
-
-                btnProg.setEnabled(false);
-                btnProg.setBackground(Color.GRAY);
-                btnEffacer.setEnabled(false);
-                btnEffacer.setBackground(Color.GRAY);
-
-            }
-
-            if (inputLine.trim().startsWith("-> FIN TEST MANUEL")) {
-
-                System.out.println("test manuel acquitté1");
-                messageConsole("FIN TEST MANUEL");
-                voyant.setBackground(Color.GRAY);
-                //inhibBtn();
-                activerBtnTester(true);
-                activerBtnProgrammer(auto);
-
-            }
-
-            if (inputLine.trim().startsWith("-> ERREUR:")) {
-
-                System.out.println("Signalisation erreur!");
-                messageConsole(inputLine.trim());
-                activerBtnAttenteACQ();
-                voyantTestOK(false);
-                System.out.println("testActif  =" + testActif);
-
-            }
-
-            if (inputLine.trim().startsWith("-> PROGRAMMATION TERMINEE")) {
-
-                System.out.println("programmation terminée");
-                messageConsole(inputLine.trim());
-                System.out.println("testActif  =" + testActif);
-
-            }
-
-            if (inputLine.trim().startsWith("-> EFFACEMENT TERMINE")) {
-
-                System.out.println("effacement terminé");
-                messageConsole(inputLine.trim());
-                activerBtnAttenteLancement();
-                voyantTestEnCours(false);
-                System.out.println("testActif  =" + testActif);
-
-            }
-
-            if (inputLine.trim().startsWith("-> RESET")) {
-
-                System.out.println("reset system");
-                messageConsole(inputLine.trim());
-                resetSystem();
-
-            }
-
-            // traitement des résultats aux étapes de test
-            if (inputLine.trim().startsWith("-> TEST")) {
-
-                AttenteReponseOperateur = false;
-                String[] tab = inputLine.trim().split(":");
-                int etape = Integer.parseInt(tab[1]);
-                boolean result = false;
-                System.out.println("tab[2]" + tab[2]);
-                if (tab[2].equals("1")) {
-
-                    result = true;
-                } else {
-
-                    result = false;
-                }
-                System.out.println("Etape: " + etape);
-                if (etape != 18) {
-                    console.setText("Etape: " + etape);
-                }
-
-                if (etape == 12) {
-
-                    AttenteReponseOperateur = true;
-
-                    if (etape == 12) {
-
-                        console.setText("EN ATTENTE VALIDATION LEDS");
-                    }
-
-                    /*
-                    if (etape > 16) {
-
-                        console.setText("EN ATTENTE VALIDATION BLUETOOTH");
-                    }
-                     */
-                    clignottementVoyant();
-
-                }
-
-            }
-
-        } else {
-
-            if (inputLine.trim().startsWith("-> FIN TEST MANUEL")) {
-
-                System.out.println("test manuel acquitté2");
-                messageConsole("FIN TEST MANUEL");
-                voyant.setBackground(Color.GRAY);
-                //activerBtnAttenteLancement();
-                activerBtnTester(true);
-                activerBtnProgrammer(true);
-
-            }
         }
 
-        if (inputLine.trim().startsWith("-> TEST ACQUITTE")) {
+        // traitement des résultats aux étapes de test
+        if (inputLine.trim().startsWith("-> COMMUTATION")) {
 
-            messageConsole("TEST ACQUITTE");
-            voyant.setBackground(Color.GRAY);
-            //activerBtnAttenteLancement();
-            activerBtnTester(true);
-            activerBtnProgrammer(true);
+            String[] tab = inputLine.trim().split(":");
+            int etape = Integer.parseInt(tab[1]);
 
         }
 
@@ -2650,6 +2345,5 @@ public class Interface extends javax.swing.JFrame implements Observer {
         }
 
     }
-    
-   
+
 }
