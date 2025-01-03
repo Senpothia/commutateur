@@ -184,7 +184,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         progBarre.setForeground(Color.blue);
         progBarre.setOpaque(true);
         progBarre.setVisible(true);
-        int n = 12;
+        int n = 12;   // nombre de lignes affichées
         this.setSize(1141, 620 + n * 38);
 
         /*

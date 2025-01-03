@@ -19,8 +19,9 @@ public class Initialisation {
     private String commutateur;
     private String device;
     private String programmer;
+    private String matrice;
 
-    public Initialisation(String programmerDirectory, String varEnv, String binaryLocations, String productNames, String nombreVoies, String commutateur, String device, String programmer) {
+    public Initialisation(String programmerDirectory, String varEnv, String binaryLocations, String productNames, String nombreVoies, String commutateur, String device, String programmer, String matrice) {
         this.programmerDirectory = programmerDirectory;
         this.varEnv = varEnv;
         this.binaryLocations = binaryLocations;
@@ -29,6 +30,7 @@ public class Initialisation {
         this.commutateur = commutateur;
         this.device = device;
         this.programmer = programmer;
+        this.matrice = matrice;
     }
 
     public String getProgrammerDirectory() {
@@ -95,6 +97,15 @@ public class Initialisation {
         this.programmer = programmer;
     }
 
+    public String getMatrice() {
+        return matrice;
+    }
+
+    public void setMatrice(String matrice) {
+        this.matrice = matrice;
+    }
+
+   
     
 
 }

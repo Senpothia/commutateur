@@ -32,8 +32,9 @@ public class Initializer {
         String commutateur = progProperpies.getProperty("commutateur");
         String device = progProperpies.getProperty("device");
         String programmer = progProperpies.getProperty("programmer");
+        String matrice = progProperpies.getProperty("matrice");
 
-        Initialisation init = new Initialisation(programmerDirectory, varEnv, binaryLocations, productNames, voies, commutateur, device, programmer);
+        Initialisation init = new Initialisation(programmerDirectory, varEnv, binaryLocations, productNames, voies, commutateur, device, programmer, matrice);
 
         return init;
     }
@@ -51,7 +52,7 @@ public class Initializer {
             progProperpies.setProperty(key, value);
 
             FileOutputStream output = new FileOutputStream(".\\params.properties");
-            progProperpies.store(output, "GALEO TESTER - Properties");
+            progProperpies.store(output, "PIC Programmer - Properties");
             output.close();
 
         } catch (IOException ex) {
