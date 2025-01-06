@@ -20,6 +20,7 @@ import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.UIManager;
@@ -95,6 +96,32 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private List<JRadioButtonMenuItem> listePorts = new ArrayList<JRadioButtonMenuItem>();
 
     private ProgController progController = new ProgController();
+
+    private ArrayList<JLabel> matriceLigne01 = new ArrayList<>();
+    private ArrayList<JLabel> matriceLigne02 = new ArrayList<>();
+    private ArrayList<JLabel> matriceLigne03 = new ArrayList<>();
+    private ArrayList<JLabel> matriceLigne04 = new ArrayList<>();
+    private ArrayList<JLabel> matriceLigne05 = new ArrayList<>();
+    private ArrayList<JLabel> matriceLigne06 = new ArrayList<>();
+    private ArrayList<JLabel> matriceLigne07 = new ArrayList<>();
+    private ArrayList<JLabel> matriceLigne08 = new ArrayList<>();
+    private ArrayList<JLabel> matriceLigne09 = new ArrayList<>();
+    private ArrayList<JLabel> matriceLigne10 = new ArrayList<>();
+    private ArrayList<JLabel> matriceLigne11 = new ArrayList<>();
+    private ArrayList<JLabel> matriceLigne12 = new ArrayList<>();
+
+    private Ligne ligne01 = new Ligne();
+    private Ligne ligne02 = new Ligne();
+    private Ligne ligne03 = new Ligne();
+    private Ligne ligne04 = new Ligne();
+    private Ligne ligne05 = new Ligne();
+    private Ligne ligne06 = new Ligne();
+    private Ligne ligne07 = new Ligne();
+    private Ligne ligne08 = new Ligne();
+    private Ligne ligne09 = new Ligne();
+    private Ligne ligne10 = new Ligne();
+    private Ligne ligne11 = new Ligne();
+    private Ligne ligne12 = new Ligne();
 
     /**
      * Creates new form Interface
@@ -197,6 +224,165 @@ public class Interface extends javax.swing.JFrame implements Observer {
         progBarre.setForeground(Color.blue);
         progBarre.setOpaque(true);
         progBarre.setVisible(true);
+
+        matriceLigne01.add(pcbL01C01);
+        matriceLigne01.add(pcbL01C02);
+        matriceLigne01.add(pcbL01C03);
+        matriceLigne01.add(pcbL01C04);
+        matriceLigne01.add(pcbL01C05);
+        matriceLigne01.add(pcbL01C06);
+        matriceLigne01.add(pcbL01C07);
+        matriceLigne01.add(pcbL01C08);
+        matriceLigne01.add(pcbL01C09);
+        matriceLigne01.add(pcbL01C10);
+        matriceLigne01.add(pcbL01C11);
+        matriceLigne01.add(pcbL01C12);
+
+        matriceLigne02.add(pcbL02C01);
+        matriceLigne02.add(pcbL02C02);
+        matriceLigne02.add(pcbL02C03);
+        matriceLigne02.add(pcbL02C04);
+        matriceLigne02.add(pcbL02C05);
+        matriceLigne02.add(pcbL02C06);
+        matriceLigne02.add(pcbL02C07);
+        matriceLigne02.add(pcbL02C08);
+        matriceLigne02.add(pcbL02C09);
+        matriceLigne02.add(pcbL02C10);
+        matriceLigne02.add(pcbL02C11);
+        matriceLigne02.add(pcbL02C12);
+
+        matriceLigne03.add(pcbL03C01);
+        matriceLigne03.add(pcbL03C02);
+        matriceLigne03.add(pcbL03C03);
+        matriceLigne03.add(pcbL03C04);
+        matriceLigne03.add(pcbL03C05);
+        matriceLigne03.add(pcbL03C06);
+        matriceLigne03.add(pcbL03C07);
+        matriceLigne03.add(pcbL03C08);
+        matriceLigne03.add(pcbL03C09);
+        matriceLigne03.add(pcbL03C10);
+        matriceLigne03.add(pcbL03C11);
+        matriceLigne03.add(pcbL03C12);
+
+        matriceLigne04.add(pcbL04C01);
+        matriceLigne04.add(pcbL04C02);
+        matriceLigne04.add(pcbL04C03);
+        matriceLigne04.add(pcbL04C04);
+        matriceLigne04.add(pcbL04C05);
+        matriceLigne04.add(pcbL04C06);
+        matriceLigne04.add(pcbL04C07);
+        matriceLigne04.add(pcbL04C08);
+        matriceLigne04.add(pcbL04C09);
+        matriceLigne04.add(pcbL04C10);
+        matriceLigne04.add(pcbL04C11);
+        matriceLigne04.add(pcbL04C12);
+
+        matriceLigne05.add(pcbL05C01);
+        matriceLigne05.add(pcbL05C02);
+        matriceLigne05.add(pcbL05C03);
+        matriceLigne05.add(pcbL05C04);
+        matriceLigne05.add(pcbL05C05);
+        matriceLigne05.add(pcbL05C06);
+        matriceLigne05.add(pcbL05C07);
+        matriceLigne05.add(pcbL05C08);
+        matriceLigne05.add(pcbL05C09);
+        matriceLigne05.add(pcbL05C10);
+        matriceLigne05.add(pcbL05C11);
+        matriceLigne05.add(pcbL05C12);
+
+        matriceLigne06.add(pcbL06C01);
+        matriceLigne06.add(pcbL06C02);
+        matriceLigne06.add(pcbL06C03);
+        matriceLigne06.add(pcbL06C04);
+        matriceLigne06.add(pcbL06C05);
+        matriceLigne06.add(pcbL06C06);
+        matriceLigne06.add(pcbL06C07);
+        matriceLigne06.add(pcbL06C08);
+        matriceLigne06.add(pcbL06C09);
+        matriceLigne06.add(pcbL06C10);
+        matriceLigne06.add(pcbL06C11);
+        matriceLigne06.add(pcbL06C12);
+
+        matriceLigne07.add(pcbL07C01);
+        matriceLigne07.add(pcbL07C02);
+        matriceLigne07.add(pcbL07C03);
+        matriceLigne07.add(pcbL07C04);
+        matriceLigne07.add(pcbL07C05);
+        matriceLigne07.add(pcbL07C06);
+        matriceLigne07.add(pcbL07C07);
+        matriceLigne07.add(pcbL07C08);
+        matriceLigne07.add(pcbL07C09);
+        matriceLigne07.add(pcbL07C10);
+        matriceLigne07.add(pcbL07C11);
+        matriceLigne07.add(pcbL07C12);
+
+        matriceLigne08.add(pcbL08C01);
+        matriceLigne08.add(pcbL08C02);
+        matriceLigne08.add(pcbL08C03);
+        matriceLigne08.add(pcbL08C04);
+        matriceLigne08.add(pcbL08C05);
+        matriceLigne08.add(pcbL08C06);
+        matriceLigne08.add(pcbL08C07);
+        matriceLigne08.add(pcbL08C08);
+        matriceLigne08.add(pcbL08C09);
+        matriceLigne08.add(pcbL08C10);
+        matriceLigne08.add(pcbL08C11);
+        matriceLigne08.add(pcbL08C12);
+
+        matriceLigne09.add(pcbL09C01);
+        matriceLigne09.add(pcbL09C02);
+        matriceLigne09.add(pcbL09C03);
+        matriceLigne09.add(pcbL09C04);
+        matriceLigne09.add(pcbL09C05);
+        matriceLigne09.add(pcbL09C06);
+        matriceLigne09.add(pcbL09C07);
+        matriceLigne09.add(pcbL09C08);
+        matriceLigne09.add(pcbL09C09);
+        matriceLigne09.add(pcbL09C10);
+        matriceLigne09.add(pcbL09C11);
+        matriceLigne09.add(pcbL09C12);
+
+        matriceLigne10.add(pcbL10C01);
+        matriceLigne10.add(pcbL10C02);
+        matriceLigne10.add(pcbL10C03);
+        matriceLigne10.add(pcbL10C04);
+        matriceLigne10.add(pcbL10C05);
+        matriceLigne10.add(pcbL10C06);
+        matriceLigne10.add(pcbL10C07);
+        matriceLigne10.add(pcbL10C08);
+        matriceLigne10.add(pcbL10C09);
+        matriceLigne10.add(pcbL10C10);
+        matriceLigne10.add(pcbL10C11);
+        matriceLigne10.add(pcbL10C12);
+
+        matriceLigne11.add(pcbL11C01);
+        matriceLigne11.add(pcbL11C02);
+        matriceLigne11.add(pcbL11C03);
+        matriceLigne11.add(pcbL11C04);
+        matriceLigne11.add(pcbL11C05);
+        matriceLigne11.add(pcbL11C06);
+        matriceLigne11.add(pcbL11C07);
+        matriceLigne11.add(pcbL11C08);
+        matriceLigne11.add(pcbL11C09);
+        matriceLigne11.add(pcbL11C10);
+        matriceLigne11.add(pcbL11C11);
+        matriceLigne11.add(pcbL11C12);
+
+        matriceLigne12.add(pcbL12C01);
+        matriceLigne12.add(pcbL12C02);
+        matriceLigne12.add(pcbL12C03);
+        matriceLigne12.add(pcbL12C04);
+        matriceLigne12.add(pcbL12C05);
+        matriceLigne12.add(pcbL12C06);
+        matriceLigne12.add(pcbL12C07);
+        matriceLigne12.add(pcbL12C08);
+        matriceLigne12.add(pcbL12C09);
+        matriceLigne12.add(pcbL12C10);
+        matriceLigne12.add(pcbL12C11);
+        matriceLigne12.add(pcbL12C12);
+        
+        
+
         int n = 12;   // nombre de lignes affichées
         this.setSize(1141, 620 + n * 38);
 
@@ -2383,7 +2569,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 intNombreDeVoiesNouvelleCarte = Integer.parseInt(nombreDeVoiesNouvelleCarte);
 
             } catch (Exception e) {
-                
+
                 System.out.println("Exception nombre de voie: " + nombreDeVoiesNouvelleCarte);
                 montrerError("Le nombre de voies doit être compris entre 1 et " + limCommutateur, "Formulaire imcomplet");
                 return;
@@ -3663,6 +3849,167 @@ public class Interface extends javax.swing.JFrame implements Observer {
             listesMatrices = extraireMatrices(matricesProperties);
 
         }
+    }
+
+    public void afficherMatrice(int lignes, int colonnes) {
+
+        this.setSize(1141, 620 + lignes * 38);
+
+        pcbL01C01.setVisible(false);
+        pcbL01C02.setVisible(false);
+        pcbL01C03.setVisible(false);
+        pcbL01C04.setVisible(false);
+        pcbL01C05.setVisible(false);
+        pcbL01C06.setVisible(false);
+        pcbL01C07.setVisible(false);
+        pcbL01C08.setVisible(false);
+        pcbL01C09.setVisible(false);
+        pcbL01C10.setVisible(false);
+        pcbL01C11.setVisible(false);
+        pcbL01C12.setVisible(false);
+
+        pcbL02C01.setVisible(false);
+        pcbL02C02.setVisible(false);
+        pcbL02C03.setVisible(false);
+        pcbL02C04.setVisible(false);
+        pcbL02C05.setVisible(false);
+        pcbL02C06.setVisible(false);
+        pcbL02C07.setVisible(false);
+        pcbL02C08.setVisible(false);
+        pcbL02C09.setVisible(false);
+        pcbL02C10.setVisible(false);
+        pcbL02C11.setVisible(false);
+        pcbL02C12.setVisible(false);
+
+        pcbL03C01.setVisible(false);
+        pcbL03C02.setVisible(false);
+        pcbL03C03.setVisible(false);
+        pcbL03C04.setVisible(false);
+        pcbL03C05.setVisible(false);
+        pcbL03C06.setVisible(false);
+        pcbL03C07.setVisible(false);
+        pcbL03C08.setVisible(false);
+        pcbL03C09.setVisible(false);
+        pcbL03C10.setVisible(false);
+        pcbL03C11.setVisible(false);
+        pcbL03C12.setVisible(false);
+
+        pcbL04C01.setVisible(false);
+        pcbL04C02.setVisible(false);
+        pcbL04C03.setVisible(false);
+        pcbL04C04.setVisible(false);
+        pcbL04C05.setVisible(false);
+        pcbL04C06.setVisible(false);
+        pcbL04C07.setVisible(false);
+        pcbL04C08.setVisible(false);
+        pcbL04C09.setVisible(false);
+        pcbL04C10.setVisible(false);
+        pcbL04C11.setVisible(false);
+        pcbL04C12.setVisible(false);
+
+        pcbL05C01.setVisible(false);
+        pcbL05C02.setVisible(false);
+        pcbL05C03.setVisible(false);
+        pcbL05C04.setVisible(false);
+        pcbL05C05.setVisible(false);
+        pcbL05C06.setVisible(false);
+        pcbL05C07.setVisible(false);
+        pcbL05C08.setVisible(false);
+        pcbL05C09.setVisible(false);
+        pcbL05C10.setVisible(false);
+        pcbL05C11.setVisible(false);
+        pcbL05C12.setVisible(false);
+
+        pcbL06C01.setVisible(false);
+        pcbL06C02.setVisible(false);
+        pcbL06C03.setVisible(false);
+        pcbL06C04.setVisible(false);
+        pcbL06C05.setVisible(false);
+        pcbL06C06.setVisible(false);
+        pcbL06C07.setVisible(false);
+        pcbL06C08.setVisible(false);
+        pcbL06C09.setVisible(false);
+        pcbL06C10.setVisible(false);
+        pcbL06C11.setVisible(false);
+        pcbL06C12.setVisible(false);
+
+        pcbL07C01.setVisible(false);
+        pcbL07C02.setVisible(false);
+        pcbL07C03.setVisible(false);
+        pcbL07C04.setVisible(false);
+        pcbL07C05.setVisible(false);
+        pcbL07C06.setVisible(false);
+        pcbL07C07.setVisible(false);
+        pcbL07C08.setVisible(false);
+        pcbL07C09.setVisible(false);
+        pcbL07C10.setVisible(false);
+        pcbL07C11.setVisible(false);
+        pcbL07C12.setVisible(false);
+
+        pcbL08C01.setVisible(false);
+        pcbL08C02.setVisible(false);
+        pcbL08C03.setVisible(false);
+        pcbL08C04.setVisible(false);
+        pcbL08C05.setVisible(false);
+        pcbL08C06.setVisible(false);
+        pcbL08C07.setVisible(false);
+        pcbL08C08.setVisible(false);
+        pcbL08C09.setVisible(false);
+        pcbL08C10.setVisible(false);
+        pcbL08C11.setVisible(false);
+        pcbL08C12.setVisible(false);
+
+        pcbL09C01.setVisible(false);
+        pcbL09C02.setVisible(false);
+        pcbL09C03.setVisible(false);
+        pcbL09C04.setVisible(false);
+        pcbL09C05.setVisible(false);
+        pcbL09C06.setVisible(false);
+        pcbL09C07.setVisible(false);
+        pcbL09C08.setVisible(false);
+        pcbL09C09.setVisible(false);
+        pcbL09C10.setVisible(false);
+        pcbL09C11.setVisible(false);
+        pcbL09C12.setVisible(false);
+
+        pcbL10C01.setVisible(false);
+        pcbL10C02.setVisible(false);
+        pcbL10C03.setVisible(false);
+        pcbL10C04.setVisible(false);
+        pcbL10C05.setVisible(false);
+        pcbL10C06.setVisible(false);
+        pcbL10C07.setVisible(false);
+        pcbL10C08.setVisible(false);
+        pcbL10C09.setVisible(false);
+        pcbL10C10.setVisible(false);
+        pcbL10C11.setVisible(false);
+        pcbL10C12.setVisible(false);
+
+        pcbL11C01.setVisible(false);
+        pcbL11C02.setVisible(false);
+        pcbL11C03.setVisible(false);
+        pcbL11C04.setVisible(false);
+        pcbL11C05.setVisible(false);
+        pcbL11C06.setVisible(false);
+        pcbL11C07.setVisible(false);
+        pcbL11C08.setVisible(false);
+        pcbL11C09.setVisible(false);
+        pcbL11C10.setVisible(false);
+        pcbL11C11.setVisible(false);
+        pcbL11C12.setVisible(false);
+
+        pcbL12C01.setVisible(false);
+        pcbL12C02.setVisible(false);
+        pcbL12C03.setVisible(false);
+        pcbL12C04.setVisible(false);
+        pcbL12C05.setVisible(false);
+        pcbL12C06.setVisible(false);
+        pcbL12C07.setVisible(false);
+        pcbL12C08.setVisible(false);
+        pcbL12C09.setVisible(false);
+        pcbL12C10.setVisible(false);
+        pcbL12C11.setVisible(false);
+        pcbL12C12.setVisible(false);
     }
 
 }
