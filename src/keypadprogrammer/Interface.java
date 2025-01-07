@@ -123,6 +123,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private Ligne ligne11 = new Ligne(matriceLigne11, true);
     private Ligne ligne12 = new Ligne(matriceLigne12, true);
 
+    private ArrayList<Ligne> Listelignes = new ArrayList<Ligne>();
+
     /**
      * Creates new form Interface
      */
@@ -394,6 +396,22 @@ public class Interface extends javax.swing.JFrame implements Observer {
         Ligne ligne11 = new Ligne(matriceLigne11, true);
         Ligne ligne12 = new Ligne(matriceLigne12, true);
 
+        Listelignes.add(ligne01);
+        Listelignes.add(ligne02);
+        Listelignes.add(ligne03);
+        Listelignes.add(ligne04);
+        Listelignes.add(ligne05);
+        Listelignes.add(ligne06);
+        Listelignes.add(ligne07);
+        Listelignes.add(ligne08);
+        Listelignes.add(ligne09);
+        Listelignes.add(ligne10);
+        Listelignes.add(ligne11);
+        Listelignes.add(ligne12);
+
+        this.setSize(1141, 620 + lignes * 38);
+        
+        
         ligne01.supprimer();
         ligne02.supprimer();
         ligne03.supprimer();
@@ -406,10 +424,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
         ligne10.supprimer();
         ligne11.supprimer();
         ligne12.supprimer();
-
-        this.setSize(1141, 620 + colonnes * 38);
-
-       
+        
+        raffraichirInterface();
         System.out.println("Taille fenêtre" + this.getContentPane().getSize());
 
         testParamsProg();
@@ -2563,6 +2579,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
             emplacementBinaire.setText(binaireLocation);
             intNombreDeVoiesCarteEnTest = Integer.parseInt(nombreDeVoiesCarteEnTest);
             System.out.println("nombre de voies carte en test (int): " + intNombreDeVoiesCarteEnTest);
+            raffraichirInterface();
+
         } else {
 
             nomProduit.setText("Aucun produit sélectionné!");
@@ -2574,6 +2592,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
         }
 
         testParamsProg();
+        // raffraichirInterface();
+
     }//GEN-LAST:event_btnFermerParamsActionPerformed
 
     private void nouveauMicroControllerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nouveauMicroControllerActionPerformed
@@ -3867,4 +3887,21 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }
 
      */
+    private void raffraichirInterface() {
+        
+        
+        this.setSize(1141, 620 + lignes * 38);
+        int i =0;
+        while (i<lignes) {
+           
+            Listelignes.get(i).afficher();
+            i++;
+        }
+        
+        for(int j=i; j<12; j++){
+            
+              Listelignes.get(j).supprimer();
+        }
+         
+    }
 }
