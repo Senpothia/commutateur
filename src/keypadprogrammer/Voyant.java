@@ -39,6 +39,7 @@ public class Voyant {
 
         indicateur.setBackground(new Color(50, 131, 168));
         indicateur.setForeground(new Color(50, 131, 168));
+        indicateur.setOpaque(true);
         statut = 0;
     }
 
@@ -55,6 +56,8 @@ public class Voyant {
             indicateur.setForeground(Color.GREEN);
             statut = 4;
         }
+
+        indicateur.setOpaque(true);
     }
 
     public void processing(Boolean processing) {
@@ -71,10 +74,11 @@ public class Voyant {
             indicateur.setForeground(Color.YELLOW);
             statut = 2;
         }
+        indicateur.setOpaque(true);
     }
 
     void supprimer() {
-       
+
         indicateur.setVisible(false);
     }
 

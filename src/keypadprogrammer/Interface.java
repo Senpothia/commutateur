@@ -110,18 +110,18 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private ArrayList<JLabel> matriceLigne11 = new ArrayList<>();
     private ArrayList<JLabel> matriceLigne12 = new ArrayList<>();
 
-    private Ligne ligne01 = new Ligne();
-    private Ligne ligne02 = new Ligne();
-    private Ligne ligne03 = new Ligne();
-    private Ligne ligne04 = new Ligne();
-    private Ligne ligne05 = new Ligne();
-    private Ligne ligne06 = new Ligne();
-    private Ligne ligne07 = new Ligne();
-    private Ligne ligne08 = new Ligne();
-    private Ligne ligne09 = new Ligne();
-    private Ligne ligne10 = new Ligne();
-    private Ligne ligne11 = new Ligne();
-    private Ligne ligne12 = new Ligne();
+    private Ligne ligne01 = new Ligne(matriceLigne01, true);
+    private Ligne ligne02 = new Ligne(matriceLigne02, true);
+    private Ligne ligne03 = new Ligne(matriceLigne03, true);
+    private Ligne ligne04 = new Ligne(matriceLigne04, true);
+    private Ligne ligne05 = new Ligne(matriceLigne05, true);
+    private Ligne ligne06 = new Ligne(matriceLigne06, true);
+    private Ligne ligne07 = new Ligne(matriceLigne07, true);
+    private Ligne ligne08 = new Ligne(matriceLigne08, true);
+    private Ligne ligne09 = new Ligne(matriceLigne09, true);
+    private Ligne ligne10 = new Ligne(matriceLigne10, true);
+    private Ligne ligne11 = new Ligne(matriceLigne11, true);
+    private Ligne ligne12 = new Ligne(matriceLigne12, true);
 
     /**
      * Creates new form Interface
@@ -380,183 +380,36 @@ public class Interface extends javax.swing.JFrame implements Observer {
         matriceLigne12.add(pcbL12C10);
         matriceLigne12.add(pcbL12C11);
         matriceLigne12.add(pcbL12C12);
-        
-        
 
-        int n = 12;   // nombre de lignes affichées
-        this.setSize(1141, 620 + n * 38);
+        Ligne ligne01 = new Ligne(matriceLigne01, true);
+        Ligne ligne02 = new Ligne(matriceLigne02, true);
+        Ligne ligne03 = new Ligne(matriceLigne03, true);
+        Ligne ligne04 = new Ligne(matriceLigne04, true);
+        Ligne ligne05 = new Ligne(matriceLigne05, true);
+        Ligne ligne06 = new Ligne(matriceLigne06, true);
+        Ligne ligne07 = new Ligne(matriceLigne07, true);
+        Ligne ligne08 = new Ligne(matriceLigne08, true);
+        Ligne ligne09 = new Ligne(matriceLigne09, true);
+        Ligne ligne10 = new Ligne(matriceLigne10, true);
+        Ligne ligne11 = new Ligne(matriceLigne11, true);
+        Ligne ligne12 = new Ligne(matriceLigne12, true);
 
-        /*
-        pcbL01C01.setVisible(false);
-        pcbL01C02.setVisible(false);
-        pcbL01C03.setVisible(false);
-        pcbL01C04.setVisible(false);
-        pcbL01C05.setVisible(false);
-        pcbL01C06.setVisible(false);
-        pcbL01C07.setVisible(false);
-        pcbL01C08.setVisible(false);
-        pcbL01C09.setVisible(false);
-        pcbL01C10.setVisible(false);
-        pcbL01C11.setVisible(false);
-        pcbL01C12.setVisible(false);
-        
- 
-        pcbL02C01.setVisible(false);
-        pcbL02C02.setVisible(false);
-        pcbL02C03.setVisible(false);
-        pcbL02C04.setVisible(false);
-        pcbL02C05.setVisible(false);
-        pcbL02C06.setVisible(false);
-        pcbL02C07.setVisible(false);
-        pcbL02C08.setVisible(false);
-        pcbL02C09.setVisible(false);
-        pcbL02C10.setVisible(false);
-        pcbL02C11.setVisible(false);
-        pcbL02C12.setVisible(false);
-        
- 
-        pcbL03C01.setVisible(false);
-        pcbL03C02.setVisible(false);
-        pcbL03C03.setVisible(false);
-        pcbL03C04.setVisible(false);
-        pcbL03C05.setVisible(false);
-        pcbL03C06.setVisible(false);
-        pcbL03C07.setVisible(false);
-        pcbL03C08.setVisible(false);
-        pcbL03C09.setVisible(false);
-        pcbL03C10.setVisible(false);
-        pcbL03C11.setVisible(false);
-        pcbL03C12.setVisible(false);
-        
+        ligne01.supprimer();
+        ligne02.supprimer();
+        ligne03.supprimer();
+        ligne04.supprimer();
+        ligne05.supprimer();
+        ligne06.supprimer();
+        ligne07.supprimer();
+        ligne08.supprimer();
+        ligne09.supprimer();
+        ligne10.supprimer();
+        ligne11.supprimer();
+        ligne12.supprimer();
+
+        this.setSize(1141, 620 + colonnes * 38);
+
        
- 
-        pcbL04C01.setVisible(false);
-        pcbL04C02.setVisible(false);
-        pcbL04C03.setVisible(false);
-        pcbL04C04.setVisible(false);
-        pcbL04C05.setVisible(false);
-        pcbL04C06.setVisible(false);
-        pcbL04C07.setVisible(false);
-        pcbL04C08.setVisible(false);
-        pcbL04C09.setVisible(false);
-        pcbL04C10.setVisible(false);
-        pcbL04C11.setVisible(false);
-        pcbL04C12.setVisible(false);
-          
- 
-        pcbL05C01.setVisible(false);
-        pcbL05C02.setVisible(false);
-        pcbL05C03.setVisible(false);
-        pcbL05C04.setVisible(false);
-        pcbL05C05.setVisible(false);
-        pcbL05C06.setVisible(false);
-        pcbL05C07.setVisible(false);
-        pcbL05C08.setVisible(false);
-        pcbL05C09.setVisible(false);
-        pcbL05C10.setVisible(false);
-        pcbL05C11.setVisible(false);
-        pcbL05C12.setVisible(false);
-         
- 
-        pcbL06C01.setVisible(false);
-        pcbL06C02.setVisible(false);
-        pcbL06C03.setVisible(false);
-        pcbL06C04.setVisible(false);
-        pcbL06C05.setVisible(false);
-        pcbL06C06.setVisible(false);
-        pcbL06C07.setVisible(false);
-        pcbL06C08.setVisible(false);
-        pcbL06C09.setVisible(false);
-        pcbL06C10.setVisible(false);
-        pcbL06C11.setVisible(false);
-        pcbL06C12.setVisible(false);
-         
-  
-        pcbL07C01.setVisible(false);
-        pcbL07C02.setVisible(false);
-        pcbL07C03.setVisible(false);
-        pcbL07C04.setVisible(false);
-        pcbL07C05.setVisible(false);
-        pcbL07C06.setVisible(false);
-        pcbL07C07.setVisible(false);
-        pcbL07C08.setVisible(false);
-        pcbL07C09.setVisible(false);
-        pcbL07C10.setVisible(false);
-        pcbL07C11.setVisible(false);
-        pcbL07C12.setVisible(false);
-        
-        
-        
-        pcbL08C01.setVisible(false);
-        pcbL08C02.setVisible(false);
-        pcbL08C03.setVisible(false);
-        pcbL08C04.setVisible(false);
-        pcbL08C05.setVisible(false);
-        pcbL08C06.setVisible(false);
-        pcbL08C07.setVisible(false);
-        pcbL08C08.setVisible(false);
-        pcbL08C09.setVisible(false);
-        pcbL08C10.setVisible(false);
-        pcbL08C11.setVisible(false);
-        pcbL08C12.setVisible(false);
-        
-        
-    
-        pcbL09C01.setVisible(false);
-        pcbL09C02.setVisible(false);
-        pcbL09C03.setVisible(false);
-        pcbL09C04.setVisible(false);
-        pcbL09C05.setVisible(false);
-        pcbL09C06.setVisible(false);
-        pcbL09C07.setVisible(false);
-        pcbL09C08.setVisible(false);
-        pcbL09C09.setVisible(false);
-        pcbL09C10.setVisible(false);
-        pcbL09C11.setVisible(false);
-        pcbL09C12.setVisible(false);
-        
-         
-        pcbL10C01.setVisible(false);
-        pcbL10C02.setVisible(false);
-        pcbL10C03.setVisible(false);
-        pcbL10C04.setVisible(false);
-        pcbL10C05.setVisible(false);
-        pcbL10C06.setVisible(false);
-        pcbL10C07.setVisible(false);
-        pcbL10C08.setVisible(false);
-        pcbL10C09.setVisible(false);
-        pcbL10C10.setVisible(false);
-        pcbL10C11.setVisible(false);
-        pcbL10C12.setVisible(false);
-  
-
-        pcbL11C01.setVisible(false);
-        pcbL11C02.setVisible(false);
-        pcbL11C03.setVisible(false);
-        pcbL11C04.setVisible(false);
-        pcbL11C05.setVisible(false);
-        pcbL11C06.setVisible(false);
-        pcbL11C07.setVisible(false);
-        pcbL11C08.setVisible(false);
-        pcbL11C09.setVisible(false);
-        pcbL11C10.setVisible(false);
-        pcbL11C11.setVisible(false);
-        pcbL11C12.setVisible(false);
-
-        pcbL12C01.setVisible(false);
-        pcbL12C02.setVisible(false);
-        pcbL12C03.setVisible(false);
-        pcbL12C04.setVisible(false);
-        pcbL12C05.setVisible(false);
-        pcbL12C06.setVisible(false);
-        pcbL12C07.setVisible(false);
-        pcbL12C08.setVisible(false);
-        pcbL12C09.setVisible(false);
-        pcbL12C10.setVisible(false);
-        pcbL12C11.setVisible(false);
-        pcbL12C12.setVisible(false);
-        
-         */
         System.out.println("Taille fenêtre" + this.getContentPane().getSize());
 
         testParamsProg();
@@ -3851,6 +3704,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         }
     }
 
+    /*
     public void afficherMatrice(int lignes, int colonnes) {
 
         this.setSize(1141, 620 + lignes * 38);
@@ -4012,4 +3866,5 @@ public class Interface extends javax.swing.JFrame implements Observer {
         pcbL12C12.setVisible(false);
     }
 
+     */
 }
