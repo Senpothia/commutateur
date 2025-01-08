@@ -2582,6 +2582,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         }
 
         testParamsProg();
+        raffraichirImagePanneau();
 
 
     }//GEN-LAST:event_btnFermerParamsActionPerformed
@@ -3758,8 +3759,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }
 
     private void raffraichirImagePanneau() {
-
-        icon = new ImageIcon(".\\images\\D825ED3.jpg");
+        
+        String pathImage = ".\\images\\" + produitAprogrammer + ".jpg";
+        System.out.println("localisation image: "  + pathImage);
+        //icon = new ImageIcon(".\\images\\D825ED3.jpg");
+        icon = new ImageIcon(pathImage);
         imagePanneau.setIcon(icon);
     }
 }
