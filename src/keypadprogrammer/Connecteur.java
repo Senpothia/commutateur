@@ -230,7 +230,7 @@ public class Connecteur extends Observable {
         portComm.flushIOBuffers();
     }
 
-    public void programmationCompleted(Integer operation) {
+    public void programmationCompleted(String operation) {
 
         this.setChanged();
         this.notifyObservers(operation);
@@ -238,7 +238,8 @@ public class Connecteur extends Observable {
     }
 
     public void erase(boolean envVariable, String programmerLocation) {
-
+        
+        /*
         envoyerData(Constants.ERASE);
         tempo(1000);
 
@@ -262,7 +263,7 @@ public class Connecteur extends Observable {
 
         programmationCompleted(Constants.ERASE_SUCCESS);
         envoyerData(Constants.END_ERASE);
-
+        */
     }
 
     void tempo(long duree) {
@@ -281,65 +282,27 @@ public class Connecteur extends Observable {
 
         for (int i = 1; i < nombreDeVoiesCarteEnTest + 1; i++) {
 
-            /*
-            // Fonctionnel sans le fichier de log
-            Runtime runtime = Runtime.getRuntime();
-            String commande1 = "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >C:\\Users\\Michel\\Desktop\\logs.txt"; 
-            Process programming = runtime.exec(commande1);
-            tempo(5000);  // 5000-> valeur validée
-            System.out.println("Fin programmation");
-            /*
-            // test fonctionnel
-            Runtime runtime = Runtime.getRuntime();
-            Process process = runtime.exec("notepad.exe C:\\Users\\Michel\\Desktop\\bonjour.txt");
-             */
-            //boolean deleteIfExists1 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.ini"));
-            //boolean deleteIfExists2 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.lock"));
-            //tempo(500);
+        
             System.out.println("Début programmation");
             cleanDirectory();
-            //cleanDirectory("C:\\Users\\Michel\\Desktop\\logs\\logs.txt");
             cleanDirectory(".\\logs\\logs.txt");
             tempo(250);
 
-            // Fonctionnelle
             ProcessBuilder processBuilder = new ProcessBuilder();
-            //processBuilder.command("C:\\Users\\Michel\\Desktop\\test.bat");
-            //processBuilder.command("cmd.exe", "/c", "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >C:\\Users\\Michel\\Desktop\\logs.txt");
-            // processBuilder.command("cmd.exe", "/c", "java -jar C:\\Users\\Michel\\mplab_platform\\mplab_ipe\\ipecmdboost.jar /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >.\\logs\\logs.txt");
-            //processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /TPICD4 /P16F1507 /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >.\\logs\\logs.txt");
-            //processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /Fc:\\Users\\Michel\\Desktop\\profil.hex /M /W /OY2013 >.\\logs\\logs.txt");
-
             processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
-            // processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >C:\\Users\\Michel\\Desktop\\logs\\logs.txt");
-
             Process process = processBuilder.start();
 
-            tempo(200);  // 5000-> valeur validée
+            tempo(200); 
             System.out.println("Fin programmation");
             System.out.println("Début vérification");
 
             int control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
             System.out.println("code controle: " + control);
-            programmationCompleted(i);
+            programmationCompleted("->PROG:" + i + ":" + control);
         }
         return 1;
 
-        /*
-            if (control == 1) {
-
-                programmationCompleted(Constants.PROG_SUCCESS_ETAPE1);
-                System.out.println("programmation terminée avec succès");
-                return 1;
-            } else {
-
-                programmationCompleted(Constants.PROG_UNSUCCESS_ETAPE1);
-                System.out.println("retour code erreur programmation");
-                return -2;
-
-            }
-
-         */
+    
     }
 
     public void cleanDirectory() throws IOException {

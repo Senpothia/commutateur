@@ -110,20 +110,20 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private ArrayList<JLabel> matriceLigne11 = new ArrayList<>();
     private ArrayList<JLabel> matriceLigne12 = new ArrayList<>();
 
-    private Ligne ligne01 = new Ligne(matriceLigne01, true);
-    private Ligne ligne02 = new Ligne(matriceLigne02, true);
-    private Ligne ligne03 = new Ligne(matriceLigne03, true);
-    private Ligne ligne04 = new Ligne(matriceLigne04, true);
-    private Ligne ligne05 = new Ligne(matriceLigne05, true);
-    private Ligne ligne06 = new Ligne(matriceLigne06, true);
-    private Ligne ligne07 = new Ligne(matriceLigne07, true);
-    private Ligne ligne08 = new Ligne(matriceLigne08, true);
-    private Ligne ligne09 = new Ligne(matriceLigne09, true);
-    private Ligne ligne10 = new Ligne(matriceLigne10, true);
-    private Ligne ligne11 = new Ligne(matriceLigne11, true);
-    private Ligne ligne12 = new Ligne(matriceLigne12, true);
+    private Ligne ligne01 = new Ligne(matriceLigne01, true, 1);
+    private Ligne ligne02 = new Ligne(matriceLigne02, true, 2);
+    private Ligne ligne03 = new Ligne(matriceLigne03, true, 3);
+    private Ligne ligne04 = new Ligne(matriceLigne04, true, 4);
+    private Ligne ligne05 = new Ligne(matriceLigne05, true, 5);
+    private Ligne ligne06 = new Ligne(matriceLigne06, true, 6);
+    private Ligne ligne07 = new Ligne(matriceLigne07, true, 7);
+    private Ligne ligne08 = new Ligne(matriceLigne08, true, 8);
+    private Ligne ligne09 = new Ligne(matriceLigne09, true, 9);
+    private Ligne ligne10 = new Ligne(matriceLigne10, true, 10);
+    private Ligne ligne11 = new Ligne(matriceLigne11, true, 11);
+    private Ligne ligne12 = new Ligne(matriceLigne12, true, 12);
 
-    private ArrayList<Ligne> Listelignes = new ArrayList<Ligne>();
+    private ArrayList<Ligne> listeLignes = new ArrayList<Ligne>();
 
     /**
      * Creates new form Interface
@@ -383,35 +383,34 @@ public class Interface extends javax.swing.JFrame implements Observer {
         matriceLigne12.add(pcbL12C11);
         matriceLigne12.add(pcbL12C12);
 
-        Ligne ligne01 = new Ligne(matriceLigne01, true);
-        Ligne ligne02 = new Ligne(matriceLigne02, true);
-        Ligne ligne03 = new Ligne(matriceLigne03, true);
-        Ligne ligne04 = new Ligne(matriceLigne04, true);
-        Ligne ligne05 = new Ligne(matriceLigne05, true);
-        Ligne ligne06 = new Ligne(matriceLigne06, true);
-        Ligne ligne07 = new Ligne(matriceLigne07, true);
-        Ligne ligne08 = new Ligne(matriceLigne08, true);
-        Ligne ligne09 = new Ligne(matriceLigne09, true);
-        Ligne ligne10 = new Ligne(matriceLigne10, true);
-        Ligne ligne11 = new Ligne(matriceLigne11, true);
-        Ligne ligne12 = new Ligne(matriceLigne12, true);
+        Ligne ligne01 = new Ligne(matriceLigne01, true, 1);
+        Ligne ligne02 = new Ligne(matriceLigne02, true, 2);
+        Ligne ligne03 = new Ligne(matriceLigne03, true, 3);
+        Ligne ligne04 = new Ligne(matriceLigne04, true, 4);
+        Ligne ligne05 = new Ligne(matriceLigne05, true, 5);
+        Ligne ligne06 = new Ligne(matriceLigne06, true, 6);
+        Ligne ligne07 = new Ligne(matriceLigne07, true, 7);
+        Ligne ligne08 = new Ligne(matriceLigne08, true, 8);
+        Ligne ligne09 = new Ligne(matriceLigne09, true, 9);
+        Ligne ligne10 = new Ligne(matriceLigne10, true, 10);
+        Ligne ligne11 = new Ligne(matriceLigne11, true, 11);
+        Ligne ligne12 = new Ligne(matriceLigne12, true, 12);
 
-        Listelignes.add(ligne01);
-        Listelignes.add(ligne02);
-        Listelignes.add(ligne03);
-        Listelignes.add(ligne04);
-        Listelignes.add(ligne05);
-        Listelignes.add(ligne06);
-        Listelignes.add(ligne07);
-        Listelignes.add(ligne08);
-        Listelignes.add(ligne09);
-        Listelignes.add(ligne10);
-        Listelignes.add(ligne11);
-        Listelignes.add(ligne12);
+        listeLignes.add(ligne01);
+        listeLignes.add(ligne02);
+        listeLignes.add(ligne03);
+        listeLignes.add(ligne04);
+        listeLignes.add(ligne05);
+        listeLignes.add(ligne06);
+        listeLignes.add(ligne07);
+        listeLignes.add(ligne08);
+        listeLignes.add(ligne09);
+        listeLignes.add(ligne10);
+        listeLignes.add(ligne11);
+        listeLignes.add(ligne12);
 
         this.setSize(1141, 620 + lignes * 38);
-        
-        
+
         ligne01.supprimer();
         ligne02.supprimer();
         ligne03.supprimer();
@@ -424,7 +423,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         ligne10.supprimer();
         ligne11.supprimer();
         ligne12.supprimer();
-        
+
         raffraichirInterface();
         System.out.println("Taille fenêtre" + this.getContentPane().getSize());
 
@@ -2165,21 +2164,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
                         case 1:
 
-                            console.setText("Programmation terminée");
-
+                            console.setText("Cycle de programmation terminée");
+                            activerBtnACQ(true);
+                            activerBtnProgrammer(false);
                             break;
 
-                        /*
-                        case -1:
-
-                            console.setText("La connexion au programmateur a échoué!");
-                            break;
-
-                        case -2:
-
-                            console.setText("Cible non trouvée!");
-                            break;
-                         */
                     }
 
                 } catch (IOException ex) {
@@ -2194,8 +2183,79 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void btnEffacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEffacerActionPerformed
 
-        connecteur.getFileSize(".\\logs\\logs.txt");  // Pour test
+        for (Ligne l : listeLignes) {
+
+            System.out.println("visible: " + l.isVisible());
+        }
+        String arg = "->PROG:1:1";
+        String[] tab = ((String) arg).trim().split(":");
+        System.out.println("tab1: " + tab[1]);
+        System.out.println("tab2: " + tab[2]);
+        boolean found = false;
+        int ligne = 1;
+        int colonne = 1;
+        while (ligne < 13) {
+
+            if (listeLignes.get(ligne - 1).isVisible()) {
+
+                System.out.println("Ligne visible");
+                for (int i = 0; i < 12; i++) {
+
+                    System.out.println("ordre: " + listeLignes.get(ligne - 1).getVoyants().get(i).getOrdre() + " - colonne:" + i);
+                    if (listeLignes.get(ligne - 1).getVoyants().get(i).getOrdre() == Integer.parseInt(tab[1])) {
+
+                        listeLignes.get(ligne - 1).getVoyants().get(i).ok(true);
+                    }
+
+                }
+
+            } else {
+
+                System.out.println("ligne non visible - saut de ligne");
+
+            }
+
+            ligne++;
+
+        }
+        System.out.println("sortie");
+        //connecteur.getFileSize(".\\logs\\logs.txt");  // Pour test
+        //listeLignes.get(0).afficher();
+        //listeLignes.get(0).getVoyants().get(6).ok(true);
+        //listeLignes.get(0).getVoyants().get(6).getOrdre();
+        //System.out.println("odre: " + listeLignes.get(0).getVoyants().get(6).getOrdre());
         /*
+        if (listeLignes.get(0).getVoyants().get(6).getOrdre() == 3) {
+            System.out.println("ordre ok");
+        } else {
+            System.out.println("ordre nok");
+
+        }
+         */
+ /*
+        System.out.println("----------");
+        boolean found = false;
+        int i = 0;
+
+        while (!found) {
+
+            if (listeLignes.get(0).getVoyants().get(i).getOrdre() != Integer.valueOf("3")) {
+
+                System.out.println(listeLignes.get(0).getVoyants().get(i).getOrdre());
+
+                i++;
+
+            } else {
+
+                System.out.println(listeLignes.get(0).getVoyants().get(i).getOrdre());
+                listeLignes.get(0).getVoyants().get(i).ok(true);
+                System.out.println("Found!");
+                found = true;
+
+            }
+        }
+         */
+ /*
         if (!testActif) {
             System.out.println("fonction Effacement");
             if (!confirmationParams) {
@@ -2379,6 +2439,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private void btnACQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnACQActionPerformed
 
         System.out.println("Acquittement");
+        /*
         int comm = connecteur.envoyerData(Constants.AQC);
 
         if (comm == -1) {
@@ -2386,10 +2447,13 @@ public class Interface extends javax.swing.JFrame implements Observer {
             alerteRS232();
 
         }
+         */
 
-        testActif = false;
-        console.setText("RESULTAT ACQUITTE - PRET POUR NOUVEAU TEST!");
-        testParamsProg();
+        console.setText("RESULTAT ACQUITTE - PRET POUR UN NOUVEAU CYCLE DE PROGRAMMATION!");
+        activerBtnACQ(false);
+        activerBtnProgrammer(true);
+        raffraichirInterface();
+        //testParamsProg();
 
         progBarre.setValue(0);
         progBarre.setString("En attente lancement de programmation");
@@ -2977,66 +3041,22 @@ public class Interface extends javax.swing.JFrame implements Observer {
     @Override
     public void update(Observable o, Object arg) {
 
-        /*
-        String inputLine = (String) arg;
-        System.out.println(inputLine);
-        processRapport(inputLine);
-         */
         if (arg instanceof Integer) {
 
             progBarre.setValue((100 / intNombreDeVoiesCarteEnTest) * (Integer) arg);
             console.setText("Numéro de carte: " + (Integer) arg);
 
         }
-        /*
-        if (arg instanceof Integer) {
 
-            if ((Integer) arg == Constants.PROG_SUCCESS) {
+        if (arg instanceof String) {
 
-                //voyant.setBackground(Color.GREEN);
-                progBarre.setValue(100);
-                console.setText("Programmation terminée!");
+            if (((String) arg).startsWith("->PROG")) {
+                console.setText((String) arg);
+                String[] tab = ((String) arg).trim().split(":");
+                raffraichirIndicateur(tab);
             }
-
-            if ((Integer) arg == Constants.ERASE_SUCCESS) {
-
-                voyant.setBackground(Color.GREEN);
-                progBarre.setValue(100);
-                console.setText("Effacement terminée!");
-            }
-
-            if ((Integer) arg == Constants.PROG_START) {
-
-                voyant.setBackground(Color.YELLOW);
-                progBarre.setStringPainted(true);
-                progBarre.setString("Programmation en cours...");
-                progBarre.setValue(0);
-                console.setText("Programmation en cours");
-            }
-
-            if ((Integer) arg == Constants.PROG_SUCCESS_ETAPE1) {
-
-                voyant.setBackground(Color.YELLOW);
-                progBarre.setStringPainted(true);
-                progBarre.setString("Programmation en cours...");
-                progBarre.setValue(15);
-                console.setText("Programmation: étape 1 terminée!");
-            }
-
-            if ((Integer) arg == Constants.PROG_UNSUCCESS_ETAPE1) {
-
-                voyant.setBackground(Color.RED);
-                progBarre.setString("Echec programmation!");
-                progBarre.setStringPainted(true);
-                console.setText("Programmation: échec étape 1!");
-                montrerError("Vérifier positionnement carte!", "Erreur de programmation");
-                activerBtnAttenteACQ();
-            }
-
-        } else {
 
         }
-         */
 
     }
 
@@ -3724,184 +3744,67 @@ public class Interface extends javax.swing.JFrame implements Observer {
         }
     }
 
-    /*
-    public void afficherMatrice(int lignes, int colonnes) {
-
-        this.setSize(1141, 620 + lignes * 38);
-
-        pcbL01C01.setVisible(false);
-        pcbL01C02.setVisible(false);
-        pcbL01C03.setVisible(false);
-        pcbL01C04.setVisible(false);
-        pcbL01C05.setVisible(false);
-        pcbL01C06.setVisible(false);
-        pcbL01C07.setVisible(false);
-        pcbL01C08.setVisible(false);
-        pcbL01C09.setVisible(false);
-        pcbL01C10.setVisible(false);
-        pcbL01C11.setVisible(false);
-        pcbL01C12.setVisible(false);
-
-        pcbL02C01.setVisible(false);
-        pcbL02C02.setVisible(false);
-        pcbL02C03.setVisible(false);
-        pcbL02C04.setVisible(false);
-        pcbL02C05.setVisible(false);
-        pcbL02C06.setVisible(false);
-        pcbL02C07.setVisible(false);
-        pcbL02C08.setVisible(false);
-        pcbL02C09.setVisible(false);
-        pcbL02C10.setVisible(false);
-        pcbL02C11.setVisible(false);
-        pcbL02C12.setVisible(false);
-
-        pcbL03C01.setVisible(false);
-        pcbL03C02.setVisible(false);
-        pcbL03C03.setVisible(false);
-        pcbL03C04.setVisible(false);
-        pcbL03C05.setVisible(false);
-        pcbL03C06.setVisible(false);
-        pcbL03C07.setVisible(false);
-        pcbL03C08.setVisible(false);
-        pcbL03C09.setVisible(false);
-        pcbL03C10.setVisible(false);
-        pcbL03C11.setVisible(false);
-        pcbL03C12.setVisible(false);
-
-        pcbL04C01.setVisible(false);
-        pcbL04C02.setVisible(false);
-        pcbL04C03.setVisible(false);
-        pcbL04C04.setVisible(false);
-        pcbL04C05.setVisible(false);
-        pcbL04C06.setVisible(false);
-        pcbL04C07.setVisible(false);
-        pcbL04C08.setVisible(false);
-        pcbL04C09.setVisible(false);
-        pcbL04C10.setVisible(false);
-        pcbL04C11.setVisible(false);
-        pcbL04C12.setVisible(false);
-
-        pcbL05C01.setVisible(false);
-        pcbL05C02.setVisible(false);
-        pcbL05C03.setVisible(false);
-        pcbL05C04.setVisible(false);
-        pcbL05C05.setVisible(false);
-        pcbL05C06.setVisible(false);
-        pcbL05C07.setVisible(false);
-        pcbL05C08.setVisible(false);
-        pcbL05C09.setVisible(false);
-        pcbL05C10.setVisible(false);
-        pcbL05C11.setVisible(false);
-        pcbL05C12.setVisible(false);
-
-        pcbL06C01.setVisible(false);
-        pcbL06C02.setVisible(false);
-        pcbL06C03.setVisible(false);
-        pcbL06C04.setVisible(false);
-        pcbL06C05.setVisible(false);
-        pcbL06C06.setVisible(false);
-        pcbL06C07.setVisible(false);
-        pcbL06C08.setVisible(false);
-        pcbL06C09.setVisible(false);
-        pcbL06C10.setVisible(false);
-        pcbL06C11.setVisible(false);
-        pcbL06C12.setVisible(false);
-
-        pcbL07C01.setVisible(false);
-        pcbL07C02.setVisible(false);
-        pcbL07C03.setVisible(false);
-        pcbL07C04.setVisible(false);
-        pcbL07C05.setVisible(false);
-        pcbL07C06.setVisible(false);
-        pcbL07C07.setVisible(false);
-        pcbL07C08.setVisible(false);
-        pcbL07C09.setVisible(false);
-        pcbL07C10.setVisible(false);
-        pcbL07C11.setVisible(false);
-        pcbL07C12.setVisible(false);
-
-        pcbL08C01.setVisible(false);
-        pcbL08C02.setVisible(false);
-        pcbL08C03.setVisible(false);
-        pcbL08C04.setVisible(false);
-        pcbL08C05.setVisible(false);
-        pcbL08C06.setVisible(false);
-        pcbL08C07.setVisible(false);
-        pcbL08C08.setVisible(false);
-        pcbL08C09.setVisible(false);
-        pcbL08C10.setVisible(false);
-        pcbL08C11.setVisible(false);
-        pcbL08C12.setVisible(false);
-
-        pcbL09C01.setVisible(false);
-        pcbL09C02.setVisible(false);
-        pcbL09C03.setVisible(false);
-        pcbL09C04.setVisible(false);
-        pcbL09C05.setVisible(false);
-        pcbL09C06.setVisible(false);
-        pcbL09C07.setVisible(false);
-        pcbL09C08.setVisible(false);
-        pcbL09C09.setVisible(false);
-        pcbL09C10.setVisible(false);
-        pcbL09C11.setVisible(false);
-        pcbL09C12.setVisible(false);
-
-        pcbL10C01.setVisible(false);
-        pcbL10C02.setVisible(false);
-        pcbL10C03.setVisible(false);
-        pcbL10C04.setVisible(false);
-        pcbL10C05.setVisible(false);
-        pcbL10C06.setVisible(false);
-        pcbL10C07.setVisible(false);
-        pcbL10C08.setVisible(false);
-        pcbL10C09.setVisible(false);
-        pcbL10C10.setVisible(false);
-        pcbL10C11.setVisible(false);
-        pcbL10C12.setVisible(false);
-
-        pcbL11C01.setVisible(false);
-        pcbL11C02.setVisible(false);
-        pcbL11C03.setVisible(false);
-        pcbL11C04.setVisible(false);
-        pcbL11C05.setVisible(false);
-        pcbL11C06.setVisible(false);
-        pcbL11C07.setVisible(false);
-        pcbL11C08.setVisible(false);
-        pcbL11C09.setVisible(false);
-        pcbL11C10.setVisible(false);
-        pcbL11C11.setVisible(false);
-        pcbL11C12.setVisible(false);
-
-        pcbL12C01.setVisible(false);
-        pcbL12C02.setVisible(false);
-        pcbL12C03.setVisible(false);
-        pcbL12C04.setVisible(false);
-        pcbL12C05.setVisible(false);
-        pcbL12C06.setVisible(false);
-        pcbL12C07.setVisible(false);
-        pcbL12C08.setVisible(false);
-        pcbL12C09.setVisible(false);
-        pcbL12C10.setVisible(false);
-        pcbL12C11.setVisible(false);
-        pcbL12C12.setVisible(false);
-    }
-
-     */
     private void raffraichirInterface() {
-        
-        
+
         this.setSize(1141, 620 + lignes * 38);
-        int i =0;
-        while (i<lignes) {
-           
-            Listelignes.get(i).afficher();
+        int i = 0;
+        while (i < lignes) {
+
+            listeLignes.get(i).initialiser(colonnes);
+            listeLignes.get(i).setVisible(true);
             i++;
         }
-        
-        for(int j=i; j<12; j++){
-            
-              Listelignes.get(j).supprimer();
+
+        for (int j = i; j < 12; j++) {
+
+            listeLignes.get(j).supprimer();
+            listeLignes.get(j).setVisible(false);
         }
-         
+
+    }
+
+    private void raffraichirIndicateur(String[] tab) {
+
+        for (Ligne l : listeLignes) {
+
+            System.out.println("visible: " + l.isVisible());
+        }
+
+        System.out.println("tab1: " + tab[1]);
+        System.out.println("tab2: " + tab[2]);
+
+        int ligne = 1;
+
+        while (ligne < 13) {
+
+            if (listeLignes.get(ligne - 1).isVisible()) {
+
+                System.out.println("Ligne visible");
+                for (int i = 0; i < 12; i++) {
+
+                    System.out.println("ordre: " + listeLignes.get(ligne - 1).getVoyants().get(i).getOrdre() + " - colonne:" + i);
+                    if (listeLignes.get(ligne - 1).getVoyants().get(i).getOrdre() == Integer.parseInt(tab[1])) {
+
+                        if (Integer.parseInt(tab[2]) == 1) {
+
+                            listeLignes.get(ligne - 1).getVoyants().get(i).ok(true);
+                        } else {
+
+                            listeLignes.get(ligne - 1).getVoyants().get(i).ok(false);
+                        }
+
+                    }
+
+                }
+
+            } else {
+
+                System.out.println("ligne non visible - saut de ligne");
+
+            }
+
+            ligne++;
+
+        }
     }
 }
