@@ -30,7 +30,7 @@ import javax.swing.UIManager;
  * @author Michel
  */
 public class Interface extends javax.swing.JFrame implements Observer {
-
+    
     private File programmerLocation = null;      // emplacement du repertoire programmateur
     private File nouveauBinaire = null;          // emplacement du repertoire du nouveau binaire à ajouter
     private String filePath = null;              // emplacement du binaire pour programmation
@@ -44,18 +44,18 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private String binaireLocation = null;
     private String nombreVoiesCommutateurParamsProperties = null;  // nombre de voies du commutateur lues dans params.properties
     private String programmerParamsProperties = null;
-
+    
     private int limCommutateur = 0;                 // nombre de voies du commutateur converties en int depuis la variable nombreVoiesCommutateurString
     private int intNombreDeVoiesNouvelleCarte = 0;
     private int intNombreDeVoiesCarteEnTest = 0;
-
+    
     private int lignes = 0;
     private int colonnes = 0;
-
+    
     private String nombreDeVoiesEnregistresParamsProperties = null;  // lues dans params.properties
     private String nombreDeVoiesCarteEnTest = null;
     private String nombreDeVoiesNouvelleCarte = null;
-
+    
     private String matricesProperties = null;        // Liste de toutes les matrices connues et enregistrées dans params.properties
     private String matriceAprogrammer = null;        // la matrice du panneau à programmer
     private String matriceNouveauPanneau = null;     // la matrice du panneau en cours d'enregistrement
@@ -64,15 +64,15 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private String produitAprogrammer = null;       // produit sélectionné pour programmation via l'interface
     private String listeProduitsConnusParamsProperties = null;
     private boolean confirmationParams = false;
-
+    
     private ArrayList<String> listesProduits = new ArrayList<String>();
     private ArrayList<String> listesVoies = new ArrayList<String>();
     private ArrayList<String> listesMatrices = new ArrayList<String>();
-
+    
     private ArrayList<String> ListeBinairesEnregistres = new ArrayList<String>();
     private ArrayList<String> listeDevicesEnregistres = new ArrayList<String>();
     private int selectedProduct = 0;
-
+    
     Connecteur connecteur = getConnecteur();            // gére la connexion RS232
 
     private int baudeRate = 9600;
@@ -81,22 +81,22 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private int stopBits = 1;
     private int newReadTimeout = 1000;
     private int newWriteTimeout = 0;
-
+    
     private boolean connexionRS232Active = false;               // état de la connexion RS-232
 
     private boolean testActif = false;
     private boolean programmationActive = false;
     private boolean auto = true;
     private boolean AttenteReponseOperateur = false;
-
+    
     public static Initializer initializer = new Initializer();  // Charge les propriétés du fichier properties contenant les paramètres de programmation
     public static Initialisation initialisation;                // Centralise les données rapportées par l'initializer
 
     private List<String> listePortString = new ArrayList<>();
     private List<JRadioButtonMenuItem> listePorts = new ArrayList<JRadioButtonMenuItem>();
-
+    
     private ProgController progController = new ProgController();
-
+    
     private ArrayList<JLabel> matriceLigne01 = new ArrayList<>();
     private ArrayList<JLabel> matriceLigne02 = new ArrayList<>();
     private ArrayList<JLabel> matriceLigne03 = new ArrayList<>();
@@ -109,7 +109,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private ArrayList<JLabel> matriceLigne10 = new ArrayList<>();
     private ArrayList<JLabel> matriceLigne11 = new ArrayList<>();
     private ArrayList<JLabel> matriceLigne12 = new ArrayList<>();
-
+    
     private Ligne ligne01 = new Ligne(matriceLigne01, true, 1);
     private Ligne ligne02 = new Ligne(matriceLigne02, true, 2);
     private Ligne ligne03 = new Ligne(matriceLigne03, true, 3);
@@ -122,111 +122,111 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private Ligne ligne10 = new Ligne(matriceLigne10, true, 10);
     private Ligne ligne11 = new Ligne(matriceLigne11, true, 11);
     private Ligne ligne12 = new Ligne(matriceLigne12, true, 12);
-
+    
     private ArrayList<Ligne> listeLignes = new ArrayList<Ligne>();
 
     /**
      * Creates new form Interface
      */
     public Interface() throws IOException {
-
+        
         initComponents();
         statutRs232.setBackground(Color.RED);
         statutRs232.setForeground(Color.RED);
         statutRs232.setOpaque(true);
-
+        
         statutPGRM.setBackground(Color.RED);
         statutPGRM.setForeground(Color.RED);
         statutPGRM.setOpaque(true);
-
+        
         this.getContentPane().setBackground(new Color(50, 131, 168));
-
+        
         console.setBackground(new Color(247, 242, 208));
         console.setOpaque(true);
         console.setForeground(Color.red);
         console.setFont(new Font("Serif", Font.BOLD, 20));
-
+        
         nomProduit.setBackground(new Color(247, 242, 208));
         nomProduit.setOpaque(true);
         nomProduit.setForeground(Color.red);
         nomProduit.setFont(new Font("Serif", Font.BOLD, 20));
-
+        
         emplacementBinaire.setBackground(new Color(247, 242, 208));
         emplacementBinaire.setOpaque(true);
         emplacementBinaire.setForeground(Color.red);
         emplacementBinaire.setFont(new Font("Serif", Font.BOLD, 20));
-
+        
         nombreVoies.setBackground(new Color(247, 242, 208));
         nombreVoies.setOpaque(true);
         nombreVoies.setForeground(Color.red);
         nombreVoies.setFont(new Font("Serif", Font.BOLD, 20));
-
+        
         hexLocalisation.setBackground(new Color(247, 242, 208));
         hexLocalisation.setOpaque(true);
         hexLocalisation.setForeground(Color.red);
         hexLocalisation.setFont(new Font("Serif", Font.BOLD, 20));
-
+        
         messageCreation.setBackground(new Color(252, 242, 3));
         messageCreation.setOpaque(true);
         messageCreation.setForeground(Color.red);
         messageCreation.setFont(new Font("Serif", Font.BOLD, 20));
-
+        
         nomNouvelleCarte.setBackground(new Color(252, 242, 3));
         nomNouvelleCarte.setOpaque(true);
         nomNouvelleCarte.setForeground(Color.red);
         nomNouvelleCarte.setFont(new Font("Serif", Font.BOLD, 20));
-
+        
         messageBinaireSelectionne.setBackground(new Color(252, 242, 3));
         messageBinaireSelectionne.setOpaque(true);
         messageBinaireSelectionne.setForeground(Color.red);
         messageBinaireSelectionne.setFont(new Font("Serif", Font.BOLD, 20));
-
+        
         nombreVoiesNouvelleCarte.setBackground(new Color(252, 242, 3));
         nombreVoiesNouvelleCarte.setOpaque(true);
         nombreVoiesNouvelleCarte.setForeground(Color.red);
         nombreVoiesNouvelleCarte.setFont(new Font("Serif", Font.BOLD, 20));
-
+        
         nouvelleMatrice.setBackground(new Color(252, 242, 3));
         nouvelleMatrice.setOpaque(true);
         nouvelleMatrice.setForeground(Color.red);
         nouvelleMatrice.setFont(new Font("Serif", Font.BOLD, 20));
-
+        
         nouveauMicroController.setBackground(new Color(252, 242, 3));
         nouveauMicroController.setOpaque(true);
         nouveauMicroController.setForeground(Color.red);
         nouveauMicroController.setFont(new Font("Serif", Font.BOLD, 20));
-
+        
         paramsWin.getContentPane().setBackground(new Color(131, 50, 168));
         paramsWin.setSize(1300, 600);
-
+        
         messageCreation.setBackground(new Color(247, 242, 208));
-
+        
         progLocLabel.setBackground(new Color(247, 242, 208));
         hexLocalisation.setOpaque(true);
-
+        
         messageCreation.setOpaque(true);
         progLocLabel.setOpaque(true);
         inhibBtn();
-
+        
         aide.getContentPane().setBackground(new Color(247, 242, 208));
-
+        
         rechercherPortsComms();
         initialisationParams();
 
         // Création repertoire de logs
         int dirCreation = progController.createLogFolder(Constants.LOG_DIRECTORY);
         if (dirCreation != 1) {
-
+            
             montrerError("Echec à la création du repertoire de logs", "Erreur d'initialisation");
             System.exit(0);
-
+            
         }
-
+        
         progBarre.setStringPainted(true);
         progBarre.setForeground(Color.blue);
         progBarre.setOpaque(true);
         progBarre.setVisible(true);
-
+        
         matriceLigne01.add(pcbL01C01);
         matriceLigne01.add(pcbL01C02);
         matriceLigne01.add(pcbL01C03);
@@ -239,7 +239,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         matriceLigne01.add(pcbL01C10);
         matriceLigne01.add(pcbL01C11);
         matriceLigne01.add(pcbL01C12);
-
+        
         matriceLigne02.add(pcbL02C01);
         matriceLigne02.add(pcbL02C02);
         matriceLigne02.add(pcbL02C03);
@@ -252,7 +252,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         matriceLigne02.add(pcbL02C10);
         matriceLigne02.add(pcbL02C11);
         matriceLigne02.add(pcbL02C12);
-
+        
         matriceLigne03.add(pcbL03C01);
         matriceLigne03.add(pcbL03C02);
         matriceLigne03.add(pcbL03C03);
@@ -265,7 +265,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         matriceLigne03.add(pcbL03C10);
         matriceLigne03.add(pcbL03C11);
         matriceLigne03.add(pcbL03C12);
-
+        
         matriceLigne04.add(pcbL04C01);
         matriceLigne04.add(pcbL04C02);
         matriceLigne04.add(pcbL04C03);
@@ -278,7 +278,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         matriceLigne04.add(pcbL04C10);
         matriceLigne04.add(pcbL04C11);
         matriceLigne04.add(pcbL04C12);
-
+        
         matriceLigne05.add(pcbL05C01);
         matriceLigne05.add(pcbL05C02);
         matriceLigne05.add(pcbL05C03);
@@ -291,7 +291,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         matriceLigne05.add(pcbL05C10);
         matriceLigne05.add(pcbL05C11);
         matriceLigne05.add(pcbL05C12);
-
+        
         matriceLigne06.add(pcbL06C01);
         matriceLigne06.add(pcbL06C02);
         matriceLigne06.add(pcbL06C03);
@@ -304,7 +304,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         matriceLigne06.add(pcbL06C10);
         matriceLigne06.add(pcbL06C11);
         matriceLigne06.add(pcbL06C12);
-
+        
         matriceLigne07.add(pcbL07C01);
         matriceLigne07.add(pcbL07C02);
         matriceLigne07.add(pcbL07C03);
@@ -317,7 +317,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         matriceLigne07.add(pcbL07C10);
         matriceLigne07.add(pcbL07C11);
         matriceLigne07.add(pcbL07C12);
-
+        
         matriceLigne08.add(pcbL08C01);
         matriceLigne08.add(pcbL08C02);
         matriceLigne08.add(pcbL08C03);
@@ -330,7 +330,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         matriceLigne08.add(pcbL08C10);
         matriceLigne08.add(pcbL08C11);
         matriceLigne08.add(pcbL08C12);
-
+        
         matriceLigne09.add(pcbL09C01);
         matriceLigne09.add(pcbL09C02);
         matriceLigne09.add(pcbL09C03);
@@ -343,7 +343,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         matriceLigne09.add(pcbL09C10);
         matriceLigne09.add(pcbL09C11);
         matriceLigne09.add(pcbL09C12);
-
+        
         matriceLigne10.add(pcbL10C01);
         matriceLigne10.add(pcbL10C02);
         matriceLigne10.add(pcbL10C03);
@@ -356,7 +356,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         matriceLigne10.add(pcbL10C10);
         matriceLigne10.add(pcbL10C11);
         matriceLigne10.add(pcbL10C12);
-
+        
         matriceLigne11.add(pcbL11C01);
         matriceLigne11.add(pcbL11C02);
         matriceLigne11.add(pcbL11C03);
@@ -369,7 +369,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         matriceLigne11.add(pcbL11C10);
         matriceLigne11.add(pcbL11C11);
         matriceLigne11.add(pcbL11C12);
-
+        
         matriceLigne12.add(pcbL12C01);
         matriceLigne12.add(pcbL12C02);
         matriceLigne12.add(pcbL12C03);
@@ -382,7 +382,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         matriceLigne12.add(pcbL12C10);
         matriceLigne12.add(pcbL12C11);
         matriceLigne12.add(pcbL12C12);
-
+        
         Ligne ligne01 = new Ligne(matriceLigne01, true, 1);
         Ligne ligne02 = new Ligne(matriceLigne02, true, 2);
         Ligne ligne03 = new Ligne(matriceLigne03, true, 3);
@@ -395,7 +395,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         Ligne ligne10 = new Ligne(matriceLigne10, true, 10);
         Ligne ligne11 = new Ligne(matriceLigne11, true, 11);
         Ligne ligne12 = new Ligne(matriceLigne12, true, 12);
-
+        
         listeLignes.add(ligne01);
         listeLignes.add(ligne02);
         listeLignes.add(ligne03);
@@ -408,9 +408,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
         listeLignes.add(ligne10);
         listeLignes.add(ligne11);
         listeLignes.add(ligne12);
-
+        
         this.setSize(1141, 620 + lignes * 38);
-
+        
         ligne01.supprimer();
         ligne02.supprimer();
         ligne03.supprimer();
@@ -423,12 +423,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
         ligne10.supprimer();
         ligne11.supprimer();
         ligne12.supprimer();
-
+        
         raffraichirInterface();
         System.out.println("Taille fenêtre" + this.getContentPane().getSize());
-
+        
         testParamsProg();
-
+        
     }
 
     /**
@@ -2135,58 +2135,58 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgActionPerformed
-
+        
         if (!confirmationParams) {
-
+            
             boolean confirmation = confirmeParams();
             if (!confirmation) {
-
+                
                 return;
-
+                
             } else {
-
+                
                 confirmationParams = true;
             }
         }
-
+        
         console.setText("Programmation en cours");
         programmationActive = true;
         progBarre.setVisible(true);
         activerBtnProgrammer(false);
         activerBtnEffacer(false);
-
+        
         Thread t = new Thread() {
             public void run() {
-
+                
                 try {
                     int comm = connecteur.program(hexLocationsParamsProperties, envVariable, programmerPathParamsProperties, programmerParamsProperties, deviceEnTest, binaireLocation, intNombreDeVoiesCarteEnTest);
                     System.out.println("Retour programmation. Code reçu: " + comm);
-
+                    
                     switch (comm) {
-
+                        
                         case 1:
-
+                            
                             console.setText("Cycle de programmation terminée");
                             activerBtnACQ(true);
                             activerBtnProgrammer(false);
                             break;
-
+                        
                     }
-
+                    
                 } catch (IOException ex) {
                     Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         };
         t.start();
-
+        
 
     }//GEN-LAST:event_btnProgActionPerformed
 
     private void btnEffacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEffacerActionPerformed
-
+        
         for (Ligne l : listeLignes) {
-
+            
             System.out.println("visible: " + l.isVisible());
         }
         String arg = "->PROG:1:1";
@@ -2197,28 +2197,28 @@ public class Interface extends javax.swing.JFrame implements Observer {
         int ligne = 1;
         int colonne = 1;
         while (ligne < 13) {
-
+            
             if (listeLignes.get(ligne - 1).isVisible()) {
-
+                
                 System.out.println("Ligne visible");
                 for (int i = 0; i < 12; i++) {
-
+                    
                     System.out.println("ordre: " + listeLignes.get(ligne - 1).getVoyants().get(i).getOrdre() + " - colonne:" + i);
                     if (listeLignes.get(ligne - 1).getVoyants().get(i).getOrdre() == Integer.parseInt(tab[1])) {
-
+                        
                         listeLignes.get(ligne - 1).getVoyants().get(i).ok(true);
                     }
-
+                    
                 }
-
+                
             } else {
-
+                
                 System.out.println("ligne non visible - saut de ligne");
-
+                
             }
-
+            
             ligne++;
-
+            
         }
         System.out.println("sortie");
         //connecteur.getFileSize(".\\logs\\logs.txt");  // Pour test
@@ -2298,45 +2298,45 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_btnEffacerActionPerformed
 
     private void btnSelectLocationProgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectLocationProgActionPerformed
-
+        
 
     }//GEN-LAST:event_btnSelectLocationProgActionPerformed
 
     private void btnSelectBinaryLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectBinaryLocActionPerformed
-
+        
 
     }//GEN-LAST:event_btnSelectBinaryLocActionPerformed
 
     private void btnFermerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFermerActionPerformed
-
+        
         System.exit(0);
     }//GEN-LAST:event_btnFermerActionPerformed
 
     private void paramsProgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paramsProgActionPerformed
-
+        
         programmerLoc.showOpenDialog(this);
         programmerLocation = programmerLoc.getSelectedFile();
         if (programmerLoc.getSelectedFile() != null) {
-
+            
             console.setText("Repertoire programmateur: " + programmerLocation.getPath());
             System.out.println("Repertoire programmateur: " + programmerLocation.getPath());
             programmerPathParamsProperties = programmerLocation.getPath();
             initializer.update("programmerDirectory", programmerPathParamsProperties);
-
+            
         }
-
+        
         testParamsProg();
     }//GEN-LAST:event_paramsProgActionPerformed
 
     private void menuCreerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCreerActionPerformed
-
+        
         paramsWin.setVisible(true);
         EnvVarBox.setSelected(envVariable);
         activerFonctionAjouter(true);
         if (filePath != null) {
             progLocLabel.setText("Repertoire programmateur: " + filePath);
         } else {
-
+            
             progLocLabel.setText("Repertoire programmateur non défini!");
         }
         messageCreation.setText("Compléter le formulaire ci-dessous pour ajouter un produit à programmer!");
@@ -2344,40 +2344,40 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_menuCreerActionPerformed
 
     private void menuVoirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVoirActionPerformed
-
+        
         paramsWin.setVisible(true);
         activerFonctionAjouter(false);
         EnvVarBox.setSelected(envVariable);
-
+        
         if (comboListeProduits.getSelectedIndex() == 0) {
-
+            
             hexLocalisation.setText("Aucun produit sélectionné.");
-
+            
         }
-
+        
         if (programmerPathParamsProperties != null || !programmerPathParamsProperties.equals("na")) {
-
+            
             progLocLabel.setText("Repertoire programmateur: " + programmerPathParamsProperties);
-
+            
         } else {
-
+            
             progLocLabel.setText("Repertoire programmateur non défini!");
         }
 
     }//GEN-LAST:event_menuVoirActionPerformed
 
     private void menuAideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAideActionPerformed
-
+        
 
     }//GEN-LAST:event_menuAideActionPerformed
 
     private void btnFermerAideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFermerAideActionPerformed
-
+        
         aide.setVisible(false);
     }//GEN-LAST:event_btnFermerAideActionPerformed
 
     private void voirAideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voirAideActionPerformed
-
+        
         aide.setVisible(true);
     }//GEN-LAST:event_voirAideActionPerformed
 
@@ -2386,10 +2386,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_menuParametresActionPerformed
 
     private void btnConnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConnexionActionPerformed
-
+        
         int i = connecteur.makeConnection(Connecteur.portName, baudeRate, numDatabits, parity, stopBits);
         if (i == 99) {
-
+            
             console.setForeground(Color.BLUE);
             console.setText("Connexion réussie");
             setStatusRS232(true);
@@ -2399,21 +2399,21 @@ public class Interface extends javax.swing.JFrame implements Observer {
             //activerBtnAttenteLancement();
             //activerBtnTester(true);
             activerBtnProgrammer(true);
-
+            
         } else {
-
+            
             console.setForeground(Color.red);
             console.setText("Tentative de connexion échouée");
             setStatusRS232(false);
-
+            
         }
-
+        
         setEnabledMenusConfiguration();
 
     }//GEN-LAST:event_btnConnexionActionPerformed
 
     private void btnDeconnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeconnexionActionPerformed
-
+        
         int i = connecteur.disconnect();
         if (i == 0) {
             console.setForeground(Color.BLUE);
@@ -2424,12 +2424,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
             connexionRS232Active = false;
             //inhibBtn();
             activerBtnProgrammer(false);
-
+            
         }
     }//GEN-LAST:event_btnDeconnexionActionPerformed
 
     private void menuConnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConnexionActionPerformed
-
+        
         rechercherPortsComms();
 
     }//GEN-LAST:event_menuConnexionActionPerformed
@@ -2439,7 +2439,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_menuPortActionPerformed
 
     private void btnACQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnACQActionPerformed
-
+        
         System.out.println("Acquittement");
         /*
         int comm = connecteur.envoyerData(Constants.AQC);
@@ -2450,7 +2450,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         }
          */
-
+        
         console.setText("RESULTAT ACQUITTE - PRET POUR UN NOUVEAU CYCLE DE PROGRAMMATION!");
         activerBtnACQ(false);
         activerBtnProgrammer(true);
@@ -2461,7 +2461,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         progBarre.setValue(0);
         progBarre.setString("En attente lancement de programmation");
         progBarre.setStringPainted(true);
-
+        
 
     }//GEN-LAST:event_btnACQActionPerformed
 
@@ -2474,92 +2474,92 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_messageBinaireSelectionneActionPerformed
 
     private void btnEnregistrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnregistrerActionPerformed
-
+        
         if (nomNouvelleCarte.getText().equals("")) {
-
+            
             messageCreation.setText("Le nom de la nouvelle carte doit être défini!");
             montrerError("Le nom de la nouvelle carte doit être défini", "Formulaire imcomplet");
-
+            
             return;
         } else {
-
+            
             nomNouveauBinaire = nomNouvelleCarte.getText();
         }
-
+        
         if (localisationNouveauBinaire == null) {
-
+            
             messageCreation.setText("Indiquer l'accès au bianire");
             montrerError("L'accès au binaire doit être défini", "Formulaire imcomplet");
             return;
         }
-
+        
         if (nombreVoiesNouvelleCarte.getText().equals("")) {
-
+            
             montrerError("Le nombre de voies doit être défini!", "Formulaire imcomplet");
             return;
         } else {
-
+            
             try {
-
+                
                 nombreDeVoiesNouvelleCarte = nombreVoiesNouvelleCarte.getText();
                 intNombreDeVoiesNouvelleCarte = Integer.parseInt(nombreDeVoiesNouvelleCarte);
-
+                
             } catch (Exception e) {
-
+                
                 System.out.println("Exception nombre de voie: " + nombreDeVoiesNouvelleCarte);
                 montrerError("Le nombre de voies doit être compris entre 1 et " + limCommutateur, "Formulaire imcomplet");
                 return;
-
+                
             }
-
+            
         }
-
+        
         if (nouveauMicroController.getText().equals("")) {
-
+            
             messageCreation.setText("Le nom du mirocontrôleur doit être défini!");
             montrerError("Le nom du mirocontrôleur doit être défini!", "Formulaire imcomplet");
-
+            
             return;
         } else {
-
+            
             nouveauDevice = nouveauMicroController.getText();
         }
-
+        
         if (nouvelleMatrice.getText().equals("")) {
-
+            
             messageCreation.setText("La matrice doit être définie!");
             montrerError("La nouvelle matrice doit être définie", "Formulaire imcomplet");
             return;
         } else {
-
+            
             verifierNouvelleMatrice(nouvelleMatrice.getText(), intNombreDeVoiesNouvelleCarte);
-
+            
         }
-
+        
         matriceNouveauPanneau = nouvelleMatrice.getText();
         enregistrerNouvelleCarte(localisationNouveauBinaire, nomNouveauBinaire, nombreDeVoiesNouvelleCarte, nouveauDevice, matriceNouveauPanneau);
-
+        
         montrerError(
                 "La nouvelle carte à été enregistrée", "Enregistrement effectué");
-
+        
         paramsWin.setVisible(
                 false);
 
     }//GEN-LAST:event_btnEnregistrerActionPerformed
 
     private void btnSelectionBinaireAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectionBinaireAjouterActionPerformed
-
+        
         programmerLoc.showOpenDialog(this);
         nouveauBinaire = programmerLoc.getSelectedFile();
         if (programmerLoc.getSelectedFile() != null) {
-
+            
             console.setText("Repertoire binaire: " + nouveauBinaire.getPath());
             localisationNouveauBinaire = nouveauBinaire.getPath();
             System.out.println("Binaire sélectionné: " + localisationNouveauBinaire);
             messageBinaireSelectionne.setText("Binaire sélectionné: " + localisationNouveauBinaire);
-
+            
         } else {
-
+            
             System.out.println("Aucun binaire sélectionné!");
         }
 
@@ -2571,7 +2571,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_nomNouvelleCarteActionPerformed
 
     private void btnAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjouterActionPerformed
-
+        
         activerFonctionAjouter(true);
     }//GEN-LAST:event_btnAjouterActionPerformed
 
@@ -2581,25 +2581,25 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void comboListeProduitsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboListeProduitsItemStateChanged
         System.out.println("item selected: " + comboListeProduits.getSelectedIndex());
-
+        
         if (comboListeProduits.getSelectedIndex() != 0) {
-
+            
             hexLocalisation.setText(ListeBinairesEnregistres.get(comboListeProduits.getSelectedIndex() - 1));
             nombreVoies.setText(listesVoies.get(comboListeProduits.getSelectedIndex() - 1));
             nombreDeVoiesCarteEnTest = listesVoies.get(comboListeProduits.getSelectedIndex() - 1);
             deviceEnTest = listeDevicesEnregistres.get(comboListeProduits.getSelectedIndex() - 1);
             matriceAprogrammer = listesMatrices.get(comboListeProduits.getSelectedIndex() - 1);
             extraireLignesColonnes(matriceAprogrammer);
-
+            
         } else {
-
+            
             hexLocalisation.setText("Aucun produit sélectionné!");
             nombreVoies.setText("");
             nombreDeVoiesCarteEnTest = null;
             deviceEnTest = null;
             produitAprogrammer = null;
             matriceAprogrammer = null;
-
+            
             testParamsProg();
         }
     }//GEN-LAST:event_comboListeProduitsItemStateChanged
@@ -2609,36 +2609,36 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_EnvVarBoxActionPerformed
 
     private void EnvVarBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_EnvVarBoxStateChanged
-
+        
         if (EnvVarBox.isSelected()) {
-
+            
             progLocLabel.setText("Variable d'environnement définie!");
-
+            
         } else {
-
+            
             progLocLabel.setText("Vérifier variables d'environnement! JAVA doit être dans le path");
-
+            
         }
     }//GEN-LAST:event_EnvVarBoxStateChanged
 
     private void btnFermerParamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFermerParamsActionPerformed
-
+        
         paramsWin.setSize(1300, 600);
         paramsWin.setVisible(false);
-
+        
         if (EnvVarBox.isSelected()) {
-
+            
             envVariable = true;
-
+            
         } else {
-
+            
             envVariable = false;
         }
-
+        
         selectedProduct = comboListeProduits.getSelectedIndex();
-
+        
         if (selectedProduct != 0) {
-
+            
             produitAprogrammer = listesProduits.get(selectedProduct);
             nomProduit.setText(produitAprogrammer + " - Microcontôleur: " + deviceEnTest + " - Voies: " + nombreDeVoiesCarteEnTest + " - Programmateur: " + programmerParamsProperties + " - Matrice: " + matriceAprogrammer);
             binaireLocation = ListeBinairesEnregistres.get(selectedProduct - 1);
@@ -2647,17 +2647,17 @@ public class Interface extends javax.swing.JFrame implements Observer {
             intNombreDeVoiesCarteEnTest = Integer.parseInt(nombreDeVoiesCarteEnTest);
             System.out.println("nombre de voies carte en test (int): " + intNombreDeVoiesCarteEnTest);
             raffraichirInterface();
-
+            
         } else {
-
+            
             nomProduit.setText("Aucun produit sélectionné!");
             emplacementBinaire.setText("");
             nombreDeVoiesCarteEnTest = null;
             deviceEnTest = null;
             produitAprogrammer = null;
-
+            
         }
-
+        
         testParamsProg();
         // raffraichirInterface();
 
@@ -2954,314 +2954,321 @@ public class Interface extends javax.swing.JFrame implements Observer {
     // End of variables declaration//GEN-END:variables
 
     private void testParamsProg() {
-
+        
         System.out.println("produit à programmer: " + produitAprogrammer);
-
+        
         if (produitAprogrammer == null) {
-
+            
             console.setText("Sélectionner un produit avant de commencer!");
-
+            
             activerLedPRGM(false);
             return;
-
+            
         }
-
+        
         if (!envVariable) {
-
+            
             console.setText("Vérifier que JAVA est ajouté aux variables d'environnement");
-
+            
             activerLedPRGM(false);
             return;
-
+            
         }
-
+        
         if (programmerPathParamsProperties == null || programmerPathParamsProperties.equals("na")) {
-
+            
             console.setText("Le programmateur n'est pas localisé");
-
+            
             activerLedPRGM(false);
             return;
-
+            
         }
-
+        
         console.setText("Paramètres de programmation définis. Vous pouvez commencer!");
         activerLedPRGM(true);
-
+        
         if (envVariable) {
-
+            
             initializer.update("varEnv", "true");
-
+            
         } else {
-
+            
             initializer.update("varEnv", "false");
         }
-
+        
         if (connexionRS232Active) {
-
+            
             statutRs232.setBackground(Color.GREEN);
             activerBtnProgrammer(true);
-
+            
         } else {
-
+            
             statutRs232.setBackground(Color.RED);
             activerBtnProgrammer(true); // forcer pour besoin de test
 
         }
-
+        
     }
-
+    
     public void montrerError(String message, String titre) {
-
+        
         JOptionPane.showMessageDialog(this, message, titre, JOptionPane.ERROR_MESSAGE);
     }
-
+    
     public boolean confirmeParams() {
-
+        
         int response = JOptionPane.showConfirmDialog(this, "Confirmez-vous ces paramètres?", "Paramètres de programmation définis", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.NO_OPTION) {
             System.out.println("No button clicked");
             return false;
         }
         if (response == JOptionPane.YES_OPTION) {
-
+            
             return true;
-
+            
         }
         return false;
-
+        
     }
-
+    
     private Connecteur getConnecteur() {
-
+        
         if (this.connecteur == null) {
             this.connecteur = new Connecteur();
             this.connecteur.addObserver(this);
         }
         return this.connecteur;
-
+        
     }
-
+    
     @Override
     public void update(Observable o, Object arg) {
-
+        
         if (arg instanceof Integer) {
-
+            
             progBarre.setValue((100 / intNombreDeVoiesCarteEnTest) * (Integer) arg);
             console.setText("Numéro de carte: " + (Integer) arg);
-
+            
         }
-
+        
         if (arg instanceof String) {
-
+            
             if (((String) arg).startsWith("->PROG")) {
                 console.setText((String) arg);
                 String[] tab = ((String) arg).trim().split(":");
                 raffraichirIndicateur(tab);
                 progBarre.setValue((100 / intNombreDeVoiesCarteEnTest) * Integer.parseInt(tab[1]));
             }
-
+            
+            if (((String) arg).startsWith("->START")) {
+                console.setText((String) arg);
+                String[] tab = ((String) arg).trim().split(":");
+                raffraichirIndicateur(tab);
+                
+            }
+            
         }
-
+        
     }
-
+    
     private void setEnabledMenusConfiguration() {
-
+        
     }
-
+    
     private void setStatusRS232(boolean statut) {
-
+        
         if (statut) {
-
+            
             statutRs232.setForeground(Color.GREEN);
             statutRs232.setBackground(Color.GREEN);
         } else {
             statutRs232.setForeground(Color.RED);
             statutRs232.setBackground(Color.RED);
         }
-
+        
     }
-
+    
     private void processRapport(String inputLine) {
-
+        
         if (inputLine.trim().startsWith("-> INIT")) {
-
+            
             System.out.println("reset system");
             messageConsole(inputLine.trim());
             resetSystem();
-
+            
         }
 
         // traitement des résultats aux étapes de test
         if (inputLine.trim().startsWith("-> COMMUTATION")) {
-
+            
             String[] tab = inputLine.trim().split(":");
             int etape = Integer.parseInt(tab[1]);
-
+            
         }
-
+        
     }
-
+    
     private void activerBtnReponseOp(boolean active) {
-
+        
         if (active) {
-
+            
             btnProg.setText("OK");
             btnProg.setBackground(new Color(163, 194, 240));
             btnProg.setEnabled(true);
-
+            
             btnEffacer.setText("NON OK");
             btnEffacer.setBackground(new Color(163, 194, 240));
             btnEffacer.setEnabled(true);
-
+            
         } else {
-
+            
             btnProg.setText("OK");
             btnProg.setBackground(new Color(163, 194, 240));
             btnProg.setEnabled(false);
-
+            
             btnEffacer.setText("NON OK");
             btnEffacer.setBackground(new Color(163, 194, 240));
             btnEffacer.setEnabled(false);
-
+            
         }
-
+        
     }
-
+    
     private void activerBtnAcquittement(boolean active) {
-
+        
         if (active) {
-
+            
             btnProg.setEnabled(false);
             btnProg.setBackground(Color.GRAY);
             btnEffacer.setEnabled(false);
             btnEffacer.setBackground(Color.GRAY);
-
+            
         } else {
-
+            
         }
-
+        
     }
-
+    
     private void messageConsole(String message) {
-
+        
         console.setText(message);
-
+        
     }
-
+    
     private void activerBtnProgrammation(boolean active) {
-
+        
         if (active) {
-
+            
             btnProg.setText("PROGRAMMER");
             btnProg.setEnabled(true);
             btnProg.setBackground(new Color(163, 194, 240));
-
+            
             btnEffacer.setText("EFFACER");
             btnEffacer.setEnabled(true);
             btnEffacer.setBackground(new Color(163, 194, 240));
             testActif = false;
             auto = true;
-
+            
         } else {
-
+            
             btnProg.setText("PROGRAMMER");
             btnProg.setEnabled(false);
             btnProg.setBackground(Color.GRAY);
-
+            
             btnEffacer.setText("EFFACER");
             btnEffacer.setEnabled(false);
             btnEffacer.setBackground(Color.GRAY);
             testActif = false;
             auto = false;
-
+            
         }
     }
-
+    
     private void waitForErasing(boolean active) {
-
+        
         if (active) {
-
+            
             console.setText("Effacement demandé");
-
+            
             System.out.println("Affichage yellow");
-
+            
         } else {
-
+            
             console.setText("Effacement terminé");
-
+            
             System.out.println("Affichage green");
-
+            
         }
-
+        
     }
-
+    
     private void waitForProgramming(boolean active) {
-
+        
         if (active) {
-
+            
             console.setText("Programation en cours");
-
+            
         } else {
-
+            
             console.setText("Programation terminé");
-
+            
         }
-
+        
     }
-
+    
     private void alerteRS232() {
-
+        
         int i = connecteur.disconnect();
         if (i == 0) {
-
+            
             console.setForeground(Color.BLUE);
             console.setText("La connexion a été perdue! Vous devez la rétablir.");
             setStatusRS232(false);
             btnConnexion.setEnabled(true);
             btnDeconnexion.setEnabled(false);
             connexionRS232Active = false;
-
+            
             setEnabledMenusConfiguration();
             testActif = false;
             auto = false;
             // activerBtnProgrammation(false);
             inhibBtn();
-
+            
         }
-
+        
         montrerError("La connexion RS-232 a été perdue!\n Vérifer la connexion RS-232 et appuyer sur OK\n L'application va redémarrer", "Défaut de connexion");
         Runtime runtime = Runtime.getRuntime();
         try {
             runtime.exec("java -jar keypadProgrammerModule2.jar");
             System.exit(0);
-
+            
         } catch (IOException ex) {
             Logger.getLogger(Interface.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private void rechercherPortsComms() {
-
+        
         menuPort.removeAll();
-
+        
         listePorts.clear();
         listePortString.clear();
         listePortString = connecteur.getListPorts();
-
+        
         for (String p : listePortString) {
-
+            
             JRadioButtonMenuItem m = new JRadioButtonMenuItem(p);
             groupPorts.add(m);
             m.addActionListener(new PortSupplier());
             menuPort.add(m);
         }
-
+        
     }
 
     // Fonction d'activation des boutons selon phase en cours
     void activerBtnAttenteLancement() {
-
+        
         activerBtnLancer(true);
         activerBtnACQ(false);
         activerBtnEffacer(false);
@@ -3269,11 +3276,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
         activerBtnNOK(false);
         activerBtnTester(false);
         activerBtnProgrammer(false);
-
+        
     }
-
+    
     void activerBtnAttenteACQ() {
-
+        
         activerBtnLancer(false);
         activerBtnACQ(true);
         activerBtnEffacer(false);
@@ -3281,11 +3288,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
         activerBtnNOK(false);
         activerBtnTester(false);
         activerBtnProgrammer(false);
-
+        
     }
-
+    
     void activerBtnTestEnCours() {
-
+        
         activerBtnLancer(false);
         activerBtnACQ(false);
         activerBtnEffacer(false);
@@ -3293,11 +3300,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
         activerBtnNOK(true);
         activerBtnTester(false);
         activerBtnProgrammer(false);
-
+        
     }
-
+    
     void inhibBtn() {
-
+        
         activerBtnLancer(false);
         activerBtnACQ(false);
         activerBtnEffacer(true);
@@ -3305,85 +3312,85 @@ public class Interface extends javax.swing.JFrame implements Observer {
         activerBtnNOK(false);
         activerBtnTester(false);
         activerBtnProgrammer(false);
-
+        
     }
 
     // Fonctions d'activation des boutons
     void activerBtnLancer(boolean active) {
-
+        
     }
-
+    
     void activerBtnOK(boolean active) {
-
+        
     }
-
+    
     void activerBtnNOK(boolean active) {
-
+        
     }
-
+    
     void activerBtnTester(boolean active) {
-
+        
     }
-
+    
     void activerBtnACQ(boolean active) {
-
+        
         btnACQ.setOpaque(true);
         if (active) {
-
+            
             btnACQ.setEnabled(true);
             btnACQ.setBackground(new Color(163, 194, 240));
-
+            
         } else {
-
+            
             btnACQ.setEnabled(false);
             btnACQ.setBackground(Color.GRAY);
-
+            
         }
     }
-
+    
     void activerBtnProgrammer(boolean active) {
-
+        
         btnProg.setOpaque(true);
         if (active) {
-
+            
             btnProg.setEnabled(true);
             btnProg.setBackground(new Color(163, 194, 240));
-
+            
         } else {
-
+            
             btnProg.setEnabled(false);
             btnProg.setBackground(Color.GRAY);
-
+            
         }
     }
-
+    
     void activerBtnEffacer(boolean active) {
-
+        
         btnEffacer.setOpaque(true);
         if (active) {
-
+            
             btnEffacer.setEnabled(true);
             btnEffacer.setBackground(new Color(163, 194, 240));
-
+            
         } else {
-
+            
             btnEffacer.setEnabled(false);
             btnEffacer.setBackground(Color.GRAY);
-
+            
         }
     }
-
+    
     private void clignottementVoyant() {
-
+        
         while (AttenteReponseOperateur) {
-
+            
             try {
                 Thread.sleep(500);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Interface.class
                         .getName()).log(Level.SEVERE, null, ex);
             }
-
+            
             try {
                 Thread.sleep(500);
             } catch (InterruptedException ex) {
@@ -3392,19 +3399,19 @@ public class Interface extends javax.swing.JFrame implements Observer {
             }
         }
     }
-
+    
     private void resetSystem() {
-
+        
         System.out.println("reset system");
-
+        
         testActif = false;
         console.setText("Système réinitialisé");
         testParamsProg();
-
+        
         progBarre.setValue(0);
         progBarre.setString("En attente lancement de programmation");
         progBarre.setStringPainted(true);
-
+        
         try {
             Thread.sleep(4000);
         } catch (InterruptedException ex) {
@@ -3413,10 +3420,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
         }
         int comm = connecteur.envoyerData(Constants.START);
         if (comm == -1) {
-
+            
             alerteRS232();
             return;
-
+            
         }
         testActif = true;
         auto = true;
@@ -3424,15 +3431,15 @@ public class Interface extends javax.swing.JFrame implements Observer {
         // activerBtnReponseOp(testActif);
         activerBtnTestEnCours();
     }
-
+    
     private void activerFonctionAjouter(boolean active) {
-
+        
         if (active) {
             paramsWin.setSize(1300, 2600);
         } else {
             paramsWin.setSize(1300, 600);
         }
-
+        
         btnAjouter.setVisible(!active);
         messageCreation.setVisible(active);
         labelAjoutCarte.setVisible(active);
@@ -3451,62 +3458,62 @@ public class Interface extends javax.swing.JFrame implements Observer {
             messageCreation.setText("Compléter le formulaire ci-dessous");
         }
     }
-
+    
     private ArrayList<String> extraireProduits(String listeProduits) {
-
+        
         String[] liste = listeProduits.split(";");
         ArrayList<String> arrList = new ArrayList<String>();
         arrList.add("---");
         for (int i = 0; i < liste.length; i++) {
-
+            
             System.out.println(liste[i]);
             arrList.add(liste[i]);
         }
         return arrList;
-
+        
     }
-
+    
     private ArrayList<String> extraireLocalisationBinaires(String hexLocations) {
-
+        
         String[] liste = hexLocations.split(";");
         ArrayList<String> arrList = new ArrayList<String>();
         for (int i = 0; i < liste.length; i++) {
-
+            
             System.out.println(liste[i]);
             arrList.add(liste[i]);
         }
         return arrList;
-
+        
     }
-
+    
     private ArrayList<String> extraireVoies(String listeVoies) {
-
+        
         String[] liste = listeVoies.split(";");
         ArrayList<String> arrList = new ArrayList<String>();
         for (int i = 0; i < liste.length; i++) {
-
+            
             System.out.println(liste[i]);
             arrList.add(liste[i]);
         }
         return arrList;
-
+        
     }
-
+    
     private ArrayList<String> extraireMatrices(String matricesProperties) {
-
+        
         String[] liste = matricesProperties.split(";");
         ArrayList<String> arrList = new ArrayList<String>();
         for (int i = 0; i < liste.length; i++) {
-
+            
             System.out.println(liste[i]);
             arrList.add(liste[i]);
         }
         return arrList;
-
+        
     }
-
+    
     private void extraireLignesColonnes(String matriceAprogrammer) {
-
+        
         System.out.println("Matrice à programmer: " + matriceAprogrammer);
         String[] tab = matriceAprogrammer.split("x");
         lignes = Integer.parseInt(tab[0]);
@@ -3514,9 +3521,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
         System.out.println("Lignes: " + lignes);
         System.out.println("colonnes: " + colonnes);
     }
-
+    
     private Boolean verifierNouvelleMatrice(String nouvelleMatrice, int voies) {
-
+        
         System.out.println("Matrice à programmer: " + nouvelleMatrice);
         try {
             String[] tab = nouvelleMatrice.split("x");
@@ -3525,99 +3532,99 @@ public class Interface extends javax.swing.JFrame implements Observer {
             System.out.println("Lignes: " + lignes);
             System.out.println("colonnes: " + colonnes);
         } catch (Exception e) {
-
+            
             montrerError("Format matrice non conforme!", "Erreur saisie");
             return false;
         }
         if (lignes * colonnes != voies) {
-
+            
             montrerError("Matrice non conforme au nombre de voies!", "Erreur saisie");
             return false;
-
+            
         } else {
             return true;
         }
-
+        
     }
-
+    
     private void enregistrerNouvelleCarte(String localisationNouveauBinaire, String nomNouveauBinaire, String nombreDeVoiesNouvelleCarte, String nouveauDevice, String matriceNouveauPanneau) {
-
+        
         comboListeProduits.addItem(nomNouveauBinaire);
         ListeBinairesEnregistres.add(localisationNouveauBinaire);
         listesProduits.add(nomNouveauBinaire);
         listesVoies.add(nombreDeVoiesNouvelleCarte);
         listeDevicesEnregistres.add(nouveauDevice);
         listesMatrices.add(matriceNouveauPanneau);
-
+        
         nomNouvelleCarte.setText("");
         messageBinaireSelectionne.setText("");
         nouveauMicroController.setText("");
         nombreVoiesNouvelleCarte.setText("");
         nouvelleMatrice.setText("");
-
+        
         initialisation.setBinaryLocations(initialisation.getBinaryLocations() + ";" + localisationNouveauBinaire);
         initialisation.setProductNames(initialisation.getProductNames() + ";" + nomNouveauBinaire);
         initialisation.setNombreVoies(initialisation.getNombreVoies() + ";" + nombreDeVoiesNouvelleCarte);
         initialisation.setDevice(initialisation.getDevice() + ";" + nouveauDevice);
         initialisation.setMatrice(initialisation.getMatrice() + ";" + matriceNouveauPanneau);
-
+        
         initializer.update("binaryLocations", initialisation.getBinaryLocations());
         initializer.update("productNames", initialisation.getProductNames());
         initializer.update("voies", initialisation.getNombreVoies());
         initializer.update("device", initialisation.getDevice());
         initializer.update("matrice", initialisation.getMatrice());
-
+        
     }
-
+    
     private ArrayList<String> extraireDevices(String devices) {
-
+        
         String[] liste = devices.split(";");
         ArrayList<String> arrList = new ArrayList<String>();
         for (int i = 0; i < liste.length; i++) {
-
+            
             System.out.println(liste[i]);
             arrList.add(liste[i]);
         }
         return arrList;
     }
-
+    
     private void activerLedPRGM(boolean active) {
-
+        
         if (!active) {
-
+            
             statutPGRM.setBackground(Color.RED);
             statutPGRM.setForeground(Color.RED);
         } else {
-
+            
             statutPGRM.setBackground(Color.GREEN);
             statutPGRM.setForeground(Color.GREEN);
         }
     }
-
+    
     private void activerLedRS232(boolean active) {
-
+        
         if (!active) {
-
+            
             statutPGRM.setBackground(Color.RED);
             statutPGRM.setForeground(Color.RED);
         } else {
-
+            
             statutPGRM.setBackground(Color.GREEN);
             statutPGRM.setForeground(Color.GREEN);
         }
     }
-
+    
     void initialisationParams() throws IOException {
-
+        
         initialisation = initializer.getInit();
 
         //Recherche nombre de voie du commutateur
         if (initialisation.getCommutateur().equals("na")) {
-
+            
             System.out.println("Commutateur = " + initialisation.getCommutateur());
-
+            
         } else {
-
+            
             System.out.println("Commutateur = " + initialisation.getCommutateur());
             nombreVoiesCommutateurParamsProperties = initialisation.getCommutateur();
             limCommutateur = Integer.parseInt(nombreVoiesCommutateurParamsProperties);
@@ -3625,11 +3632,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         // Recherche du fichier binaire
         if (initialisation.getBinaryLocations().equals("na")) {
-
+            
             System.out.println("BinaryLocation = " + initialisation.getBinaryLocations());
-
+            
         } else {
-
+            
             System.out.println("BinaryLocation = " + initialisation.getBinaryLocations());
             hexLocationsParamsProperties = initialisation.getBinaryLocations();
             ListeBinairesEnregistres = extraireLocalisationBinaires(hexLocationsParamsProperties);
@@ -3637,12 +3644,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         // Recherche nom du produit
         if (initialisation.getProductNames().equals("na")) {
-
+            
             System.out.println("liste noms de produits = " + initialisation.getProductNames());
             nomProduit.setText("Aucun produit crée");
-
+            
         } else {
-
+            
             System.out.println("liste noms de produits  = " + initialisation.getProductNames());
             listeProduitsConnusParamsProperties = initialisation.getProductNames();
             //produits = extraireProduits(listeProduitsConnus);
@@ -3652,163 +3659,174 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
                 //comboListeProduits.addItem(produits[i]);
                 comboListeProduits.addItem(listesProduits.get(i));
-
+                
             }
             comboListeProduits.setSelectedIndex(0);
             nomProduit.setText("Veuillez sélectionner un produit!");
-
+            
         }
 
         // Recherche nombre de voies à programmer (nombre de carte par panneau)
         if (initialisation.getNombreVoies().equals("na")) {
-
+            
             System.out.println("liste nombre de voies = " + initialisation.getNombreVoies());
             nombreVoies.setText("Aucune voie définie");
-
+            
         } else {
-
+            
             System.out.println("liste du nombre de voies  = " + initialisation.getNombreVoies());
             nombreDeVoiesEnregistresParamsProperties = initialisation.getNombreVoies();
             listesVoies = extraireVoies(nombreDeVoiesEnregistresParamsProperties);
-
+            
         }
 
         // Recherche nom du microcontrôleur à programmer
         if (initialisation.getDevice().equals("na")) {
-
+            
             System.out.println("liste des devices lues = " + initialisation.getDevice());
             nombreVoies.setText("Aucun device enregistré");
-
+            
         } else {
-
+            
             System.out.println("liste des devices lus  = " + initialisation.getDevice());
             devicesParamsProperties = initialisation.getDevice();
             listeDevicesEnregistres = extraireDevices(devicesParamsProperties);
-
+            
         }
 
         // Recherche type de programmateur (code programmateur) 
         if (initialisation.getProgrammer().equals("na")) {
-
+            
             System.out.println("liste des devices lues = " + initialisation.getProgrammer());
             nombreVoies.setText("Aucun programmateur enregistré");
-
+            
         } else {
-
+            
             System.out.println("Programmateur enregistré  = " + initialisation.getProgrammer());
             programmerParamsProperties = initialisation.getProgrammer();
-
+            
         }
 
         // Recherche repertoire d'installation de la plateforme Microchip
         if (initialisation.getProgrammerDirectory().equals("na")) {
-
+            
             System.out.println("Directory programmer = " + initialisation.getProgrammerDirectory());
             nombreVoies.setText("Aucune localisation programmateur enregistré");
-
+            
         } else {
-
+            
             System.out.println("Directory programmer = " + initialisation.getProgrammerDirectory());
             programmerPathParamsProperties = initialisation.getProgrammerDirectory();
-
+            
         }
 
         // Recherche variable d'environnement pour la commande Java
         if (initialisation.getVarEnv().equals("na")) {
-
+            
             System.out.println("varEnv = " + initialisation.getVarEnv());
-
+            
         } else {
-
+            
             System.out.println("varEnv = " + initialisation.getVarEnv());
             if (initialisation.getVarEnv().equals("true")) {
-
+                
                 envVariable = true;
             }
-
+            
             if (initialisation.getVarEnv().equals("false")) {
-
+                
                 envVariable = false;
             }
-
+            
         }
 
         // Recherche des matrices
         if (initialisation.getMatrice().equals("na")) {
-
+            
             System.out.println("liste des matrices = " + initialisation.getMatrice());
             nombreVoies.setText("Aucune matrice définie");
-
+            
         } else {
-
+            
             System.out.println("liste des matrices  = " + initialisation.getMatrice());
             matricesProperties = initialisation.getMatrice();
             listesMatrices = extraireMatrices(matricesProperties);
-
+            
         }
     }
-
+    
     private void raffraichirInterface() {
-
+        
         this.setSize(1141, 620 + lignes * 38);
         int i = 0;
         while (i < lignes) {
-
+            
             listeLignes.get(i).initialiser(colonnes);
             listeLignes.get(i).setVisible(true);
             i++;
         }
-
+        
         for (int j = i; j < 12; j++) {
-
+            
             listeLignes.get(j).supprimer();
             listeLignes.get(j).setVisible(false);
         }
-
+        
     }
-
+    
     private void raffraichirIndicateur(String[] tab) {
-
+        
         for (Ligne l : listeLignes) {
-
+            
             System.out.println("visible: " + l.isVisible());
         }
-
+        
         System.out.println("tab1: " + tab[1]);
         System.out.println("tab2: " + tab[2]);
-
+        
         int ligne = 1;
-
+        
         while (ligne < 13) {
-
+            
             if (listeLignes.get(ligne - 1).isVisible()) {
-
+                
                 System.out.println("Ligne visible");
                 for (int i = 0; i < 12; i++) {
-
+                    
                     System.out.println("ordre: " + listeLignes.get(ligne - 1).getVoyants().get(i).getOrdre() + " - colonne:" + i);
+                    
+                    if (Integer.parseInt(tab[1]) == 99) {
+                        
+                        if (listeLignes.get(ligne - 1).getVoyants().get(i).getOrdre() == Integer.parseInt(tab[2])) {
+                            
+                            listeLignes.get(ligne - 1).getVoyants().get(i).processing(true);
+                        }
+                        
+                    }
+                    
                     if (listeLignes.get(ligne - 1).getVoyants().get(i).getOrdre() == Integer.parseInt(tab[1])) {
-
+                        
                         if (Integer.parseInt(tab[2]) == 1) {
-
+                            
                             listeLignes.get(ligne - 1).getVoyants().get(i).ok(true);
+                            
                         } else {
-
+                            
                             listeLignes.get(ligne - 1).getVoyants().get(i).ok(false);
                         }
-
+                        
                     }
-
+                    
                 }
-
+                
             } else {
-
+                
                 System.out.println("ligne non visible - saut de ligne");
-
+                
             }
-
+            
             ligne++;
-
+            
         }
     }
 }

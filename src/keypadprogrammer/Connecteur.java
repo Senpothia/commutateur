@@ -238,7 +238,7 @@ public class Connecteur extends Observable {
     }
 
     public void erase(boolean envVariable, String programmerLocation) {
-        
+
         /*
         envoyerData(Constants.ERASE);
         tempo(1000);
@@ -263,7 +263,7 @@ public class Connecteur extends Observable {
 
         programmationCompleted(Constants.ERASE_SUCCESS);
         envoyerData(Constants.END_ERASE);
-        */
+         */
     }
 
     void tempo(long duree) {
@@ -282,17 +282,16 @@ public class Connecteur extends Observable {
 
         for (int i = 1; i < nombreDeVoiesCarteEnTest + 1; i++) {
 
-        
             System.out.println("Début programmation");
             cleanDirectory();
             cleanDirectory(".\\logs\\logs.txt");
             tempo(250);
-
+            programmationCompleted("->START:99:" + i);
             ProcessBuilder processBuilder = new ProcessBuilder();
             processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
             Process process = processBuilder.start();
 
-            tempo(200); 
+            tempo(200);
             System.out.println("Fin programmation");
             System.out.println("Début vérification");
 
@@ -302,7 +301,6 @@ public class Connecteur extends Observable {
         }
         return 1;
 
-    
     }
 
     public void cleanDirectory() throws IOException {
