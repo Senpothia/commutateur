@@ -2152,6 +2152,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
         console.setText("Programmation en cours");
         programmationActive = true;
         progBarre.setVisible(true);
+        activerBtnProgrammer(false);
+        activerBtnEffacer(false);
 
         Thread t = new Thread() {
             public void run() {
@@ -2452,6 +2454,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         console.setText("RESULTAT ACQUITTE - PRET POUR UN NOUVEAU CYCLE DE PROGRAMMATION!");
         activerBtnACQ(false);
         activerBtnProgrammer(true);
+        activerBtnEffacer(true);
         raffraichirInterface();
         //testParamsProg();
 
@@ -3054,6 +3057,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 console.setText((String) arg);
                 String[] tab = ((String) arg).trim().split(":");
                 raffraichirIndicateur(tab);
+                progBarre.setValue((100 / intNombreDeVoiesCarteEnTest) * Integer.parseInt(tab[1]));
             }
 
         }
