@@ -20,9 +20,8 @@ public class Initialisation {
     private String device;
     private String programmer;
     private String matrice;
-    private String image;
 
-    public Initialisation(String programmerDirectory, String varEnv, String binaryLocations, String productNames, String nombreVoies, String commutateur, String device, String programmer, String matrice, String image) {
+    public Initialisation(String programmerDirectory, String varEnv, String binaryLocations, String productNames, String nombreVoies, String commutateur, String device, String programmer, String matrice) {
         this.programmerDirectory = programmerDirectory;
         this.varEnv = varEnv;
         this.binaryLocations = binaryLocations;
@@ -32,7 +31,6 @@ public class Initialisation {
         this.device = device;
         this.programmer = programmer;
         this.matrice = matrice;
-        this.image = image;
     }
 
     public String getProgrammerDirectory() {
@@ -107,13 +105,7 @@ public class Initialisation {
         this.matrice = matrice;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
    
+    
+
 }

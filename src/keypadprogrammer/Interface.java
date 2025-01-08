@@ -184,11 +184,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
         messageBinaireSelectionne.setForeground(Color.red);
         messageBinaireSelectionne.setFont(new Font("Serif", Font.BOLD, 20));
 
-        messageImageSelectionnee.setBackground(new Color(252, 242, 3));
-        messageImageSelectionnee.setOpaque(true);
-        messageImageSelectionnee.setForeground(Color.red);
-        messageImageSelectionnee.setFont(new Font("Serif", Font.BOLD, 20));
-
         nombreVoiesNouvelleCarte.setBackground(new Color(252, 242, 3));
         nombreVoiesNouvelleCarte.setOpaque(true);
         nombreVoiesNouvelleCarte.setForeground(Color.red);
@@ -493,9 +488,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
         nouveauMicroController = new javax.swing.JTextField();
         LabelNouvelleMatrice = new javax.swing.JLabel();
         nouvelleMatrice = new javax.swing.JTextField();
-        btnSelectionBinaireAjouter1 = new javax.swing.JButton();
-        labelBinaireSelectionne1 = new javax.swing.JLabel();
-        messageImageSelectionnee = new javax.swing.JTextField();
         aide = new javax.swing.JFrame();
         btnFermerAide = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -872,28 +864,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
             }
         });
 
-        btnSelectionBinaireAjouter1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnSelectionBinaireAjouter1.setForeground(new java.awt.Color(255, 0, 0));
-        btnSelectionBinaireAjouter1.setText("Sélectionner Image");
-        btnSelectionBinaireAjouter1.setActionCommand("");
-        btnSelectionBinaireAjouter1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelectionBinaireAjouter1ActionPerformed(evt);
-            }
-        });
-
-        labelBinaireSelectionne1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        labelBinaireSelectionne1.setText("Image sélectionnée");
-
-        messageImageSelectionnee.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        messageImageSelectionnee.setForeground(new java.awt.Color(255, 51, 0));
-        messageImageSelectionnee.setText("A définir");
-        messageImageSelectionnee.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                messageImageSelectionneeActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout paramsWinLayout = new javax.swing.GroupLayout(paramsWin.getContentPane());
         paramsWin.getContentPane().setLayout(paramsWinLayout);
         paramsWinLayout.setHorizontalGroup(
@@ -946,18 +916,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
                         .addComponent(btnSelectionBinaireAjouter, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(paramsWinLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(labelBinaireSelectionne1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paramsWinLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(messageImageSelectionnee, javax.swing.GroupLayout.PREFERRED_SIZE, 1247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paramsWinLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(messageBinaireSelectionne, javax.swing.GroupLayout.PREFERRED_SIZE, 1247, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(paramsWinLayout.createSequentialGroup()
-                        .addGap(466, 466, 466)
-                        .addComponent(btnSelectionBinaireAjouter1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paramsWinLayout.createSequentialGroup()
-                        .addGap(471, 471, 471)
+                        .addGap(468, 468, 468)
                         .addComponent(btnEnregistrer, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(329, Short.MAX_VALUE))
         );
@@ -1013,15 +974,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 .addComponent(labelBinaireSelectionne)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(messageBinaireSelectionne, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnSelectionBinaireAjouter1)
-                .addGap(1, 1, 1)
-                .addComponent(labelBinaireSelectionne1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(messageImageSelectionnee, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGap(41, 41, 41)
                 .addComponent(btnEnregistrer)
-                .addGap(42, 42, 42))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         aide.setTitle("Programmateur keypad - Aide");
@@ -2639,14 +2594,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
         // TODO add your handling code here:
     }//GEN-LAST:event_nouvelleMatriceActionPerformed
 
-    private void btnSelectionBinaireAjouter1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectionBinaireAjouter1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSelectionBinaireAjouter1ActionPerformed
-
-    private void messageImageSelectionneeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messageImageSelectionneeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_messageImageSelectionneeActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -2724,7 +2671,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JButton btnSelectBinaryLoc;
     private javax.swing.JButton btnSelectLocationProg;
     private javax.swing.JButton btnSelectionBinaireAjouter;
-    private javax.swing.JButton btnSelectionBinaireAjouter1;
     private javax.swing.JComboBox<String> comboListeProduits;
     private javax.swing.JLabel console;
     private javax.swing.JLabel emplacementBinaire;
@@ -2749,7 +2695,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel labelAjoutCarte;
     private javax.swing.JLabel labelBinaireSelectionne;
-    private javax.swing.JLabel labelBinaireSelectionne1;
     private javax.swing.JLabel listeProduits;
     private javax.swing.JMenu menuAide;
     private javax.swing.JMenu menuBaud;
@@ -2763,7 +2708,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JMenuItem menuVoir;
     private javax.swing.JTextField messageBinaireSelectionne;
     private javax.swing.JLabel messageCreation;
-    private javax.swing.JTextField messageImageSelectionnee;
     private javax.swing.JTextField nomNouvelleCarte;
     private javax.swing.JLabel nomProduit;
     private javax.swing.JLabel nombreVoies;
