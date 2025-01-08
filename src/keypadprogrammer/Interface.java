@@ -125,7 +125,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private Ligne ligne12 = new Ligne(matriceLigne12, true, 12);
 
     private ArrayList<Ligne> listeLignes = new ArrayList<Ligne>();
-    
+
     private ImageIcon icon = null;
 
     /**
@@ -221,6 +221,15 @@ public class Interface extends javax.swing.JFrame implements Observer {
         if (dirCreation != 1) {
 
             montrerError("Echec à la création du repertoire de logs", "Erreur d'initialisation");
+            System.exit(0);
+
+        }
+
+        // Création repertoire images
+        dirCreation = progController.createLogFolder(Constants.IMAGES_DIRECTORY);
+        if (dirCreation != 1) {
+
+            montrerError("Echec à la création du repertoire images", "Erreur d'initialisation");
             System.exit(0);
 
         }
@@ -2205,11 +2214,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_btnProgActionPerformed
 
     private void btnEffacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEffacerActionPerformed
-        
-         AfficheurPanneau.setVisible(true);
-      
-       
-       
+
+        AfficheurPanneau.setVisible(true);
+
+
     }//GEN-LAST:event_btnEffacerActionPerformed
 
     private void btnSelectLocationProgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectLocationProgActionPerformed
@@ -3750,7 +3758,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }
 
     private void raffraichirImagePanneau() {
-       
+
         icon = new ImageIcon(".\\images\\D825ED3.jpg");
         imagePanneau.setIcon(icon);
     }

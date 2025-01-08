@@ -58,6 +58,7 @@ public class Constants {
     static String R1_LOG1 = "Program Succeeded.";
    
     static String[] REQUIS_LOG1 = {R1_LOG1};
+    static String IMAGES_DIRECTORY = ".//images";
    
     //********************************************************************************************************
     static void tempo(long duree) {
