@@ -485,6 +485,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
+        AfficheurPanneau = new javax.swing.JFrame();
+        imagePanneau = new javax.swing.JLabel();
         titre = new javax.swing.JLabel();
         btnProg = new javax.swing.JButton();
         btnEffacer = new javax.swing.JButton();
@@ -1038,6 +1040,27 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 .addGap(45, 45, 45)
                 .addComponent(btnFermerAide)
                 .addGap(25, 25, 25))
+        );
+
+        AfficheurPanneau.setTitle("Panneau");
+
+        imagePanneau.setText("jLabel6");
+
+        javax.swing.GroupLayout AfficheurPanneauLayout = new javax.swing.GroupLayout(AfficheurPanneau.getContentPane());
+        AfficheurPanneau.getContentPane().setLayout(AfficheurPanneauLayout);
+        AfficheurPanneauLayout.setHorizontalGroup(
+            AfficheurPanneauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AfficheurPanneauLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(imagePanneau, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(49, Short.MAX_VALUE))
+        );
+        AfficheurPanneauLayout.setVerticalGroup(
+            AfficheurPanneauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AfficheurPanneauLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(imagePanneau, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -2177,7 +2200,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_btnProgActionPerformed
 
     private void btnEffacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEffacerActionPerformed
-
+        
+         AfficheurPanneau.setVisible(true);
       
        
        
@@ -2603,6 +2627,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame AfficheurPanneau;
     private javax.swing.JCheckBox EnvVarBox;
     private javax.swing.JLabel LabNombreVoies;
     private javax.swing.JLabel LabelNbreDeVoiesNouvelleCarte;
@@ -2642,6 +2667,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.ButtonGroup groupPorts;
     private javax.swing.ButtonGroup groupStop;
     private javax.swing.JLabel hexLocalisation;
+    private javax.swing.JLabel imagePanneau;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
