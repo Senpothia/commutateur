@@ -20,6 +20,7 @@ import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButtonMenuItem;
@@ -124,6 +125,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private Ligne ligne12 = new Ligne(matriceLigne12, true, 12);
 
     private ArrayList<Ligne> listeLignes = new ArrayList<Ligne>();
+    
+    private ImageIcon icon = null;
 
     /**
      * Creates new form Interface
@@ -428,6 +431,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         System.out.println("Taille fenêtre" + this.getContentPane().getSize());
 
         testParamsProg();
+        raffraichirImagePanneau();
 
     }
 
@@ -1043,8 +1047,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
         );
 
         AfficheurPanneau.setTitle("Panneau");
+        AfficheurPanneau.setMinimumSize(new java.awt.Dimension(700, 700));
 
-        imagePanneau.setText("jLabel6");
+        imagePanneau.setToolTipText("");
 
         javax.swing.GroupLayout AfficheurPanneauLayout = new javax.swing.GroupLayout(AfficheurPanneau.getContentPane());
         AfficheurPanneau.getContentPane().setLayout(AfficheurPanneauLayout);
@@ -2169,7 +2174,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         programmationActive = true;
         progBarre.setVisible(true);
         activerBtnProgrammer(false);
-        activerBtnEffacer(false);
+        activerBtnEffacer(true);
 
         Thread t = new Thread() {
             public void run() {
@@ -3742,5 +3747,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
             ligne++;
 
         }
+    }
+
+    private void raffraichirImagePanneau() {
+       
+        icon = new ImageIcon(".\\images\\D825ED3.jpg");
+        imagePanneau.setIcon(icon);
     }
 }

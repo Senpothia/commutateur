@@ -620,6 +620,9 @@
     <Container class="javax.swing.JFrame" name="AfficheurPanneau">
       <Properties>
         <Property name="title" type="java.lang.String" value="Panneau"/>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[700, 700]"/>
+        </Property>
       </Properties>
 
       <Layout>
@@ -645,7 +648,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="imagePanneau">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jLabel6"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
       </SubComponents>
