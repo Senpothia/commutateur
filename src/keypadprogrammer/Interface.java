@@ -36,6 +36,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private File nouveauBinaire = null;          // emplacement du repertoire du nouveau binaire à ajouter
     private String filePath = null;              // emplacement du binaire pour programmation
     private String programmerPathParamsProperties = null;        // emplacement du programmateur(repertoire plateforme Microchip)
+    private String programmerPathTempFileDirectory = null;       // emplacement des fichiers temporaire du programmateur
     private String localisationNouveauBinaire = null;
     private String nomNouveauBinaire = null;
     private String devicesParamsProperties = null;               // devices lus dans params.properties
@@ -2189,7 +2190,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             public void run() {
 
                 try {
-                    int comm = connecteur.program(hexLocationsParamsProperties, envVariable, programmerPathParamsProperties, programmerParamsProperties, deviceEnTest, binaireLocation, intNombreDeVoiesCarteEnTest);
+                    int comm = connecteur.program(hexLocationsParamsProperties, envVariable, programmerPathParamsProperties, programmerParamsProperties, deviceEnTest, binaireLocation, intNombreDeVoiesCarteEnTest, programmerPathTempFileDirectory);
                     System.out.println("Retour programmation. Code reçu: " + comm);
 
                     switch (comm) {
@@ -2986,8 +2987,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 String[] tab = ((String) arg).trim().split(":");
                 raffraichirIndicateur(tab);
                 progBarre.setValue((100 / intNombreDeVoiesCarteEnTest) * Integer.parseInt(tab[1]));
-                if(Integer.parseInt(tab[1]) == intNombreDeVoiesCarteEnTest){
-                     progBarre.setValue(100);
+                if (Integer.parseInt(tab[1]) == intNombreDeVoiesCarteEnTest) {
+                    progBarre.setValue(100);
                 }
             }
 
@@ -3651,6 +3652,18 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         }
 
+        // Recherche emplacement du repertoire des fichiers temporaires du programmateur
+        String[] tab = programmerPathParamsProperties.split("\\\\");
+        //String[] tab = programmerParamsProperties.toString().split(File.pathSeparator);
+        System.out.println("Recherche du repertoire des fichiers temporaires du programmateur");
+
+        for (int i = 0; i < tab.length; i++) {
+
+            System.out.println(tab[i]);
+        }
+        programmerPathTempFileDirectory = "C\\\\:\\\\Users\\\\" + tab[2] + "\\\\.mchp_ipe\\\\";
+        System.out.println("programmerPathTempFileDirectory: " + programmerPathTempFileDirectory);
+
         // Recherche variable d'environnement pour la commande Java
         if (initialisation.getVarEnv().equals("na")) {
 
@@ -3762,9 +3775,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }
 
     private void raffraichirImagePanneau() {
-        
+
         String pathImage = ".\\images\\" + produitAprogrammer + ".jpg";
-        System.out.println("localisation image: "  + pathImage);
+        System.out.println("localisation image: " + pathImage);
         //icon = new ImageIcon(".\\images\\D825ED3.jpg");
         icon = new ImageIcon(pathImage);
         imagePanneau.setIcon(icon);

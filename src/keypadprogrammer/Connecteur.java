@@ -278,13 +278,13 @@ public class Connecteur extends Observable {
 
     }
 
-    public int program(String hexLocation, boolean envVariable, String programmerPath, String programmer, String device, String binaryLocation, int nombreDeVoiesCarteEnTest) throws IOException {
+    public int program(String hexLocation, boolean envVariable, String programmerPath, String programmer, String device, String binaryLocation, int nombreDeVoiesCarteEnTest, String programmerPathTempDir) throws IOException {
 
         for (int i = 1; i < nombreDeVoiesCarteEnTest + 1; i++) {
 
             System.out.println("Début programmation");
-            cleanDirectory();
-            cleanDirectory(".\\logs\\logs.txt");
+            cleanDirectory(programmerPathTempDir);
+            cleanDirectory2(".\\logs\\logs.txt");
             tempo(250);
             programmationCompleted("->START:99:" + i);
             ProcessBuilder processBuilder = new ProcessBuilder();
@@ -303,14 +303,16 @@ public class Connecteur extends Observable {
 
     }
 
-    public void cleanDirectory() throws IOException {
+    public void cleanDirectory(String programmerPathTempDir) throws IOException {
 
-        boolean deleteIfExists1 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.ini"));
-        boolean deleteIfExists2 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.lock"));
+        boolean deleteIfExists1 = Files.deleteIfExists(Paths.get(programmerPathTempDir + "2013.ini"));
+        boolean deleteIfExists2 = Files.deleteIfExists(Paths.get(programmerPathTempDir + "2013.lock"));
+        //boolean deleteIfExists1 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.ini"));
+        //boolean deleteIfExists2 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.lock"));
 
     }
 
-    public void cleanDirectory(String logFile) {
+    public void cleanDirectory2(String logFile) {
 
         System.out.println("Suppression fichier de log");
         Path path = Paths.get(logFile);
