@@ -309,7 +309,7 @@ public class Connecteur extends Observable {
         boolean deleteIfExists2 = Files.deleteIfExists(Paths.get(programmerPathTempDir + "2013.lock"));
         //boolean deleteIfExists1 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.ini"));
         //boolean deleteIfExists2 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.lock"));
-
+       
     }
 
     public void cleanDirectory2(String logFile) {

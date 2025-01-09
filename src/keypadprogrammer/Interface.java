@@ -2180,7 +2180,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
             }
         }
 
-        console.setText("Programmation en cours");
+        console.setText("Cycle de programmation en cours...");
+        progBarre.setString("Programmation en cours...");
         programmationActive = true;
         progBarre.setVisible(true);
         activerBtnProgrammer(false);
@@ -2987,6 +2988,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 String[] tab = ((String) arg).trim().split(":");
                 raffraichirIndicateur(tab);
                 progBarre.setValue((100 / intNombreDeVoiesCarteEnTest) * Integer.parseInt(tab[1]));
+                progBarre.setString("Programmation en cours...");
                 if (Integer.parseInt(tab[1]) == intNombreDeVoiesCarteEnTest) {
                     progBarre.setValue(100);
                 }
@@ -3661,7 +3663,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             System.out.println(tab[i]);
         }
-        programmerPathTempFileDirectory = "C\\\\:\\\\Users\\\\" + tab[2] + "\\\\.mchp_ipe\\\\";
+        programmerPathTempFileDirectory = "C:\\Users\\" + tab[2] + "\\.mchp_ipe\\";
         System.out.println("programmerPathTempFileDirectory: " + programmerPathTempFileDirectory);
 
         // Recherche variable d'environnement pour la commande Java
