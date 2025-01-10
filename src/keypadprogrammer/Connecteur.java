@@ -282,6 +282,7 @@ public class Connecteur extends Observable {
 
         for (int i = 1; i < nombreDeVoiesCarteEnTest + 1; i++) {
 
+            //tempo(10000);  // pour tests
             System.out.println("Début programmation");
             cleanDirectory(programmerPathTempDir);
             cleanDirectory2(".\\logs\\logs.txt");
@@ -296,6 +297,19 @@ public class Connecteur extends Observable {
             System.out.println("Début vérification");
 
             int control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
+            if (control == -1) {
+
+                System.out.println("tentative 2");
+                programmationCompleted("->PROG:" + i + ":-54");
+                processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
+                control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
+                if (control == -1) {
+
+                    control = -55;
+                    programmationCompleted("->PROG:" + i + ":-55");
+                    return 1;
+                }
+            }
             System.out.println("code controle: " + control);
             programmationCompleted("->PROG:" + i + ":" + control);
         }
@@ -309,7 +323,7 @@ public class Connecteur extends Observable {
         boolean deleteIfExists2 = Files.deleteIfExists(Paths.get(programmerPathTempDir + "2013.lock"));
         //boolean deleteIfExists1 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.ini"));
         //boolean deleteIfExists2 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.lock"));
-       
+
     }
 
     public void cleanDirectory2(String logFile) {

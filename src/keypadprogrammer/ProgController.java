@@ -46,36 +46,6 @@ public class ProgController {
 
         int j = 0;
         int codeControl = 0;
-        /*
-        for (int i = 0; i < erreurs.length; i++) {
-
-                System.out.println(erreurs[i]);
-            }
-         */
-
-        //isFileAvailable(logfile);
-        /*
-        while (!isFileAvailable2(logfile)) {
-
-            System.out.println("Le fichier n'est pas disponible");
-        }
-         */
-        //File file = new File(logfile);
-        /*
-        if (isFileInUse(file)) {
-            System.out.println("Le fichier est en cours d'utilisation.");
-        } else {
-            System.out.println("Le fichier est disponible.");
-        }
-         */
- /*
-        while (!isFileInUse(file)) {
-
-            System.out.println("Le fichier est en cours d'utilisation.");
-
-        }
-        
-         */
         while (j < 2) {
             isFileAvailable3(logfile);
 

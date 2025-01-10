@@ -2992,6 +2992,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 if (Integer.parseInt(tab[1]) == intNombreDeVoiesCarteEnTest) {
                     progBarre.setValue(100);
                 }
+
             }
 
             if (((String) arg).startsWith("->START")) {
@@ -3759,6 +3760,18 @@ public class Interface extends javax.swing.JFrame implements Observer {
                         } else {
 
                             listeLignes.get(ligne - 1).getVoyants().get(i).ok(false);
+                            if (Integer.parseInt(tab[2]) == -54) {
+
+                                listeLignes.get(ligne - 1).getVoyants().get(i).processing(true);
+                                console.setText("Problème de connexion USB sur le programmateur. Nouvelle tentative!");
+                            }
+                            if (Integer.parseInt(tab[2]) == -55) {
+
+                                System.out.println("problème liaison usb");
+                                console.setText("Problème de connexion USB sur le programmateur!");
+                                montrerError("Vérifier la liaison USB. Si le problème persiste relancer le PC", "Erreur programmateur");
+
+                            }
                         }
 
                     }
@@ -3780,7 +3793,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         String pathImage = ".\\images\\" + produitAprogrammer + ".jpg";
         System.out.println("localisation image: " + pathImage);
-        //icon = new ImageIcon(".\\images\\D825ED3.jpg");
         icon = new ImageIcon(pathImage);
         imagePanneau.setIcon(icon);
     }
