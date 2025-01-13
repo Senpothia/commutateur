@@ -490,17 +490,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
         LabelNouvelleMatrice = new javax.swing.JLabel();
         nouvelleMatrice = new javax.swing.JTextField();
         aide = new javax.swing.JFrame();
-        btnFermerAide = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
+        jButton1 = new javax.swing.JButton();
         AfficheurPanneau = new javax.swing.JFrame();
         imagePanneau = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
         titre = new javax.swing.JLabel();
         btnProg = new javax.swing.JButton();
         btnEffacer = new javax.swing.JButton();
@@ -981,79 +975,32 @@ public class Interface extends javax.swing.JFrame implements Observer {
         );
 
         aide.setTitle("Programmateur keypad - Aide");
-        aide.setMinimumSize(new java.awt.Dimension(900, 900));
+        aide.setMinimumSize(new java.awt.Dimension(1000, 500));
+        aide.setPreferredSize(new java.awt.Dimension(1000, 1500));
 
-        btnFermerAide.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnFermerAide.setForeground(new java.awt.Color(255, 0, 0));
-        btnFermerAide.setText("Fermer");
-        btnFermerAide.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFermerAideActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("AIDE DU PROGRAMMATEUR GALEO");
-        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("1- PARAMETRES");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setText("2- FONCTIONNALITES DE PROGRAMMATION");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setText("4- TESTS FONCTIONNELS");
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setText("3- MATERIEL ET CONNEXION");
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Pour que le système puisse fonctionner, il est nécessaire que:\n\n- le programmateur STM32CubeProgrammer soit installer sur votre poste de travail. Il est \ntéléchargeable à partir du site de ST Microelectronics. \n- que le version 8 de Java soit installer sur votre poste\n\nEnsuite, il est nécessaire de spécifier le repertoire d'installation du programmateur. Vous devrez identifier le repertoire bin dans \nce répertoire d'installation. Pour plus de confort, il est recommandé dedéfinir cette emplacement des les variables d'environnement de \nvotre système.\n\nPour finir, il vous sera aussi nécessaire de préciser l'emplacement de votre fichier binaire (extension .hex).\n\nCes paramètres sont indispenables au foncionnement du programamteur GALEO. Il est possible de les définir à partir du menu \nparamètres de l'application.\n\n");
-        jScrollPane1.setViewportView(jTextArea1);
+        jButton1.setText("jButton1");
 
         javax.swing.GroupLayout aideLayout = new javax.swing.GroupLayout(aide.getContentPane());
         aide.getContentPane().setLayout(aideLayout);
         aideLayout.setHorizontalGroup(
             aideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(aideLayout.createSequentialGroup()
+                .addGap(168, 168, 168)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(211, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, aideLayout.createSequentialGroup()
-                .addContainerGap(1118, Short.MAX_VALUE)
-                .addComponent(btnFermerAide)
-                .addGap(22, 22, 22))
-            .addGroup(aideLayout.createSequentialGroup()
-                .addGap(310, 310, 310)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(aideLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(aideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(53, 53, 53))
         );
         aideLayout.setVerticalGroup(
             aideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, aideLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(30, 30, 30)
-                .addComponent(jLabel5)
-                .addGap(71, 71, 71)
-                .addComponent(jLabel4)
-                .addGap(45, 45, 45)
-                .addComponent(btnFermerAide)
-                .addGap(25, 25, 25))
+            .addGroup(aideLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(21, 21, 21))
         );
 
         AfficheurPanneau.setTitle("Panneau");
@@ -2300,11 +2247,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     }//GEN-LAST:event_menuAideActionPerformed
 
-    private void btnFermerAideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFermerAideActionPerformed
-        
-        aide.setVisible(false);
-    }//GEN-LAST:event_btnFermerAideActionPerformed
-
     private void voirAideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voirAideActionPerformed
         
         aide.setVisible(true);
@@ -2672,7 +2614,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JButton btnEffacer;
     private javax.swing.JButton btnEnregistrer;
     private javax.swing.JMenuItem btnFermer;
-    private javax.swing.JButton btnFermerAide;
     private javax.swing.JButton btnFermerParams;
     private javax.swing.JButton btnProg;
     private javax.swing.JButton btnSelectBinaryLoc;
@@ -2688,18 +2629,13 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.ButtonGroup groupStop;
     private javax.swing.JLabel hexLocalisation;
     private javax.swing.JLabel imagePanneau;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel labelAjoutCarte;
     private javax.swing.JLabel labelBinaireSelectionne;
     private javax.swing.JLabel listeProduits;
