@@ -309,6 +309,22 @@ public class Connecteur extends Observable {
                     programmationCompleted("->PROG:" + i + ":-55");
                     return 1;
                 }
+
+            }
+
+            if (control == -4) {
+
+                System.out.println("tentative 2");
+                programmationCompleted("->PROG:" + i + ":-54");
+                processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
+                control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
+              
+                if (control == -4) {
+
+                    control = -66;
+                    programmationCompleted("->PROG:" + i + ":-66");
+                    return 1;
+                }
             }
             System.out.println("code controle: " + control);
             programmationCompleted("->PROG:" + i + ":" + control);

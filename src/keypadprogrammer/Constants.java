@@ -52,8 +52,9 @@ public class Constants {
     static String E1_LOG1 = "Programmer not found.";
     static String E2_LOG1 = "terminated abruptly.";
     static String E3_LOG1 = "Failed to get Device ID";
+    static String E4_LOG1 = "Connection Failed.";
 
-    static String[] ERREURS_LOG1 = {E1_LOG1, E2_LOG1};
+    static String[] ERREURS_LOG1 = {E1_LOG1, E2_LOG1, E3_LOG1,E4_LOG1 };
 
     // REQUIS TRACE1
     static String R1_LOG1 = "Program Succeeded.";
