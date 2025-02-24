@@ -500,6 +500,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         jTextArea2 = new javax.swing.JTextArea();
         jTextArea3 = new javax.swing.JTextArea();
         jTextArea4 = new javax.swing.JTextArea();
+        jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         AfficheurPanneau = new javax.swing.JFrame();
@@ -510,7 +511,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
         btnEffacer = new javax.swing.JButton();
         statutRs232 = new javax.swing.JLabel();
         console = new javax.swing.JLabel();
-        version = new javax.swing.JLabel();
         StatutRS232Lab = new javax.swing.JLabel();
         statutPRGLabel = new javax.swing.JLabel();
         statutPGRM = new javax.swing.JLabel();
@@ -996,16 +996,16 @@ public class Interface extends javax.swing.JFrame implements Observer {
         jPanel1.setPreferredSize(new java.awt.Dimension(1200, 1000));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("1-A quoi sert cette application?");
+        jLabel2.setText("2-A quoi sert cette application?");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setText("2- Comment fonctionne-t-elle?");
+        jLabel3.setText("3- Comment fonctionne-t-elle?");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setText("3- Outils matériels");
+        jLabel4.setText("4- Outils matériels");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setText("4-Principe");
+        jLabel5.setText("5-Principe");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -1023,54 +1023,57 @@ public class Interface extends javax.swing.JFrame implements Observer {
         jTextArea4.setRows(5);
         jTextArea4.setText("Pour s'executer, elle nécessite une machine Java version 1.8.La machine Java doit être inscrite dans les variables d'environnement.\nDe plus l'application MPLAB IPE doit être installée à la racine du disque dur ou idéalement dans la répertoire C:\\user\\[username] de \nla machine utilisée. MPLAB IPE s'installe avec l'environnement de développement MPLAX X IDE de Microchip.Elle est téléchargeable à partir\ndu site web de MIcrochip.");
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setText("1- Version: V1.0");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 1112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(21, 21, 21)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jTextArea2, javax.swing.GroupLayout.PREFERRED_SIZE, 1114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 1124, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(jTextArea4, javax.swing.GroupLayout.PREFERRED_SIZE, 1114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jTextArea3, javax.swing.GroupLayout.PREFERRED_SIZE, 1114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel5))))
-                .addContainerGap(56, Short.MAX_VALUE))
+                                .addComponent(jTextArea4, javax.swing.GroupLayout.PREFERRED_SIZE, 1114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextArea3, javax.swing.GroupLayout.PREFERRED_SIZE, 1114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel6))))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel6)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(jTextArea4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(jTextArea2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jTextArea3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(343, Short.MAX_VALUE))
+                .addContainerGap(299, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(jPanel1);
@@ -1095,7 +1098,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             .addGroup(aideLayout.createSequentialGroup()
                 .addGap(289, 289, 289)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addContainerGap(428, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, aideLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(aideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1113,7 +1116,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(25, 25, 25))
         );
@@ -1178,8 +1181,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
         console.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         console.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         console.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        version.setText("V1.0");
 
         StatutRS232Lab.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         StatutRS232Lab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1708,9 +1709,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(96, 96, 96)
                                 .addComponent(btnACQ, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(version)
-                                .addGap(19, 19, 19)))))
+                                .addGap(19, 263, Short.MAX_VALUE)))))
                 .addGap(36, 36, 36))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -2219,8 +2218,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnProg, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEffacer, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnACQ, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(version))
+                            .addComponent(btnACQ, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(45, 45, 45))))
         );
 
@@ -2267,6 +2265,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                             activerBtnProgrammer(false);
                             menuParametres.setEnabled(true);
                             menuConnexion.setEnabled(true);
+                            connecteur.envoyerData(Character.toString('t'));
                             break;
 
                     }
@@ -2659,7 +2658,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_nouvelleMatriceActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
+        aide.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -2754,6 +2754,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -2946,7 +2947,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JLabel titre;
     private javax.swing.JLabel titreLabProg;
     private javax.swing.JLabel titreParamsWin;
-    private javax.swing.JLabel version;
     private javax.swing.JMenuItem voirAide;
     // End of variables declaration//GEN-END:variables
 
@@ -3002,8 +3002,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
         } else {
 
             statutRs232.setBackground(Color.RED);
-            activerBtnProgrammer(true); // forcer pour besoin de test
-            activerBtnEffacer(true); // forcer pour besoin de test
+            activerBtnProgrammer(false); // forcer pour besoin de test
+            activerBtnEffacer(false); // forcer pour besoin de test
 
         }
 
@@ -3834,7 +3834,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                                 listeLignes.get(ligne - 1).getVoyants().get(i).processing(true);
                                 console.setText("Alerte défaut. Nouvelle tentative!");
                             }
-                            
+
                             if (Integer.parseInt(tab[2]) == -55) {
 
                                 System.out.println("problème liaison usb");

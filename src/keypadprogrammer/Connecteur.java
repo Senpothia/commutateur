@@ -280,8 +280,11 @@ public class Connecteur extends Observable {
 
     public int program(String hexLocation, boolean envVariable, String programmerPath, String programmer, String device, String binaryLocation, int nombreDeVoiesCarteEnTest, String programmerPathTempDir) throws IOException {
 
+        char count = 48;
         for (int i = 1; i < nombreDeVoiesCarteEnTest + 1; i++) {
 
+            count++;
+            envoyerData(Character.toString(count));
             //tempo(10000);  // pour tests
             System.out.println("Début programmation");
             cleanDirectory(programmerPathTempDir);
@@ -318,7 +321,7 @@ public class Connecteur extends Observable {
                 programmationCompleted("->PROG:" + i + ":-54");
                 processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
                 control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
-              
+
                 if (control == -4) {
 
                     control = -66;
@@ -329,6 +332,7 @@ public class Connecteur extends Observable {
             System.out.println("code controle: " + control);
             programmationCompleted("->PROG:" + i + ":" + control);
         }
+        //envoyerData(Character.toString('t'));
         return 1;
 
     }
