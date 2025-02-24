@@ -332,7 +332,7 @@ public class Connecteur extends Observable {
             System.out.println("code controle: " + control);
             programmationCompleted("->PROG:" + i + ":" + control);
         }
-        //envoyerData(Character.toString('t'));
+       
         return 1;
 
     }
