@@ -3077,9 +3077,16 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 String[] tab = ((String) arg).trim().split(":");
                 raffraichirIndicateur(tab);
                 progBarre.setValue((100 / intNombreDeVoiesCarteEnTest) * Integer.parseInt(tab[1]));
-                progBarre.setString("Programmation en cours...");
+                if ((100 / intNombreDeVoiesCarteEnTest) * Integer.parseInt(tab[1]) == 100) {
+
+                } else {
+
+                    progBarre.setString("Programmation en cours...");
+                }
+
                 if (Integer.parseInt(tab[1]) == intNombreDeVoiesCarteEnTest) {
                     progBarre.setValue(100);
+                    progBarre.setString("Programmation terminée!");
                 }
 
             }
