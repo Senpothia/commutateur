@@ -129,6 +129,34 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private ImageIcon icon = null;
 
+    /*
+    private Thread t = new Thread() {
+            public void run() {
+
+                try {
+                    int comm = connecteur.program(hexLocationsParamsProperties, envVariable, programmerPathParamsProperties, programmerParamsProperties, deviceEnTest, binaireLocation, intNombreDeVoiesCarteEnTest, programmerPathTempFileDirectory);
+                    //System.out.println("Retour programmation. Code reçu: " + comm);
+
+                    switch (comm) {
+
+                        case 1:
+
+                            console.setText("Cycle de programmation terminée");
+                            activerBtnACQ(true);
+                            activerBtnProgrammer(false);
+                            menuParametres.setEnabled(true);
+                            menuConnexion.setEnabled(true);
+                            connecteur.envoyerData(Character.toString('t'));
+                            break;
+
+                    }
+
+                } catch (IOException ex) {
+                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+
     /**
      * Creates new form Interface
      */
@@ -438,7 +466,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         ligne12.supprimer();
 
         raffraichirInterface();
-        System.out.println("Taille fenêtre" + this.getContentPane().getSize());
+        //System.out.println("Taille fenêtre" + this.getContentPane().getSize());
 
         testParamsProg();
         raffraichirImagePanneau();
@@ -2227,6 +2255,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void btnProgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgActionPerformed
 
+        //System.gc();
+        connecteur.envoyerData(Character.toString('t'));
         if (!confirmationParams) {
 
             boolean confirmation = confirmeParams();
@@ -2254,7 +2284,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
                 try {
                     int comm = connecteur.program(hexLocationsParamsProperties, envVariable, programmerPathParamsProperties, programmerParamsProperties, deviceEnTest, binaireLocation, intNombreDeVoiesCarteEnTest, programmerPathTempFileDirectory);
-                    System.out.println("Retour programmation. Code reçu: " + comm);
+                    //System.out.println("Retour programmation. Code reçu: " + comm);
 
                     switch (comm) {
 
@@ -2266,6 +2296,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                             menuParametres.setEnabled(true);
                             menuConnexion.setEnabled(true);
                             connecteur.envoyerData(Character.toString('t'));
+                            //this.interrupt();
                             break;
 
                     }
@@ -2275,6 +2306,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 }
             }
         };
+
         t.start();
 
 
@@ -2309,7 +2341,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         if (programmerLoc.getSelectedFile() != null) {
 
             console.setText("Repertoire programmateur: " + programmerLocation.getPath());
-            System.out.println("Repertoire programmateur: " + programmerLocation.getPath());
+            //System.out.println("Repertoire programmateur: " + programmerLocation.getPath());
             programmerPathParamsProperties = programmerLocation.getPath();
             initializer.update("programmerDirectory", programmerPathParamsProperties);
 
@@ -2425,17 +2457,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void btnACQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnACQActionPerformed
 
-        System.out.println("Acquittement");
-        /*
-        int comm = connecteur.envoyerData(Constants.AQC);
-
-        if (comm == -1) {
-
-            alerteRS232();
-
-        }
-         */
-
         console.setText("RESULTAT ACQUITTE - PRET POUR UN NOUVEAU CYCLE DE PROGRAMMATION!");
         activerBtnACQ(false);
         activerBtnProgrammer(true);
@@ -2491,7 +2512,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             } catch (Exception e) {
 
-                System.out.println("Exception nombre de voie: " + nombreDeVoiesNouvelleCarte);
+                //System.out.println("Exception nombre de voie: " + nombreDeVoiesNouvelleCarte);
                 montrerError("Le nombre de voies doit être compris entre 1 et " + limCommutateur, "Formulaire imcomplet");
                 return;
 
@@ -2540,12 +2561,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             console.setText("Repertoire binaire: " + nouveauBinaire.getPath());
             localisationNouveauBinaire = nouveauBinaire.getPath();
-            System.out.println("Binaire sélectionné: " + localisationNouveauBinaire);
+            //System.out.println("Binaire sélectionné: " + localisationNouveauBinaire);
             messageBinaireSelectionne.setText("Binaire sélectionné: " + localisationNouveauBinaire);
 
         } else {
 
-            System.out.println("Aucun binaire sélectionné!");
+            //System.out.println("Aucun binaire sélectionné!");
         }
 
         //testParamsProg();
@@ -2565,7 +2586,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_comboListeProduitsActionPerformed
 
     private void comboListeProduitsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboListeProduitsItemStateChanged
-        System.out.println("item selected: " + comboListeProduits.getSelectedIndex());
+        //System.out.println("item selected: " + comboListeProduits.getSelectedIndex());
 
         if (comboListeProduits.getSelectedIndex() != 0) {
 
@@ -2627,10 +2648,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
             produitAprogrammer = listesProduits.get(selectedProduct);
             nomProduit.setText(produitAprogrammer + " - Microcontôleur: " + deviceEnTest + " - Voies: " + nombreDeVoiesCarteEnTest + " - Programmateur: " + programmerParamsProperties + " - Matrice: " + matriceAprogrammer);
             binaireLocation = ListeBinairesEnregistres.get(selectedProduct - 1);
-            System.out.println("localistaion binaire: " + binaireLocation);
+            //System.out.println("localistaion binaire: " + binaireLocation);
             emplacementBinaire.setText(binaireLocation);
             intNombreDeVoiesCarteEnTest = Integer.parseInt(nombreDeVoiesCarteEnTest);
-            System.out.println("nombre de voies carte en test (int): " + intNombreDeVoiesCarteEnTest);
+            //System.out.println("nombre de voies carte en test (int): " + intNombreDeVoiesCarteEnTest);
             raffraichirInterface();
 
         } else {
@@ -2952,8 +2973,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void testParamsProg() {
 
-        System.out.println("produit à programmer: " + produitAprogrammer);
-
+        //System.out.println("produit à programmer: " + produitAprogrammer);
         if (produitAprogrammer == null) {
 
             console.setText("Sélectionner un produit avant de commencer!");
@@ -3018,7 +3038,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         int response = JOptionPane.showConfirmDialog(this, "Confirmez-vous ces paramètres?", "Paramètres de programmation définis", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.NO_OPTION) {
-            System.out.println("No button clicked");
+            //System.out.println("No button clicked");
             return false;
         }
         if (response == JOptionPane.YES_OPTION) {
@@ -3096,7 +3116,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         if (inputLine.trim().startsWith("-> INIT")) {
 
-            System.out.println("reset system");
+            //System.out.println("reset system");
             messageConsole(inputLine.trim());
             resetSystem();
 
@@ -3194,14 +3214,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             console.setText("Effacement demandé");
 
-            System.out.println("Affichage yellow");
-
+            //System.out.println("Affichage yellow");
         } else {
 
             console.setText("Effacement terminé");
 
-            System.out.println("Affichage green");
-
+            //System.out.println("Affichage green");
         }
 
     }
@@ -3406,8 +3424,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void resetSystem() {
 
-        System.out.println("reset system");
-
+        //System.out.println("reset system");
         testActif = false;
         console.setText("Système réinitialisé");
         testParamsProg();
@@ -3470,7 +3487,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         arrList.add("---");
         for (int i = 0; i < liste.length; i++) {
 
-            System.out.println(liste[i]);
+            // System.out.println(liste[i]);
             arrList.add(liste[i]);
         }
         return arrList;
@@ -3483,7 +3500,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         ArrayList<String> arrList = new ArrayList<String>();
         for (int i = 0; i < liste.length; i++) {
 
-            System.out.println(liste[i]);
+            //System.out.println(liste[i]);
             arrList.add(liste[i]);
         }
         return arrList;
@@ -3496,7 +3513,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         ArrayList<String> arrList = new ArrayList<String>();
         for (int i = 0; i < liste.length; i++) {
 
-            System.out.println(liste[i]);
+            //System.out.println(liste[i]);
             arrList.add(liste[i]);
         }
         return arrList;
@@ -3509,7 +3526,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         ArrayList<String> arrList = new ArrayList<String>();
         for (int i = 0; i < liste.length; i++) {
 
-            System.out.println(liste[i]);
+            //System.out.println(liste[i]);
             arrList.add(liste[i]);
         }
         return arrList;
@@ -3518,23 +3535,23 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void extraireLignesColonnes(String matriceAprogrammer) {
 
-        System.out.println("Matrice à programmer: " + matriceAprogrammer);
+        //System.out.println("Matrice à programmer: " + matriceAprogrammer);
         String[] tab = matriceAprogrammer.split("x");
         lignes = Integer.parseInt(tab[0]);
         colonnes = Integer.parseInt(tab[1]);
-        System.out.println("Lignes: " + lignes);
-        System.out.println("colonnes: " + colonnes);
+        //System.out.println("Lignes: " + lignes);
+        //System.out.println("colonnes: " + colonnes);
     }
 
     private Boolean verifierNouvelleMatrice(String nouvelleMatrice, int voies) {
 
-        System.out.println("Matrice à programmer: " + nouvelleMatrice);
+        //System.out.println("Matrice à programmer: " + nouvelleMatrice);
         try {
             String[] tab = nouvelleMatrice.split("x");
             lignes = Integer.parseInt(tab[0]);
             colonnes = Integer.parseInt(tab[1]);
-            System.out.println("Lignes: " + lignes);
-            System.out.println("colonnes: " + colonnes);
+            //System.out.println("Lignes: " + lignes);
+            //System.out.println("colonnes: " + colonnes);
         } catch (Exception e) {
 
             montrerError("Format matrice non conforme!", "Erreur saisie");
@@ -3586,7 +3603,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         ArrayList<String> arrList = new ArrayList<String>();
         for (int i = 0; i < liste.length; i++) {
 
-            System.out.println(liste[i]);
+            //System.out.println(liste[i]);
             arrList.add(liste[i]);
         }
         return arrList;
@@ -3625,11 +3642,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
         //Recherche nombre de voie du commutateur
         if (initialisation.getCommutateur().equals("na")) {
 
-            System.out.println("Commutateur = " + initialisation.getCommutateur());
-
+            //System.out.println("Commutateur = " + initialisation.getCommutateur());
         } else {
 
-            System.out.println("Commutateur = " + initialisation.getCommutateur());
+            //System.out.println("Commutateur = " + initialisation.getCommutateur());
             nombreVoiesCommutateurParamsProperties = initialisation.getCommutateur();
             limCommutateur = Integer.parseInt(nombreVoiesCommutateurParamsProperties);
         }
@@ -3637,11 +3653,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
         // Recherche du fichier binaire
         if (initialisation.getBinaryLocations().equals("na")) {
 
-            System.out.println("BinaryLocation = " + initialisation.getBinaryLocations());
-
+            //System.out.println("BinaryLocation = " + initialisation.getBinaryLocations());
         } else {
 
-            System.out.println("BinaryLocation = " + initialisation.getBinaryLocations());
+            //System.out.println("BinaryLocation = " + initialisation.getBinaryLocations());
             hexLocationsParamsProperties = initialisation.getBinaryLocations();
             ListeBinairesEnregistres = extraireLocalisationBinaires(hexLocationsParamsProperties);
         }
@@ -3649,12 +3664,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
         // Recherche nom du produit
         if (initialisation.getProductNames().equals("na")) {
 
-            System.out.println("liste noms de produits = " + initialisation.getProductNames());
+            //System.out.println("liste noms de produits = " + initialisation.getProductNames());
             nomProduit.setText("Aucun produit crée");
 
         } else {
 
-            System.out.println("liste noms de produits  = " + initialisation.getProductNames());
+            //System.out.println("liste noms de produits  = " + initialisation.getProductNames());
             listeProduitsConnusParamsProperties = initialisation.getProductNames();
             //produits = extraireProduits(listeProduitsConnus);
             listesProduits = extraireProduits(listeProduitsConnusParamsProperties);
@@ -3673,12 +3688,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
         // Recherche nombre de voies à programmer (nombre de carte par panneau)
         if (initialisation.getNombreVoies().equals("na")) {
 
-            System.out.println("liste nombre de voies = " + initialisation.getNombreVoies());
+            //System.out.println("liste nombre de voies = " + initialisation.getNombreVoies());
             nombreVoies.setText("Aucune voie définie");
 
         } else {
 
-            System.out.println("liste du nombre de voies  = " + initialisation.getNombreVoies());
+            //System.out.println("liste du nombre de voies  = " + initialisation.getNombreVoies());
             nombreDeVoiesEnregistresParamsProperties = initialisation.getNombreVoies();
             listesVoies = extraireVoies(nombreDeVoiesEnregistresParamsProperties);
 
@@ -3687,12 +3702,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
         // Recherche nom du microcontrôleur à programmer
         if (initialisation.getDevice().equals("na")) {
 
-            System.out.println("liste des devices lues = " + initialisation.getDevice());
+            //System.out.println("liste des devices lues = " + initialisation.getDevice());
             nombreVoies.setText("Aucun device enregistré");
 
         } else {
 
-            System.out.println("liste des devices lus  = " + initialisation.getDevice());
+            //System.out.println("liste des devices lus  = " + initialisation.getDevice());
             devicesParamsProperties = initialisation.getDevice();
             listeDevicesEnregistres = extraireDevices(devicesParamsProperties);
 
@@ -3701,12 +3716,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
         // Recherche type de programmateur (code programmateur) 
         if (initialisation.getProgrammer().equals("na")) {
 
-            System.out.println("liste des devices lues = " + initialisation.getProgrammer());
+            //System.out.println("liste des devices lues = " + initialisation.getProgrammer());
             nombreVoies.setText("Aucun programmateur enregistré");
 
         } else {
 
-            System.out.println("Programmateur enregistré  = " + initialisation.getProgrammer());
+            //System.out.println("Programmateur enregistré  = " + initialisation.getProgrammer());
             programmerParamsProperties = initialisation.getProgrammer();
 
         }
@@ -3714,12 +3729,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
         // Recherche repertoire d'installation de la plateforme Microchip
         if (initialisation.getProgrammerDirectory().equals("na")) {
 
-            System.out.println("Directory programmer = " + initialisation.getProgrammerDirectory());
+            //System.out.println("Directory programmer = " + initialisation.getProgrammerDirectory());
             nombreVoies.setText("Aucune localisation programmateur enregistré");
 
         } else {
 
-            System.out.println("Directory programmer = " + initialisation.getProgrammerDirectory());
+            //System.out.println("Directory programmer = " + initialisation.getProgrammerDirectory());
             programmerPathParamsProperties = initialisation.getProgrammerDirectory();
 
         }
@@ -3727,23 +3742,22 @@ public class Interface extends javax.swing.JFrame implements Observer {
         // Recherche emplacement du repertoire des fichiers temporaires du programmateur
         String[] tab = programmerPathParamsProperties.split("\\\\");
         //String[] tab = programmerParamsProperties.toString().split(File.pathSeparator);
-        System.out.println("Recherche du repertoire des fichiers temporaires du programmateur");
+        //System.out.println("Recherche du repertoire des fichiers temporaires du programmateur");
 
         for (int i = 0; i < tab.length; i++) {
 
-            System.out.println(tab[i]);
+            //System.out.println(tab[i]);
         }
         programmerPathTempFileDirectory = "C:\\Users\\" + tab[2] + "\\.mchp_ipe\\";
-        System.out.println("programmerPathTempFileDirectory: " + programmerPathTempFileDirectory);
+        //System.out.println("programmerPathTempFileDirectory: " + programmerPathTempFileDirectory);
 
         // Recherche variable d'environnement pour la commande Java
         if (initialisation.getVarEnv().equals("na")) {
 
-            System.out.println("varEnv = " + initialisation.getVarEnv());
-
+            //System.out.println("varEnv = " + initialisation.getVarEnv());
         } else {
 
-            System.out.println("varEnv = " + initialisation.getVarEnv());
+            //System.out.println("varEnv = " + initialisation.getVarEnv());
             if (initialisation.getVarEnv().equals("true")) {
 
                 envVariable = true;
@@ -3759,12 +3773,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
         // Recherche des matrices
         if (initialisation.getMatrice().equals("na")) {
 
-            System.out.println("liste des matrices = " + initialisation.getMatrice());
+            //System.out.println("liste des matrices = " + initialisation.getMatrice());
             nombreVoies.setText("Aucune matrice définie");
 
         } else {
 
-            System.out.println("liste des matrices  = " + initialisation.getMatrice());
+            //System.out.println("liste des matrices  = " + initialisation.getMatrice());
             matricesProperties = initialisation.getMatrice();
             listesMatrices = extraireMatrices(matricesProperties);
 
@@ -3794,23 +3808,21 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         for (Ligne l : listeLignes) {
 
-            System.out.println("visible: " + l.isVisible());
+            //System.out.println("visible: " + l.isVisible());
         }
 
-        System.out.println("tab1: " + tab[1]);
-        System.out.println("tab2: " + tab[2]);
-
+        //System.out.println("tab1: " + tab[1]);
+        //System.out.println("tab2: " + tab[2]);
         int ligne = 1;
 
         while (ligne < 13) {
 
             if (listeLignes.get(ligne - 1).isVisible()) {
 
-                System.out.println("Ligne visible");
+                //System.out.println("Ligne visible");
                 for (int i = 0; i < 12; i++) {
 
-                    System.out.println("ordre: " + listeLignes.get(ligne - 1).getVoyants().get(i).getOrdre() + " - colonne:" + i);
-
+                    //System.out.println("ordre: " + listeLignes.get(ligne - 1).getVoyants().get(i).getOrdre() + " - colonne:" + i);
                     if (Integer.parseInt(tab[1]) == 99) {
 
                         if (listeLignes.get(ligne - 1).getVoyants().get(i).getOrdre() == Integer.parseInt(tab[2])) {
@@ -3837,7 +3849,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
                             if (Integer.parseInt(tab[2]) == -55) {
 
-                                System.out.println("problème liaison usb");
+                                //System.out.println("problème liaison usb");
                                 console.setText("Problème de connexion USB sur le programmateur!");
                                 montrerError("Vérifier la liaison USB. Si le problème persiste relancer le PC", "Erreur programmateur");
 
@@ -3845,8 +3857,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
                             if (Integer.parseInt(tab[2]) == -66) {
 
-                                System.out.println("Problème alimentation programmateur");
-                                console.setText("Le programmateur n'est pas alimenter!");
+                                //System.out.println("Problème alimentation programmateur");
+                                //console.setText("Le programmateur n'est pas alimenter!");
                                 montrerError("Vérifier l'alimentation du programmateur!", "Défaut programmateur");
 
                             }
@@ -3858,8 +3870,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             } else {
 
-                System.out.println("ligne non visible - saut de ligne");
-
+                //System.out.println("ligne non visible - saut de ligne");
             }
 
             ligne++;
@@ -3870,7 +3881,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private void raffraichirImagePanneau() {
 
         String pathImage = ".\\images\\" + produitAprogrammer + ".jpg";
-        System.out.println("localisation image: " + pathImage);
+        //System.out.println("localisation image: " + pathImage);
         icon = new ImageIcon(pathImage);
         imagePanneau.setIcon(icon);
     }

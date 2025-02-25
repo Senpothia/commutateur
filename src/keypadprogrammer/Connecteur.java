@@ -42,6 +42,8 @@ public class Connecteur extends Observable {
     private OutputStream outputStream;
 
     private String inputLine;
+    
+    private ProcessBuilder processBuilder = new ProcessBuilder();
 
     public static String getPortName() {
         return portName;
@@ -89,7 +91,7 @@ public class Connecteur extends Observable {
 
             if (portName == null) {
 
-                System.out.println("makeConnection() - Port non sélectionné");
+               // System.out.println("makeConnection() - Port non sélectionné");
                 return 0;
             }
 
@@ -111,19 +113,19 @@ public class Connecteur extends Observable {
 
             if (portComm.isOpen()) {
 
-                System.out.println("Connexion réussie!");
+               // System.out.println("Connexion réussie!");
                 envoyerData(Constants.RESET_HARDWARE);
                 // return 99;
 
             } else {
 
-                System.out.println("Connexion échouée!");
+               // System.out.println("Connexion échouée!");
                 return -1;
             }
 
         } catch (Exception e) {
 
-            System.out.println("Connexion échouée!");
+            //System.out.println("Connexion échouée!");
             return -2;
         }
 
@@ -152,7 +154,7 @@ public class Connecteur extends Observable {
                     }
                     inputLine = new String(lecture, StandardCharsets.UTF_8);
 
-                    System.out.println("Received -> " + numRead + "bits lus - " + inputLine);
+                    //System.out.println("Received -> " + numRead + "bits lus - " + inputLine);
                     notifierResultat();
 
                 } catch (Exception e) {   // Traitement des exceptions
@@ -239,31 +241,7 @@ public class Connecteur extends Observable {
 
     public void erase(boolean envVariable, String programmerLocation) {
 
-        /*
-        envoyerData(Constants.ERASE);
-        tempo(1000);
-
-        Runtime runtime = Runtime.getRuntime();
-
-        try {
-
-            if (envVariable) {
-
-                //Process process = runtime.exec("STM32_Programmer_CLI.exe -c port=SWD sn=002800323532511431333430 -e all");
-                Process process = runtime.exec("STM32_Programmer_CLI.exe -c port=SWD -e all");
-            } else {
-
-            }
-
-        } catch (IOException ex) {
-            Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        tempo(5000);
-
-        programmationCompleted(Constants.ERASE_SUCCESS);
-        envoyerData(Constants.END_ERASE);
-         */
+      
     }
 
     void tempo(long duree) {
@@ -280,29 +258,30 @@ public class Connecteur extends Observable {
 
     public int program(String hexLocation, boolean envVariable, String programmerPath, String programmer, String device, String binaryLocation, int nombreDeVoiesCarteEnTest, String programmerPathTempDir) throws IOException {
 
+        //ProcessBuilder processBuilder = new ProcessBuilder();
         char count = 48;
         for (int i = 1; i < nombreDeVoiesCarteEnTest + 1; i++) {
 
             count++;
             envoyerData(Character.toString(count));
             //tempo(10000);  // pour tests
-            System.out.println("Début programmation");
+            //System.out.println("Début programmation");
             cleanDirectory(programmerPathTempDir);
             cleanDirectory2(".\\logs\\logs.txt");
             tempo(250);
             programmationCompleted("->START:99:" + i);
-            ProcessBuilder processBuilder = new ProcessBuilder();
+            //ProcessBuilder processBuilder = new ProcessBuilder();
             processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
             Process process = processBuilder.start();
 
             tempo(200);
-            System.out.println("Fin programmation");
-            System.out.println("Début vérification");
+            //System.out.println("Fin programmation");
+            //System.out.println("Début vérification");
 
             int control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
             if (control == -1) {
 
-                System.out.println("tentative 2");
+                //System.out.println("tentative 2");
                 programmationCompleted("->PROG:" + i + ":-54");
                 processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
                 control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
@@ -317,7 +296,7 @@ public class Connecteur extends Observable {
 
             if (control == -4) {
 
-                System.out.println("tentative 2");
+                //System.out.println("tentative 2");
                 programmationCompleted("->PROG:" + i + ":-54");
                 processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
                 control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
@@ -329,10 +308,10 @@ public class Connecteur extends Observable {
                     return 1;
                 }
             }
-            System.out.println("code controle: " + control);
+            //System.out.println("code controle: " + control);
             programmationCompleted("->PROG:" + i + ":" + control);
         }
-       
+
         return 1;
 
     }
@@ -348,13 +327,13 @@ public class Connecteur extends Observable {
 
     public void cleanDirectory2(String logFile) {
 
-        System.out.println("Suppression fichier de log");
+        //System.out.println("Suppression fichier de log");
         Path path = Paths.get(logFile);
         try {
             boolean deleteIfExists1 = Files.deleteIfExists(path);
         } catch (IOException ex) {
 
-            System.out.println("Problème suppression fichier de log");
+            //System.out.println("Problème suppression fichier de log");
         }
 
     }

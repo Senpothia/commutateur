@@ -51,7 +51,7 @@ public class ProgController {
 
             try {
 
-                System.out.println("le fichier est disponible");
+                //System.out.println("le fichier est disponible");
                 // Création d'un fileReader pour lire le fichier
                 FileReader fileReader = new FileReader(logfile);
 
@@ -93,7 +93,7 @@ public class ProgController {
                 reader.close();
             } catch (IOException e) {
                 e.printStackTrace();
-                System.out.println("Fichier en cours d'écriture");
+                //System.out.println("Fichier en cours d'écriture");
             }
 
             if (codeControl == 0) {
