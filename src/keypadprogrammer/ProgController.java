@@ -166,13 +166,13 @@ public class ProgController {
 
             File file = new File(logFile);
             size1 = (double) file.length();
-            System.out.println(size1 / 1024 + "  kb");
+           // System.out.println(size1 / 1024 + "  kb");
             size0 = size1;
             if (size0 == size1 && size1 != 0) {
 
                 counter0++;
                 if (counter0 > lim) {
-                    System.out.println("Sortie 1");
+                    //System.out.println("Sortie 1");
                     end = true;
 
                 }
@@ -182,7 +182,7 @@ public class ProgController {
 
                 counter1++;
                 if (counter1 > 1000) {
-                    System.out.println("Sortie 2");
+                    //System.out.println("Sortie 2");
                     end = true;
 
                 }
@@ -192,7 +192,7 @@ public class ProgController {
 
                 counter2++;
                 if (counter2 > 10000) {
-                    System.out.println("Sortie 3");
+                    //System.out.println("Sortie 3");
                     end = true;
 
                 }
@@ -202,7 +202,7 @@ public class ProgController {
 
                 counter3++;
                 if (counter3 > 10000) {
-                    System.out.println("Sortie 4");
+                    //System.out.println("Sortie 4");
                     end = true;
 
                 }
@@ -212,7 +212,7 @@ public class ProgController {
 
                 counter4++;
                 if (counter4 > 10000) {
-                    System.out.println("Sortie 5");
+                    //System.out.println("Sortie 5");
                     end = true;
 
                 }

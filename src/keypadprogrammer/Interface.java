@@ -129,6 +129,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private ImageIcon icon = null;
 
+    private ProcessManager processManager = new ProcessManager();
+
+    private ProcessBuilder processBuilder = new ProcessBuilder();
+
     /*
     private Thread t = new Thread() {
             public void run() {
@@ -2255,7 +2259,32 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void btnProgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgActionPerformed
 
-        //System.gc();
+        // Définir la commande PowerShell
+        String[] command = {"powershell.exe", "-Command", "Get-Process -ProcessName java"};
+
+        // Définir le fichier de sortie
+        File outputFile = new File(".\\processes.txt");
+
+        // Créer un ProcessBuilder
+        ProcessBuilder processBuilder = new ProcessBuilder(command);
+
+        // Rediriger la sortie vers le fichier
+        processBuilder.redirectOutput(outputFile);
+
+        try {
+            // Démarrer le processus
+            Process process = processBuilder.start();
+
+            // Attendre la fin du processus
+            process.waitFor();
+
+            System.out.println("La sortie a été redirigée vers " + outputFile.getAbsolutePath());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        String[] command2 = {"powershell.exe", "exit"};
+        processBuilder = new ProcessBuilder(command2);
         connecteur.envoyerData(Character.toString('t'));
         if (!confirmationParams) {
 
@@ -3892,4 +3921,5 @@ public class Interface extends javax.swing.JFrame implements Observer {
         icon = new ImageIcon(pathImage);
         imagePanneau.setIcon(icon);
     }
+
 }
