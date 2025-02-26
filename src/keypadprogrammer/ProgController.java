@@ -131,9 +131,17 @@ public class ProgController {
         int counter4 = 0;
 
         // Sans erreur de programmation
+        // ICD4
+        /*
         double d1 = 0.98335d;
         double d2 = 0.98340d;
-
+        */
+          // ICD5
+        
+        double d1 = 0.9677734d;
+        double d2 = 0.9677740d;
+        
+        
         // Erreur après déconnexion 1
         double d3 = 0.618162d;
         double d4 = 0.618170d;
@@ -146,6 +154,11 @@ public class ProgController {
         //1.0185546875 
         double d7 = 1.01850d;
         double d8 = 1.01870d;
+        
+        // Surcharge
+        // ICD5
+        
+        // 0.0546875
 
         int lim = 200000;
 
@@ -168,7 +181,7 @@ public class ProgController {
             if (Double.compare(size0 / 1024, d1) == 1 && Double.compare(size0 / 1024, d2) == -1) {
 
                 counter1++;
-                if (counter1 > 10000) {
+                if (counter1 > 1000) {
                     System.out.println("Sortie 2");
                     end = true;
 

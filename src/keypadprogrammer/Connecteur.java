@@ -42,7 +42,7 @@ public class Connecteur extends Observable {
     private OutputStream outputStream;
 
     private String inputLine;
-    
+
     private ProcessBuilder processBuilder = new ProcessBuilder();
 
     public static String getPortName() {
@@ -91,7 +91,7 @@ public class Connecteur extends Observable {
 
             if (portName == null) {
 
-               // System.out.println("makeConnection() - Port non sélectionné");
+                // System.out.println("makeConnection() - Port non sélectionné");
                 return 0;
             }
 
@@ -113,13 +113,13 @@ public class Connecteur extends Observable {
 
             if (portComm.isOpen()) {
 
-               // System.out.println("Connexion réussie!");
+                // System.out.println("Connexion réussie!");
                 envoyerData(Constants.RESET_HARDWARE);
                 // return 99;
 
             } else {
 
-               // System.out.println("Connexion échouée!");
+                // System.out.println("Connexion échouée!");
                 return -1;
             }
 
@@ -241,7 +241,6 @@ public class Connecteur extends Observable {
 
     public void erase(boolean envVariable, String programmerLocation) {
 
-      
     }
 
     void tempo(long duree) {
@@ -271,7 +270,8 @@ public class Connecteur extends Observable {
             tempo(250);
             programmationCompleted("->START:99:" + i);
             //ProcessBuilder processBuilder = new ProcessBuilder();
-            processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
+            //processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
+            processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /OY2013 >.\\logs\\logs.txt");
             Process process = processBuilder.start();
 
             tempo(200);
