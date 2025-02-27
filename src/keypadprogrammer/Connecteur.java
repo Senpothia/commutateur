@@ -314,6 +314,7 @@ public class Connecteur extends Observable {
             if (control == -33) {
 
                 processManager.killProcess();
+                return -33;
                 
             }
             //System.out.println("code controle: " + control);

@@ -2274,9 +2274,22 @@ public class Interface extends javax.swing.JFrame implements Observer {
                             //this.interrupt();
                             break;
 
+                        case -33:
+
+                            console.setText("Reset programmateur");
+                            activerBtnACQ(true);
+                            activerBtnProgrammer(false);
+                            menuParametres.setEnabled(true);
+                            menuConnexion.setEnabled(true);
+                            connecteur.envoyerData(Character.toString('t'));
+                            //this.interrupt();
+                            break;
+
                     }
 
                 } catch (IOException ex) {
+                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InterruptedException ex) {
                     Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
@@ -2390,7 +2403,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
             connexionRS232Active = true;
             //activerBtnAttenteLancement();
             //activerBtnTester(true);
-            activerBtnProgrammer(true);
+            //activerBtnProgrammer(true);
+            testParamsProg();
 
         } else {
 

@@ -47,11 +47,11 @@ public class ProgController {
         int j = 0;
         int codeControl = 0;
         while (j < 2) {
-            
+
             int analyse = isFileAvailable4(logfile);
-            
-            if(analyse == 0){
-            
+
+            if (analyse == 0) {
+
                 return -33;
             }
 
@@ -242,7 +242,8 @@ public class ProgController {
          */
         // ICD5
         double d1 = 0.9677734d;
-        double d2 = 0.9677740d;
+        //double d2 = 0.9677740d;
+        double d2 = 1.0035;
 
         // Erreur après déconnexion 1
         double d3 = 0.618162d;
@@ -324,7 +325,7 @@ public class ProgController {
             if (Double.compare(size0 / 1024, d9) == 1 && Double.compare(size0 / 1024, d10) == -1) {
 
                 counter5++;
-                if (counter5 > 100000) {
+                if (counter5 > 100000) {  // 100000
                     System.out.println("Sortie 6");
                     end = true;
                     return 0;

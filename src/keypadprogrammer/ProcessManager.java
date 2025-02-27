@@ -23,6 +23,24 @@ public class ProcessManager {
     private File outputFile0 = new File(".\\processes0.process");
     private String processId = "0";
 
+    public boolean isListed() {
+        return listed;
+    }
+
+    public void setListed(boolean listed) {
+        this.listed = listed;
+    }
+
+    public String getProcessId() {
+        return processId;
+    }
+
+    public void setProcessId(String processId) {
+        this.processId = processId;
+    }
+    
+    
+
     public void getJavaProcesses() throws IOException {
 
         // Définir la commande PowerShell
