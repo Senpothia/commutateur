@@ -133,37 +133,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private ProcessBuilder processBuilder = new ProcessBuilder();
 
-    /*
-    private Thread t = new Thread() {
-            public void run() {
-
-                try {
-                    int comm = connecteur.program(hexLocationsParamsProperties, envVariable, programmerPathParamsProperties, programmerParamsProperties, deviceEnTest, binaireLocation, intNombreDeVoiesCarteEnTest, programmerPathTempFileDirectory);
-                    //System.out.println("Retour programmation. Code reçu: " + comm);
-
-                    switch (comm) {
-
-                        case 1:
-
-                            console.setText("Cycle de programmation terminée");
-                            activerBtnACQ(true);
-                            activerBtnProgrammer(false);
-                            menuParametres.setEnabled(true);
-                            menuConnexion.setEnabled(true);
-                            connecteur.envoyerData(Character.toString('t'));
-                            break;
-
-                    }
-
-                } catch (IOException ex) {
-                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        };
-
-    /**
-     * Creates new form Interface
-     */
     public Interface() throws IOException {
 
         initComponents();
@@ -474,6 +443,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         testParamsProg();
         raffraichirImagePanneau();
+
+        processManager.deleteFiles();
+        Constants.tempo(2000);
 
     }
 
@@ -2259,32 +2231,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void btnProgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgActionPerformed
 
-        // Définir la commande PowerShell
-        String[] command = {"powershell.exe", "-Command", "Get-Process -ProcessName java"};
-
-        // Définir le fichier de sortie
-        File outputFile = new File(".\\processes.txt");
-
-        // Créer un ProcessBuilder
-        ProcessBuilder processBuilder = new ProcessBuilder(command);
-
-        // Rediriger la sortie vers le fichier
-        processBuilder.redirectOutput(outputFile);
-
-        try {
-            // Démarrer le processus
-            Process process = processBuilder.start();
-
-            // Attendre la fin du processus
-            process.waitFor();
-
-            System.out.println("La sortie a été redirigée vers " + outputFile.getAbsolutePath());
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        String[] command2 = {"powershell.exe", "exit"};
-        processBuilder = new ProcessBuilder(command2);
         connecteur.envoyerData(Character.toString('t'));
         if (!confirmationParams) {
 

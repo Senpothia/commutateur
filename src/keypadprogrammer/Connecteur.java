@@ -45,6 +45,8 @@ public class Connecteur extends Observable {
 
     private ProcessBuilder processBuilder = new ProcessBuilder();
 
+    private ProcessManager processManager = new ProcessManager();
+
     public static String getPortName() {
         return portName;
     }
@@ -255,7 +257,7 @@ public class Connecteur extends Observable {
 
     }
 
-    public int program(String hexLocation, boolean envVariable, String programmerPath, String programmer, String device, String binaryLocation, int nombreDeVoiesCarteEnTest, String programmerPathTempDir) throws IOException {
+    public int program(String hexLocation, boolean envVariable, String programmerPath, String programmer, String device, String binaryLocation, int nombreDeVoiesCarteEnTest, String programmerPathTempDir) throws IOException, InterruptedException {
 
         //ProcessBuilder processBuilder = new ProcessBuilder();
         char count = 48;
@@ -275,9 +277,9 @@ public class Connecteur extends Observable {
             Process process = processBuilder.start();
 
             tempo(200);
+
             //System.out.println("Fin programmation");
             //System.out.println("Début vérification");
-
             int control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
             if (control == -1) {
 
@@ -308,8 +310,20 @@ public class Connecteur extends Observable {
                     return 1;
                 }
             }
+
+            if (control == -33) {
+
+                processManager.killProcess();
+                
+            }
             //System.out.println("code controle: " + control);
             programmationCompleted("->PROG:" + i + ":" + control);
+
+            if (i == 1) {
+
+                processManager.getJavaProcesses();
+            }
+
         }
 
         return 1;
