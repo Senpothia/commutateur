@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -132,7 +133,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private ProcessManager processManager = new ProcessManager();
 
     private ProcessBuilder processBuilder = new ProcessBuilder();
+    private LocalDateTime dateOfStart;
+    private LocalDateTime dateOfEnd;
+    private int CYCLES = 0;
+    private int TOTAL = 0;
 
+    //private boolean repetition = false;
     public Interface() throws IOException {
 
         initComponents();
@@ -445,7 +451,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         raffraichirImagePanneau();
 
         processManager.deleteFiles();
-        Constants.tempo(2000);
+        //Constants.tempo(2000);
 
     }
 
@@ -2231,6 +2237,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void btnProgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgActionPerformed
 
+        dateOfStart = LocalDateTime.now();
         connecteur.envoyerData(Character.toString('t'));
         if (!confirmationParams) {
 
@@ -2254,6 +2261,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         activerBtnProgrammer(false);
         activerBtnEffacer(true);
 
+        /*
         Thread t = new Thread() {
             public void run() {
 
@@ -2271,7 +2279,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                             menuParametres.setEnabled(true);
                             menuConnexion.setEnabled(true);
                             connecteur.envoyerData(Character.toString('t'));
-                            //this.interrupt();
+
                             break;
 
                         case -33:
@@ -2282,7 +2290,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                             menuParametres.setEnabled(true);
                             menuConnexion.setEnabled(true);
                             connecteur.envoyerData(Character.toString('t'));
-                            //this.interrupt();
+
                             break;
 
                     }
@@ -2296,7 +2304,14 @@ public class Interface extends javax.swing.JFrame implements Observer {
         };
 
         t.start();
+         */
+        activerProgrammation();
+        /*
+        while (repetition) {
 
+            lancerProgrammation();
+        }
+         */
 
     }//GEN-LAST:event_btnProgActionPerformed
 
@@ -3076,6 +3091,21 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 if (Integer.parseInt(tab[1]) == intNombreDeVoiesCarteEnTest) {
                     progBarre.setValue(100);
                     progBarre.setString("Programmation terminée!");
+                    dateOfEnd = LocalDateTime.now();
+                    long delay = dateOfStart.until(dateOfEnd, ChronoUnit.SECONDS);
+                    System.out.println("Durée du cycle de programmation: " + delay + "s");
+                    CYCLES++;
+                    System.out.println("CYCLES entre 2 interruptions: " + TOTAL);
+                    System.out.println("CYCLES depuis dernière interruption: " + CYCLES);
+                }
+
+                if (Integer.parseInt(tab[2]) == -33) {
+
+                    System.out.println("demande relance après interruption processus");
+                    progBarre.setString("RESET en cours...");
+                    activerProgrammation();
+                    TOTAL = CYCLES;
+                    CYCLES = 0;
                 }
 
             }
@@ -3880,6 +3910,63 @@ public class Interface extends javax.swing.JFrame implements Observer {
         //System.out.println("localisation image: " + pathImage);
         icon = new ImageIcon(pathImage);
         imagePanneau.setIcon(icon);
+    }
+
+    private void lancerProgrammation() {
+
+        Thread t = new Thread() {
+            public void run() {
+
+                try {
+                    int comm = connecteur.program(hexLocationsParamsProperties, envVariable, programmerPathParamsProperties, programmerParamsProperties, deviceEnTest, binaireLocation, intNombreDeVoiesCarteEnTest, programmerPathTempFileDirectory);
+                    //System.out.println("Retour programmation. Code reçu: " + comm);
+
+                    switch (comm) {
+
+                        case 1:
+
+                            console.setText("Cycle de programmation terminée");
+                            activerBtnACQ(true);
+                            activerBtnProgrammer(false);
+                            menuParametres.setEnabled(true);
+                            menuConnexion.setEnabled(true);
+                            connecteur.envoyerData(Character.toString('t'));
+                            //repetition = false;
+
+                            break;
+
+                        case -33:
+
+                            console.setText("Reset programmateur");
+                            //repetition = true;
+                            //Constants.tempo(3000);
+                            /*
+                            activerBtnACQ(true);
+                            activerBtnProgrammer(false);
+                            menuParametres.setEnabled(true);
+                            menuConnexion.setEnabled(true);
+                            connecteur.envoyerData(Character.toString('t'));
+                             */
+                            break;
+
+                    }
+
+                } catch (IOException ex) {
+                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+
+        t.start();
+
+    }
+
+    private void activerProgrammation() {
+
+        lancerProgrammation();
+
     }
 
 }

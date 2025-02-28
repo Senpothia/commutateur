@@ -325,7 +325,7 @@ public class ProgController {
             if (Double.compare(size0 / 1024, d9) == 1 && Double.compare(size0 / 1024, d10) == -1) {
 
                 counter5++;
-                if (counter5 > 100000) {  // 100000
+                if (counter5 > 80000) {  // 100000
                     System.out.println("Sortie 6");
                     end = true;
                     return 0;

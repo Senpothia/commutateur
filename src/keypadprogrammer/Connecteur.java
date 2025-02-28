@@ -38,6 +38,7 @@ public class Connecteur extends Observable {
     private int newReadTimeout = 1000;
     private int newWriteTimeout = 0;
     private ProgController progController = new ProgController();
+    private int sequenceInterrompue = 1;
 
     private OutputStream outputStream;
 
@@ -85,6 +86,14 @@ public class Connecteur extends Observable {
 
     public void setStopBits(int stopBits) {
         this.stopBits = stopBits;
+    }
+
+    public int getSequenceInterrompue() {
+        return sequenceInterrompue;
+    }
+
+    public void setSequenceInterrompue(int sequenceInterrompue) {
+        this.sequenceInterrompue = sequenceInterrompue;
     }
 
     public int makeConnection(String portName, int baudeRate, int numDataBits, int parity, int stopBits) {
@@ -261,7 +270,12 @@ public class Connecteur extends Observable {
 
         //ProcessBuilder processBuilder = new ProcessBuilder();
         char count = 48;
-        for (int i = 1; i < nombreDeVoiesCarteEnTest + 1; i++) {
+        for (int j = 1; j < sequenceInterrompue; j++) {
+
+            count++;
+        }
+
+        for (int i = sequenceInterrompue; i < nombreDeVoiesCarteEnTest + 1; i++) {
 
             count++;
             envoyerData(Character.toString(count));
@@ -313,9 +327,12 @@ public class Connecteur extends Observable {
 
             if (control == -33) {
 
+                System.out.println("Interruption processus -  sequence: " + i);
                 processManager.killProcess();
+                sequenceInterrompue = i;
+                programmationCompleted("->PROG:" + i + ":-33");
                 return -33;
-                
+
             }
             //System.out.println("code controle: " + control);
             programmationCompleted("->PROG:" + i + ":" + control);
@@ -327,6 +344,7 @@ public class Connecteur extends Observable {
 
         }
 
+        sequenceInterrompue = 1;
         return 1;
 
     }
