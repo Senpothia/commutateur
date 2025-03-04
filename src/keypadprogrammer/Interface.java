@@ -138,6 +138,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private int CYCLES = 0;
     private int TOTAL = 0;
 
+    private boolean echo = false;
+
     //private boolean repetition = false;
     public Interface() throws IOException {
 
@@ -451,7 +453,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
         raffraichirImagePanneau();
 
         processManager.deleteFiles();
-        //Constants.tempo(2000);
 
     }
 
@@ -2237,8 +2238,14 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void btnProgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgActionPerformed
 
+        if (!echo) {
+
+            montrerError("Vérifiez que le banc est sous tension!", "Erreur connexion");
+
+        }
         dateOfStart = LocalDateTime.now();
         connecteur.envoyerData(Character.toString('t'));
+
         if (!confirmationParams) {
 
             boolean confirmation = confirmeParams();
@@ -2261,57 +2268,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
         activerBtnProgrammer(false);
         activerBtnEffacer(true);
 
-        /*
-        Thread t = new Thread() {
-            public void run() {
-
-                try {
-                    int comm = connecteur.program(hexLocationsParamsProperties, envVariable, programmerPathParamsProperties, programmerParamsProperties, deviceEnTest, binaireLocation, intNombreDeVoiesCarteEnTest, programmerPathTempFileDirectory);
-                    //System.out.println("Retour programmation. Code reçu: " + comm);
-
-                    switch (comm) {
-
-                        case 1:
-
-                            console.setText("Cycle de programmation terminée");
-                            activerBtnACQ(true);
-                            activerBtnProgrammer(false);
-                            menuParametres.setEnabled(true);
-                            menuConnexion.setEnabled(true);
-                            connecteur.envoyerData(Character.toString('t'));
-
-                            break;
-
-                        case -33:
-
-                            console.setText("Reset programmateur");
-                            activerBtnACQ(true);
-                            activerBtnProgrammer(false);
-                            menuParametres.setEnabled(true);
-                            menuConnexion.setEnabled(true);
-                            connecteur.envoyerData(Character.toString('t'));
-
-                            break;
-
-                    }
-
-                } catch (IOException ex) {
-                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        };
-
-        t.start();
-         */
         activerProgrammation();
-        /*
-        while (repetition) {
 
-            lancerProgrammation();
-        }
-         */
 
     }//GEN-LAST:event_btnProgActionPerformed
 
@@ -2408,6 +2366,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private void btnConnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConnexionActionPerformed
 
         int i = connecteur.makeConnection(Connecteur.portName, baudeRate, numDatabits, parity, stopBits);
+        connecteur.envoyerData(Character.toString('t'));
+
         if (i == 99) {
 
             console.setForeground(Color.BLUE);
@@ -3115,6 +3075,17 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 String[] tab = ((String) arg).trim().split(":");
                 raffraichirIndicateur(tab);
 
+            }
+
+            if (((String) arg).startsWith("->GR")) {
+                System.out.println("reception echo");
+                console.setText((String) arg);
+                String[] tab = ((String) arg).trim().split(":");
+
+                if (tab[1].equals("00") && tab[2].equals("OFF")) {
+                    echo = true;
+                    System.out.println("echo = true");
+                }
             }
 
         }
