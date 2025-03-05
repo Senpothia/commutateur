@@ -2238,13 +2238,15 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void btnProgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgActionPerformed
 
-        if (!echo) {
-
-            montrerError("Vérifiez que le banc est sous tension!", "Erreur connexion");
-
-        }
         dateOfStart = LocalDateTime.now();
         connecteur.envoyerData(Character.toString('t'));
+        if (!testEcho()) {
+
+            montrerError("La banc ne répond pas! Vérifiez les connexions et que le banc est sous-tension", "Erreur banc");
+            echo = false;
+            return;
+
+        }
 
         if (!confirmationParams) {
 
@@ -2367,6 +2369,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         int i = connecteur.makeConnection(Connecteur.portName, baudeRate, numDatabits, parity, stopBits);
         connecteur.envoyerData(Character.toString('t'));
+        if (!testEcho()) {
+
+            montrerError("La banc ne répond pas! Vérifiez les connexions et que le banc est sous-tension", "Erreur banc");
+            return;
+
+        }
 
         if (i == 99) {
 
@@ -2426,11 +2434,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
         activerBtnProgrammer(true);
         activerBtnEffacer(true);
         raffraichirInterface();
-        //testParamsProg();
 
         progBarre.setValue(0);
         progBarre.setString("En attente lancement de programmation");
         progBarre.setStringPainted(true);
+        echo = false;
 
 
     }//GEN-LAST:event_btnACQActionPerformed
@@ -3084,14 +3092,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
                 if (tab[2].equals("ON") || tab[2].equals("OFF")) {
                     echo = true;
-                    System.out.println("echo = true");
+                    System.out.println("echo = true - update");
                 }
-            }
-
-            if (((String) arg).startsWith(" ->ECHO")) {
-                System.out.println("défaut echo");
-                console.setText((String) arg);
-                montrerError("Le banc ne répond pas!", "Erreur banc");
             }
 
         }
@@ -3908,27 +3910,13 @@ public class Interface extends javax.swing.JFrame implements Observer {
                             menuParametres.setEnabled(true);
                             menuConnexion.setEnabled(true);
                             connecteur.envoyerData(Character.toString('t'));
-                            //repetition = false;
 
                             break;
 
                         case -33:
 
                             console.setText("Reset programmateur");
-                            //repetition = true;
-                            //Constants.tempo(3000);
-                            /*
-                            activerBtnACQ(true);
-                            activerBtnProgrammer(false);
-                            menuParametres.setEnabled(true);
-                            menuConnexion.setEnabled(true);
-                            connecteur.envoyerData(Character.toString('t'));
-                             */
-                            break;
 
-                        case -9:
-
-                            montrerError("Le banc ne répond pas!", "Erreur banc");
                             break;
 
                     }
@@ -3948,6 +3936,22 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private void activerProgrammation() {
 
         lancerProgrammation();
+
+    }
+
+    private boolean testEcho() {
+
+        Constants.tempo(2000);
+        if (echo) {
+
+            echo = false;
+            return true;
+
+        } else {
+
+            echo = false;
+            return false;
+        }
 
     }
 

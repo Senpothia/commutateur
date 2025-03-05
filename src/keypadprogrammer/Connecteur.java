@@ -231,10 +231,7 @@ public class Connecteur extends Observable {
 
             //    System.out.println("Interface.envoyerData(), données: " + dataToSend);
             outputStream.write(dataToSend.getBytes());
-            if (!waitForEcho()) {
-
-                return -9;
-            }
+          
             return 1;
 
         } catch (IOException e) {
@@ -314,17 +311,7 @@ public class Connecteur extends Observable {
 
             count++;
             envoyerData(Character.toString(count));
-            if (!lecturePort()) {
-
-                System.out.println("->ECHO:DEFAULT");
-                programmationCompleted("->ECHO:DEFAULT");
-                //echo = false;
-                return -9;
-            } else {
-
-                System.out.println("->ECHO:OK");
-
-            }
+           
             //tempo(10000);  // pour tests
             //System.out.println("Début programmation");
             cleanDirectory(programmerPathTempDir);
@@ -445,41 +432,6 @@ public class Connecteur extends Observable {
 
     }
 
-    private boolean waitForEcho() {
-
-        int i = 0;
-        while (!echo) {
-
-            i++;
-            if (i > 100000000) {
-                System.out.println("hors delais");
-                return false;
-            }
-
-        }
-
-        return true;
-    }
-
-    private boolean lecturePort() {
-
-        int k = 0;
-        byte[] readBuffer = new byte[100];
-        while (portComm.readBytes(readBuffer, readBuffer.length) == 0 && k < 1000) {
-
-            k++;
-            return false;
-
-        }
-        int numRead = portComm.readBytes(readBuffer, readBuffer.length);
-        byte[] lecture = new byte[numRead];
-        for (int i = 0; i < numRead; i++) {
-
-            lecture[i] = readBuffer[i];
-        }
-        inputLine = new String(lecture, StandardCharsets.UTF_8);
-        return true;
-
-    }
+  
 
 }
