@@ -141,6 +141,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private boolean echo = false;
     private boolean panne = false;
 
+    private int compteurReset = 0;
+
     //private boolean repetition = false;
     public Interface() throws IOException {
 
@@ -2242,15 +2244,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         dateOfStart = LocalDateTime.now();
         connecteur.envoyerData(Character.toString('t'));
         echo = false;
-        /*
-        if (!testEcho()) {
 
-            montrerError("La banc ne répond pas! Vérifiez les connexions et que le banc est sous-tension", "Erreur banc");
-            echo = false;
-            return;
-
-        }
-         */
         if (!confirmationParams) {
 
             boolean confirmation = confirmeParams();
@@ -2452,17 +2446,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         progBarre.setValue(0);
         progBarre.setString("En attente lancement de programmation");
         progBarre.setStringPainted(true);
-        /*
-        connecteur.envoyerData(Character.toString('t'));
-        if (!testEcho()) {
-
-            montrerError("La banc ne répond pas! Vérifiez les connexions et que le banc est sous-tension", "Erreur banc");
-            echo = false;
-            return;
-
-        }
-        echo = false;
-         */
+      
 
 
     }//GEN-LAST:event_btnACQActionPerformed
@@ -3093,9 +3077,23 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
                 if (Integer.parseInt(tab[2]) == -33) {
 
+                    compteurReset++;
                     System.out.println("demande relance après interruption processus");
                     progBarre.setString("RESET en cours...");
-                    activerProgrammation();
+                    if (compteurReset < 3) {
+
+                        activerProgrammation();
+
+                    } else {
+
+                        montrerError("Problème d'alimentation!\nVérifiez que le banc est sous tension et relancez l'application", "Erreur banc");
+                        console.setText("PROBLEME D'ALIMENTATION");
+                        inhibBtn();
+                        menuParametres.setEnabled(true);
+                        menuConnexion.setEnabled(true);
+                        
+                    }
+
                     TOTAL = CYCLES;
                     CYCLES = 0;
                 }
@@ -3889,7 +3887,15 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
                                 //System.out.println("Problème alimentation programmateur");
                                 //console.setText("Le programmateur n'est pas alimenter!");
-                                montrerError("Vérifier l'alimentation du programmateur!", "Défaut programmateur");
+                                montrerError("Vérifier l'alimentation du programmateur!\nVérifier la connexion USB", "Défaut programmateur");
+
+                            }
+
+                            if (Integer.parseInt(tab[2]) == -77) {
+
+                                //System.out.println("problème liaison usb");
+                                console.setText("Problème d'alimentation");
+                                montrerError("Vérifier que le banc est sous tension. Si le problème persiste relancer le PC", "Erreur programmateur");
 
                             }
                         }
@@ -3935,12 +3941,20 @@ public class Interface extends javax.swing.JFrame implements Observer {
                             activerBtnProgrammer(false);
                             menuParametres.setEnabled(true);
                             menuConnexion.setEnabled(true);
+                            compteurReset = 0;
 
                             break;
 
                         case -33:
 
                             console.setText("Reset programmateur");
+
+                            break;
+
+                        case -77:
+
+                            console.setText("Problème d'alimentation");
+                            compteurReset = 0;
 
                             break;
 

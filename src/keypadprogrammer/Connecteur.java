@@ -231,7 +231,7 @@ public class Connecteur extends Observable {
 
             //    System.out.println("Interface.envoyerData(), données: " + dataToSend);
             outputStream.write(dataToSend.getBytes());
-          
+
             return 1;
 
         } catch (IOException e) {
@@ -311,7 +311,7 @@ public class Connecteur extends Observable {
 
             count++;
             envoyerData(Character.toString(count));
-           
+
             //tempo(10000);  // pour tests
             //System.out.println("Début programmation");
             cleanDirectory(programmerPathTempDir);
@@ -365,6 +365,15 @@ public class Connecteur extends Observable {
                 sequenceInterrompue = i;
                 programmationCompleted("->PROG:" + i + ":-33");
                 return -33;
+
+            }
+            
+            if (control == -5) {
+
+                System.out.println("Problème d'alimentation");
+
+                programmationCompleted("->PROG:" + i + ":-77");
+                return -77;
 
             }
             //System.out.println("code controle: " + control);
@@ -431,7 +440,5 @@ public class Connecteur extends Observable {
         System.out.println("Mesure terminée!");
 
     }
-
-  
 
 }
