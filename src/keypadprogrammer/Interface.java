@@ -139,6 +139,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private int TOTAL = 0;
 
     private boolean echo = false;
+    private boolean panne = false;
 
     //private boolean repetition = false;
     public Interface() throws IOException {
@@ -2430,9 +2431,18 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_menuPortActionPerformed
 
     private void btnACQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnACQActionPerformed
-        
+
         echo = false;
         checkEcho();
+        if (panne) {
+
+            console.setForeground(Color.red);
+            console.setText("PROBLEME PERSISTANT!");
+            activerBtnACQ(false);
+            activerBtnProgrammer(false);
+            activerBtnEffacer(false);
+            return;
+        }
         console.setText("RESULTAT ACQUITTE - PRET POUR UN NOUVEAU CYCLE DE PROGRAMMATION!");
         activerBtnACQ(false);
         activerBtnProgrammer(true);
@@ -3971,15 +3981,36 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }
 
     private void checkEcho() {
-        
-        connecteur.envoyerData(Character.toString('t'));
-        if (!testEcho()) {
 
-            montrerError("La banc ne répond pas! Vérifiez les connexions et que le banc est sous-tension", "Erreur banc");
-            echo = false;
-            return;
+        boolean ok = false;
+        int i = 0;
 
+        while (!ok) {
+
+            connecteur.envoyerData(Character.toString('t'));
+            if (!testEcho()) {
+
+                if (i != 2) {
+
+                    montrerError("La banc ne répond pas! Vérifiez les connexions et que le banc est sous-tension", "Erreur banc");
+                } else {
+
+                    montrerError("La banc ne répond pas! Erreur persistante.", "Erreur banc");
+                    panne = true;
+                    return;
+
+                }
+                echo = false;
+                i++;
+                // return;
+
+            } else {
+
+                ok = true;
+            }
         }
+
+        panne = false;
         echo = false;
 
     }
