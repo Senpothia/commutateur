@@ -271,6 +271,7 @@ public class ProgController {
             File file = new File(logFile);
             size1 = (double) file.length();
             System.out.println(size1 / 1024 + "  kb");
+            //Constants.tempo(50);
             size0 = size1;
             if (size0 == size1 && size1 != 0) {
 

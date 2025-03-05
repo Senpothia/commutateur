@@ -3082,10 +3082,16 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 console.setText((String) arg);
                 String[] tab = ((String) arg).trim().split(":");
 
-                if (tab[1].equals("00") && tab[2].equals("OFF")) {
+                if (tab[2].equals("ON") || tab[2].equals("OFF")) {
                     echo = true;
                     System.out.println("echo = true");
                 }
+            }
+
+            if (((String) arg).startsWith(" ->ECHO")) {
+                System.out.println("défaut echo");
+                console.setText((String) arg);
+                montrerError("Le banc ne répond pas!", "Erreur banc");
             }
 
         }
@@ -3918,6 +3924,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
                             menuConnexion.setEnabled(true);
                             connecteur.envoyerData(Character.toString('t'));
                              */
+                            break;
+
+                        case -9:
+
+                            montrerError("Le banc ne répond pas!", "Erreur banc");
                             break;
 
                     }

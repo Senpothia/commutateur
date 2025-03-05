@@ -44,6 +44,8 @@ public class Connecteur extends Observable {
 
     private String inputLine;
 
+    private boolean echo = false;
+
     private ProcessBuilder processBuilder = new ProcessBuilder();
 
     private ProcessManager processManager = new ProcessManager();
@@ -94,6 +96,14 @@ public class Connecteur extends Observable {
 
     public void setSequenceInterrompue(int sequenceInterrompue) {
         this.sequenceInterrompue = sequenceInterrompue;
+    }
+
+    public boolean isEcho() {
+        return echo;
+    }
+
+    public void setEcho(boolean echo) {
+        this.echo = echo;
     }
 
     public int makeConnection(String portName, int baudeRate, int numDataBits, int parity, int stopBits) {
@@ -166,6 +176,18 @@ public class Connecteur extends Observable {
                     inputLine = new String(lecture, StandardCharsets.UTF_8);
 
                     //System.out.println("Received -> " + numRead + "bits lus - " + inputLine);
+                    /*
+                    if (inputLine.startsWith("->GR")) {
+                        System.out.println("reception echo - connecteur");
+
+                        String[] tab = inputLine.trim().split(":");
+
+                        if (tab[2].equals("ON") || tab[2].equals("OFF")) {
+                            echo = true;
+                            System.out.println("echo = true - connecteur");
+                        }
+                    }
+                     */
                     notifierResultat();
 
                 } catch (Exception e) {   // Traitement des exceptions
@@ -209,6 +231,10 @@ public class Connecteur extends Observable {
 
             //    System.out.println("Interface.envoyerData(), données: " + dataToSend);
             outputStream.write(dataToSend.getBytes());
+            if (!waitForEcho()) {
+
+                return -9;
+            }
             return 1;
 
         } catch (IOException e) {
@@ -231,6 +257,16 @@ public class Connecteur extends Observable {
 
         this.setChanged();
         this.notifyObservers(this.getInputLine());
+        if (this.getInputLine().startsWith("->GR")) {
+            System.out.println("reception echo - connecteur");
+
+            String[] tab = this.getInputLine().trim().split(":");
+
+            if (tab[2].equals("ON") || tab[2].equals("OFF")) {
+                echo = true;
+                System.out.println("echo = true - connecteur - notification");
+            }
+        }
 
     }
 
@@ -268,7 +304,6 @@ public class Connecteur extends Observable {
 
     public int program(String hexLocation, boolean envVariable, String programmerPath, String programmer, String device, String binaryLocation, int nombreDeVoiesCarteEnTest, String programmerPathTempDir) throws IOException, InterruptedException {
 
-        //ProcessBuilder processBuilder = new ProcessBuilder();
         char count = 48;
         for (int j = 1; j < sequenceInterrompue; j++) {
 
@@ -279,6 +314,17 @@ public class Connecteur extends Observable {
 
             count++;
             envoyerData(Character.toString(count));
+            if (!lecturePort()) {
+
+                System.out.println("->ECHO:DEFAULT");
+                programmationCompleted("->ECHO:DEFAULT");
+                //echo = false;
+                return -9;
+            } else {
+
+                System.out.println("->ECHO:OK");
+
+            }
             //tempo(10000);  // pour tests
             //System.out.println("Début programmation");
             cleanDirectory(programmerPathTempDir);
@@ -396,6 +442,43 @@ public class Connecteur extends Observable {
         }
 
         System.out.println("Mesure terminée!");
+
+    }
+
+    private boolean waitForEcho() {
+
+        int i = 0;
+        while (!echo) {
+
+            i++;
+            if (i > 100000000) {
+                System.out.println("hors delais");
+                return false;
+            }
+
+        }
+
+        return true;
+    }
+
+    private boolean lecturePort() {
+
+        int k = 0;
+        byte[] readBuffer = new byte[100];
+        while (portComm.readBytes(readBuffer, readBuffer.length) == 0 && k < 1000) {
+
+            k++;
+            return false;
+
+        }
+        int numRead = portComm.readBytes(readBuffer, readBuffer.length);
+        byte[] lecture = new byte[numRead];
+        for (int i = 0; i < numRead; i++) {
+
+            lecture[i] = readBuffer[i];
+        }
+        inputLine = new String(lecture, StandardCharsets.UTF_8);
+        return true;
 
     }
 
