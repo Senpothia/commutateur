@@ -2240,6 +2240,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         dateOfStart = LocalDateTime.now();
         connecteur.envoyerData(Character.toString('t'));
+        echo = false;
+        /*
         if (!testEcho()) {
 
             montrerError("La banc ne répond pas! Vérifiez les connexions et que le banc est sous-tension", "Erreur banc");
@@ -2247,7 +2249,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             return;
 
         }
-
+         */
         if (!confirmationParams) {
 
             boolean confirmation = confirmeParams();
@@ -2269,7 +2271,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
         progBarre.setVisible(true);
         activerBtnProgrammer(false);
         activerBtnEffacer(true);
-
         activerProgrammation();
 
 
@@ -2372,6 +2373,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         if (!testEcho()) {
 
             montrerError("La banc ne répond pas! Vérifiez les connexions et que le banc est sous-tension", "Erreur banc");
+            echo = false;
             return;
 
         }
@@ -2428,7 +2430,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_menuPortActionPerformed
 
     private void btnACQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnACQActionPerformed
-
+        
+        echo = false;
+        checkEcho();
         console.setText("RESULTAT ACQUITTE - PRET POUR UN NOUVEAU CYCLE DE PROGRAMMATION!");
         activerBtnACQ(false);
         activerBtnProgrammer(true);
@@ -2438,7 +2442,17 @@ public class Interface extends javax.swing.JFrame implements Observer {
         progBarre.setValue(0);
         progBarre.setString("En attente lancement de programmation");
         progBarre.setStringPainted(true);
+        /*
+        connecteur.envoyerData(Character.toString('t'));
+        if (!testEcho()) {
+
+            montrerError("La banc ne répond pas! Vérifiez les connexions et que le banc est sous-tension", "Erreur banc");
+            echo = false;
+            return;
+
+        }
         echo = false;
+         */
 
 
     }//GEN-LAST:event_btnACQActionPerformed
@@ -3361,6 +3375,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     void activerBtnACQ(boolean active) {
 
+        echo = false;
         btnACQ.setOpaque(true);
         if (active) {
 
@@ -3904,12 +3919,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
                         case 1:
 
+                            connecteur.envoyerData(Character.toString('t'));
                             console.setText("Cycle de programmation terminée");
                             activerBtnACQ(true);
                             activerBtnProgrammer(false);
                             menuParametres.setEnabled(true);
                             menuConnexion.setEnabled(true);
-                            connecteur.envoyerData(Character.toString('t'));
 
                             break;
 
@@ -3952,6 +3967,20 @@ public class Interface extends javax.swing.JFrame implements Observer {
             echo = false;
             return false;
         }
+
+    }
+
+    private void checkEcho() {
+        
+        connecteur.envoyerData(Character.toString('t'));
+        if (!testEcho()) {
+
+            montrerError("La banc ne répond pas! Vérifiez les connexions et que le banc est sous-tension", "Erreur banc");
+            echo = false;
+            return;
+
+        }
+        echo = false;
 
     }
 
