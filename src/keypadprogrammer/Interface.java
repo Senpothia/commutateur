@@ -138,8 +138,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private int CYCLES = 0;
     private int TOTAL = 0;
 
-    private boolean echo = false;
-
     //private boolean repetition = false;
     public Interface() throws IOException {
 
@@ -2238,11 +2236,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void btnProgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgActionPerformed
 
-        if (!echo) {
-
-            montrerError("Vérifiez que le banc est sous tension!", "Erreur connexion");
-
-        }
         dateOfStart = LocalDateTime.now();
         connecteur.envoyerData(Character.toString('t'));
 
@@ -3075,17 +3068,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 String[] tab = ((String) arg).trim().split(":");
                 raffraichirIndicateur(tab);
 
-            }
-
-            if (((String) arg).startsWith("->GR")) {
-                System.out.println("reception echo");
-                console.setText((String) arg);
-                String[] tab = ((String) arg).trim().split(":");
-
-                if (tab[1].equals("00") && tab[2].equals("OFF")) {
-                    echo = true;
-                    System.out.println("echo = true");
-                }
             }
 
         }
