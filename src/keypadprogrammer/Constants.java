@@ -63,6 +63,7 @@ public class Constants {
 
     static String[] REQUIS_LOG1 = {R1_LOG1};
     static String IMAGES_DIRECTORY = ".//images";
+    static int CYCLES_LIM = 12;
 
     //********************************************************************************************************
     static void tempo(long duree) {

@@ -39,6 +39,7 @@ public class Connecteur extends Observable {
     private int newWriteTimeout = 0;
     private ProgController progController = new ProgController();
     private int sequenceInterrompue = 1;
+    private boolean error = false;
 
     private OutputStream outputStream;
 
@@ -309,6 +310,7 @@ public class Connecteur extends Observable {
 
         for (int i = sequenceInterrompue; i < nombreDeVoiesCarteEnTest + 1; i++) {
 
+            System.out.println("error: " + error);
             count++;
             envoyerData(Character.toString(count));
 
@@ -328,6 +330,7 @@ public class Connecteur extends Observable {
             //System.out.println("Fin programmation");
             //System.out.println("Début vérification");
             int control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
+            System.out.println("code control: " + control);
             if (control == -1) {
 
                 //System.out.println("tentative 2");
@@ -338,6 +341,7 @@ public class Connecteur extends Observable {
 
                     control = -55;
                     programmationCompleted("->PROG:" + i + ":-55");
+
                     return 1;
                 }
 
@@ -354,6 +358,7 @@ public class Connecteur extends Observable {
 
                     control = -66;
                     programmationCompleted("->PROG:" + i + ":-66");
+
                     return 1;
                 }
             }
@@ -371,7 +376,6 @@ public class Connecteur extends Observable {
             if (control == -5) {
 
                 System.out.println("Problème d'alimentation");
-
                 programmationCompleted("->PROG:" + i + ":-77");
                 return -77;
 
@@ -379,11 +383,19 @@ public class Connecteur extends Observable {
             //System.out.println("code controle: " + control);
             programmationCompleted("->PROG:" + i + ":" + control);
 
-            if (i == 1) {
+            if (i == 1 || error) {
 
                 processManager.getJavaProcesses();
+                error = false;
+
             }
 
+            if (control < 0) {
+
+                error = true;
+            }
+
+            System.out.println("Id process: " + processManager.getProcessId());
         }
 
         sequenceInterrompue = 1;
@@ -446,14 +458,32 @@ public class Connecteur extends Observable {
         cleanDirectory(programmerPathTempDir);
         cleanDirectory2(".\\logs\\logs.txt");
         tempo(250);
-       // programmationCompleted("->START:99:" + i);
+        // programmationCompleted("->START:99:" + i);
         //ProcessBuilder processBuilder = new ProcessBuilder();
         //processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
         processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /OY2013 >.\\logs\\logs.txt");
         Process process = processBuilder.start();
+        int control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
+        System.out.println("code control: " + control);
 
-        tempo(10000);
+        //tempo(10000);
         System.out.println("end single programming");
+    }
+
+    public void askForKillingProcess() {
+
+        try {
+            processManager.killProcess();
+        } catch (IOException ex) {
+            Logger.getLogger(Connecteur.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Connecteur.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void askForDeletingFiles() throws IOException{
+    
+        processManager.deleteFiles();
     }
 
 }

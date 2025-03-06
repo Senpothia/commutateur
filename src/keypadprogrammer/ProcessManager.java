@@ -45,6 +45,8 @@ public class ProcessManager {
 
         // Définir la commande PowerShell
         //String[] command = {"powershell.exe", "-Command", "Get-Process -ProcessName java"};
+        deleteFiles();
+        Constants.tempo(200);
         String[] command = {"powershell.exe", "-Command", "Get-Process -ProcessName java | Format-List *"};
 
         // Définir le fichier 0 de sortie
@@ -52,7 +54,7 @@ public class ProcessManager {
         // Définir le fichier 1 de sortie
         //File outputFile1 = new File(".\\processes1.process");
         // Créer un ProcessBuilder
-        if (!listed) {
+       
 
             ProcessBuilder processBuilder = new ProcessBuilder(command);
             processBuilder.redirectOutput(outputFile0);
@@ -73,8 +75,9 @@ public class ProcessManager {
             String[] command2 = {"powershell.exe", "exit"};
             processBuilder = new ProcessBuilder(command2);
             extractProcessId();
+            //Constants.tempo(100000);
 
-        }
+      
 
     }
 
@@ -83,6 +86,8 @@ public class ProcessManager {
         Files.deleteIfExists(Paths.get(".\\processes0.process"));
         resetFlags();
     }
+    
+    
 
     public void extractProcessId() {
 

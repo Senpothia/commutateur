@@ -78,6 +78,7 @@ public class ProgController {
                             if (line.contains(erreurs[i])) {
 
                                 codeControl = -1 * (i + 1);
+                                break;
                             }
                         }
 
@@ -122,103 +123,6 @@ public class ProgController {
             File file = new File(logFile);
             size = (double) file.length() / 1024;
             System.out.println(getFileSizeKiloBytes(file));
-        }
-    }
-
-    private void isFileAvailable3(String logFile) {
-
-        double size0 = 0;
-        double size1 = 0;
-        Boolean end = false;
-        int counter0 = 0;
-        int counter1 = 0;
-        int counter2 = 0;
-        int counter3 = 0;
-        int counter4 = 0;
-
-        // Sans erreur de programmation
-        // ICD4
-        /*
-        double d1 = 0.98335d;
-        double d2 = 0.98340d;
-         */
-        // ICD5
-        double d1 = 0.9677734d;
-        double d2 = 0.9677740d;
-
-        // Erreur après déconnexion 1
-        double d3 = 0.618162d;
-        double d4 = 0.618170d;
-
-        // Erreur après déconnexion 2
-        double d5 = 0.583007d;
-        double d6 = 0.583008d;
-
-        // Reprise connexion après rupture
-        //1.0185546875 
-        double d7 = 1.01850d;
-        double d8 = 1.01870d;
-
-        // Surcharge
-        // ICD5
-        // 0.0546875
-        int lim = 200000;
-
-        while (!end) {
-
-            File file = new File(logFile);
-            size1 = (double) file.length();
-            System.out.println(size1 / 1024 + "  kb");
-            size0 = size1;
-            if (size0 == size1 && size1 != 0) {
-
-                counter0++;
-                if (counter0 > lim) {
-                    System.out.println("Sortie 1");
-                    end = true;
-
-                }
-            }
-
-            if (Double.compare(size0 / 1024, d1) == 1 && Double.compare(size0 / 1024, d2) == -1) {
-
-                counter1++;
-                if (counter1 > 1000) {
-                    System.out.println("Sortie 2");
-                    end = true;
-
-                }
-            }
-
-            if (Double.compare(size0 / 1024, d3) == 1 && Double.compare(size0 / 1024, d4) == -1) {
-
-                counter2++;
-                if (counter2 > 10000) {
-                    System.out.println("Sortie 3");
-                    end = true;
-
-                }
-            }
-
-            if (Double.compare(size0 / 1024, d5) == 1 && Double.compare(size0 / 1024, d6) == -1) {
-
-                counter3++;
-                if (counter3 > 10000) {
-                    System.out.println("Sortie 4");
-                    end = true;
-
-                }
-            }
-
-            if (Double.compare(size0 / 1024, d7) == 1 && Double.compare(size0 / 1024, d8) == -1) {
-
-                counter4++;
-                if (counter4 > 10000) {
-                    System.out.println("Sortie 5");
-                    end = true;
-
-                }
-            }
         }
     }
 
@@ -273,6 +177,7 @@ public class ProgController {
             System.out.println(size1 / 1024 + "  kb");
             //Constants.tempo(50);
             size0 = size1;
+            
             if (size0 == size1 && size1 != 0) {
 
                 counter0++;
@@ -282,6 +187,7 @@ public class ProgController {
 
                 }
             }
+             
 
             if (Double.compare(size0 / 1024, d1) == 1 && Double.compare(size0 / 1024, d2) == -1) {
 
@@ -329,7 +235,6 @@ public class ProgController {
                 if (counter5 > 80000) {  // 100000
                     System.out.println("Sortie 6");
                     end = true;
-                    return 0;
 
                 }
             }

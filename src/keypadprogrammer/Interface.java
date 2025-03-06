@@ -130,8 +130,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private ImageIcon icon = null;
 
-    private ProcessManager processManager = new ProcessManager();
-
     private ProcessBuilder processBuilder = new ProcessBuilder();
     private LocalDateTime dateOfStart;
     private LocalDateTime dateOfEnd;
@@ -455,7 +453,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         testParamsProg();
         raffraichirImagePanneau();
 
-        processManager.deleteFiles();
+        connecteur.askForDeletingFiles();
 
     }
 
@@ -2273,11 +2271,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void btnEffacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEffacerActionPerformed
 
-       // AfficheurPanneau.setVisible(true);
-       
-       // TEST PROGRAMMATION UNIQUE
-       
-       
+        // AfficheurPanneau.setVisible(true);
+        // TEST PROGRAMMATION UNIQUE
         Thread t = new Thread() {
             public void run() {
 
@@ -2464,6 +2459,14 @@ public class Interface extends javax.swing.JFrame implements Observer {
         progBarre.setValue(0);
         progBarre.setString("En attente lancement de programmation");
         progBarre.setStringPainted(true);
+        if (CYCLES == Constants.CYCLES_LIM) {
+
+            System.out.println("demande relance après interruption processus");
+            //progBarre.setString("RESET en cours...");
+            connecteur.askForKillingProcess();
+
+            CYCLES = 0;
+        }
 
 
     }//GEN-LAST:event_btnACQActionPerformed
@@ -3090,6 +3093,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                     CYCLES++;
                     System.out.println("CYCLES entre 2 interruptions: " + TOTAL);
                     System.out.println("CYCLES depuis dernière interruption: " + CYCLES);
+
                 }
 
                 if (Integer.parseInt(tab[2]) == -33) {
@@ -3851,13 +3855,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void raffraichirIndicateur(String[] tab) {
 
-        for (Ligne l : listeLignes) {
-
-            //System.out.println("visible: " + l.isVisible());
-        }
-
-        //System.out.println("tab1: " + tab[1]);
-        //System.out.println("tab2: " + tab[2]);
         int ligne = 1;
 
         while (ligne < 13) {
@@ -3886,6 +3883,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                         } else {
 
                             listeLignes.get(ligne - 1).getVoyants().get(i).ok(false);
+
                             if (Integer.parseInt(tab[2]) == -54) {
 
                                 listeLignes.get(ligne - 1).getVoyants().get(i).processing(true);
