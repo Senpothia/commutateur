@@ -2273,7 +2273,25 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void btnEffacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEffacerActionPerformed
 
-        AfficheurPanneau.setVisible(true);
+       // AfficheurPanneau.setVisible(true);
+       
+       // TEST PROGRAMMATION UNIQUE
+       
+       
+        Thread t = new Thread() {
+            public void run() {
+
+                try {
+                    connecteur.singleProgramme(hexLocationsParamsProperties, envVariable, programmerPathParamsProperties, programmerParamsProperties, deviceEnTest, binaireLocation, intNombreDeVoiesCarteEnTest, programmerPathTempFileDirectory);
+                    //System.out.println("Retour programmation. Code reçu: " + comm);
+
+                } catch (IOException ex) {
+                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+
+        t.start();
 
 
     }//GEN-LAST:event_btnEffacerActionPerformed
@@ -2446,7 +2464,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
         progBarre.setValue(0);
         progBarre.setString("En attente lancement de programmation");
         progBarre.setStringPainted(true);
-      
 
 
     }//GEN-LAST:event_btnACQActionPerformed
@@ -3091,7 +3108,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                         inhibBtn();
                         menuParametres.setEnabled(true);
                         menuConnexion.setEnabled(true);
-                        
+
                     }
 
                     TOTAL = CYCLES;

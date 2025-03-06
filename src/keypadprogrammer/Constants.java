@@ -54,8 +54,9 @@ public class Constants {
     static String E3_LOG1 = "Failed to get Device ID";
     static String E4_LOG1 = "Connection Failed.";
     static String E5_LOG1 = "IO Error Target voltage detected terminated abruptly";
+    static String E6_LOG1 = "Attempting to connect IPE server";
 
-    static String[] ERREURS_LOG1 = {E1_LOG1, E2_LOG1, E3_LOG1, E4_LOG1, E5_LOG1};
+    static String[] ERREURS_LOG1 = {E1_LOG1, E2_LOG1, E3_LOG1, E4_LOG1, E5_LOG1, E6_LOG1};
 
     // REQUIS TRACE1
     static String R1_LOG1 = "Program Succeeded.";

@@ -367,7 +367,7 @@ public class Connecteur extends Observable {
                 return -33;
 
             }
-            
+
             if (control == -5) {
 
                 System.out.println("Problème d'alimentation");
@@ -439,6 +439,21 @@ public class Connecteur extends Observable {
 
         System.out.println("Mesure terminée!");
 
+    }
+
+    public void singleProgramme(String hexLocation, boolean envVariable, String programmerPath, String programmer, String device, String binaryLocation, int nombreDeVoiesCarteEnTest, String programmerPathTempDir) throws IOException {
+
+        cleanDirectory(programmerPathTempDir);
+        cleanDirectory2(".\\logs\\logs.txt");
+        tempo(250);
+       // programmationCompleted("->START:99:" + i);
+        //ProcessBuilder processBuilder = new ProcessBuilder();
+        //processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
+        processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /OY2013 >.\\logs\\logs.txt");
+        Process process = processBuilder.start();
+
+        tempo(10000);
+        System.out.println("end single programming");
     }
 
 }
