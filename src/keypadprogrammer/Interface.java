@@ -2271,8 +2271,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void btnEffacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEffacerActionPerformed
 
-        // AfficheurPanneau.setVisible(true);
+        AfficheurPanneau.setVisible(true);
+
         // TEST PROGRAMMATION UNIQUE
+        /*
         Thread t = new Thread() {
             public void run() {
 
@@ -2287,7 +2289,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         };
 
         t.start();
-
+         */
 
     }//GEN-LAST:event_btnEffacerActionPerformed
 
