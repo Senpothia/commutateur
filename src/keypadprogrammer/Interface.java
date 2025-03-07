@@ -452,8 +452,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         testParamsProg();
         raffraichirImagePanneau();
-
-        connecteur.askForDeletingFiles();
+        connecteur.askForResetProcess();
 
     }
 
