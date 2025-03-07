@@ -1005,48 +1005,9 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="nomProduit" alignment="0" pref="893" max="32767" attributes="0"/>
-                  <Component id="emplacementBinaire" alignment="0" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
           <Group type="102" alignment="1" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="titre" min="-2" pref="531" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="StatutRS232Lab" alignment="1" min="-2" pref="55" max="-2" attributes="0"/>
-                          <Component id="statutRs232" alignment="1" min="-2" pref="55" max="-2" attributes="0"/>
-                          <Component id="statutPRGLabel" alignment="1" min="-2" pref="55" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="223" max="-2" attributes="0"/>
-                      <Component id="btnEffacer" min="-2" pref="146" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-                      <Component id="btnProg" min="-2" pref="173" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="statutPGRM" min="-2" pref="55" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-                              <Component id="btnACQ" min="-2" pref="114" max="-2" attributes="0"/>
-                              <EmptySpace min="19" pref="263" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-              </Group>
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
+              <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Component id="console" min="-2" pref="893" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -1374,232 +1335,257 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="134" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="257" max="-2" attributes="0"/>
+              <Component id="btnEffacer" min="-2" pref="146" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+              <Component id="btnProg" min="-2" pref="173" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+              <Component id="btnACQ" min="-2" pref="114" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="nomProduit" alignment="0" pref="893" max="32767" attributes="0"/>
+                          <Component id="emplacementBinaire" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="statutPGRM" min="-2" pref="55" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="statutPRGLabel" min="-2" pref="55" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="titre" min="-2" pref="531" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="245" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="StatutRS232Lab" min="-2" pref="55" max="-2" attributes="0"/>
+                                  <Component id="statutRs232" min="-2" pref="55" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="StatutRS232Lab" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="statutRs232" min="-2" pref="23" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="titre" min="-2" pref="71" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+              <Component id="StatutRS232Lab" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="statutPRGLabel" min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="statutPGRM" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="nomProduit" alignment="0" min="-2" pref="47" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                      <Component id="emplacementBinaire" min="-2" pref="47" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="pcbL01C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL01C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL01C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL01C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL01C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL01C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL01C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL01C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL01C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL01C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL01C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL01C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="pcbL02C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL02C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL02C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL02C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL02C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL02C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL02C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL02C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL02C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL02C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL02C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL02C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="pcbL03C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL03C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL03C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL03C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL03C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL03C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL03C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL03C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL03C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL03C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL03C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL03C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="pcbL04C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL04C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL04C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL04C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL04C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL04C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL04C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL04C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL04C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL04C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL04C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL04C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="pcbL05C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL05C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL05C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL05C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL05C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL05C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL05C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL05C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL05C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL05C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL05C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL05C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="pcbL06C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL06C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL06C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL06C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL06C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL06C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL06C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL06C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL06C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL06C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL06C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL06C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="pcbL07C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL07C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL07C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL07C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL07C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL07C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL07C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL07C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL07C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL07C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL07C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL07C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="pcbL08C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL08C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL08C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL08C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL08C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL08C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL08C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL08C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL08C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL08C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL08C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL08C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="pcbL09C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL09C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL09C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL09C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL09C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL09C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL09C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL09C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL09C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL09C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL09C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL09C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="pcbL10C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL10C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL10C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL10C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL10C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL10C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL10C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL10C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL10C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL10C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL10C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL10C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="pcbL11C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL11C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL11C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL11C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL11C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL11C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL11C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL11C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL11C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL11C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL11C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL11C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="pcbL12C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL12C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL12C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL12C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL12C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL12C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL12C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL12C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL12C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL12C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL12C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="pcbL12C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="progBarre" min="-2" pref="37" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="console" min="-2" pref="47" max="-2" attributes="0"/>
-                      <EmptySpace min="43" pref="129" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnProg" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                          <Component id="btnEffacer" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="btnACQ" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="statutRs232" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="titre" alignment="3" min="-2" pref="71" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+              <Component id="statutPRGLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="statutPGRM" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="nomProduit" alignment="0" min="-2" pref="47" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+              <Component id="emplacementBinaire" min="-2" pref="47" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="pcbL01C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL01C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL01C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL01C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL01C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL01C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL01C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL01C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL01C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL01C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL01C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL01C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="pcbL02C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL02C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL02C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL02C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL02C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL02C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL02C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL02C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL02C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL02C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL02C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL02C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="pcbL03C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL03C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL03C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL03C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL03C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL03C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL03C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL03C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL03C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL03C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL03C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL03C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="pcbL04C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL04C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL04C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL04C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL04C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL04C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL04C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL04C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL04C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL04C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL04C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL04C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="pcbL05C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL05C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL05C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL05C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL05C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL05C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL05C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL05C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL05C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL05C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL05C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL05C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="pcbL06C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL06C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL06C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL06C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL06C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL06C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL06C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL06C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL06C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL06C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL06C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL06C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="pcbL07C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL07C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL07C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL07C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL07C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL07C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL07C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL07C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL07C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL07C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL07C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL07C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="pcbL08C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL08C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL08C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL08C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL08C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL08C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL08C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL08C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL08C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL08C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL08C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL08C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="pcbL09C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL09C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL09C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL09C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL09C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL09C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL09C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL09C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL09C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL09C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL09C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL09C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="pcbL10C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL10C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL10C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL10C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL10C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL10C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL10C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL10C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL10C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL10C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL10C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL10C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="pcbL11C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL11C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL11C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL11C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL11C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL11C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL11C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL11C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL11C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL11C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL11C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL11C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="pcbL12C01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL12C02" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL12C03" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL12C04" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL12C05" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL12C06" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL12C07" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL12C08" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL12C09" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL12C10" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL12C11" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="pcbL12C12" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Component id="progBarre" min="-2" pref="37" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="console" min="-2" pref="47" max="-2" attributes="0"/>
+              <EmptySpace pref="11" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnEffacer" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="btnProg" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="btnACQ" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

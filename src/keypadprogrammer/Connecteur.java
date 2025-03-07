@@ -480,15 +480,14 @@ public class Connecteur extends Observable {
             Logger.getLogger(Connecteur.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void askForDeletingFiles() throws IOException{
-    
+
+    public void askForDeletingFiles() throws IOException {
+
         processManager.deleteFiles();
     }
-    
-    public void askForResetProcess() throws IOException{
-    
-        
+
+    public void askForResetProcess() throws IOException {
+
         processManager.getJavaProcesses();
         System.out.println("IdProcess at start: " + processManager.getProcessId());
         try {
@@ -499,6 +498,21 @@ public class Connecteur extends Observable {
             Logger.getLogger(Connecteur.class.getName()).log(Level.SEVERE, null, ex);
         }
         processManager.deleteFiles();
+    }
+
+    public String askForSerialPort() throws IOException, InterruptedException {
+
+        processManager.getSerialPort();
+        return "COM0";
+        //return processManager.getPort();
+    }
+
+    public String getSerialPort() {
+
+       
+
+        processManager.extractSerialPort();
+        return processManager.getPort();
     }
 
 }
