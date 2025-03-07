@@ -133,6 +133,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private ProcessBuilder processBuilder = new ProcessBuilder();
     private LocalDateTime dateOfStart;
     private LocalDateTime dateOfEnd;
+
     private int CYCLES = 0;
     private int TOTAL = 0;
 
@@ -448,7 +449,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
         ligne12.supprimer();
 
         raffraichirInterface();
-        //System.out.println("Taille fenêtre" + this.getContentPane().getSize());
 
         testParamsProg();
         raffraichirImagePanneau();
@@ -2239,6 +2239,13 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private void btnProgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgActionPerformed
 
         dateOfStart = LocalDateTime.now();
+
+        try {
+            getActivityPeriod();
+        } catch (IOException ex) {
+            Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         connecteur.envoyerData(Character.toString('t'));
         echo = false;
 
@@ -2463,7 +2470,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
         if (CYCLES == Constants.CYCLES_LIM) {
 
             System.out.println("demande relance après interruption processus");
-            //progBarre.setString("RESET en cours...");
             connecteur.askForKillingProcess();
 
             CYCLES = 0;
@@ -3090,7 +3096,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
                     progBarre.setString("Programmation terminée!");
                     dateOfEnd = LocalDateTime.now();
                     long delay = dateOfStart.until(dateOfEnd, ChronoUnit.SECONDS);
+                    long delay2 = dateOfStart.until(dateOfEnd, ChronoUnit.MINUTES);
                     System.out.println("Durée du cycle de programmation: " + delay + "s");
+                    System.out.println("Durée2 du cycle de programmation: " + delay2 + "mn");
                     CYCLES++;
                     System.out.println("CYCLES entre 2 interruptions: " + TOTAL);
                     System.out.println("CYCLES depuis dernière interruption: " + CYCLES);
@@ -4043,6 +4051,21 @@ public class Interface extends javax.swing.JFrame implements Observer {
         panne = false;
         echo = false;
 
+    }
+
+    private void getActivityPeriod() throws IOException {
+
+        if (dateOfEnd != null) {
+            long delay = dateOfEnd.until(dateOfStart, ChronoUnit.MINUTES);
+            System.out.println("Interval temps entre deux programmations: " + delay + "min");
+
+            if (Long.compare(Constants.PERIOD_MAX_LENGTH, delay) < 0) {
+                System.out.println("Période hors délai - demande de reset processus");
+                connecteur.askForResetProcess();
+                Constants.tempo(1000);
+            }
+
+        }
     }
 
 }
