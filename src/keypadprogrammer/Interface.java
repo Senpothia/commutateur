@@ -141,6 +141,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private boolean panne = false;
 
     private int compteurReset = 0;
+    private String serialPort = null;
 
     //private boolean repetition = false;
     public Interface() throws IOException {
@@ -225,7 +226,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         aide.getContentPane().setBackground(new Color(247, 242, 208));
 
-        rechercherPortsComms();
+        // rechercherPortsComms();
+        serialPort = connecteur.getSerialPort();
+        loadPortsCommsAuto(serialPort);
+        makeSerialConnexion();
         initialisationParams();
 
         // Création repertoire de logs
@@ -4053,6 +4057,61 @@ public class Interface extends javax.swing.JFrame implements Observer {
             }
 
         }
+    }
+
+    private void loadPortsCommsAuto(String portName) {
+
+        menuPort.removeAll();
+
+        listePorts.clear();
+        listePortString.clear();
+        listePortString.add(portName);
+
+        for (String p : listePortString) {
+
+            JRadioButtonMenuItem m = new JRadioButtonMenuItem(p);
+            groupPorts.add(m);
+            m.addActionListener(new PortSupplier());
+            menuPort.add(m);
+        }
+
+    }
+
+    void makeSerialConnexion() {
+
+        int i = connecteur.makeConnection(Connecteur.portName, baudeRate, numDatabits, parity, stopBits);
+        connecteur.envoyerData(Character.toString('t'));
+        if (!testEcho()) {
+
+            montrerError("La banc ne répond pas! Vérifiez les connexions et que le banc est sous-tension", "Erreur banc");
+            echo = false;
+            return;
+
+        }
+
+        if (i == 99) {
+
+            console.setForeground(Color.BLUE);
+            console.setText("Connexion réussie");
+            setStatusRS232(true);
+            btnConnexion.setEnabled(false);
+            btnDeconnexion.setEnabled(true);
+            connexionRS232Active = true;
+            //activerBtnAttenteLancement();
+            //activerBtnTester(true);
+            //activerBtnProgrammer(true);
+            testParamsProg();
+
+        } else {
+
+            console.setForeground(Color.red);
+            console.setText("Tentative de connexion échouée");
+            setStatusRS232(false);
+
+        }
+
+        setEnabledMenusConfiguration();
+
     }
 
 }

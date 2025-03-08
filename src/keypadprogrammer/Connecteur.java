@@ -508,11 +508,10 @@ public class Connecteur extends Observable {
     }
 
     public String getSerialPort() {
-
-       
-
+        
         processManager.extractSerialPort();
-        return processManager.getPort();
+        portName = processManager.getPort();
+        return portName;
     }
 
 }
