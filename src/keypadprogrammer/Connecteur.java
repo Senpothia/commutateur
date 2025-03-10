@@ -486,19 +486,25 @@ public class Connecteur extends Observable {
         processManager.deleteFiles();
     }
     
-    public void askForResetProcess() throws IOException{
+    public void askForResetProcess() {
     
         
-        processManager.getJavaProcesses();
-        System.out.println("IdProcess at start: " + processManager.getProcessId());
         try {
-            processManager.killProcess();
+
+            
+            processManager.getJavaProcesses();
+            System.out.println("IdProcess at start: " + processManager.getProcessId());
+            try {
+                processManager.killProcess();
+            } catch (IOException ex) {
+                Logger.getLogger(Connecteur.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Connecteur.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            processManager.deleteFiles();
         } catch (IOException ex) {
             Logger.getLogger(Connecteur.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Connecteur.class.getName()).log(Level.SEVERE, null, ex);
         }
-        processManager.deleteFiles();
     }
 
 }

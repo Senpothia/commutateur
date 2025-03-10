@@ -38,8 +38,6 @@ public class ProcessManager {
     public void setProcessId(String processId) {
         this.processId = processId;
     }
-    
-    
 
     public void getJavaProcesses() throws IOException {
 
@@ -54,30 +52,26 @@ public class ProcessManager {
         // Définir le fichier 1 de sortie
         //File outputFile1 = new File(".\\processes1.process");
         // Créer un ProcessBuilder
-       
+        ProcessBuilder processBuilder = new ProcessBuilder(command);
+        processBuilder.redirectOutput(outputFile0);
+        // Rediriger la sortie vers le fichier
 
-            ProcessBuilder processBuilder = new ProcessBuilder(command);
-            processBuilder.redirectOutput(outputFile0);
-            // Rediriger la sortie vers le fichier
+        try {
+            // Démarrer le processus
+            Process process = processBuilder.start();
 
-            try {
-                // Démarrer le processus
-                Process process = processBuilder.start();
+            // Attendre la fin du processus
+            process.waitFor();
+            System.out.println("La sortie a été redirigée vers " + outputFile0.getAbsolutePath());
 
-                // Attendre la fin du processus
-                process.waitFor();
-                System.out.println("La sortie a été redirigée vers " + outputFile0.getAbsolutePath());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
 
-            } catch (IOException | InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            String[] command2 = {"powershell.exe", "exit"};
-            processBuilder = new ProcessBuilder(command2);
-            extractProcessId();
-            //Constants.tempo(100000);
-
-      
+        String[] command2 = {"powershell.exe", "exit"};
+        processBuilder = new ProcessBuilder(command2);
+        extractProcessId();
+        //Constants.tempo(100000);
 
     }
 
@@ -86,11 +80,10 @@ public class ProcessManager {
         Files.deleteIfExists(Paths.get(".\\processes0.process"));
         resetFlags();
     }
-    
-    
 
     public void extractProcessId() {
 
+        boolean lineIdFound = false;
         String iDline = "";
         try {
 
@@ -101,8 +94,6 @@ public class ProcessManager {
             // Création d'un bufferedReader qui utilise le fileReader
             BufferedReader reader = new BufferedReader(fileReader);
             String line = reader.readLine();
-
-            boolean lineIdFound = false;
 
             while (line != null && !lineIdFound) {
 
@@ -129,24 +120,32 @@ public class ProcessManager {
             //System.out.println("Fichier en cours d'écriture");
         }
 
-        listed = true;
-        System.out.println("line Id: " + iDline);
-        int index = iDline.indexOf(':');
-        processId = iDline.substring(index + 2);
-        System.out.println("Id: " + processId);
+        if (lineIdFound) {
+            listed = true;
+            System.out.println("line Id: " + iDline);
+            int index = iDline.indexOf(':');
+            processId = iDline.substring(index + 2);
+            System.out.println("Id: " + processId);
+        } else {
 
+            processId = "none";
+        }
     }
 
     public void killProcess() throws IOException, InterruptedException {
 
-        String[] command = {"powershell.exe", "-Command", "Stop-Process -Id " + processId};
-        ProcessBuilder processBuilder = new ProcessBuilder(command);
-        Process process = processBuilder.start();
-        process.waitFor();
-        String[] command2 = {"powershell.exe", "exit"};
-        processBuilder = new ProcessBuilder(command2);
-        Files.deleteIfExists(Paths.get(".\\processes0.process"));
-        resetFlags();
+        if (!processId.equals("none")) {
+
+            String[] command = {"powershell.exe", "-Command", "Stop-Process -Id " + processId};
+            ProcessBuilder processBuilder = new ProcessBuilder(command);
+            Process process = processBuilder.start();
+            process.waitFor();
+            String[] command2 = {"powershell.exe", "exit"};
+            processBuilder = new ProcessBuilder(command2);
+            Files.deleteIfExists(Paths.get(".\\processes0.process"));
+            resetFlags();
+
+        }
 
     }
 
