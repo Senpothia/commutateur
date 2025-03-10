@@ -499,16 +499,12 @@ public class Connecteur extends Observable {
         }
         processManager.deleteFiles();
     }
-
-    public String askForSerialPort() throws IOException, InterruptedException {
-
-        processManager.getSerialPort();
-        return "COM0";
-        //return processManager.getPort();
-    }
-
-    public String getSerialPort() {
+    
+  
+    
+    public String getSerialPort() throws IOException, InterruptedException {
         
+        processManager.getSerialPort();
         processManager.extractSerialPort();
         portName = processManager.getPort();
         return portName;

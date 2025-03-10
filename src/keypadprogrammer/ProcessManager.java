@@ -23,7 +23,7 @@ public class ProcessManager {
     private File outputFile0 = new File(".\\processes0.process");
     private File ports = new File(".\\ports.process");
     private String processId = "0";
-    private String port = "COM0";
+    private String port = "none";
 
     public boolean isListed() {
         return listed;
@@ -208,7 +208,7 @@ public class ProcessManager {
 
             System.out.println("le fichier est disponible");
             // Création d'un fileReader pour lire le fichier
-            FileReader fileReader = new FileReader(".\\ports2.process");
+            FileReader fileReader = new FileReader(".\\ports.process");
 
             // Création d'un bufferedReader qui utilise le fileReader
             BufferedReader reader = new BufferedReader(fileReader);

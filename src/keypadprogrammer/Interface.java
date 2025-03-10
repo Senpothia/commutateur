@@ -144,7 +144,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private String serialPort = null;
 
     //private boolean repetition = false;
-    public Interface() throws IOException {
+    public Interface() throws IOException, InterruptedException {
 
         initComponents();
         statutRs232.setBackground(Color.RED);
@@ -227,11 +227,21 @@ public class Interface extends javax.swing.JFrame implements Observer {
         aide.getContentPane().setBackground(new Color(247, 242, 208));
 
         // rechercherPortsComms();
-        serialPort = connecteur.getSerialPort();
-        loadPortsCommsAuto(serialPort);
-        makeSerialConnexion();
-        initialisationParams();
+        while (!connexionRS232Active) {
 
+            serialPort = connecteur.getSerialPort();
+            if (!serialPort.equals("none")) {
+                loadPortsCommsAuto(serialPort);
+                makeSerialConnexion();
+
+            } else {
+
+                montrerError("Aucune connexion série détectée!\nVérifier que le banc est raccordé au PC\n Si le porblème persiste relancer l'application.", "Défaut de connexion");
+
+            }
+
+        }
+        initialisationParams();
         // Création repertoire de logs
         int dirCreation = progController.createLogFolder(Constants.LOG_DIRECTORY);
         if (dirCreation != 1) {
@@ -2720,6 +2730,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 } catch (IOException ex) {
                     Logger.getLogger(Interface.class
                             .getName()).log(Level.SEVERE, null, ex);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -4097,9 +4109,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
             btnConnexion.setEnabled(false);
             btnDeconnexion.setEnabled(true);
             connexionRS232Active = true;
-            //activerBtnAttenteLancement();
-            //activerBtnTester(true);
-            //activerBtnProgrammer(true);
             testParamsProg();
 
         } else {
