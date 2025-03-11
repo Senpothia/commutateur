@@ -142,7 +142,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private int compteurReset = 0;
     private String serialPortModeAuto = null;
-    private boolean autoConnexion = true;
+    private boolean autoConnexion = false;
 
     public Interface() throws IOException, InterruptedException {
 
@@ -225,6 +225,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
         inhibBtn();
 
         aide.getContentPane().setBackground(new Color(247, 242, 208));
+        initialisationParams();
+
         if (autoConnexion) {
 
             rechercherPortsComms();
@@ -251,7 +253,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         }
 
-        initialisationParams();
+        //initialisationParams();
         // Création repertoire de logs
         int dirCreation = progController.createLogFolder(Constants.LOG_DIRECTORY);
         if (dirCreation != 1) {
@@ -3718,6 +3720,17 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         initialisation = initializer.getInit();
 
+        // Détermination du mode auto connexion 
+        if (initialisation.getAutoConnection().equals("yes")) {
+
+            System.out.println("auto connexion = " + initialisation.getAutoConnection());
+            autoConnexion = true;
+
+        } else {
+
+            System.out.println("auto connexion = " + initialisation.getAutoConnection());
+            autoConnexion = false;
+        }
         //Recherche nombre de voie du commutateur
         if (initialisation.getCommutateur().equals("na")) {
 
