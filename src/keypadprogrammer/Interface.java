@@ -141,9 +141,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private boolean panne = false;
 
     private int compteurReset = 0;
-    private String serialPort = null;
+    private String serialPortModeAuto = null;
+    private boolean autoConnexion = true;
 
-    //private boolean repetition = false;
     public Interface() throws IOException, InterruptedException {
 
         initComponents();
@@ -225,22 +225,32 @@ public class Interface extends javax.swing.JFrame implements Observer {
         inhibBtn();
 
         aide.getContentPane().setBackground(new Color(247, 242, 208));
+        if (autoConnexion) {
 
-        // rechercherPortsComms();
-        while (!connexionRS232Active) {
+            rechercherPortsComms();
+            serialPortModeAuto = connecteur.getSerialPort();
+            System.out.println("serialPortModeAuto récupéré: " + serialPortModeAuto);
+            connecteur.setPortNameAuto(serialPortModeAuto);
 
-            serialPort = connecteur.getSerialPort();
-            if (!serialPort.equals("none")) {
-                loadPortsCommsAuto(serialPort);
-                makeSerialConnexion();
+            if (!connexionRS232Active) {
 
-            } else {
+                if (!serialPortModeAuto.equals("none")) {
+                    loadPortsCommsAuto(serialPortModeAuto);
+                    makeSerialAutoConnexion();
 
-                montrerError("Aucune connexion série détectée!\nVérifier que le banc est raccordé au PC\n Si le porblème persiste relancer l'application.", "Défaut de connexion");
+                } else {
+
+                    montrerError("Aucune connexion série détectée!\nVérifier que le banc est raccordé au PC\n Si le porblème persiste relancer l'application.", "Défaut de connexion");
+
+                }
 
             }
+        } else {
+
+            rechercherPortsComms();
 
         }
+
         initialisationParams();
         // Création repertoire de logs
         int dirCreation = progController.createLogFolder(Constants.LOG_DIRECTORY);
@@ -2384,7 +2394,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void btnConnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConnexionActionPerformed
 
-        int i = connecteur.makeConnection(Connecteur.portName, baudeRate, numDatabits, parity, stopBits);
+        int i = connecteur.makeConnection(Connecteur.portName, baudeRate, numDatabits, parity, stopBits, false);
         connecteur.envoyerData(Character.toString('t'));
         if (!testEcho()) {
 
@@ -3336,7 +3346,15 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         listePorts.clear();
         listePortString.clear();
-        listePortString = connecteur.getListPorts();
+        if (!autoConnexion) {
+
+            listePortString = connecteur.getListPorts();
+        } else {
+
+            listePortString = connecteur.getListPorts();
+            //listePortString.add(serialPortModeAuto);
+
+        }
 
         for (String p : listePortString) {
 
@@ -4089,10 +4107,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     }
 
-    void makeSerialConnexion() {
-        
-        Connecteur.portName = serialPort;
-        int i = connecteur.makeConnection(Connecteur.portName, baudeRate, numDatabits, parity, stopBits);
+    void makeSerialAutoConnexion() {
+
+        int i = connecteur.makeConnection(serialPortModeAuto, baudeRate, numDatabits, parity, stopBits, true);
         connecteur.envoyerData(Character.toString('t'));
         if (!testEcho()) {
 

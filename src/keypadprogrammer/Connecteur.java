@@ -29,6 +29,7 @@ import java.util.logging.Logger;
 public class Connecteur extends Observable {
 
     public static String portName = null;
+    private  String portNameAuto = null;
     private SerialPort[] ports = null;
     public SerialPort portComm;
     private int baudeRate = 9600;
@@ -107,23 +108,50 @@ public class Connecteur extends Observable {
         this.echo = echo;
     }
 
-    public int makeConnection(String portName, int baudeRate, int numDataBits, int parity, int stopBits) {
+    public String getPortNameAuto() {
+        return portNameAuto;
+    }
+
+    public void setPortNameAuto(String portNameAuto) {
+        this.portNameAuto = portNameAuto;
+    }
+    
+    
+
+    public int makeConnection(String portName, int baudeRate, int numDataBits, int parity, int stopBits, boolean auto) {
 
         try {
 
             if (portName == null) {
 
-                // System.out.println("makeConnection() - Port non sélectionné");
+                System.out.println("makeConnection() - Port non sélectionné");
                 return 0;
             }
 
-            for (SerialPort p : ports) {
+            if (!auto) {
 
-                //System.out.println("Interface.makeConnection() - getSystemPortName: " + p.getSystemPortName() + " // " + portName);
-                if (p.getSystemPortName().equals(portName)) {
+                for (SerialPort p : ports) {
 
-                    portComm = p;
+                    System.out.println("Interface.makeConnection() - getSystemPortName: " + p.getSystemPortName() + " // " + portName);
+                    if (p.getSystemPortName().equals(portName)) {
+
+                        portComm = p;
+
+                    }
                 }
+
+            }else{
+            
+                  for (SerialPort p : ports) {
+
+                    System.out.println("Interface.makeConnection() - getSystemPortName: " + p.getSystemPortName() + " // " + portName);
+                    if (p.getSystemPortName().equals(portNameAuto)) {
+
+                        portComm = p;
+
+                    }
+                }
+             
             }
 
             portComm.setBaudRate(baudeRate);
@@ -135,19 +163,19 @@ public class Connecteur extends Observable {
 
             if (portComm.isOpen()) {
 
-                // System.out.println("Connexion réussie!");
+                System.out.println("Connexion réussie! - classe Connecteur");
                 envoyerData(Constants.RESET_HARDWARE);
                 // return 99;
 
             } else {
 
-                // System.out.println("Connexion échouée!");
+                System.out.println("Connexion échouée! 1 - classe Connecteur");
                 return -1;
             }
 
         } catch (Exception e) {
 
-            //System.out.println("Connexion échouée!");
+            System.out.println("Connexion échouée! 2 - classe Connecteur");
             return -2;
         }
 
@@ -499,11 +527,9 @@ public class Connecteur extends Observable {
         }
         processManager.deleteFiles();
     }
-    
-  
-    
+
     public String getSerialPort() throws IOException, InterruptedException {
-        
+
         processManager.getSerialPort();
         processManager.extractSerialPort();
         portName = processManager.getPort();
