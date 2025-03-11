@@ -99,6 +99,7 @@ public class ProcessManager {
 
     public void extractProcessId() {
 
+        boolean lineIdFound = false;
         String iDline = "";
         try {
 
@@ -109,8 +110,6 @@ public class ProcessManager {
             // Création d'un bufferedReader qui utilise le fileReader
             BufferedReader reader = new BufferedReader(fileReader);
             String line = reader.readLine();
-
-            boolean lineIdFound = false;
 
             while (line != null && !lineIdFound) {
 
@@ -137,24 +136,32 @@ public class ProcessManager {
             //System.out.println("Fichier en cours d'écriture");
         }
 
-        listed = true;
-        System.out.println("line Id: " + iDline);
-        int index = iDline.indexOf(':');
-        processId = iDline.substring(index + 2);
-        System.out.println("Id: " + processId);
+        if (lineIdFound) {
+            listed = true;
+            System.out.println("line Id: " + iDline);
+            int index = iDline.indexOf(':');
+            processId = iDline.substring(index + 2);
+            System.out.println("Id: " + processId);
+        } else {
 
+            processId = "none";
+        }
     }
 
     public void killProcess() throws IOException, InterruptedException {
 
-        String[] command = {"powershell.exe", "-Command", "Stop-Process -Id " + processId};
-        ProcessBuilder processBuilder = new ProcessBuilder(command);
-        Process process = processBuilder.start();
-        process.waitFor();
-        String[] command2 = {"powershell.exe", "exit"};
-        processBuilder = new ProcessBuilder(command2);
-        Files.deleteIfExists(Paths.get(".\\processes0.process"));
-        resetFlags();
+        if (!processId.equals("none")) {
+
+            String[] command = {"powershell.exe", "-Command", "Stop-Process -Id " + processId};
+            ProcessBuilder processBuilder = new ProcessBuilder(command);
+            Process process = processBuilder.start();
+            process.waitFor();
+            String[] command2 = {"powershell.exe", "exit"};
+            processBuilder = new ProcessBuilder(command2);
+            Files.deleteIfExists(Paths.get(".\\processes0.process"));
+            resetFlags();
+
+        }
 
     }
 
@@ -239,7 +246,7 @@ public class ProcessManager {
         // System.out.println("Resultat \n" + serialPortName);
         int index1 = serialPortName.indexOf('(');
         int index2 = serialPortName.indexOf(')');
-        serialPortName = serialPortName.substring(index1+1, index2);
+        serialPortName = serialPortName.substring(index1 + 1, index2);
         System.out.println("Port: " + serialPortName);
         port = serialPortName;
 

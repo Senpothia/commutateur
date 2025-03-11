@@ -4090,7 +4090,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
     }
 
     void makeSerialConnexion() {
-
+        
+        Connecteur.portName = serialPort;
         int i = connecteur.makeConnection(Connecteur.portName, baudeRate, numDatabits, parity, stopBits);
         connecteur.envoyerData(Character.toString('t'));
         if (!testEcho()) {
