@@ -222,6 +222,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         messageCreation.setOpaque(true);
         progLocLabel.setOpaque(true);
+
         inhibBtn();
 
         aide.getContentPane().setBackground(new Color(247, 242, 208));
@@ -246,12 +247,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
             if (!connexionRS232Active) {
 
                 montrerError("Aucune connexion série détectée!\nVérifier que le banc est raccordé au PC\n Si le porblème persiste relancer l'application.", "Défaut de connexion");
-                if(!echo){
-                    
+                if (!echo) {
+
                     System.exit(0);
                 }
             }
-            
+
             echo = false;
 
         }
@@ -545,6 +546,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
         AfficheurPanneau = new javax.swing.JFrame();
         imagePanneau = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
+        AlerteLancement = new javax.swing.JFrame();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         titre = new javax.swing.JLabel();
         btnProg = new javax.swing.JButton();
         btnEffacer = new javax.swing.JButton();
@@ -1178,6 +1182,44 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
+        AlerteLancement.setBackground(new java.awt.Color(0, 153, 153));
+
+        jTextField1.setBackground(new java.awt.Color(0, 153, 153));
+        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.setText("PROGRAMMATEUR MICROCHIP");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jTextField2.setBackground(new java.awt.Color(0, 153, 153));
+        jTextField2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField2.setText("Démarrage en cours! ");
+
+        javax.swing.GroupLayout AlerteLancementLayout = new javax.swing.GroupLayout(AlerteLancement.getContentPane());
+        AlerteLancement.getContentPane().setLayout(AlerteLancementLayout);
+        AlerteLancementLayout.setHorizontalGroup(
+            AlerteLancementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AlerteLancementLayout.createSequentialGroup()
+                .addGap(123, 123, 123)
+                .addGroup(AlerteLancementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
+                    .addComponent(jTextField2))
+                .addContainerGap(150, Short.MAX_VALUE))
+        );
+        AlerteLancementLayout.setVerticalGroup(
+            AlerteLancementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AlerteLancementLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(164, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Programmateur Microchip");
 
@@ -1594,6 +1636,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
         });
 
         menuPort.setText("Ports");
+        menuPort.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                menuPortStateChanged(evt);
+            }
+        });
         menuPort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuPortActionPerformed(evt);
@@ -2709,6 +2756,14 @@ public class Interface extends javax.swing.JFrame implements Observer {
         aide.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void menuPortStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_menuPortStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuPortStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -2745,6 +2800,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             public void run() {
                 try {
                     new Interface().setVisible(true);
+
                 } catch (IOException ex) {
                     Logger.getLogger(Interface.class
                             .getName()).log(Level.SEVERE, null, ex);
@@ -2758,6 +2814,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame AfficheurPanneau;
+    private javax.swing.JFrame AlerteLancement;
     private javax.swing.JCheckBox EnvVarBox;
     private javax.swing.JLabel LabNombreVoies;
     private javax.swing.JLabel LabelNbreDeVoiesNouvelleCarte;
@@ -2815,6 +2872,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel labelAjoutCarte;
     private javax.swing.JLabel labelBinaireSelectionne;
     private javax.swing.JLabel listeProduits;
@@ -4130,17 +4189,17 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         int i = connecteur.makeConnection(serialPortModeAuto, baudeRate, numDatabits, parity, stopBits, true);
         connecteur.envoyerData(Character.toString('t'));
-        
+
         if (!testEcho()) {
 
             //montrerError("La banc ne répond pas! Vérifiez les connexions et que le banc est sous-tension", "Erreur banc");
             echo = false;
             return;
 
-        }else{
-            
+        } else {
+
             echo = true;
-        
+
         }
 
         if (i == 99) {
