@@ -535,5 +535,7 @@ public class Connecteur extends Observable {
         portName = processManager.getPort();
         return portName;
     }
+    
+   
 
 }

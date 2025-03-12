@@ -11,6 +11,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 /**
  *
@@ -24,6 +25,7 @@ public class ProcessManager {
     private File ports = new File(".\\ports.process");
     private String processId = "0";
     private String port = "none";
+    private ArrayList<String> listPorts = new ArrayList<>();
 
     public boolean isListed() {
         return listed;
@@ -216,6 +218,7 @@ public class ProcessManager {
             System.out.println("le fichier est disponible");
             // Création d'un fileReader pour lire le fichier
             FileReader fileReader = new FileReader(".\\ports.process");
+            //FileReader fileReader = new FileReader(".\\port22.process");
 
             // Création d'un bufferedReader qui utilise le fileReader
             BufferedReader reader = new BufferedReader(fileReader);
@@ -240,7 +243,7 @@ public class ProcessManager {
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
-            //System.out.println("Fichier en cours d'écriture");
+
         }
 
         // System.out.println("Resultat \n" + serialPortName);
@@ -251,5 +254,7 @@ public class ProcessManager {
         port = serialPortName;
 
     }
+
+   
 
 }

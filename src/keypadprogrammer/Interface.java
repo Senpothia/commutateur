@@ -226,30 +226,33 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         aide.getContentPane().setBackground(new Color(247, 242, 208));
         initialisationParams();
-
+        rechercherPortsComms();
         if (autoConnexion) {
 
-            rechercherPortsComms();
-            serialPortModeAuto = connecteur.getSerialPort();
-            System.out.println("serialPortModeAuto récupéré: " + serialPortModeAuto);
-            connecteur.setPortNameAuto(serialPortModeAuto);
+            //serialPortModeAuto = connecteur.getSerialPort();
+            //System.out.println("serialPortModeAuto récupéré: " + serialPortModeAuto);
+            int nbreDePorts = listePortString.size();
+            System.out.println("nbre de ports:" + nbreDePorts);
+            int i = 0;
+
+            while (!connexionRS232Active && i < nbreDePorts) {
+
+                serialPortModeAuto = listePortString.get(i);
+                connecteur.setPortNameAuto(serialPortModeAuto);
+                makeSerialAutoConnexion();
+                i++;
+            }
 
             if (!connexionRS232Active) {
 
-                if (!serialPortModeAuto.equals("none")) {
-                    loadPortsCommsAuto(serialPortModeAuto);
-                    makeSerialAutoConnexion();
-
-                } else {
-
-                    montrerError("Aucune connexion série détectée!\nVérifier que le banc est raccordé au PC\n Si le porblème persiste relancer l'application.", "Défaut de connexion");
-
+                montrerError("Aucune connexion série détectée!\nVérifier que le banc est raccordé au PC\n Si le porblème persiste relancer l'application.", "Défaut de connexion");
+                if(!echo){
+                    
+                    System.exit(0);
                 }
-
             }
-        } else {
-
-            rechercherPortsComms();
+            
+            echo = false;
 
         }
 
@@ -4127,12 +4130,17 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         int i = connecteur.makeConnection(serialPortModeAuto, baudeRate, numDatabits, parity, stopBits, true);
         connecteur.envoyerData(Character.toString('t'));
+        
         if (!testEcho()) {
 
-            montrerError("La banc ne répond pas! Vérifiez les connexions et que le banc est sous-tension", "Erreur banc");
+            //montrerError("La banc ne répond pas! Vérifiez les connexions et que le banc est sous-tension", "Erreur banc");
             echo = false;
             return;
 
+        }else{
+            
+            echo = true;
+        
         }
 
         if (i == 99) {
