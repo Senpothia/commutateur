@@ -8,9 +8,11 @@ package keypadprogrammer;
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortDataListener;
 import com.fazecast.jSerialComm.SerialPortEvent;
+import java.io.BufferedReader;
 import java.io.File;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -29,7 +31,7 @@ import java.util.logging.Logger;
 public class Connecteur extends Observable {
 
     public static String portName = null;
-    private  String portNameAuto = null;
+    private String portNameAuto = null;
     private SerialPort[] ports = null;
     public SerialPort portComm;
     private int baudeRate = 9600;
@@ -48,7 +50,7 @@ public class Connecteur extends Observable {
 
     private boolean echo = false;
 
-    private ProcessBuilder processBuilder = new ProcessBuilder();
+   // private ProcessBuilder processBuilder = new ProcessBuilder();
 
     private ProcessManager processManager = new ProcessManager();
 
@@ -115,8 +117,6 @@ public class Connecteur extends Observable {
     public void setPortNameAuto(String portNameAuto) {
         this.portNameAuto = portNameAuto;
     }
-    
-    
 
     public int makeConnection(String portName, int baudeRate, int numDataBits, int parity, int stopBits, boolean auto) {
 
@@ -140,9 +140,9 @@ public class Connecteur extends Observable {
                     }
                 }
 
-            }else{
-            
-                  for (SerialPort p : ports) {
+            } else {
+
+                for (SerialPort p : ports) {
 
                     System.out.println("Interface.makeConnection() - getSystemPortName: " + p.getSystemPortName() + " // " + portName);
                     if (p.getSystemPortName().equals(portNameAuto)) {
@@ -151,7 +151,7 @@ public class Connecteur extends Observable {
 
                     }
                 }
-             
+
             }
 
             portComm.setBaudRate(baudeRate);
@@ -336,6 +336,8 @@ public class Connecteur extends Observable {
             count++;
         }
 
+        /*
+        
         for (int i = sequenceInterrompue; i < nombreDeVoiesCarteEnTest + 1; i++) {
 
             System.out.println("error: " + error);
@@ -352,8 +354,10 @@ public class Connecteur extends Observable {
             //processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
             processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /OY2013 >.\\logs\\logs.txt");
             Process process = processBuilder.start();
+            int exitCode = process.waitFor();
 
-            tempo(200);
+            System.out.println("Processus terminé avec code : " + exitCode);
+            tempo(500);
 
             //System.out.println("Fin programmation");
             //System.out.println("Début vérification");
@@ -425,6 +429,70 @@ public class Connecteur extends Observable {
 
             System.out.println("Id process: " + processManager.getProcessId());
         }
+        
+         */
+        for (int i = sequenceInterrompue; i <= nombreDeVoiesCarteEnTest; i++) {
+
+            System.out.println("error: " + error);
+            count++;
+            envoyerData(Character.toString(count));
+
+            cleanDirectory(programmerPathTempDir);
+            cleanDirectory2(".\\logs\\logs.txt");
+            tempo(250);
+
+            programmationCompleted("->START:99:" + i);
+
+            // Première tentative de programmation
+            int exitCode = executerProgrammation(hexLocation, envVariable, programmerPath, programmer, device, binaryLocation, nombreDeVoiesCarteEnTest, programmerPathTempDir);
+            System.out.println("Processus terminé avec code : " + exitCode);
+            tempo(500);
+
+            int control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
+            System.out.println("code control: " + control);
+
+            if (control == -1 || control == -4) {
+                // Deuxième tentative 
+                programmationCompleted("->PROG:" + i + ":-54");
+                executerProgrammation(hexLocation, envVariable, programmerPath, programmer, device, binaryLocation, nombreDeVoiesCarteEnTest, programmerPathTempDir);
+                control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
+
+                if (control == -1) {
+                    programmationCompleted("->PROG:" + i + ":-55");
+                    return 1;
+                } else if (control == -4) {
+                    programmationCompleted("->PROG:" + i + ":-66");
+                    return 1;
+                }
+            }
+
+            if (control == -33) {
+                System.out.println("Interruption processus -  sequence: " + i);
+                processManager.killProcess();
+                sequenceInterrompue = i;
+                programmationCompleted("->PROG:" + i + ":-33");
+                return -33;
+            }
+
+            if (control == -5) {
+                System.out.println("Problème d'alimentation");
+                programmationCompleted("->PROG:" + i + ":-77");
+                return -77;
+            }
+
+            programmationCompleted("->PROG:" + i + ":" + control);
+
+            if (i == 1 || error) {
+                processManager.getJavaProcesses();
+                error = false;
+            }
+
+            if (control < 0) {
+                error = true;
+            }
+
+            System.out.println("Id process: " + processManager.getProcessId());
+        }
 
         sequenceInterrompue = 1;
         return 1;
@@ -481,6 +549,7 @@ public class Connecteur extends Observable {
 
     }
 
+    /*
     public void singleProgramme(String hexLocation, boolean envVariable, String programmerPath, String programmer, String device, String binaryLocation, int nombreDeVoiesCarteEnTest, String programmerPathTempDir) throws IOException {
 
         cleanDirectory(programmerPathTempDir);
@@ -490,14 +559,14 @@ public class Connecteur extends Observable {
         //ProcessBuilder processBuilder = new ProcessBuilder();
         //processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
         processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /OY2013 >.\\logs\\logs.txt");
-        Process process = processBuilder.start();
+        processBuilder.start();
         int control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
         System.out.println("code control: " + control);
 
         //tempo(10000);
         System.out.println("end single programming");
     }
-
+    */
     public void askForKillingProcess() {
 
         try {
@@ -535,7 +604,34 @@ public class Connecteur extends Observable {
         portName = processManager.getPort();
         return portName;
     }
-    
-   
+
+    private int executerProgrammation(String hexLocation, boolean envVariable, String programmerPath, String programmer, String device, String binaryLocation, int nombreDeVoiesCarteEnTest, String programmerPathTempDir) {
+        ProcessBuilder processBuilder = new ProcessBuilder(
+                "cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /OY2013 > .\\logs\\logs.txt"
+        );
+
+        try {
+            Process process = processBuilder.start();
+
+            // Toujours lire les flux pour éviter les fuites
+            try (BufferedReader inputReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                    BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()))) {
+
+                String line;
+                while ((line = inputReader.readLine()) != null) {
+                    System.out.println("[OUTPUT] " + line);
+                }
+
+                while ((line = errorReader.readLine()) != null) {
+                    System.err.println("[ERROR] " + line);
+                }
+
+                return process.waitFor();
+            }
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            return -99; // Code d'erreur personnalisé
+        }
+    }
 
 }
