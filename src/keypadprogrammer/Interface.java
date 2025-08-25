@@ -4060,6 +4060,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
                             connecteur.envoyerData(Character.toString('t'));
                             console.setText("Cycle de programmation terminée");
+                            Constants.tempo(2000);
                             activerBtnACQ(true);
                             activerBtnProgrammer(false);
                             menuParametres.setEnabled(true);
@@ -4080,6 +4081,15 @@ public class Interface extends javax.swing.JFrame implements Observer {
                             compteurReset = 0;
 
                             break;
+
+                        case -88:
+
+                            console.setText("Veuillez défaire la connexion USB et relancer l'application");
+                            activerBtnACQ(false);
+                            activerBtnProgrammer(false);
+                            activerBtnEffacer(false);
+                            montrerError("Fermez l'application et relancez la!", "Blocage programmateur");
+                            System.exit(0);
 
                     }
 

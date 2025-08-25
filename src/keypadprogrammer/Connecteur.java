@@ -346,14 +346,14 @@ public class Connecteur extends Observable {
             //System.out.println("Début programmation");
             cleanDirectory(programmerPathTempDir);
             cleanDirectory2(".\\logs\\logs.txt");
-            tempo(250);
+            tempo(2000);  // valeur initiale = 250
             programmationCompleted("->START:99:" + i);
             //ProcessBuilder processBuilder = new ProcessBuilder();
             //processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
             processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /OY2013 >.\\logs\\logs.txt");
             Process process = processBuilder.start();
 
-            tempo(200);
+            tempo(200);   // valeur initiale = 200
 
             //System.out.println("Fin programmation");
             //System.out.println("Début vérification");
@@ -408,6 +408,15 @@ public class Connecteur extends Observable {
                 return -77;
 
             }
+            
+             if (control == -88) {
+
+                System.out.println("Blocage programmateur");
+                programmationCompleted("->PROG:" + i + ":-88");
+                return -88;
+
+            }
+             
             //System.out.println("code controle: " + control);
             programmationCompleted("->PROG:" + i + ":" + control);
 

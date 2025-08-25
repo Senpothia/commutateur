@@ -55,6 +55,11 @@ public class ProgController {
                 return -33;
             }
 
+            if (analyse == 8) {
+
+                return -88;
+            }
+
             try {
 
                 //System.out.println("le fichier est disponible");
@@ -177,7 +182,7 @@ public class ProgController {
             System.out.println(size1 / 1024 + "  kb");
             //Constants.tempo(50);
             size0 = size1;
-            
+
             if (size0 == size1 && size1 != 0) {
 
                 counter0++;
@@ -187,7 +192,6 @@ public class ProgController {
 
                 }
             }
-             
 
             if (Double.compare(size0 / 1024, d1) == 1 && Double.compare(size0 / 1024, d2) == -1) {
 
@@ -232,11 +236,13 @@ public class ProgController {
             if (Double.compare(size0 / 1024, d9) == 1 && Double.compare(size0 / 1024, d10) == -1) {
 
                 counter5++;
-                if (counter5 > 80000) {  // 100000
+                if (counter5 > 100000) {  // 100000
+
                     System.out.println("Sortie 6");
                     end = true;
-
+                    return 8;
                 }
+
             }
 
         }
