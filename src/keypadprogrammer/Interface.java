@@ -2536,7 +2536,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         if (CYCLES == Constants.CYCLES_LIM) {
 
             System.out.println("demande relance après interruption processus");
-            connecteur.askForKillingProcess();
+            //connecteur.askForKillingProcess();
 
             CYCLES = 0;
         }
