@@ -4114,6 +4114,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
                         case -88:
 
+                           
                             console.setText("Veuillez défaire la connexion USB et relancer l'application");
                             activerBtnACQ(false);
                             activerBtnProgrammer(false);
