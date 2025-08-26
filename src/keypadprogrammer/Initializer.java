@@ -34,8 +34,9 @@ public class Initializer {
         String programmer = progProperpies.getProperty("programmer");
         String matrice = progProperpies.getProperty("matrice");
         String autoConnection = progProperpies.getProperty("autoConnexion");
+        String item = progProperpies.getProperty("item");
 
-        Initialisation init = new Initialisation(programmerDirectory, varEnv, binaryLocations, productNames, voies, commutateur, device, programmer, matrice, autoConnection);
+        Initialisation init = new Initialisation(programmerDirectory, varEnv, binaryLocations, productNames, voies, commutateur, device, programmer, matrice, autoConnection, item);
 
         return init;
     }

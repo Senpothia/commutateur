@@ -21,8 +21,9 @@ public class Initialisation {
     private String programmer;
     private String matrice;
     private String autoConnection;
+    private String item;
 
-    public Initialisation(String programmerDirectory, String varEnv, String binaryLocations, String productNames, String nombreVoies, String commutateur, String device, String programmer, String matrice, String autoConnection) {
+    public Initialisation(String programmerDirectory, String varEnv, String binaryLocations, String productNames, String nombreVoies, String commutateur, String device, String programmer, String matrice, String autoConnection, String item) {
         this.programmerDirectory = programmerDirectory;
         this.varEnv = varEnv;
         this.binaryLocations = binaryLocations;
@@ -33,9 +34,8 @@ public class Initialisation {
         this.programmer = programmer;
         this.matrice = matrice;
         this.autoConnection = autoConnection;
+        this.item = item;
     }
-
-   
 
     public String getProgrammerDirectory() {
         return programmerDirectory;
@@ -116,6 +116,16 @@ public class Initialisation {
     public void setAutoConnection(String autoConnection) {
         this.autoConnection = autoConnection;
     }
+
+    public String getItem() {
+        return item;
+    }
+
+    public void setItem(String item) {
+        this.item = item;
+    }
+
+  
     
     
 

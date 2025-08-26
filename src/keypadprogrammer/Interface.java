@@ -2376,6 +2376,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void btnFermerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFermerActionPerformed
 
+        initializer.update("item", "none");
         System.exit(0);
     }//GEN-LAST:event_btnFermerActionPerformed
 
@@ -2681,6 +2682,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             testParamsProg();
         }
+
     }//GEN-LAST:event_comboListeProduitsItemStateChanged
 
     private void EnvVarBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnvVarBoxActionPerformed
@@ -2705,6 +2707,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         paramsWin.setSize(1300, 600);
         paramsWin.setVisible(false);
 
+        /*
         if (EnvVarBox.isSelected()) {
 
             envVariable = true;
@@ -2726,6 +2729,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             intNombreDeVoiesCarteEnTest = Integer.parseInt(nombreDeVoiesCarteEnTest);
             //System.out.println("nombre de voies carte en test (int): " + intNombreDeVoiesCarteEnTest);
             raffraichirInterface();
+            initializer.update("item", String.valueOf(selectedProduct));
 
         } else {
 
@@ -2739,7 +2743,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         testParamsProg();
         raffraichirImagePanneau();
-
+         */
+        initInterface();
 
     }//GEN-LAST:event_btnFermerParamsActionPerformed
 
@@ -3063,7 +3068,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         //System.out.println("produit à programmer: " + produitAprogrammer);
         if (produitAprogrammer == null) {
 
-            console.setText("Sélectionner un produit avant de commencer!");
+            console.setText("Sélectionnez un produit avant de commencer!");
 
             activerLedPRGM(false);
             return;
@@ -3837,8 +3842,13 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 comboListeProduits.addItem(listesProduits.get(i));
 
             }
-            comboListeProduits.setSelectedIndex(0);
-            nomProduit.setText("Veuillez sélectionner un produit!");
+
+            if (initialisation.getItem().equals("none")) {
+
+                comboListeProduits.setSelectedIndex(0);
+                nomProduit.setText("Veuillez sélectionnez un produit!");
+
+            }
 
         }
 
@@ -3938,6 +3948,14 @@ public class Interface extends javax.swing.JFrame implements Observer {
             //System.out.println("liste des matrices  = " + initialisation.getMatrice());
             matricesProperties = initialisation.getMatrice();
             listesMatrices = extraireMatrices(matricesProperties);
+
+        }
+
+        if (!initialisation.getItem().equals("none")) {
+
+            selectedProduct = Integer.parseInt(initialisation.getItem());
+            System.out.println("Valeur selectedProduct: " + selectedProduct);
+            initInterface();
 
         }
     }
@@ -4231,6 +4249,51 @@ public class Interface extends javax.swing.JFrame implements Observer {
         }
 
         setEnabledMenusConfiguration();
+
+    }
+
+    private void initInterface() {
+
+        if (EnvVarBox.isSelected()) {
+
+            envVariable = true;
+
+        } else {
+
+            envVariable = false;
+        }
+
+        System.out.println("keypadprogrammer.Interface.initInterface() - valeur selectedProduct:" + selectedProduct);
+       
+
+            selectedProduct = comboListeProduits.getSelectedIndex();
+      
+
+        if (selectedProduct != 0) {
+            System.out.println("test selectedProduct != 0");
+            produitAprogrammer = listesProduits.get(selectedProduct);
+            nomProduit.setText(produitAprogrammer + " - Microcontôleur: " + deviceEnTest + " - Voies: " + nombreDeVoiesCarteEnTest + " - Programmateur: " + programmerParamsProperties + " - Matrice: " + matriceAprogrammer);
+            binaireLocation = ListeBinairesEnregistres.get(selectedProduct - 1);
+            //System.out.println("localistaion binaire: " + binaireLocation);
+            emplacementBinaire.setText(binaireLocation);
+
+            intNombreDeVoiesCarteEnTest = Integer.parseInt(nombreDeVoiesCarteEnTest);
+            //System.out.println("nombre de voies carte en test (int): " + intNombreDeVoiesCarteEnTest);
+            raffraichirInterface();
+            initializer.update("item", String.valueOf(selectedProduct));
+
+        } else {
+
+            nomProduit.setText("Aucun produit sélectionné!");
+            emplacementBinaire.setText("");
+            nombreDeVoiesCarteEnTest = null;
+            deviceEnTest = null;
+            produitAprogrammer = null;
+
+        }
+
+        testParamsProg();
+        raffraichirImagePanneau();
 
     }
 
