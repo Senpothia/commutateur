@@ -3801,6 +3801,16 @@ public class Interface extends javax.swing.JFrame implements Observer {
             System.out.println("auto connexion = " + initialisation.getAutoConnection());
             autoConnexion = false;
         }
+        
+        /*
+        if (!initialisation.getItem().equals("none")) {
+
+            selectedProduct = Integer.parseInt(initialisation.getItem());
+            System.out.println("Valeur selectedProduct: " + selectedProduct);
+            initInterface();
+
+        }
+        */
         //Recherche nombre de voie du commutateur
         if (initialisation.getCommutateur().equals("na")) {
 
@@ -3842,14 +3852,15 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 comboListeProduits.addItem(listesProduits.get(i));
 
             }
-
+            
+            /*
             if (initialisation.getItem().equals("none")) {
 
                 comboListeProduits.setSelectedIndex(0);
                 nomProduit.setText("Veuillez sélectionnez un produit!");
 
             }
-
+            */
         }
 
         // Recherche nombre de voies à programmer (nombre de carte par panneau)
@@ -3951,13 +3962,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         }
 
-        if (!initialisation.getItem().equals("none")) {
-
-            selectedProduct = Integer.parseInt(initialisation.getItem());
-            System.out.println("Valeur selectedProduct: " + selectedProduct);
-            initInterface();
-
-        }
     }
 
     private void raffraichirInterface() {
@@ -4263,11 +4267,19 @@ public class Interface extends javax.swing.JFrame implements Observer {
             envVariable = false;
         }
 
-        System.out.println("keypadprogrammer.Interface.initInterface() - valeur selectedProduct:" + selectedProduct);
-       
+        /*
+        if (initialisation.getItem().equals("none")) {
 
             selectedProduct = comboListeProduits.getSelectedIndex();
-      
+        } else {
+
+           
+
+        }
+        */
+          selectedProduct = comboListeProduits.getSelectedIndex();
+
+        System.out.println("keypadprogrammer.Interface.initInterface() - valeur selectedProduct:" + selectedProduct);
 
         if (selectedProduct != 0) {
             System.out.println("test selectedProduct != 0");
