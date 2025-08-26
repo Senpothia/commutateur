@@ -472,6 +472,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         ligne05.supprimer();
         ligne06.supprimer();
         ligne07.supprimer();
+
         ligne08.supprimer();
         ligne09.supprimer();
         ligne10.supprimer();
@@ -479,6 +480,13 @@ public class Interface extends javax.swing.JFrame implements Observer {
         ligne12.supprimer();
 
         raffraichirInterface();
+
+        if (!initialisation.getItem().equals("none")) {
+
+            System.out.println("keypadprogrammer.Interface.<init>() - test valeur item");
+            selectedProduct = Integer.parseInt(initialisation.getItem());
+            initInterface();
+        }
 
         testParamsProg();
         raffraichirImagePanneau();
@@ -3801,7 +3809,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             System.out.println("auto connexion = " + initialisation.getAutoConnection());
             autoConnexion = false;
         }
-        
+
         /*
         if (!initialisation.getItem().equals("none")) {
 
@@ -3810,7 +3818,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             initInterface();
 
         }
-        */
+         */
         //Recherche nombre de voie du commutateur
         if (initialisation.getCommutateur().equals("na")) {
 
@@ -3852,7 +3860,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 comboListeProduits.addItem(listesProduits.get(i));
 
             }
-            
+
             /*
             if (initialisation.getItem().equals("none")) {
 
@@ -3860,7 +3868,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 nomProduit.setText("Veuillez sélectionnez un produit!");
 
             }
-            */
+             */
         }
 
         // Recherche nombre de voies à programmer (nombre de carte par panneau)
@@ -4267,30 +4275,47 @@ public class Interface extends javax.swing.JFrame implements Observer {
             envVariable = false;
         }
 
-        /*
         if (initialisation.getItem().equals("none")) {
 
             selectedProduct = comboListeProduits.getSelectedIndex();
+            System.out.println("keypadprogrammer.Interface.initInterface() -  valeur none");
         } else {
 
-           
+            System.out.println("keypadprogrammer.Interface.initInterface() -  valeur differente de none");
+            selectedProduct = Integer.parseInt(initialisation.getItem());;
 
         }
-        */
-          selectedProduct = comboListeProduits.getSelectedIndex();
 
         System.out.println("keypadprogrammer.Interface.initInterface() - valeur selectedProduct:" + selectedProduct);
 
         if (selectedProduct != 0) {
+            /*
             System.out.println("test selectedProduct != 0");
             produitAprogrammer = listesProduits.get(selectedProduct);
             nomProduit.setText(produitAprogrammer + " - Microcontôleur: " + deviceEnTest + " - Voies: " + nombreDeVoiesCarteEnTest + " - Programmateur: " + programmerParamsProperties + " - Matrice: " + matriceAprogrammer);
             binaireLocation = ListeBinairesEnregistres.get(selectedProduct - 1);
-            //System.out.println("localistaion binaire: " + binaireLocation);
+            System.out.println("localistaion binaire: " + binaireLocation);
             emplacementBinaire.setText(binaireLocation);
 
             intNombreDeVoiesCarteEnTest = Integer.parseInt(nombreDeVoiesCarteEnTest);
-            //System.out.println("nombre de voies carte en test (int): " + intNombreDeVoiesCarteEnTest);
+            System.out.println("nombre de voies carte en test (int): " + intNombreDeVoiesCarteEnTest);
+            
+             */
+
+            System.out.println("test selectedProduct != 0");
+            produitAprogrammer = listesProduits.get(selectedProduct);
+            binaireLocation = ListeBinairesEnregistres.get(selectedProduct - 1);
+            hexLocalisation.setText(ListeBinairesEnregistres.get(selectedProduct - 1));
+            nombreVoies.setText(listesVoies.get(selectedProduct - 1));
+            nombreDeVoiesCarteEnTest = listesVoies.get(selectedProduct - 1);
+            intNombreDeVoiesCarteEnTest = Integer.parseInt(nombreDeVoiesCarteEnTest);
+            System.out.println("nombre de voies carte en test (int): " + intNombreDeVoiesCarteEnTest);
+            deviceEnTest = listeDevicesEnregistres.get(selectedProduct - 1);
+            matriceAprogrammer = listesMatrices.get(selectedProduct - 1);
+            extraireLignesColonnes(matriceAprogrammer);
+            nomProduit.setText(produitAprogrammer + " - Microcontôleur: " + deviceEnTest + " - Voies: " + nombreDeVoiesCarteEnTest + " - Programmateur: " + programmerParamsProperties + " - Matrice: " + matriceAprogrammer);
+            emplacementBinaire.setText(binaireLocation);
+            envVariable = true;
             raffraichirInterface();
             initializer.update("item", String.valueOf(selectedProduct));
 
