@@ -1220,7 +1220,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 .addContainerGap(164, Short.MAX_VALUE))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Programmateur Microchip");
 
         titre.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
