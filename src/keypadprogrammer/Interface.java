@@ -4118,7 +4118,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                             activerBtnACQ(false);
                             activerBtnProgrammer(false);
                             activerBtnEffacer(false);
-                            montrerError("Fermez l'application et relancez la!", "Blocage programmateur");
+                            montrerError("Déconnectez la liaison USB momentanémen, remettez-la et relancer l'application!", "Blocage programmateur");
                             System.exit(0);
 
                     }
