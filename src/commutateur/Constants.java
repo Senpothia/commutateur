@@ -79,4 +79,14 @@ public class Constants {
 
     }
 
+    public int getCYCLES_LIM() {
+        return CYCLES_LIM;
+    }
+
+    public void setCYCLES_LIM(int CYCLES_LIM) {
+        this.CYCLES_LIM = CYCLES_LIM;
+    }
+    
+    
+
 }

@@ -22,8 +22,9 @@ public class Initialisation {
     private String matrice;
     private String autoConnection;
     private String item;
+    private String cycles;
 
-    public Initialisation(String programmerDirectory, String varEnv, String binaryLocations, String productNames, String nombreVoies, String commutateur, String device, String programmer, String matrice, String autoConnection, String item) {
+    public Initialisation(String programmerDirectory, String varEnv, String binaryLocations, String productNames, String nombreVoies, String commutateur, String device, String programmer, String matrice, String autoConnection, String item, String cycles) {
         this.programmerDirectory = programmerDirectory;
         this.varEnv = varEnv;
         this.binaryLocations = binaryLocations;
@@ -35,6 +36,7 @@ public class Initialisation {
         this.matrice = matrice;
         this.autoConnection = autoConnection;
         this.item = item;
+        this.cycles = cycles;
     }
 
     public String getProgrammerDirectory() {
@@ -125,6 +127,15 @@ public class Initialisation {
         this.item = item;
     }
 
+    public String getCycles() {
+        return cycles;
+    }
+
+    public void setCycles(String cycles) {
+        this.cycles = cycles;
+    }
+
+   
   
     
     
