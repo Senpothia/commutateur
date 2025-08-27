@@ -352,7 +352,7 @@ public class Connecteur extends Observable {
             //processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
             processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /OY2013 >.\\logs\\logs.txt");
             Process process = processBuilder.start();
-
+            process.waitFor();
             tempo(200);   // valeur initiale = 200
 
             //System.out.println("Fin programmation");
