@@ -3827,7 +3827,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         System.out.println("commutateur.Interface.initialisationParams(): Valeur cyles dans params: " + initialisation.getCycles());
         Constants.CYCLES_LIM = Integer.parseInt(initialisation.getCycles());
-        System.out.println("commutateur.Interface.initialisationParams(): Valeur Cycles dans classe Constants: " + initialisation.getCycles());
+        System.out.println("commutateur.Interface.initialisationParams(): Valeur Cycles dans classe Constants: " + Constants.CYCLES_LIM);
+        
+        System.out.println("commutateur.Interface.initialisationParams(): Valeur cyles dans params: " + initialisation.getTiming());
+        Constants.TIMING = Long.parseLong(initialisation.getTiming());
+        System.out.println("commutateur.Interface.initialisationParams(): Valeur Cycles dans classe Constants: " + Constants.TIMING);
+        
 
         // Détermination du mode auto connexion 
         if (initialisation.getAutoConnection().equals("yes")) {

@@ -65,6 +65,7 @@ public class Constants {
     static String IMAGES_DIRECTORY = ".//images";
     static int CYCLES_LIM = 6;
     static long PERIOD_MAX_LENGTH = 20L;
+    static long TIMING = 2000;
 
     //********************************************************************************************************
     static void tempo(long duree) {
@@ -86,7 +87,5 @@ public class Constants {
     public void setCYCLES_LIM(int CYCLES_LIM) {
         this.CYCLES_LIM = CYCLES_LIM;
     }
-    
-    
 
 }

@@ -23,8 +23,9 @@ public class Initialisation {
     private String autoConnection;
     private String item;
     private String cycles;
+    private String timing;
 
-    public Initialisation(String programmerDirectory, String varEnv, String binaryLocations, String productNames, String nombreVoies, String commutateur, String device, String programmer, String matrice, String autoConnection, String item, String cycles) {
+    public Initialisation(String programmerDirectory, String varEnv, String binaryLocations, String productNames, String nombreVoies, String commutateur, String device, String programmer, String matrice, String autoConnection, String item, String cycles, String timing) {
         this.programmerDirectory = programmerDirectory;
         this.varEnv = varEnv;
         this.binaryLocations = binaryLocations;
@@ -37,6 +38,11 @@ public class Initialisation {
         this.autoConnection = autoConnection;
         this.item = item;
         this.cycles = cycles;
+        this.timing = timing;
+    }
+
+    Initialisation(String programmerDirectory, String varEnv, String binaryLocations, String productNames, String voies, String commutateur, String device, String programmer, String matrice, String autoConnection, String item, String cycles) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public String getProgrammerDirectory() {
@@ -135,7 +141,15 @@ public class Initialisation {
         this.cycles = cycles;
     }
 
-   
+    public String getTiming() {
+        return timing;
+    }
+
+    public void setTiming(String timing) {
+        this.timing = timing;
+    }
+
+    
   
     
     

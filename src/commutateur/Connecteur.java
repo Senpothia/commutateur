@@ -346,7 +346,7 @@ public class Connecteur extends Observable {
             //System.out.println("Début programmation");
             cleanDirectory(programmerPathTempDir);
             cleanDirectory2(".\\logs\\logs.txt");
-            tempo(2000);  // valeur initiale = 250
+            tempo(Constants.TIMING);  // valeur initiale = 250
             programmationCompleted("->START:99:" + i);
             //ProcessBuilder processBuilder = new ProcessBuilder();
             //processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
