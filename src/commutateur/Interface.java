@@ -47,6 +47,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private String binaireLocation = null;
     private String nombreVoiesCommutateurParamsProperties = null;  // nombre de voies du commutateur lues dans params.properties
     private String programmerParamsProperties = null;
+    private String workDirectoryPath = null;
 
     private int limCommutateur = 0;                 // nombre de voies du commutateur converties en int depuis la variable nombreVoiesCommutateurString
     private int intNombreDeVoiesNouvelleCarte = 0;
@@ -2576,7 +2577,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         TOTAL++;
         System.out.println("Nombre de cycles total: " + TOTAL);
-        
+
 
     }//GEN-LAST:event_btnACQActionPerformed
 
@@ -3828,11 +3829,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
         System.out.println("commutateur.Interface.initialisationParams(): Valeur cyles dans params: " + initialisation.getCycles());
         Constants.CYCLES_LIM = Integer.parseInt(initialisation.getCycles());
         System.out.println("commutateur.Interface.initialisationParams(): Valeur Cycles dans classe Constants: " + Constants.CYCLES_LIM);
-        
+
         System.out.println("commutateur.Interface.initialisationParams(): Valeur cyles dans params: " + initialisation.getTiming());
         Constants.TIMING = Long.parseLong(initialisation.getTiming());
         System.out.println("commutateur.Interface.initialisationParams(): Valeur Cycles dans classe Constants: " + Constants.TIMING);
-        
 
         // Détermination du mode auto connexion 
         if (initialisation.getAutoConnection().equals("yes")) {
@@ -3846,15 +3846,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
             autoConnexion = false;
         }
 
-        /*
-        if (!initialisation.getItem().equals("none")) {
-
-            selectedProduct = Integer.parseInt(initialisation.getItem());
-            System.out.println("Valeur selectedProduct: " + selectedProduct);
-            initInterface();
-
-        }
-         */
         //Recherche nombre de voie du commutateur
         if (initialisation.getCommutateur().equals("na")) {
 
@@ -3897,14 +3888,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
             }
 
-            /*
-            if (initialisation.getItem().equals("none")) {
-
-                comboListeProduits.setSelectedIndex(0);
-                nomProduit.setText("Veuillez sélectionnez un produit!");
-
-            }
-             */
         }
 
         // Recherche nombre de voies à programmer (nombre de carte par panneau)
@@ -3963,8 +3946,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         // Recherche emplacement du repertoire des fichiers temporaires du programmateur
         String[] tab = programmerPathParamsProperties.split("\\\\");
-        //String[] tab = programmerParamsProperties.toString().split(File.pathSeparator);
-        //System.out.println("Recherche du repertoire des fichiers temporaires du programmateur");
 
         for (int i = 0; i < tab.length; i++) {
 
@@ -3972,7 +3953,12 @@ public class Interface extends javax.swing.JFrame implements Observer {
         }
         programmerPathTempFileDirectory = "C:\\Users\\" + tab[2] + "\\.mchp_ipe\\";
         //System.out.println("programmerPathTempFileDirectory: " + programmerPathTempFileDirectory);
-
+        
+        workDirectoryPath = "C:\\Users\\" + tab[2] + "\\picProgrammer";
+        
+        System.out.println("complete path: " + "java -jar " +  workDirectoryPath + "\\commutateur.jar");
+        
+        System.out.println("workDirectoryPath:" + workDirectoryPath);
         // Recherche variable d'environnement pour la commande Java
         if (initialisation.getVarEnv().equals("na")) {
 
@@ -4160,7 +4146,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                             Constants.tempo(2000);
                             montrerError("Déconnectez la liaison USB momentanément, remettez-la et relancer l'application!", "Blocage programmateur");
 
-                            processBuilder.command("cmd.exe", "/c", "java -jar C:\\Users\\michel\\Desktop\\PICProgrammer-executable\\dist-relance-27-08-2025\\commutateur.jar");
+                            processBuilder.command("cmd.exe", "/c", "java -jar " +  workDirectoryPath + "\\commutateur.jar");
                             Process process = processBuilder.start();
 
                             System.exit(0);
