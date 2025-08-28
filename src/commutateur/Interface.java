@@ -2582,6 +2582,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         System.out.println("Nombre de cycles total: " + TOTAL);
         System.out.println("Nombre d'interruptions: " + STOPS);
         System.out.println("Nombre de cycles en cours: " + CYCLES);
+         System.out.println("Nombre de programmations: " + CYCLES*intNombreDeVoiesCarteEnTest);
 
 
     }//GEN-LAST:event_btnACQActionPerformed
