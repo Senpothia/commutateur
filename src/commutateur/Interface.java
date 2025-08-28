@@ -136,6 +136,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private LocalDateTime dateOfEnd;
 
     private int CYCLES = 0;
+    private int STOPS = 0;
     private int TOTAL = 0;
 
     private boolean echo = false;
@@ -2569,14 +2570,18 @@ public class Interface extends javax.swing.JFrame implements Observer {
         progBarre.setStringPainted(true);
         if (CYCLES == Constants.CYCLES_LIM) {
 
-            System.out.println("demande relance après interruption processus");
+            System.err.println("RELANCE APRES INTERRUPTION PROCESSUS!");
             connecteur.askForKillingProcess();
-
             CYCLES = 0;
+            STOPS++;
+
         }
 
         TOTAL++;
+
         System.out.println("Nombre de cycles total: " + TOTAL);
+        System.out.println("Nombre d'interruptions: " + STOPS);
+        System.out.println("Nombre de cycles en cours: " + CYCLES);
 
 
     }//GEN-LAST:event_btnACQActionPerformed
@@ -3219,10 +3224,9 @@ public class Interface extends javax.swing.JFrame implements Observer {
                     long delay = dateOfStart.until(dateOfEnd, ChronoUnit.SECONDS);
                     long delay2 = dateOfStart.until(dateOfEnd, ChronoUnit.MINUTES);
                     System.out.println("Durée du cycle de programmation: " + delay + "s");
-                    System.out.println("Durée2 du cycle de programmation: " + delay2 + "mn");
+                   
                     CYCLES++;
-                    System.out.println("CYCLES entre 2 interruptions: " + TOTAL);
-                    System.out.println("CYCLES depuis dernière interruption: " + CYCLES);
+                   
 
                 }
 
@@ -3953,11 +3957,11 @@ public class Interface extends javax.swing.JFrame implements Observer {
         }
         programmerPathTempFileDirectory = "C:\\Users\\" + tab[2] + "\\.mchp_ipe\\";
         //System.out.println("programmerPathTempFileDirectory: " + programmerPathTempFileDirectory);
-        
+
         workDirectoryPath = "C:\\Users\\" + tab[2] + "\\picProgrammer";
-        
-        System.out.println("complete path: " + "java -jar " +  workDirectoryPath + "\\commutateur.jar");
-        
+
+        System.out.println("complete path: " + "java -jar " + workDirectoryPath + "\\commutateur.jar");
+
         System.out.println("workDirectoryPath:" + workDirectoryPath);
         // Recherche variable d'environnement pour la commande Java
         if (initialisation.getVarEnv().equals("na")) {
@@ -4146,7 +4150,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
                             Constants.tempo(2000);
                             montrerError("Déconnectez la liaison USB momentanément, remettez-la et relancer l'application!", "Blocage programmateur");
 
-                            processBuilder.command("cmd.exe", "/c", "java -jar " +  workDirectoryPath + "\\commutateur.jar");
+                            processBuilder.command("cmd.exe", "/c", "java -jar " + workDirectoryPath + "\\commutateur.jar");
                             Process process = processBuilder.start();
 
                             System.exit(0);
