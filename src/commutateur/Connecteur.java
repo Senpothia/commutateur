@@ -29,7 +29,7 @@ import java.util.logging.Logger;
 public class Connecteur extends Observable {
 
     public static String portName = null;
-    private  String portNameAuto = null;
+    private String portNameAuto = null;
     private SerialPort[] ports = null;
     public SerialPort portComm;
     private int baudeRate = 9600;
@@ -115,8 +115,6 @@ public class Connecteur extends Observable {
     public void setPortNameAuto(String portNameAuto) {
         this.portNameAuto = portNameAuto;
     }
-    
-    
 
     public int makeConnection(String portName, int baudeRate, int numDataBits, int parity, int stopBits, boolean auto) {
 
@@ -140,9 +138,9 @@ public class Connecteur extends Observable {
                     }
                 }
 
-            }else{
-            
-                  for (SerialPort p : ports) {
+            } else {
+
+                for (SerialPort p : ports) {
 
                     System.out.println("Interface.makeConnection() - getSystemPortName: " + p.getSystemPortName() + " // " + portName);
                     if (p.getSystemPortName().equals(portNameAuto)) {
@@ -151,7 +149,7 @@ public class Connecteur extends Observable {
 
                     }
                 }
-             
+
             }
 
             portComm.setBaudRate(baudeRate);
@@ -339,6 +337,7 @@ public class Connecteur extends Observable {
         for (int i = sequenceInterrompue; i < nombreDeVoiesCarteEnTest + 1; i++) {
 
             System.out.println("error: " + error);
+
             count++;
             envoyerData(Character.toString(count));
 
@@ -352,18 +351,21 @@ public class Connecteur extends Observable {
             //processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
             processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /OY2013 >.\\logs\\logs.txt");
             Process process = processBuilder.start();
+            System.out.println("Envoi commande de programmation");
             process.waitFor();
             tempo(200);   // valeur initiale = 200
 
-            //System.out.println("Fin programmation");
-            //System.out.println("Début vérification");
+            System.out.println("Fin programmation");
+            System.out.println("Début vérification");
             int control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
             System.out.println("code control: " + control);
             if (control == -1) {
 
-                //System.out.println("tentative 2");
+                System.out.println("tentative - code -1 / -54");
                 programmationCompleted("->PROG:" + i + ":-54");
                 processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
+                Process process2 = processBuilder.start();
+                process2.waitFor();
                 control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
                 if (control == -1) {
 
@@ -377,13 +379,16 @@ public class Connecteur extends Observable {
 
             if (control == -4) {
 
-                //System.out.println("tentative 2");
+                System.out.println("tentative 2 - code -4 / -54");
                 programmationCompleted("->PROG:" + i + ":-54");
                 processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
+                Process process3 = processBuilder.start();
+                process3.waitFor();
                 control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
 
                 if (control == -4) {
 
+                    System.out.println("tentative 2 - code -4 /-66");
                     control = -66;
                     programmationCompleted("->PROG:" + i + ":-66");
 
@@ -408,20 +413,21 @@ public class Connecteur extends Observable {
                 return -77;
 
             }
-            
-             if (control == -88) {
+
+            if (control == -88) {
 
                 System.out.println("Blocage programmateur");
                 programmationCompleted("->PROG:" + i + ":-88");
                 return -88;
 
             }
-             
-            //System.out.println("code controle: " + control);
+
+            System.out.println("code controle: " + control);
             programmationCompleted("->PROG:" + i + ":" + control);
 
             if (i == 1 || error) {
 
+                System.out.println("Interruption processus en phase de programmation");
                 processManager.getJavaProcesses();
                 error = false;
 
@@ -429,6 +435,7 @@ public class Connecteur extends Observable {
 
             if (control < 0) {
 
+                System.out.println("Code <0");
                 error = true;
             }
 
@@ -490,7 +497,7 @@ public class Connecteur extends Observable {
 
     }
 
-    public void singleProgramme(String hexLocation, boolean envVariable, String programmerPath, String programmer, String device, String binaryLocation, int nombreDeVoiesCarteEnTest, String programmerPathTempDir) throws IOException {
+    public void singleProgramme(String hexLocation, boolean envVariable, String programmerPath, String programmer, String device, String binaryLocation, int nombreDeVoiesCarteEnTest, String programmerPathTempDir) throws IOException, InterruptedException {
 
         cleanDirectory(programmerPathTempDir);
         cleanDirectory2(".\\logs\\logs.txt");
@@ -499,7 +506,10 @@ public class Connecteur extends Observable {
         //ProcessBuilder processBuilder = new ProcessBuilder();
         //processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /W /OY2013 >.\\logs\\logs.txt");
         processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /OY2013 >.\\logs\\logs.txt");
-        Process process = processBuilder.start();
+        Process process4 = processBuilder.start();
+        process4.waitFor();
+        
+        
         int control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
         System.out.println("code control: " + control);
 
@@ -544,7 +554,5 @@ public class Connecteur extends Observable {
         portName = processManager.getPort();
         return portName;
     }
-    
-   
 
 }

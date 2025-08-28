@@ -160,6 +160,11 @@ public class ProcessManager {
             process.waitFor();
             String[] command2 = {"powershell.exe", "exit"};
             processBuilder = new ProcessBuilder(command2);
+            // Démarrer le processus
+            process = processBuilder.start();
+
+            // Attendre la fin du processus
+            process.waitFor();
             Files.deleteIfExists(Paths.get(".\\processes0.process"));
             resetFlags();
 
@@ -254,7 +259,5 @@ public class ProcessManager {
         port = serialPortName;
 
     }
-
-   
 
 }
