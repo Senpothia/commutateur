@@ -2582,7 +2582,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         System.out.println("Nombre de cycles total: " + TOTAL);
         System.out.println("Nombre d'interruptions: " + STOPS);
         System.out.println("Nombre de cycles en cours: " + CYCLES);
-         System.out.println("Nombre de programmations: " + TOTAL*intNombreDeVoiesCarteEnTest);
+        System.out.println("Nombre de programmations: " + TOTAL * intNombreDeVoiesCarteEnTest);
 
 
     }//GEN-LAST:event_btnACQActionPerformed
@@ -3225,9 +3225,8 @@ public class Interface extends javax.swing.JFrame implements Observer {
                     long delay = dateOfStart.until(dateOfEnd, ChronoUnit.SECONDS);
                     long delay2 = dateOfStart.until(dateOfEnd, ChronoUnit.MINUTES);
                     System.out.println("Durée du cycle de programmation: " + delay + "s");
-                   
+
                     CYCLES++;
-                   
 
                 }
 
@@ -4336,7 +4335,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
             deviceEnTest = listeDevicesEnregistres.get(selectedProduct - 1);
             matriceAprogrammer = listesMatrices.get(selectedProduct - 1);
             extraireLignesColonnes(matriceAprogrammer);
-            nomProduit.setText(produitAprogrammer + " - Microcontôleur: " + deviceEnTest + " - Voies: " + nombreDeVoiesCarteEnTest + " - Programmateur: " + programmerParamsProperties + " - Matrice: " + matriceAprogrammer);
+            nomProduit.setText(produitAprogrammer + " - Microcontrôleur: " + deviceEnTest + " - Voies: " + nombreDeVoiesCarteEnTest + " - Programmateur: " + programmerParamsProperties + " - Matrice: " + matriceAprogrammer);
             emplacementBinaire.setText(binaireLocation);
             envVariable = true;
             raffraichirInterface();
