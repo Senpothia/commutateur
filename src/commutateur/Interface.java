@@ -770,6 +770,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         btnDeconnexion = new javax.swing.JMenuItem();
         menuAide = new javax.swing.JMenu();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         voirAide = new javax.swing.JMenuItem();
 
         programmerLoc.setFileFilter(null);
@@ -1780,6 +1781,16 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 menuAideActionPerformed(evt);
             }
         });
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("Mono");
+        jCheckBoxMenuItem1.setActionCommand("Mono");
+        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem1ActionPerformed(evt);
+            }
+        });
+        menuAide.add(jCheckBoxMenuItem1);
 
         voirAide.setText("Aide");
         voirAide.addActionListener(new java.awt.event.ActionListener() {
@@ -2811,6 +2822,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuPortStateChanged
 
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2902,6 +2917,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JLabel hexLocalisation;
     private javax.swing.JLabel imagePanneau;
     private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
