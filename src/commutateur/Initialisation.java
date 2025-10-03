@@ -24,8 +24,9 @@ public class Initialisation {
     private String item;
     private String cycles;
     private String timing;
+    private String single;
 
-    public Initialisation(String programmerDirectory, String varEnv, String binaryLocations, String productNames, String nombreVoies, String commutateur, String device, String programmer, String matrice, String autoConnection, String item, String cycles, String timing) {
+    public Initialisation(String programmerDirectory, String varEnv, String binaryLocations, String productNames, String nombreVoies, String commutateur, String device, String programmer, String matrice, String autoConnection, String item, String cycles, String timing, String single) {
         this.programmerDirectory = programmerDirectory;
         this.varEnv = varEnv;
         this.binaryLocations = binaryLocations;
@@ -39,7 +40,10 @@ public class Initialisation {
         this.item = item;
         this.cycles = cycles;
         this.timing = timing;
+        this.single = single;
     }
+
+   
 
     Initialisation(String programmerDirectory, String varEnv, String binaryLocations, String productNames, String voies, String commutateur, String device, String programmer, String matrice, String autoConnection, String item, String cycles) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -147,6 +151,14 @@ public class Initialisation {
 
     public void setTiming(String timing) {
         this.timing = timing;
+    }
+
+    public String getSingle() {
+        return single;
+    }
+
+    public void setSingle(String single) {
+        this.single = single;
     }
 
     

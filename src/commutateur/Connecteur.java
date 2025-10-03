@@ -451,8 +451,6 @@ public class Connecteur extends Observable {
 
         boolean deleteIfExists1 = Files.deleteIfExists(Paths.get(programmerPathTempDir + "2013.ini"));
         boolean deleteIfExists2 = Files.deleteIfExists(Paths.get(programmerPathTempDir + "2013.lock"));
-        //boolean deleteIfExists1 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.ini"));
-        //boolean deleteIfExists2 = Files.deleteIfExists(Paths.get("C:\\Users\\Michel\\.mchp_ipe\\2013.lock"));
 
     }
 
@@ -508,8 +506,7 @@ public class Connecteur extends Observable {
         processBuilder.command("cmd.exe", "/c", "java -jar " + programmerPath + " /" + programmer + " /" + device + " /F" + binaryLocation + " /M /OY2013 >.\\logs\\logs.txt");
         Process process4 = processBuilder.start();
         process4.waitFor();
-        
-        
+
         int control = progController.find(".\\logs\\logs.txt", Constants.ERREURS_LOG1, Constants.REQUIS_LOG1);
         System.out.println("code control: " + control);
 

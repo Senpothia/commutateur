@@ -37,8 +37,9 @@ public class Initializer {
         String item = progProperpies.getProperty("item");
         String cycles = progProperpies.getProperty("cycles");
         String timing = progProperpies.getProperty("timing");
-        
-        Initialisation init = new Initialisation(programmerDirectory, varEnv, binaryLocations, productNames, voies, commutateur, device, programmer, matrice, autoConnection, item, cycles, timing);
+        String single = progProperpies.getProperty("single");
+
+        Initialisation init = new Initialisation(programmerDirectory, varEnv, binaryLocations, productNames, voies, commutateur, device, programmer, matrice, autoConnection, item, cycles, timing, single);
 
         return init;
     }

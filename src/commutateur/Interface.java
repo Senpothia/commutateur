@@ -55,6 +55,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private int lignes = 0;
     private int colonnes = 0;
+    private int monoLocation = 0;
 
     private String nombreDeVoiesEnregistresParamsProperties = null;  // lues dans params.properties
     private String nombreDeVoiesCarteEnTest = null;
@@ -63,6 +64,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private String matricesProperties = null;        // Liste de toutes les matrices connues et enregistrées dans params.properties
     private String matriceAprogrammer = null;        // la matrice du panneau à programmer
     private String matriceNouveauPanneau = null;     // la matrice du panneau en cours d'enregistrement
+    private String monoPositionString = null;        // emplacement pour programmation mono
 
     private boolean envVariable = false;
     private String produitAprogrammer = null;       // produit sélectionné pour programmation via l'interface
@@ -92,6 +94,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private boolean programmationActive = false;
     private boolean auto = true;
     private boolean AttenteReponseOperateur = false;
+    private boolean mono = false;
 
     public static Initializer initializer = new Initializer();  // Charge les propriétés du fichier properties contenant les paramètres de programmation
     public static Initialisation initialisation;                // Centralise les données rapportées par l'initializer
@@ -770,7 +773,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         btnDeconnexion = new javax.swing.JMenuItem();
         menuAide = new javax.swing.JMenu();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        menuItemMono = new javax.swing.JCheckBoxMenuItem();
         voirAide = new javax.swing.JMenuItem();
 
         programmerLoc.setFileFilter(null);
@@ -1782,15 +1785,20 @@ public class Interface extends javax.swing.JFrame implements Observer {
             }
         });
 
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("Mono");
-        jCheckBoxMenuItem1.setActionCommand("Mono");
-        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxMenuItem1ActionPerformed(evt);
+        menuItemMono.setSelected(true);
+        menuItemMono.setText("Mono");
+        menuItemMono.setActionCommand("Mono");
+        menuItemMono.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                menuItemMonoStateChanged(evt);
             }
         });
-        menuAide.add(jCheckBoxMenuItem1);
+        menuItemMono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemMonoActionPerformed(evt);
+            }
+        });
+        menuAide.add(menuItemMono);
 
         voirAide.setText("Aide");
         voirAide.addActionListener(new java.awt.event.ActionListener() {
@@ -2822,9 +2830,21 @@ public class Interface extends javax.swing.JFrame implements Observer {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuPortStateChanged
 
-    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+    private void menuItemMonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMonoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+    }//GEN-LAST:event_menuItemMonoActionPerformed
+
+    private void menuItemMonoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_menuItemMonoStateChanged
+
+        mono = menuItemMono.isSelected();
+        if (mono) {
+            this.getContentPane().setBackground(new Color(140, 3, 252));
+        } else {
+            this.getContentPane().setBackground(new Color(50, 131, 168));
+        }
+
+
+    }//GEN-LAST:event_menuItemMonoStateChanged
 
     /**
      * @param args the command line arguments
@@ -2917,7 +2937,6 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JLabel hexLocalisation;
     private javax.swing.JLabel imagePanneau;
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -2945,6 +2964,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
     private javax.swing.JMenu menuBits;
     private javax.swing.JMenu menuConnexion;
     private javax.swing.JMenuItem menuCreer;
+    private javax.swing.JCheckBoxMenuItem menuItemMono;
     private javax.swing.JMenu menuParametres;
     private javax.swing.JMenu menuParity;
     private javax.swing.JMenu menuPort;
@@ -4012,6 +4032,19 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         }
 
+        // Recherche position programmation mono
+        if (initialisation.getSingle().equals("na")) {
+
+            //System.out.println("liste des matrices = " + initialisation.getMatrice());
+            nombreVoies.setText("Aucune position mono définie");
+
+        } else {
+
+            monoPositionString = initialisation.getSingle();
+            monoLocation = Integer.parseInt(monoPositionString);
+
+        }
+
     }
 
     private void raffraichirInterface() {
@@ -4121,11 +4154,17 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         Thread t = new Thread() {
             public void run() {
-
+                int comm = 0;
                 try {
-                    int comm = connecteur.program(hexLocationsParamsProperties, envVariable, programmerPathParamsProperties, programmerParamsProperties, deviceEnTest, binaireLocation, intNombreDeVoiesCarteEnTest, programmerPathTempFileDirectory);
-                    //System.out.println("Retour programmation. Code reçu: " + comm);
+                    if (!mono) {
+                        comm = connecteur.program(hexLocationsParamsProperties, envVariable, programmerPathParamsProperties, programmerParamsProperties, deviceEnTest, binaireLocation, intNombreDeVoiesCarteEnTest, programmerPathTempFileDirectory);
+                    } else {
+                        connecteur.setSequenceInterrompue(monoLocation);
 
+                        comm = connecteur.program(hexLocationsParamsProperties, envVariable, programmerPathParamsProperties, programmerParamsProperties, deviceEnTest, binaireLocation, monoLocation, programmerPathTempFileDirectory);
+                    }
+
+                    //System.out.println("Retour programmation. Code reçu: " + comm);
                     switch (comm) {
 
                         case 1:
