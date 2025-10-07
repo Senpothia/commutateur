@@ -1035,7 +1035,6 @@
               <Properties>
                 <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Mono"/>
-                <Property name="actionCommand" type="java.lang.String" value="Mono"/>
               </Properties>
               <Events>
                 <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="menuItemMonoStateChanged"/>

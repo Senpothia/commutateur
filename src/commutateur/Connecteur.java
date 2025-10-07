@@ -202,19 +202,6 @@ public class Connecteur extends Observable {
                     }
                     inputLine = new String(lecture, StandardCharsets.UTF_8);
 
-                    //System.out.println("Received -> " + numRead + "bits lus - " + inputLine);
-                    /*
-                    if (inputLine.startsWith("->GR")) {
-                        System.out.println("reception echo - connecteur");
-
-                        String[] tab = inputLine.trim().split(":");
-
-                        if (tab[2].equals("ON") || tab[2].equals("OFF")) {
-                            echo = true;
-                            System.out.println("echo = true - connecteur");
-                        }
-                    }
-                     */
                     notifierResultat();
 
                 } catch (Exception e) {   // Traitement des exceptions

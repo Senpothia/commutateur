@@ -74,7 +74,7 @@ public class Ligne {
         this.voyants = voyants;
     }
 
-    public void initialiser(int colonnes) {
+    public void initialiser(int colonnes, boolean mono) {
 
         int position = (12 - colonnes) / 2;
         int ordre = 1;
@@ -88,7 +88,7 @@ public class Ligne {
 
             } else {
 
-                v.masquer();
+                v.masquer(mono);
                 v.setOrdre(0);
             }
 

@@ -227,7 +227,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
         messageCreation.setOpaque(true);
         progLocLabel.setOpaque(true);
-
+        menuItemMono.setSelected(false);
         inhibBtn();
 
         aide.getContentPane().setBackground(new Color(247, 242, 208));
@@ -2839,6 +2839,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         mono = menuItemMono.isSelected();
         if (mono) {
             this.getContentPane().setBackground(new Color(140, 3, 252));
+            console.setText("Programmation unitaire activée sur l'emplacement " + monoLocation);
         } else {
             this.getContentPane().setBackground(new Color(50, 131, 168));
         }
@@ -4053,7 +4054,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         int i = 0;
         while (i < lignes) {
 
-            listeLignes.get(i).initialiser(colonnes);
+            listeLignes.get(i).initialiser(colonnes, mono);
             listeLignes.get(i).setVisible(true);
             i++;
         }
@@ -4157,10 +4158,10 @@ public class Interface extends javax.swing.JFrame implements Observer {
                 int comm = 0;
                 try {
                     if (!mono) {
+                        connecteur.setSequenceInterrompue(1);
                         comm = connecteur.program(hexLocationsParamsProperties, envVariable, programmerPathParamsProperties, programmerParamsProperties, deviceEnTest, binaireLocation, intNombreDeVoiesCarteEnTest, programmerPathTempFileDirectory);
                     } else {
                         connecteur.setSequenceInterrompue(monoLocation);
-
                         comm = connecteur.program(hexLocationsParamsProperties, envVariable, programmerPathParamsProperties, programmerParamsProperties, deviceEnTest, binaireLocation, monoLocation, programmerPathTempFileDirectory);
                     }
 
