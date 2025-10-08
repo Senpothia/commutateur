@@ -2843,7 +2843,7 @@ public class Interface extends javax.swing.JFrame implements Observer {
         } else {
             this.getContentPane().setBackground(new Color(50, 131, 168));
         }
-
+        raffraichirInterface();
 
     }//GEN-LAST:event_menuItemMonoStateChanged
 
@@ -4050,21 +4050,22 @@ public class Interface extends javax.swing.JFrame implements Observer {
 
     private void raffraichirInterface() {
 
-        this.setSize(1141, 620 + lignes * 38);
-        int i = 0;
-        while (i < lignes) {
+        if (produitAprogrammer != null) {
+            this.setSize(1141, 620 + lignes * 38);
+            int i = 0;
+            while (i < lignes) {
 
-            listeLignes.get(i).initialiser(colonnes, mono);
-            listeLignes.get(i).setVisible(true);
-            i++;
+                listeLignes.get(i).initialiser(colonnes, mono);
+                listeLignes.get(i).setVisible(true);
+                i++;
+            }
+
+            for (int j = i; j < 12; j++) {
+
+                listeLignes.get(j).supprimer();
+                listeLignes.get(j).setVisible(false);
+            }
         }
-
-        for (int j = i; j < 12; j++) {
-
-            listeLignes.get(j).supprimer();
-            listeLignes.get(j).setVisible(false);
-        }
-
     }
 
     private void raffraichirIndicateur(String[] tab) {
